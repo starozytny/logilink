@@ -23,3 +23,7 @@ h1{
 h2{
   @include fontSemibold();
 }
+
+.txt-color2{
+  color: var(--color2);
+}
