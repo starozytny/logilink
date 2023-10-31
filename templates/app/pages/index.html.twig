@@ -3,18 +3,25 @@
 {% block title %}Hello AppController!{% endblock %}
 
 {% block main_content %}
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="page-content">
+        <div class="page-guard">
+            <div class="page-guard-title">
+                <div class="prefix">Nos logiciels vous <span class="italic">simplifient la vie</span>.</div>
+                <h1>LOGILINK</h1>
+                <p>
+                    Editeur spécialisé dans le domaine de l'immobilier et la gestion des entreprises et les sites internet
+                    sur-mesure, Logilink développe des logiciels modernes, fiables et performants en réponse à toutes
+                    vos exigences professionnelles.
+                </p>
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Tchan/Documents/Projets/Idea/project/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Tchan/Documents/Projets/Idea/project/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
 
-    <div>
-        <a href="{{ path('app_login') }}">Connexion</a>
-        <a href="{{ path('app_contact') }}">Demande de contact</a>
+            <div class="cta">
+                <a class="btn btn-primary" href="tel:0491994443">04 91 99 44 43</a>
+                <a class="txt-button txt-button-color0">
+                    Notre travail <span class="icon-right-chevron"></span>
+                </a>
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}

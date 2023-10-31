@@ -1,18 +1,38 @@
 @import "../../../../common/css/components/elements/button";
 
+.txt-button{
+  border-radius: var(--radius);
+}
+
 .btn{
+  border-radius: var(--radius);
+
   &:hover{
     opacity: 0.9;
   }
 }
-
 $data:
         "primary" var(--primary) var(--alpha),
+        "color0" var(--color0) var(--alpha),
 ;
 
 @each $name, $bg, $txt in $data {
   .btn-#{$name}{
     background-color: $bg;
     color: $txt;
+  }
+}
+
+$data:
+        "primary" var(--primaryOpacity1) var(--primary),
+        "color0" var(--color0Opacity1) var(--color0),
+;
+
+@each $name, $bg, $txt in $data {
+  .txt-button-#{$name} {
+    &:hover {
+      background-color: $bg;
+      color: $txt;
+    }
   }
 }

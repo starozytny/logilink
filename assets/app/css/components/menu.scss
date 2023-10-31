@@ -5,7 +5,7 @@
 
 .nav-logo{
   @include flex(row, center, center);
-  width: 100px;
+  width: 238px;
   padding: 1.2rem;
 
   a {
@@ -47,7 +47,7 @@
     }
 
     &.active{
-      background-color: var(--primary);
+      background-color: var(--color0);
       color: var(--alpha);
     }
 
@@ -82,8 +82,9 @@
 //                     |__|                       |__|
 @media (min-width: 1024px) {
   .nav-container{
-    padding: 1.2rem;
+    padding: 1.2rem var(--espaceLayout);
     gap: var(--espaceLayout);
+    align-items: center;
   }
 
   .nav-mobile{
@@ -116,6 +117,13 @@
   }
   .nav-cta{
     display: block;
-    width: 168px;
+    width: 188px;
+
+    .nav-menu{
+      justify-content: flex-end;
+      .nav-item{
+        background-color: var(--warning);
+      }
+    }
   }
 }

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Poppins:wght@400;800&display=swap');
+
+body{
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.page-content{
+  background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity4), var(--color2));
+  min-height: 100vh;
+  margin: 0 var(--espaceLayout);
+  padding: var(--espaceLayout);
+  color: var(--alpha);
+}
+
+.page-guard-title{
+  max-width: 650px;
+  padding: 5% 5% 0 20%;
+
+  .prefix{
+    margin-bottom: var(--espaceEls);
+    font-size: 1.6em;
+
+    .italic{
+      font-family: "Libre Baskerville", serif;
+      color: var(--color0);
+    }
+  }
+
+  h1{
+    color: var(--color2);
+    text-transform: uppercase;
+    margin-bottom: var(--espaceDiv);
+    font-size: 4.2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+
+  }
+
+  h1 + p{
+    font-size: 1.1em;
+  }
+}
+
+.page-guard{
+  .cta{
+    @include flex(row, flex-start, flex-start, var(--espaceEls));
+    margin-top: var(--espaceDiv);
+    padding-left: 20%;
+
+    .btn{
+      padding: 16px 36px;
+    }
+    a.txt-button{
+      color: var(--alpha);
+      padding: 16px 36px;
+    }
+  }
+}
