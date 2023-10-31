@@ -1,4 +1,9 @@
 {% extends 'layout/layout_app.html.twig' %}
 
+{% set menu = [
+    { name: "Logilink", path: path('app_homepage'), matchRoute: ['app_homepage'] },
+    { name: "Utilisateur", path: path('app_homepage'), matchRoute: ['app_users'] },
+] %}
+
 {% block footer %}
 {% endblock %}

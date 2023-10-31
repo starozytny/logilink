@@ -1,0 +1,121 @@
+.nav-container{
+  position: relative;
+  @include flex(row, stretch, space-between);
+}
+
+.nav-logo{
+  @include flex(row, center, center);
+  width: 100px;
+  padding: 1.2rem;
+
+  a {
+    @include flex(row, center, center);
+  }
+}
+
+.nav-mobile{
+  @include flex(row, center, center);
+  padding: 1.2rem;
+  font-size: 2.6rem;
+}
+
+.nav-content{
+  position: absolute;
+  top: -200.0rem; left: 0;
+  padding: 2.4rem 0;
+  background-color: var(--color2);
+  opacity: 0;
+  z-index: -1;
+
+  &.active{
+    top: 5rem;
+    opacity: 1;
+    z-index: 100;
+    width: 100%;
+  }
+}
+
+.nav-menu{
+  .nav-item{
+    @include flex(row, center, flex-start, 8px);
+    padding: 12px;
+    transition: all 0.2s ease-in-out;
+
+    [class^="icon-"]{
+      display: inline-block;
+      transform: translateY(-2px);
+    }
+
+    &.active{
+      background-color: var(--primary);
+      color: var(--alpha);
+    }
+
+    &:not(&.active):hover{
+      background-color: var(--color2);
+    }
+  }
+}
+
+.nav-cta{
+  display: none;
+}
+
+//                      __   _____ __    ___    __
+//                     | _| |___  / /_  ( _ )  |_ |
+//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+//                     | |   /_/  \___/ \___/   | |
+//                     |__|                    |__|
+@media (min-width:768px) {
+  .nav-content{
+    @include flex(row-reverse, center, space-between, 0.8rem);
+    padding-right: 1.2rem;
+  }
+}
+
+//                      __   _  ___ ____  _  _     __
+//                     | _| / |/ _ \___ \| || |   |_ |
+//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
+//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
+//                     | |  |_|\___/_____|  |_|    | |
+//                     |__|                       |__|
+@media (min-width: 1024px) {
+  .nav-container{
+    padding: 1.2rem;
+    gap: var(--espaceLayout);
+  }
+
+  .nav-mobile{
+    display: none;
+  }
+
+  .nav-logo{
+    padding: 0;
+  }
+
+  .nav-content{
+    position: relative;
+    background-color: transparent;
+    top: 0;opacity: 1;z-index: 1;
+    padding: 0;
+    width: 100%; height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    &.active{ top: 0;opacity: 1;z-index: 1; }
+  }
+
+  .nav-menu{
+    @include flex(row, flex-start, flex-start, var(--espaceEls));
+    .nav-item{
+      border-radius: var(--radius);
+    }
+  }
+  .nav-cta{
+    display: block;
+    width: 168px;
+  }
+}

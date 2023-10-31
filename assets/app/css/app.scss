@@ -9,6 +9,8 @@
 @import "./components/form";
 @import "./components/modal";
 
+@import "./components/menu";
+
 body {
   @include fontRegular();
 }
