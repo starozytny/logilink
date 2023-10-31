@@ -5,11 +5,29 @@ body{
 }
 
 .page-content{
+  min-height: 200vh;
+  margin: 0 var(--espaceLayout);
+  padding-top: 100px;
+  color: var(--alpha);
+}
+
+.page-guard{
   background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity4), var(--color2));
   min-height: 100vh;
-  margin: 0 var(--espaceLayout);
-  padding: var(--espaceLayout);
-  color: var(--alpha);
+
+  .cta{
+    @include flex(row, flex-start, flex-start, var(--espaceEls));
+    margin-top: var(--espaceDiv);
+    padding-left: 20%;
+
+    .btn{
+      padding: 16px 36px;
+    }
+    a.txt-button{
+      color: var(--alpha);
+      padding: 16px 36px;
+    }
+  }
 }
 
 .page-guard-title{
@@ -38,21 +56,5 @@ body{
 
   h1 + p{
     font-size: 1.1em;
-  }
-}
-
-.page-guard{
-  .cta{
-    @include flex(row, flex-start, flex-start, var(--espaceEls));
-    margin-top: var(--espaceDiv);
-    padding-left: 20%;
-
-    .btn{
-      padding: 16px 36px;
-    }
-    a.txt-button{
-      color: var(--alpha);
-      padding: 16px 36px;
-    }
   }
 }

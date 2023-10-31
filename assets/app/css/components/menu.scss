@@ -1,3 +1,11 @@
+nav{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background-color: var(--alpha);
+  z-index: 10;
+}
+
 .nav-container{
   position: relative;
   @include flex(row, stretch, space-between);
