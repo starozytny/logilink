@@ -34,17 +34,46 @@
             </div>
         </div>
         <div class="homepage-products">
-            <div class="col-deco">
-                <div class="pattern-dots-lg"></div>
+            {% set products = [
+                {
+                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_homepage'),
+                    text: 'Un logiciel adapté à votre activité qui répondra aux demandes spécifiques de votre entreprise.'
+                },
+                {
+                    numero: 2, name: 'Applications', txtBtn: 'Les applications', pathBtn: path('app_homepage'),
+                    text: 'Améliorez votre efficacité et productivité avec des applications sur-mesure.'
+                },
+                {
+                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_homepage'),
+                    text: 'Développez votre identité numérique à travers un site internet qui vous correspond.'
+                },
+                {
+                    numero: 4, name: 'Services', txtBtn: 'Les services', pathBtn: path('app_homepage'),
+                    text: 'Simplifiez vous l\'installation du matériel informatique et l\'intégration de logiciels.'
+                }
+            ] %}
+            <div class="items">
+                {% for item in products %}
+                    <div class="item">
+                        <h2>{{ item.name }}</h2>
+                        <div class="item-body">
+                            <p>{{ item.text }}</p>
+                            <div class="item-cta">
+                                <a href="{{ item.pathBtn }}" class="btn btn-color1">
+                                    <span class="icon-right-arrow"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="homepage-products-container">
-                <div class="homepage-title">
-                    <div class="prefix">Le logiciel qui fait <span class="italic">la différence</span>.</div>
-                    <h1>Nos <span class="txt-color2">solutions</span> informatiques<span class="txt-color2">.</span></h1>
-                    <p>
-                        Logilink développe des solutions informatiques tirant le meilleur parti des dernières évolutions technologiques.
-                    </p>
-                </div>
+        </div>
+        <div class="test">
+            <div class="homepage-title">
+                <h1>Nos <span class="txt-color2">solutions</span> informatiques<span class="txt-color2">.</span></h1>
+                <p>
+                    Logilink développe des solutions informatiques tirant le meilleur parti des dernières évolutions technologiques.
+                </p>
             </div>
         </div>
     </div>

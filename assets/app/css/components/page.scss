@@ -14,7 +14,7 @@ body{
   position: relative;
   @include flex(row, stretch, flex-start);
   background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity4), var(--color2));
-  min-height: 100vh;
+  min-height: 86vh;
   color: var(--alpha);
 
   & > .col-1{
@@ -71,7 +71,7 @@ body{
 
   .page-guard-title{
     max-width: 770px;
-    padding: 10% 0 3% 35%;
+    padding: 5% 0 1% 35%;
 
     h1{
       color: var(--color0);
@@ -130,32 +130,49 @@ body{
   }
 }
 
-.homepage-products{
+.test{
   position: relative;
   background-color: #2d2d2d;
-  //background-color: #2d2d2d;
   min-height: 100vh;
   color: #2d2d2d;
   @include flex(row);
+}
 
-  .col-deco{
-    left: 9%;
-    color: var(--color2);
+.homepage-products{
+  position: relative;
+
+  .items{
+    @include flex(row, stretch, center, var(--espaceDiv));
+    background-color: #2d2d2d;
+    padding: 0 var(--espaceLayout);
   }
 
-  .homepage-products-container{
+  .item{
+    @include flex(column, flex-start, space-between, var(--espaceDiv));
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.85);
     position: relative;
-    background-color: #F8F8F8;
-    min-height: 75vh;
-    padding: calc(var(--espaceLayout) * 2);
-    width: 90%;
+    border-radius: var(--radius2);
+    padding: var(--espaceLayout);
+    @include shadowCommon();
+    margin-top: -72px;
+    width: 25%;
   }
 
-  .homepage-title{
-    max-width: 768px;
+  .item-cta{
+    width: 60px;
 
-    h1{
-      color: var(--color0);
+    .btn{
+      padding: 12px 24px;
+    }
+  }
+
+  .item-body{
+    @include flex(row, flex-end, flex-start, var(--espaceDiv));
+
+    p{
+      width: calc(100% - 60px);
     }
   }
 }
