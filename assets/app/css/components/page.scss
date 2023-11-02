@@ -7,7 +7,7 @@ body{
 .page-content{
   min-height: 260vh;
   margin: 0 var(--espaceLayout);
-  padding-top: 90px;
+  padding-top: 72px;
 }
 
 .page-guard{
@@ -71,7 +71,7 @@ body{
 
   .page-guard-title{
     max-width: 770px;
-    padding: 5% 0 1% 35%;
+    padding: 6% 0 1% 35%;
 
     h1{
       color: var(--color0);
@@ -156,7 +156,7 @@ body{
     border-radius: var(--radius2);
     padding: var(--espaceLayout);
     @include shadowCommon();
-    margin-top: -72px;
+    margin-top: -62px;
     width: 25%;
   }
 
