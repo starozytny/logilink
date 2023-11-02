@@ -15,6 +15,7 @@ $data:
         "primary" var(--primary) var(--alpha),
         "color0" var(--color0) var(--alpha),
         "color1" var(--color1) var(--alpha),
+        "color2" var(--color2) var(--txt),
 ;
 
 @each $name, $bg, $txt in $data {
