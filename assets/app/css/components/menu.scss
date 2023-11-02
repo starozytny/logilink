@@ -2,13 +2,13 @@ nav{
   position: fixed;
   top: 0; left: 0;
   width: 100%;
-  background-color: var(--alpha);
   z-index: 10;
 }
 
 .nav-container{
   position: relative;
   @include flex(row, stretch, space-between);
+  background-color: var(--alpha);
 }
 
 .nav-logo{
@@ -48,6 +48,7 @@ nav{
     @include flex(row, center, flex-start, 8px);
     padding: 12px;
     transition: all 0.2s ease-in-out;
+    color: var(--txt);
 
     [class^="icon-"]{
       display: inline-block;
@@ -59,7 +60,7 @@ nav{
       color: var(--alpha);
     }
 
-    &:not(&.active):hover{
+    &:not(&.active):hover, &.hover{
       background-color: var(--color2);
     }
   }
@@ -67,6 +68,67 @@ nav{
 
 .nav-cta{
   display: none;
+}
+
+.nav-expanded{
+  border-top: 1px solid var(--grey1);
+  @include shadowCommon();
+  background-color: var(--alpha);
+}
+.nav-expanded-container{
+  display: none;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: var(--espaceLayout) 0;
+
+  &.active{
+    @include flex(row, flex-start, space-between, var(--espaceLayout));
+  }
+
+  & > .col-1{
+    width: 180px;
+  }
+
+  & > .col-2{
+    width: calc(100% - 180px - 48px - var(--espaceLayout));
+  }
+
+  .items{
+    @include flex(row, flex-start, flex-start);
+    flex-wrap: wrap;
+  }
+
+  .item{
+    @include flex(row, center, flex-start, var(--espaceEls));
+    color: var(--txt);
+    width: 50%;
+    padding: 8px;
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease-in-out;
+
+    .logo{
+      @include flex(row);
+      background-color: var(--grey1Opacity4);
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: 8px;
+      width: 48px; height: 48px;
+
+      img{
+        object-fit: contain;
+      }
+    }
+
+    &:hover{
+      background-color: var(--color2);
+    }
+  }
+}
+.nav-expanded-title{
+  text-transform: uppercase;
+  @include fontSemibold();
+  margin-bottom: 8px;
+  color: var(--grey4);
 }
 
 //                      __   _____ __    ___    __
@@ -118,7 +180,7 @@ nav{
   }
 
   .nav-menu{
-    @include flex(row, flex-start, flex-start, var(--espaceEls));
+    @include flex(row, flex-start, flex-start);
     .nav-item{
       border-radius: var(--radius);
     }

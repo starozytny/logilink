@@ -24,8 +24,9 @@
                 <div class="nav-content">
                     <div class="nav-menu">
                         {% for item in menu %}
-                            <a class="nav-item {{- app.request.get('_route') in item.matchRoute ? " active" : "" -}}"
+                            <a class="nav-link-item nav-item {{- app.request.get('_route') in item.matchRoute ? " active" : "" -}}"
                                href="{{ item.path }}"
+                               data-id="{{ item.id }}"
                             >
                                 <span>{{ item.name }}</span>
                             </a>
@@ -40,6 +41,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="nav-expanded">
+                {% for item in menu %}
+                    {% if item.expanded %}
+                        <div class="nav-expanded-container" id="nav-expanded-{{ item.id }}" data-id="{{ item.id }}">
+                            <div class="col-1">
+                                <div class="nav-expanded-title">{{ item.name }}</div>
+                                <p>{{ item.expanded.text }}</p>
+                            </div>
+                            <div class="col-2">
+                                <div class="nav-expanded-title" style="padding-left: 8px;">Produits</div>
+                                <div class="items">
+                                    {% for it in item.expanded.products %}
+                                        <a href="{{ it.path }}" class="item">
+                                            <div class="logo">
+                                                <img src="{{ asset('build/app/images/'~it.logo) }}"
+                                                     alt="{{ it.alt }}">
+                                            </div>
+                                            <div>{{ it.name }}</div>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </nav>
 

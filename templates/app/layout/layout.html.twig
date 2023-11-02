@@ -1,12 +1,88 @@
 {% extends 'layout/layout_app.html.twig' %}
 
 {% set menu = [
-    { name: "Accueil", path: path('app_homepage'), matchRoute: ['app_homepage'] },
-    { name: "Logiciels", path: path('app_homepage'), matchRoute: ['app_users'] },
-    { name: "Applications", path: path('app_homepage'), matchRoute: ['app_users'] },
-    { name: "Sites web", path: path('app_homepage'), matchRoute: ['app_users'] },
-    { name: "Services", path: path('app_homepage'), matchRoute: ['app_users'] },
-    { name: "Société", path: path('app_homepage'), matchRoute: ['app_users'] },
+    { id: 1, name: "Accueil", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
+    {
+        id: 2, name: "Logiciels", path: path('app_homepage'), matchRoute: ['app_users'],
+        expanded: {
+            text: 'Nous développons des logiciels adpatés à votre activité.',
+            products: [
+                {
+                    name: "Syndic", logo: 'lotys.svg', path: path('app_homepage'),
+                    alt: 'Logo Lotys logiciel transaction en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Gérance", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Cité de la musique", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Henry Blanc", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                }
+            ]
+        }
+    },
+    {
+        id: 3, name: "Applications", path: path('app_homepage'), matchRoute: ['app_users'],
+        expanded: {
+            text: 'Nous développons des applications sur-mesure pour gagner en productivité.',
+            products: [
+                {
+                    name: "Fokus", logo: 'lotys.svg', path: path('app_homepage'),
+                    alt: 'Logo Lotys logiciel transaction en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Adi incendie", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Henry Blanc", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                }
+            ]
+        }
+    },
+    {
+        id: 4, name: "Sites web", path: path('app_homepage'), matchRoute: ['app_users'],
+        expanded: {
+            text: 'Nous développons des sites internet à votre image.',
+            products: [
+                {
+                    name: "Lotys", logo: 'lotys.svg', path: path('app_homepage'),
+                    alt: 'Logo Lotys logiciel transaction en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Magesto", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Cité de la musique", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                },
+                {
+                    name: "Fnaim formation AMP", logo: 'magesto.svg', path: path('app_homepage'),
+                    alt: 'Logo Magesto logiciel facturation en ligne',
+                    matchRoute: ['app_homepage']
+                }
+            ]
+        }
+    },
+    { id: 5, name: "Services", path: path('app_homepage'), matchRoute: ['app_users'], expanded: false },
+    { id: 6, name: "Société", path: path('app_homepage'), matchRoute: ['app_users'], expanded: false },
 ] %}
 
 {% block footer %}
