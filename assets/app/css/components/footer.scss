@@ -2,7 +2,7 @@
   @include flex(column, flex-start, flex-start, var(--espaceLayout));
   padding: var(--espaceLayout);
 
-  a{
+  .footer-link{
     color: var(--txt);
     opacity: 0.9;
 

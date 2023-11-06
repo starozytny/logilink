@@ -98,9 +98,9 @@
                     </a>
                 </div>
                 <div class="col-2">
-                    <a href="{{ path('app_homepage') }}">Développer mon logiciel</a>
-                    <a href="{{ path('app_homepage') }}">Développer mon application</a>
-                    <a href="{{ path('app_homepage') }}">Développer mon site internet</a>
+                    <a class="footer-link" href="{{ path('app_homepage') }}">Développer mon logiciel</a>
+                    <a class="footer-link" href="{{ path('app_homepage') }}">Développer mon application</a>
+                    <a class="footer-link" href="{{ path('app_homepage') }}">Développer mon site internet</a>
                 </div>
                 <div class="col-3">
                     <div class="address">
@@ -115,11 +115,11 @@
             </div>
             <div class="footer-copyright">
                 <p>&copy; 2023 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
-                <a href="{{ path('app_mentions') }}">Mentions légales</a>
-                <a href="{{ path('app_politique') }}">Politique de confidentialité</a>
-                <a href="{{ path('app_cookies') }}">Gestion des cookies</a>
+                <a class="footer-link" href="{{ path('app_mentions') }}">Mentions légales</a>
+                <a class="footer-link" href="{{ path('app_politique') }}">Politique de confidentialité</a>
+                <a class="footer-link" href="{{ path('app_cookies') }}">Gestion des cookies</a>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_homepage') }}">Espace administrateur</a>
+                    <a class="footer-link" href="{{ path('admin_homepage') }}">Espace administrateur</a>
                 {% endif %}
             </div>
         </div>
