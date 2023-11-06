@@ -11,6 +11,7 @@
 
 @import "./components/menu";
 @import "./components/page";
+@import "./components/footer";
 
 body {
   @include fontRegular();
@@ -22,6 +23,10 @@ h1{
 
 h2{
   @include fontSemibold();
+}
+
+.txt-primary{
+  color: var(--primary);
 }
 
 .txt-color2{

@@ -1,0 +1,43 @@
+.footer-container{
+  @include flex(column, flex-start, flex-start, var(--espaceLayout));
+  padding: var(--espaceLayout);
+
+  a{
+    color: var(--txt);
+    opacity: 0.9;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
+
+.footer-menu{
+  @include flex(row, flex-start, space-between, var(--espaceLayout));
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  & > .col-2{
+    @include flex(column, flex-start, flex-start, var(--espaceEls));
+  }
+
+  & > .col-3{
+    width: 20%;
+  }
+
+  .address{
+    margin-bottom: var(--espaceEls);
+  }
+}
+
+.footer-copyright{
+  @include flex(row, flex-start, center, var(--espaceEls));
+  flex-wrap: wrap;
+  font-size: 14px;
+  width: 100%;
+
+  .copyright{
+    color: var(--primary);
+  }
+}

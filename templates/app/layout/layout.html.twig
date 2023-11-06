@@ -89,4 +89,39 @@
 ] %}
 
 {% block footer %}
+    <footer>
+        <div class="footer-container">
+            <div class="footer-menu">
+                <div class="col-1">
+                    <a href="{{ path('app_homepage') }}">
+                        <img src="{{ asset('build/app/images/logo-logilink.svg') }}" alt="Logo logilink editeur logiciel immobilier">
+                    </a>
+                </div>
+                <div class="col-2">
+                    <a href="{{ path('app_homepage') }}">Développer mon logiciel</a>
+                    <a href="{{ path('app_homepage') }}">Développer mon application</a>
+                    <a href="{{ path('app_homepage') }}">Développer mon site internet</a>
+                </div>
+                <div class="col-3">
+                    <div class="address">
+                        <div>Logilink</div>
+                        <div>17 rue de la République</div>
+                        <div>13002, Marseille</div>
+                    </div>
+                    <div class="cta">
+                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2023 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
+                <a href="{{ path('app_mentions') }}">Mentions légales</a>
+                <a href="{{ path('app_politique') }}">Politique de confidentialité</a>
+                <a href="{{ path('app_cookies') }}">Gestion des cookies</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_homepage') }}">Espace administrateur</a>
+                {% endif %}
+            </div>
+        </div>
+    </footer>
 {% endblock %}
