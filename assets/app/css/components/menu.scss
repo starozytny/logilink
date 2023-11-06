@@ -183,7 +183,7 @@ nav{
   }
 
   .nav-menu{
-    @include flex(row, flex-start, flex-start);
+    @include flex(row, flex-start, flex-start, var(--espaceEls));
     .nav-item{
       border-radius: var(--radius);
     }
