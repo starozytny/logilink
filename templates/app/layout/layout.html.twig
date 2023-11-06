@@ -1,7 +1,7 @@
 {% extends 'layout/layout_app.html.twig' %}
 
 {% set menu = [
-    { id: 1, name: "Accueil", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
+    { id: 1, name: "Logilink", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
     {
         id: 2, name: "Logiciels", path: path('app_homepage'), matchRoute: ['app_users'],
         expanded: {
@@ -18,6 +18,8 @@
                     alt: 'Logo logiciel Utilimmo Gérance',
                     matchRoute: ['app_homepage']
                 },
+            ],
+            examples: [
                 {
                     name: "Cité de la musique", logo: 'cite.png', path: path('app_homepage'),
                     alt: 'Logo logiciel cursus de la cité de la musique marseille',
@@ -42,6 +44,13 @@
                     alt: 'Logo application fokus état des lieux',
                     matchRoute: ['app_homepage']
                 },
+                {
+                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
+                    alt: 'Logo application signature pdf',
+                    matchRoute: ['app_homepage']
+                }
+            ],
+            examples: [
                 {
                     name: "Adi incendie", logo: 'adi_incendie.svg', path: path('app_homepage'),
                     alt: 'Logo application ADI incendie',
@@ -72,6 +81,13 @@
                     matchRoute: ['app_homepage']
                 },
                 {
+                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
+                    alt: 'Logo site de drive temporaire',
+                    matchRoute: ['app_homepage']
+                }
+            ],
+            examples: [
+                {
                     name: "Cité de la musique", logo: 'cite.png', path: path('app_homepage'),
                     alt: 'Logo Cité de la musique espace adhérent',
                     matchRoute: ['app_homepage']
@@ -81,11 +97,6 @@
                     alt: 'Logo Fnaim formation AMP immobilier',
                     matchRoute: ['app_homepage']
                 },
-                {
-                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
-                    alt: 'Logo Fnaim formation AMP immobilier',
-                    matchRoute: ['app_homepage']
-                }
             ]
         }
     },

@@ -71,7 +71,6 @@ nav{
 }
 
 .nav-expanded{
-  border-top: 1px solid var(--grey1);
   @include shadowCommon();
   background-color: var(--alpha);
 }
@@ -80,17 +79,26 @@ nav{
   margin: 0 auto;
   max-width: 1024px;
   padding: var(--espaceLayout) 0;
+  border-top: 1px solid var(--grey1);
 
   &.active{
     @include flex(row, flex-start, space-between, var(--espaceLayout));
   }
 
   & > .col-1{
-    width: 180px;
+    width: 188px;
   }
 
   & > .col-2{
-    width: calc(100% - 180px - 48px - var(--espaceLayout));
+    width: calc(100% - 188px - 280px - 48px - var(--espaceLayout));
+  }
+
+  & > .col-3{
+    width: 280px;
+
+    .item{
+      min-width: 280px;
+    }
   }
 
   .items{
@@ -116,6 +124,10 @@ nav{
 
       img{
         object-fit: contain;
+      }
+
+      & + div{
+        width: calc(100% - 48px);
       }
     }
 
