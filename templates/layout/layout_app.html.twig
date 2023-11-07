@@ -51,11 +51,7 @@
                 </div>
 
                 <div class="nav-cta">
-                    <div class="nav-menu">
-                        <div class="nav-item">
-                            <span>04 91 99 44 43</span>
-                        </div>
-                    </div>
+                    <a href="tel:0491994443" class="btn btn-color2">04 91 99 44 43</a>
                 </div>
             </div>
 
@@ -75,7 +71,7 @@
                                     <div class="nav-expanded-title" style="padding-left: 8px;">Produits</div>
                                     <div class="items">
                                         {% for it in item.expanded.products %}
-                                            <a href="{{ it.path }}" class="item">
+                                            <a href="{{ it.path }}" class="nav-sub-item">
                                                 <div class="logo">
                                                     <img src="{{ asset('build/app/images/'~it.logo) }}"
                                                          alt="{{ it.alt }}">
@@ -89,7 +85,7 @@
                                     <div class="nav-expanded-title" style="padding-left: 8px;">Exemples</div>
                                     <div class="items">
                                         {% for it in item.expanded.examples %}
-                                            <a href="{{ it.path }}" class="item">
+                                            <a href="{{ it.path }}" class="nav-sub-item">
                                                 <div class="logo">
                                                     <img src="{{ asset('build/app/images/'~it.logo) }}"
                                                          alt="{{ it.alt }}">
