@@ -1,5 +1,29 @@
 @import "../vars/vars";
 
+.section-title{
+  text-align: center;
+  max-width: 768px;
+
+  h2{
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    margin-bottom: var(--espaceDiv);
+  }
+
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 2.8em;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    h2 {
+      font-size: 3.2em;
+    }
+  }
+}
+
 .homepage-content{
   min-height: 260vh;
   margin: 0 var(--espaceLayout);
@@ -189,81 +213,6 @@
     }
   }
 
-
-
-
-  .section-title{
-    text-align: center;
-    max-width: 768px;
-
-    h2{
-      font-size: 3.2em;
-      font-family: 'Poppins', sans-serif;
-      font-weight: bolder;
-      margin-bottom: var(--espaceDiv);
-    }
-  }
-
-  .lastwork{
-    @include flex(column);
-    padding: calc(var(--espaceLayout) * 4);
-
-    .lastwork-content{
-      @include flex(row, flex-start, flex-start, var(--espaceLayout));
-      margin-top: var(--espaceLayout);
-
-      & > .item, & > .items{
-        width: 50%;
-      }
-
-      .items{
-        @include flex(column, flex-start, flex-start, var(--espaceLayout));
-
-        .item{
-          .item-image{
-            height: 100px;
-            overflow: hidden;
-          }
-        }
-      }
-
-      .item-image{
-        margin-bottom: var(--espaceDiv);
-        border-radius: var(--radius2);
-        @include shadowCommon();
-
-        img{
-          border-radius: var(--radius2);
-          @include shadowCommon();
-        }
-      }
-
-      .badge{
-        display: inline-block;
-        text-transform: uppercase;
-        padding: 6px 8px;
-        font-size: 10px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-      }
-
-      .badge-0{
-        background-color: var(--primaryOpacity1);
-        color: var(--primary);
-      }
-
-      .badge-1{
-        background-color: var(--dangerOpacity1);
-        color: var(--danger);
-      }
-
-      h3{
-        margin-bottom: 8px;
-        font-size: 2em;
-      }
-    }
-  }
-
   .contact{
     @include flex(row, center, center, var(--espaceLayout));
     padding: calc(var(--espaceLayout) * 2) calc(var(--espaceLayout) * 4);
@@ -387,4 +336,99 @@
   }
 }
 
+// -----------------------------------------------------------
+.lastwork{
+  @include flex(column);
+  padding: calc(var(--espaceLayout) * 4) var(--espaceLayout);
 
+  .lastwork-content{
+    @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+    margin-top: calc(var(--espaceLayout) * 2);
+
+
+    .item {
+      background-color: var(--alpha);
+      @include shadowCommon();
+      border-radius: var(--radius2);
+
+      .item-content{
+        padding: 0 var(--espaceDiv) var(--espaceDiv) var(--espaceDiv);
+      }
+    }
+
+    .items{
+      @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+
+      .item{
+        .item-image{
+          height: 100px;
+          overflow: hidden;
+          @include shadowCommon();
+        }
+      }
+    }
+
+    .item-image{
+      margin-bottom: var(--espaceDiv);
+      border-radius: var(--radius2);
+
+      img{
+        border-radius: var(--radius2);
+        @include shadowCommon();
+      }
+    }
+
+    .badge{
+      display: inline-block;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      font-size: 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .badge-0{
+      background-color: var(--primaryOpacity1);
+      color: var(--primary);
+    }
+
+    .badge-1{
+      background-color: var(--dangerOpacity1);
+      color: var(--danger);
+    }
+
+    h3{
+      margin-bottom: 8px;
+      font-size: 2em;
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  .lastwork {
+    .lastwork-content {
+      flex-direction: row;
+
+      & > .item, & > .items{
+        width: 50%;
+      }
+
+      .item {
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+
+        .item-content{
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .lastwork {
+    padding: calc(var(--espaceLayout) * 4);
+  }
+}
