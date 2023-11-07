@@ -23,11 +23,8 @@
   }
 
   & > .col-3{
+    @include flex(column, flex-start, flex-start, var(--espaceEls));
     width: 20%;
-  }
-
-  .address{
-    margin-bottom: var(--espaceEls);
   }
 }
 
@@ -40,4 +37,11 @@
   .copyright{
     color: var(--primary);
   }
+}
+
+.footer-title{
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: var(--grey3);
 }
