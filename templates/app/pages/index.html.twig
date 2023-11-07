@@ -35,42 +35,43 @@
             </div>
         </div>
 
-{#        <div class="homepage-products">#}
-{#            {% set products = [#}
-{#                {#}
-{#                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_homepage'),#}
-{#                    text: 'Un logiciel adapté à votre activité qui répondra aux demandes spécifiques de votre entreprise.'#}
-{#                },#}
-{#                {#}
-{#                    numero: 2, name: 'Applications', txtBtn: 'Les applications', pathBtn: path('app_homepage'),#}
-{#                    text: 'Améliorez votre efficacité et productivité avec des applications sur-mesure.'#}
-{#                },#}
-{#                {#}
-{#                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_websites'),#}
-{#                    text: 'Développez votre identité numérique à travers un site internet qui vous correspond.'#}
-{#                },#}
-{#                {#}
-{#                    numero: 4, name: 'Services', txtBtn: 'Les services', pathBtn: path('app_homepage'),#}
-{#                    text: 'Simplifiez vous l\'installation du matériel informatique et l\'intégration de logiciels.'#}
-{#                }#}
-{#            ] %}#}
-{#            <div class="items">#}
-{#                {% for item in products %}#}
-{#                    <div class="item">#}
-{#                        <h2>{{ item.name }}</h2>#}
-{#                        <div class="item-body">#}
-{#                            <p>{{ item.text }}</p>#}
-{#                            <div class="item-cta">#}
-{#                                <a href="{{ item.pathBtn }}" class="link-italic">#}
-{#                                    <span>Découvrir nos {{ item.name | lower }}</span>#}
-{#                                    <span class="icon-right-arrow"></span>#}
-{#                                </a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
+        <div class="homepage-products">
+            {% set products = [
+                {
+                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_homepage'),
+                    text: 'Un logiciel adapté à votre activité qui répondra aux demandes spécifiques de votre entreprise.'
+                },
+                {
+                    numero: 2, name: 'Applications', txtBtn: 'Les applications', pathBtn: path('app_homepage'),
+                    text: 'Améliorez votre efficacité et productivité avec des applications sur-mesure.'
+                },
+                {
+                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_websites'),
+                    text: 'Développez votre identité numérique à travers un site internet qui vous correspond.'
+                },
+                {
+                    numero: 4, name: 'Services', txtBtn: 'Les services', pathBtn: path('app_homepage'),
+                    text: 'Simplifiez vous l\'installation du matériel informatique et l\'intégration de logiciels.'
+                }
+            ] %}
+            <div class="items">
+                {% for item in products %}
+                    <div class="item">
+                        <h2>{{ item.name }}</h2>
+                        <div class="item-body">
+                            <p>{{ item.text }}</p>
+                            <div class="item-cta">
+                                <a href="{{ item.pathBtn }}" class="link-italic">
+                                    <span>Découvrir nos {{ item.name | lower }}</span>
+                                    <span class="icon-right-arrow"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
 {#        <section class="lastwork">#}
 {#            <div class="section-title">#}
 {#                <h2>Découvrez nos derniers travaux<span class="txt-color2">.</span></h2>#}
