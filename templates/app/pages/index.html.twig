@@ -45,7 +45,7 @@
                     text: 'Améliorez votre efficacité et productivité avec des applications sur-mesure.'
                 },
                 {
-                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_homepage'),
+                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_websites'),
                     text: 'Développez votre identité numérique à travers un site internet qui vous correspond.'
                 },
                 {
@@ -60,7 +60,8 @@
                         <div class="item-body">
                             <p>{{ item.text }}</p>
                             <div class="item-cta">
-                                <a href="{{ item.pathBtn }}" class="btn btn-color1">
+                                <a href="{{ item.pathBtn }}" class="link-italic">
+                                    <span>Découvrir nos {{ item.name | lower }}</span>
                                     <span class="icon-right-arrow"></span>
                                 </a>
                             </div>
@@ -69,13 +70,116 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="test">
-            <div class="homepage-title">
-                <h1>Nos <span class="txt-color2">solutions</span> informatiques<span class="txt-color2">.</span></h1>
+        <section class="lastwork">
+            <div class="section-title">
+                <h2>Découvrez nos derniers travaux<span class="txt-color2">.</span></h2>
                 <p>
                     Logilink développe des solutions informatiques tirant le meilleur parti des dernières évolutions technologiques.
                 </p>
             </div>
+
+            <div class="lastwork-content">
+                <div class="item">
+                    <div class="item-image">
+                        <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">
+                    </div>
+                    <div class="item-content">
+                        <div class="badge badge-0">Site internet</div>
+                        <h3>Lotys</h3>
+                        <p>Logiciel de transaction immobilière en ligne</p>
+                        <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">
+                        </div>
+                        <div class="item-content">
+                            <div class="badge badge-0">Site internet</div>
+                            <h3>Magesto</h3>
+                            <p>Logiciel de devis et facturation en ligne</p>
+                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">
+                        </div>
+                        <div class="item-content">
+                            <div class="badge badge-1">Application</div>
+                            <h3>OpenDoc</h3>
+                            <p>Service web de signature et partage de fichiers en ligne</p>
+                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact">
+            <div class="section-title">
+                <h2>Un projet à réaliser <span class="txt-color2">?</span></h2>
+            </div>
+            <div class="contact-content">
+                <p>
+                    N'hésitez pas à nous contacter pour discuter de nouveaux projets, de vos idées
+                    ou simplement pour obtenir plus d'informations sur notre agence !
+                </p>
+                <div class="cta">
+                    <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
+                </div>
+            </div>
         </div>
+
+        <section class="suite">
+            <div class="section-title">
+                <h2>Notre gamme immobilière<span class="txt-color2">.</span></h2>
+                <p>
+                    La suite logicielle dédiée à l'immobilier a tout pour doper votre activité.
+                </p>
+            </div>
+
+            <div class="suite-content">
+                <div class="items">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{ asset('build/app/images/lotys.svg') }}" alt="">
+                        </div>
+                        <h3>Lotys</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.
+                        </p>
+                        <div class="item-cta">
+                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{ asset('build/app/images/gerance.svg') }}" alt="">
+                        </div>
+                        <h3>Ultimmo Gérance</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.
+                        </p>
+                        <div class="item-cta">
+                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{ asset('build/app/images/syndic.svg') }}" alt="">
+                        </div>
+                        <h3>Ultimmo Syndic</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.
+                        </p>
+                        <div class="item-cta">
+                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 {% endblock %}
