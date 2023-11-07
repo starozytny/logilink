@@ -1,6 +1,6 @@
 .footer-container{
-  @include flex(column, flex-start, flex-start, var(--espaceLayout));
-  padding: var(--espaceLayout);
+  @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+  padding: calc(var(--espaceLayout) * 2) var(--espaceLayout) var(--espaceLayout) var(--espaceLayout);
 
   .footer-link{
     color: var(--txt);
@@ -12,19 +12,32 @@
   }
 }
 
+.footer-title{
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: var(--grey3);
+  width: 100%;
+}
+
 .footer-menu{
-  @include flex(row, flex-start, space-between, var(--espaceLayout));
+  @include flex(column, center, space-between, calc(var(--espaceLayout) * 2));
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  text-align: center;
 
-  & > .col-2{
-    @include flex(column, flex-start, flex-start, var(--espaceEls));
+  & > .col-1{
+    width: 128px;
   }
 
+  & > .col-2,
   & > .col-3{
-    @include flex(column, flex-start, flex-start, var(--espaceEls));
-    width: 20%;
+    @include flex(column, center, center, 4px);
+  }
+
+  .cta{
+    margin-top: 12px;
   }
 }
 
@@ -39,9 +52,24 @@
   }
 }
 
-.footer-title{
-  text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: var(--grey3);
+@media (min-width:768px) {
+  .footer-menu{
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+
+    & > .col-2,
+    & > .col-3{
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-menu{
+    & > .col-1{
+      width: 228px;
+    }
+  }
 }
