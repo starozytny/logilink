@@ -214,43 +214,6 @@
       }
     }
   }
-
-  .suite {
-    @include flex(column);
-    padding: calc(var(--espaceLayout) * 4);
-
-    .suite-content{
-      margin-top: var(--espaceLayout);
-
-      .items{
-        @include flex(row, stretch, space-between, var(--espaceLayout));
-      }
-
-      .item{
-        background-color: var(--alpha);
-        @include shadowCommon();
-        border-radius: var(--radius2);
-        padding: var(--espaceLayout);
-      }
-
-      .logo{
-        width: 64px; height: 64px;
-        background-color: var(--color0Opacity1);
-        padding: 12px;
-        border-radius: var(--radius);
-        margin-bottom: 12px;
-      }
-
-      h3{
-        margin-bottom: 8px;
-        font-size: 1.4em;
-      }
-
-      .item-cta{
-        text-align: right;
-      }
-    }
-  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -447,4 +410,71 @@
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
+.suite {
+  @include flex(column);
+  padding: calc(var(--espaceLayout) * 4) var(--espaceLayout);
 
+  .suite-content{
+    margin-top: calc(var(--espaceLayout) * 2);
+
+    .items{
+      @include flex(column, stretch, space-between, var(--espaceLayout));
+    }
+
+    .item{
+      background-color: var(--alpha);
+      @include shadowCommon();
+      border-radius: var(--radius2);
+      padding: var(--espaceLayout);
+    }
+
+    .logo{
+      width: 64px; height: 64px;
+      background-color: var(--color0Opacity1);
+      padding: 12px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+    }
+
+    h3{
+      margin-bottom: 8px;
+      font-size: 1.4em;
+    }
+
+    .item-cta{
+      text-align: right;
+    }
+  }
+
+
+  @media (min-width: 768px) {
+    .suite-content {
+      .items {
+        flex-direction: row;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    flex-direction: row;
+    text-align: left;
+    padding: calc(var(--espaceLayout) * 4);
+
+    .section-title{
+      text-align: left;
+    }
+
+    .suite-content{
+      margin-top: 0;
+      margin-left: calc(var(--espaceLayout) * 2);
+
+      .item{
+        @include flex(column, flex-start, space-between);
+      }
+
+      .item-cta{
+        width: 100%;
+      }
+    }
+  }
+}
