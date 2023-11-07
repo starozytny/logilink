@@ -24,6 +24,8 @@
   }
 }
 
+// ---------------------------------------------------------------------------------------------------------------------
+
 .homepage-content{
   min-height: 260vh;
   margin: 0 var(--espaceLayout);
@@ -213,34 +215,6 @@
     }
   }
 
-  .contact{
-    @include flex(row, center, center, var(--espaceLayout));
-    padding: calc(var(--espaceLayout) * 2) calc(var(--espaceLayout) * 4);
-    background: linear-gradient(0.45turn, var(--color1), var(--color1), var(--color0));
-
-    .section-title{
-      text-align: left;
-    }
-
-    .contact-content{
-      max-width: 768px;
-      padding-left: 10%;
-
-      p{
-        color: var(--alpha);
-        margin-bottom: var(--espaceDiv);
-      }
-
-      .cta{
-        text-align: center;
-      }
-
-      .btn{
-        display: inline-block;
-      }
-    }
-  }
-
   .suite {
     @include flex(column);
     padding: calc(var(--espaceLayout) * 4);
@@ -279,7 +253,7 @@
   }
 }
 
-// -----------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 .homepage-products{
   position: relative;
@@ -336,7 +310,8 @@
   }
 }
 
-// -----------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
 .lastwork{
   @include flex(column);
   padding: calc(var(--espaceLayout) * 4) var(--espaceLayout);
@@ -432,3 +407,44 @@
     padding: calc(var(--espaceLayout) * 4);
   }
 }
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+.contact{
+  @include flex(column, center, center, var(--espaceLayout));
+  padding: calc(var(--espaceLayout) * 2) calc(var(--espaceLayout) * 4);
+  background: linear-gradient(0.45turn, var(--color1), var(--color1), var(--color0));
+  text-align: center;
+
+  .contact-content{
+    p{
+      color: var(--alpha);
+      margin-bottom: var(--espaceDiv);
+    }
+
+    .cta{
+      text-align: center;
+    }
+
+    .btn{
+      display: inline-block;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    text-align: left;
+
+    .section-title{
+      text-align: left;
+    }
+
+    .contact-content {
+      max-width: 768px;
+      padding-left: 10%;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
