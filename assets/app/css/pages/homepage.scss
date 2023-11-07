@@ -70,17 +70,6 @@
   }
 }
 
-.col-deco{
-  position: absolute;
-  top: 0;
-  width: 40px; height: 100%;
-
-  & > div{
-    height: 100%;
-    background-image: radial-gradient(currentColor 2px, transparent 1.5px);
-  }
-}
-
 .homepage-content{
   min-height: 260vh;
   margin: 0 var(--espaceLayout);

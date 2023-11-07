@@ -25,8 +25,20 @@ h2{
   @include fontSemibold();
 }
 
+p{
+  line-height: 1.3;
+}
+
 .txt-primary{
   color: var(--primary);
+}
+
+.txt-color0{
+  color: var(--color0);
+}
+
+.txt-color1{
+  color: var(--color1);
 }
 
 .txt-color2{
