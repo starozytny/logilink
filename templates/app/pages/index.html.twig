@@ -2,14 +2,19 @@
 
 {% block title %}Logilink, éditeur de logiciel, applications et sites internet sur mesure{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app_homepage') }}
+{% endblock %}
+
 {% block main_content %}
-    <div class="page-content">
-        <div class="page-guard">
+    <div class="homepage-content">
+        <div class="homepage-guard">
             <div class="col-1">
                 <div class="col-deco">
                     <div class="pattern-dots-lg"></div>
                 </div>
-                <div class="page-guard-title homepage-title">
+                <div class="homepage-title">
                     <div class="prefix">Nos logiciels vous <span class="italic">simplifient la vie</span>.</div>
                     <h1>Transformez vos <span class="txt-color2">idées en</span> réalité numérique<span class="txt-color2">.</span></h1>
                     <p>
@@ -18,7 +23,6 @@
                         vos exigences professionnelles.
                     </p>
                 </div>
-
 
                 <div class="cta">
                     <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>

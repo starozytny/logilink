@@ -37,23 +37,29 @@ function menu() {
 
     let links = document.querySelectorAll('.nav-link-item');
     links.forEach(link => {
+        let navExpandsBody = document.querySelectorAll('.nav-expanded-body');
         let navExpands = document.querySelectorAll('.nav-expanded-container');
+        let navExpandBody = document.querySelector('#nav-expanded-body-' + link.dataset.id);
         let navExpand = document.querySelector('#nav-expanded-' + link.dataset.id);
         navExpands.forEach(n => {
             n.addEventListener('mouseleave', () => {
+                navExpandsBody.forEach(n => { n.classList.remove('active') })
                 navExpands.forEach(n => { n.classList.remove('active') })
                 links.forEach(l => { l.classList.remove('hover') })
             })
         })
         if(navExpand){
             link.addEventListener('mouseover', () => {
+                navExpandsBody.forEach(n => { n.classList.remove('active') })
                 navExpands.forEach(n => { n.classList.remove('active') })
                 links.forEach(l => { l.classList.remove('hover') })
                 navExpand.classList.add('active');
+                navExpandBody.classList.add('active');
                 link.classList.add('hover');
             })
         }else{
             link.addEventListener('mouseover', () => {
+                navExpandsBody.forEach(n => { n.classList.remove('active') })
                 navExpands.forEach(n => { n.classList.remove('active') })
                 links.forEach(l => { l.classList.remove('hover') })
             })

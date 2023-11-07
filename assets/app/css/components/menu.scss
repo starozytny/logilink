@@ -74,12 +74,18 @@ nav{
   @include shadowCommon();
   background-color: var(--alpha);
 }
+.nav-expanded-body{
+  border-top: 1px solid transparent;
+
+  &.active{
+    border-color: var(--grey1);
+  }
+}
 .nav-expanded-container{
   display: none;
   margin: 0 auto;
   max-width: 1024px;
   padding: var(--espaceLayout) 0;
-  border-top: 1px solid var(--grey1);
 
   &.active{
     @include flex(row, flex-start, space-between, var(--espaceLayout));

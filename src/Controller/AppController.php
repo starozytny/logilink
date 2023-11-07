@@ -38,4 +38,11 @@ class AppController extends AbstractController
         return $this->render('app/pages/legales/cookies.html.twig');
     }
 
+    #[Route('/sites-internet', name: 'app_websites', options: ['expose' => true])]
+    public function websites(): Response
+    {
+        return $this->render('app/pages/websites/index.html.twig');
+    }
+
+
 }
