@@ -13,7 +13,7 @@ nav{
 
 .nav-logo{
   @include flex(row, center, center);
-  width: 238px;
+  width: 168px;
   padding: 1.2rem;
 
   a {
@@ -31,12 +31,14 @@ nav{
   position: absolute;
   top: -200.0rem; left: 0;
   padding: 2.4rem 0;
-  background-color: var(--color2);
+  background-color: var(--alpha);
+  border-top: 1px solid var(--grey1);
+  @include shadowCommon();
   opacity: 0;
   z-index: -1;
 
   &.active{
-    top: 5rem;
+    top: 6rem;
     opacity: 1;
     z-index: 100;
     width: 100%;
@@ -44,6 +46,10 @@ nav{
 }
 
 .nav-menu{
+  overflow: auto;
+  @include scrollbar();
+  max-height: 72vh;
+
   .nav-item{
     @include flex(row, center, flex-start, 8px);
     padding: 12px;
@@ -64,6 +70,47 @@ nav{
       background-color: var(--color2);
     }
   }
+
+  .nav-sub-item{
+    padding-left: 48px;
+    font-size: 14px;
+  }
+}
+
+.nav-menu-cta{
+  margin: var(--espaceDiv) 12px 0 12px;
+  padding-top: var(--espaceDiv);
+  border-top: 1px solid var(--grey1);
+}
+
+.nav-sub-item{
+  @include flex(row, center, flex-start, var(--espaceEls));
+  color: var(--txt);
+  width: 50%;
+  padding: 8px;
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease-in-out;
+
+  .logo{
+    @include flex(row);
+    background-color: var(--grey1Opacity4);
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: 8px;
+    width: 48px; height: 48px;
+
+    img{
+      object-fit: contain;
+    }
+
+    & + div{
+      width: calc(100% - 48px);
+    }
+  }
+
+  &:hover{
+    background-color: var(--color2);
+  }
 }
 
 .nav-cta{
@@ -71,85 +118,7 @@ nav{
 }
 
 .nav-expanded{
-  @include shadowCommon();
-  background-color: var(--alpha);
-}
-.nav-expanded-body{
-  border-top: 1px solid transparent;
-
-  &.active{
-    border-color: var(--grey1);
-  }
-}
-.nav-expanded-container{
   display: none;
-  margin: 0 auto;
-  max-width: 1024px;
-  padding: var(--espaceLayout) 0;
-
-  &.active{
-    @include flex(row, flex-start, space-between, var(--espaceLayout));
-  }
-
-  & > .col-1{
-    width: 188px;
-  }
-
-  & > .col-2{
-    width: calc(100% - 188px - 280px - 48px - var(--espaceLayout));
-  }
-
-  & > .col-3{
-    width: 280px;
-
-    .item{
-      min-width: 280px;
-    }
-  }
-
-  .items{
-    @include flex(row, flex-start, flex-start);
-    flex-wrap: wrap;
-  }
-
-  .item{
-    @include flex(row, center, flex-start, var(--espaceEls));
-    color: var(--txt);
-    width: 50%;
-    padding: 8px;
-    border-radius: var(--radius);
-    transition: background-color 0.2s ease-in-out;
-
-    .logo{
-      @include flex(row);
-      background-color: var(--grey1Opacity4);
-      border-radius: var(--radius);
-      overflow: hidden;
-      padding: 8px;
-      width: 48px; height: 48px;
-
-      img{
-        object-fit: contain;
-      }
-
-      & + div{
-        width: calc(100% - 48px);
-      }
-    }
-
-    &:hover{
-      background-color: var(--color2);
-    }
-  }
-  .nav-cta{
-    margin-top: var(--espaceDiv);
-  }
-}
-.nav-expanded-title{
-  text-transform: uppercase;
-  @include fontSemibold();
-  margin-bottom: 8px;
-  color: var(--grey4);
 }
 
 //                      __   _____ __    ___    __
@@ -162,6 +131,65 @@ nav{
   .nav-content{
     @include flex(row-reverse, center, space-between, 0.8rem);
     padding-right: 1.2rem;
+  }
+
+  .nav-logo{
+    width: 238px;
+  }
+
+  .nav-expanded{
+    display: block;
+    @include shadowCommon();
+    background-color: var(--alpha);
+  }
+  .nav-expanded-body{
+    border-top: 1px solid transparent;
+
+    &.active{
+      border-color: var(--grey1);
+    }
+  }
+  .nav-expanded-container{
+    display: none;
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: var(--espaceLayout) 0;
+
+    &.active{
+      @include flex(row, flex-start, space-between, var(--espaceLayout));
+    }
+
+    & > .col-1{
+      width: 188px;
+    }
+
+    & > .col-2{
+      width: calc(100% - 188px - 280px - 48px - var(--espaceLayout));
+    }
+
+    & > .col-3{
+      width: 280px;
+
+      .item{
+        min-width: 280px;
+      }
+    }
+
+    .items{
+      @include flex(row, flex-start, flex-start);
+      flex-wrap: wrap;
+    }
+
+
+    .nav-cta{
+      margin-top: var(--espaceDiv);
+    }
+  }
+  .nav-expanded-title{
+    text-transform: uppercase;
+    @include fontSemibold();
+    margin-bottom: 8px;
+    color: var(--grey4);
   }
 }
 

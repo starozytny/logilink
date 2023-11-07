@@ -30,7 +30,23 @@
                             >
                                 <span>{{ item.name }}</span>
                             </a>
+                            {% if item.expanded %}
+                                {% for it in item.expanded.products %}
+                                    <a class="nav-sub-item nav-item {{- app.request.get('_route') in it.matchRoute ? " active" : "" -}}"
+                                       href="{{ it.path }}"
+                                    >
+                                        <div class="logo">
+                                            <img src="{{ asset('build/app/images/'~it.logo) }}"
+                                                 alt="{{ it.alt }}">
+                                        </div>
+                                        <div>{{ it.name }}</div>
+                                    </a>
+                                {% endfor %}
+                            {% endif %}
                         {% endfor %}
+                    </div>
+                    <div class="nav-menu-cta">
+                        <a href="tel:0491994443" class="btn btn-color2">04 91 99 44 43</a>
                     </div>
                 </div>
 

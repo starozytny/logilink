@@ -24,13 +24,18 @@ menu();
 
 function menu() {
     let btn = document.querySelector('.nav-mobile');
+    let btnIcon = document.querySelector('.nav-mobile > span');
     if(btn){
         btn.addEventListener('click', function () {
             let content = document.querySelector('.nav-content');
             if(content.classList.contains('active')){
                 content.classList.remove('active');
+                btnIcon.classList.add('icon-menu');
+                btnIcon.classList.remove('icon-close');
             }else{
                 content.classList.add('active');
+                btnIcon.classList.add('icon-close');
+                btnIcon.classList.remove('icon-menu');
             }
         })
     }

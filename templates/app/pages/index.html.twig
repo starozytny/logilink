@@ -8,178 +8,178 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="homepage-content">
-        <div class="homepage-guard">
-            <div class="col-1">
-                <div class="col-deco">
-                    <div class="pattern-dots-lg"></div>
-                </div>
-                <div class="homepage-title">
-                    <div class="prefix">Nos logiciels vous <span class="italic">simplifient la vie</span>.</div>
-                    <h1>Transformez vos <span class="txt-color2">idées en</span> réalité numérique<span class="txt-color2">.</span></h1>
-                    <p>
-                        Editeur spécialisé dans le domaine de l'immobilier et la gestion des entreprises et les sites internet
-                        sur-mesure, Logilink développe des logiciels modernes, fiables et performants en réponse à toutes
-                        vos exigences professionnelles.
-                    </p>
-                </div>
+{#    <div class="homepage-content">#}
+{#        <div class="homepage-guard">#}
+{#            <div class="col-1">#}
+{#                <div class="col-deco">#}
+{#                    <div class="pattern-dots-lg"></div>#}
+{#                </div>#}
+{#                <div class="homepage-title">#}
+{#                    <div class="prefix">Nos logiciels vous <span class="italic">simplifient la vie</span>.</div>#}
+{#                    <h1>Transformez vos <span class="txt-color2">idées en</span> réalité numériques<span class="txt-color2">.</span></h1>#}
+{#                    <p>#}
+{#                        Editeur spécialisé dans le domaine de l'immobilier et la gestion des entreprises et les sites internet#}
+{#                        sur-mesure, Logilink développe des logiciels modernes, fiables et performants en réponse à toutes#}
+{#                        vos exigences professionnelles.#}
+{#                    </p>#}
+{#                </div>#}
 
-                <div class="cta">
-                    <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="btn-start">
-                    <span class="icon-down-arrow"></span>
-                </div>
-            </div>
-        </div>
-        <div class="homepage-products">
-            {% set products = [
-                {
-                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_homepage'),
-                    text: 'Un logiciel adapté à votre activité qui répondra aux demandes spécifiques de votre entreprise.'
-                },
-                {
-                    numero: 2, name: 'Applications', txtBtn: 'Les applications', pathBtn: path('app_homepage'),
-                    text: 'Améliorez votre efficacité et productivité avec des applications sur-mesure.'
-                },
-                {
-                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_websites'),
-                    text: 'Développez votre identité numérique à travers un site internet qui vous correspond.'
-                },
-                {
-                    numero: 4, name: 'Services', txtBtn: 'Les services', pathBtn: path('app_homepage'),
-                    text: 'Simplifiez vous l\'installation du matériel informatique et l\'intégration de logiciels.'
-                }
-            ] %}
-            <div class="items">
-                {% for item in products %}
-                    <div class="item">
-                        <h2>{{ item.name }}</h2>
-                        <div class="item-body">
-                            <p>{{ item.text }}</p>
-                            <div class="item-cta">
-                                <a href="{{ item.pathBtn }}" class="link-italic">
-                                    <span>Découvrir nos {{ item.name | lower }}</span>
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <section class="lastwork">
-            <div class="section-title">
-                <h2>Découvrez nos derniers travaux<span class="txt-color2">.</span></h2>
-                <p>
-                    Logilink développe des solutions informatiques tirant le meilleur parti des dernières évolutions technologiques.
-                </p>
-            </div>
+{#                <div class="cta">#}
+{#                    <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-2">#}
+{#                <div class="btn-start">#}
+{#                    <span class="icon-down-arrow"></span>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="homepage-products">#}
+{#            {% set products = [#}
+{#                {#}
+{#                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_homepage'),#}
+{#                    text: 'Un logiciel adapté à votre activité qui répondra aux demandes spécifiques de votre entreprise.'#}
+{#                },#}
+{#                {#}
+{#                    numero: 2, name: 'Applications', txtBtn: 'Les applications', pathBtn: path('app_homepage'),#}
+{#                    text: 'Améliorez votre efficacité et productivité avec des applications sur-mesure.'#}
+{#                },#}
+{#                {#}
+{#                    numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_websites'),#}
+{#                    text: 'Développez votre identité numérique à travers un site internet qui vous correspond.'#}
+{#                },#}
+{#                {#}
+{#                    numero: 4, name: 'Services', txtBtn: 'Les services', pathBtn: path('app_homepage'),#}
+{#                    text: 'Simplifiez vous l\'installation du matériel informatique et l\'intégration de logiciels.'#}
+{#                }#}
+{#            ] %}#}
+{#            <div class="items">#}
+{#                {% for item in products %}#}
+{#                    <div class="item">#}
+{#                        <h2>{{ item.name }}</h2>#}
+{#                        <div class="item-body">#}
+{#                            <p>{{ item.text }}</p>#}
+{#                            <div class="item-cta">#}
+{#                                <a href="{{ item.pathBtn }}" class="link-italic">#}
+{#                                    <span>Découvrir nos {{ item.name | lower }}</span>#}
+{#                                    <span class="icon-right-arrow"></span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#        <section class="lastwork">#}
+{#            <div class="section-title">#}
+{#                <h2>Découvrez nos derniers travaux<span class="txt-color2">.</span></h2>#}
+{#                <p>#}
+{#                    Logilink développe des solutions informatiques tirant le meilleur parti des dernières évolutions technologiques.#}
+{#                </p>#}
+{#            </div>#}
 
-            <div class="lastwork-content">
-                <div class="item">
-                    <div class="item-image">
-                        <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">
-                    </div>
-                    <div class="item-content">
-                        <div class="badge badge-0">Site internet</div>
-                        <h3>Lotys</h3>
-                        <p>Logiciel de transaction immobilière en ligne</p>
-                        <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
-                    </div>
-                </div>
-                <div class="items">
-                    <div class="item">
-                        <div class="item-image">
-                            <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">
-                        </div>
-                        <div class="item-content">
-                            <div class="badge badge-0">Site internet</div>
-                            <h3>Magesto</h3>
-                            <p>Logiciel de devis et facturation en ligne</p>
-                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-image">
-                            <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">
-                        </div>
-                        <div class="item-content">
-                            <div class="badge badge-1">Application</div>
-                            <h3>OpenDoc</h3>
-                            <p>Service web de signature et partage de fichiers en ligne</p>
-                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+{#            <div class="lastwork-content">#}
+{#                <div class="item">#}
+{#                    <div class="item-image">#}
+{#                        <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">#}
+{#                    </div>#}
+{#                    <div class="item-content">#}
+{#                        <div class="badge badge-0">Site internet</div>#}
+{#                        <h3>Lotys</h3>#}
+{#                        <p>Logiciel de transaction immobilière en ligne</p>#}
+{#                        <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="items">#}
+{#                    <div class="item">#}
+{#                        <div class="item-image">#}
+{#                            <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">#}
+{#                        </div>#}
+{#                        <div class="item-content">#}
+{#                            <div class="badge badge-0">Site internet</div>#}
+{#                            <h3>Magesto</h3>#}
+{#                            <p>Logiciel de devis et facturation en ligne</p>#}
+{#                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="item">#}
+{#                        <div class="item-image">#}
+{#                            <img src="{{ asset('build/app/images/illu-website.jpg') }}" alt="">#}
+{#                        </div>#}
+{#                        <div class="item-content">#}
+{#                            <div class="badge badge-1">Application</div>#}
+{#                            <h3>OpenDoc</h3>#}
+{#                            <p>Service web de signature et partage de fichiers en ligne</p>#}
+{#                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
 
-        <div class="contact">
-            <div class="section-title">
-                <h2>Un projet à réaliser <span class="txt-color2">?</span></h2>
-            </div>
-            <div class="contact-content">
-                <p>
-                    N'hésitez pas à nous contacter pour discuter de nouveaux projets, de vos idées
-                    ou simplement pour obtenir plus d'informations sur notre agence !
-                </p>
-                <div class="cta">
-                    <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                </div>
-            </div>
-        </div>
+{#        <div class="contact">#}
+{#            <div class="section-title">#}
+{#                <h2>Un projet à réaliser <span class="txt-color2">?</span></h2>#}
+{#            </div>#}
+{#            <div class="contact-content">#}
+{#                <p>#}
+{#                    N'hésitez pas à nous contacter pour discuter de nouveaux projets, de vos idées#}
+{#                    ou simplement pour obtenir plus d'informations sur notre agence !#}
+{#                </p>#}
+{#                <div class="cta">#}
+{#                    <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
-        <section class="suite">
-            <div class="section-title">
-                <h2>Notre gamme immobilière<span class="txt-color2">.</span></h2>
-                <p>
-                    La suite logicielle dédiée à l'immobilier a tout pour doper votre activité.
-                </p>
-            </div>
+{#        <section class="suite">#}
+{#            <div class="section-title">#}
+{#                <h2>Notre gamme immobilière<span class="txt-color2">.</span></h2>#}
+{#                <p>#}
+{#                    La suite logicielle dédiée à l'immobilier a tout pour doper votre activité.#}
+{#                </p>#}
+{#            </div>#}
 
-            <div class="suite-content">
-                <div class="items">
-                    <div class="item">
-                        <div class="logo">
-                            <img src="{{ asset('build/app/images/lotys.svg') }}" alt="">
-                        </div>
-                        <h3>Lotys</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.
-                        </p>
-                        <div class="item-cta">
-                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="logo">
-                            <img src="{{ asset('build/app/images/gerance.svg') }}" alt="">
-                        </div>
-                        <h3>Ultimmo Gérance</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.
-                        </p>
-                        <div class="item-cta">
-                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="logo">
-                            <img src="{{ asset('build/app/images/syndic.svg') }}" alt="">
-                        </div>
-                        <h3>Ultimmo Syndic</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.
-                        </p>
-                        <div class="item-cta">
-                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+{#            <div class="suite-content">#}
+{#                <div class="items">#}
+{#                    <div class="item">#}
+{#                        <div class="logo">#}
+{#                            <img src="{{ asset('build/app/images/lotys.svg') }}" alt="">#}
+{#                        </div>#}
+{#                        <h3>Lotys</h3>#}
+{#                        <p>#}
+{#                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.#}
+{#                        </p>#}
+{#                        <div class="item-cta">#}
+{#                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="item">#}
+{#                        <div class="logo">#}
+{#                            <img src="{{ asset('build/app/images/gerance.svg') }}" alt="">#}
+{#                        </div>#}
+{#                        <h3>Ultimmo Gérance</h3>#}
+{#                        <p>#}
+{#                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.#}
+{#                        </p>#}
+{#                        <div class="item-cta">#}
+{#                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="item">#}
+{#                        <div class="logo">#}
+{#                            <img src="{{ asset('build/app/images/syndic.svg') }}" alt="">#}
+{#                        </div>#}
+{#                        <h3>Ultimmo Syndic</h3>#}
+{#                        <p>#}
+{#                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aperiam aut, deserunt dolor.#}
+{#                        </p>#}
+{#                        <div class="item-cta">#}
+{#                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{#    </div>#}
 {% endblock %}

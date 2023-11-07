@@ -11,24 +11,24 @@
                 {
                     name: "Syndic", logo: 'syndic.svg', path: path('app_homepage'),
                     alt: 'Logo logiciel Ultimmo Syndic',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Gérance", logo: 'gerance.svg', path: path('app_homepage'),
                     alt: 'Logo logiciel Utilimmo Gérance',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
             ],
             examples: [
                 {
                     name: "Cité de la musique", logo: 'cite.png', path: path('app_homepage'),
                     alt: 'Logo logiciel cursus de la cité de la musique marseille',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Henry Blanc", logo: 'henry_blanc.png', path: path('app_homepage'),
                     alt: 'Logo logiciel Henry blanc',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 }
             ]
         }
@@ -42,24 +42,24 @@
                 {
                     name: "Fokus", logo: 'fokus.png', path: path('app_homepage'),
                     alt: 'Logo application fokus état des lieux',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
                     alt: 'Logo application signature pdf',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 }
             ],
             examples: [
                 {
                     name: "Adi incendie", logo: 'adi_incendie.svg', path: path('app_homepage'),
                     alt: 'Logo application ADI incendie',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Henry Blanc", logo: 'henry_blanc.png', path: path('app_homepage'),
                     alt: 'Logo application henry blanc',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 }
             ]
         }
@@ -73,29 +73,29 @@
                 {
                     name: "Lotys", logo: 'lotys.svg', path: path('app_homepage'),
                     alt: 'Logo Lotys logiciel transaction en ligne',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Magesto", logo: 'magesto.svg', path: path('app_homepage'),
                     alt: 'Logo Magesto logiciel facturation en ligne',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
                     alt: 'Logo site de drive temporaire',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 }
             ],
             examples: [
                 {
                     name: "Cité de la musique", logo: 'cite.png', path: path('app_homepage'),
                     alt: 'Logo Cité de la musique espace adhérent',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
                 {
                     name: "Fnaim formation AMP", logo: 'fnaim.png', path: path('app_homepage'),
                     alt: 'Logo Fnaim formation AMP immobilier',
-                    matchRoute: ['app_homepage']
+                    matchRoute: ['app_users']
                 },
             ]
         }
@@ -105,43 +105,43 @@
 ] %}
 
 {% block footer %}
-    <footer>
-        <div class="footer-container">
-            <div class="footer-menu">
-                <div class="col-1">
-                    <a href="{{ path('app_homepage') }}">
-                        <img src="{{ asset('build/app/images/logo-logilink.svg') }}" alt="Logo logilink editeur logiciel immobilier">
-                    </a>
-                    <span class="icon-linkedin"></span>
-                </div>
-                <div class="col-2">
-                    <div class="footer-title">Solutions informatiques</div>
-                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos logiciels</a>
-                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos applications</a>
-                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos sites internet</a>
-                </div>
-                <div class="col-3">
-                    <div class="footer-title">Contact</div>
-                    <p class="address">
-                        Logilink<br>
-                        17 rue de la République<br>
-                        13002, Marseille
-                    </p>
-                    <div class="cta">
-                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2023 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
-                <span>-</span>
-                <a class="footer-link" href="{{ path('app_mentions') }}">Mentions légales</a>
-                <a class="footer-link" href="{{ path('app_politique') }}">Politique de confidentialité</a>
-                <a class="footer-link" href="{{ path('app_cookies') }}">Gestion des cookies</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="footer-link" href="{{ path('admin_homepage') }}">Espace administrateur</a>
-                {% endif %}
-            </div>
-        </div>
-    </footer>
+{#    <footer>#}
+{#        <div class="footer-container">#}
+{#            <div class="footer-menu">#}
+{#                <div class="col-1">#}
+{#                    <a href="{{ path('app_homepage') }}">#}
+{#                        <img src="{{ asset('build/app/images/logo-logilink.svg') }}" alt="Logo logilink editeur logiciel immobilier">#}
+{#                    </a>#}
+{#                    <span class="icon-linkedin"></span>#}
+{#                </div>#}
+{#                <div class="col-2">#}
+{#                    <div class="footer-title">Solutions informatiques</div>#}
+{#                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos logiciels</a>#}
+{#                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos applications</a>#}
+{#                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos sites internet</a>#}
+{#                </div>#}
+{#                <div class="col-3">#}
+{#                    <div class="footer-title">Contact</div>#}
+{#                    <p class="address">#}
+{#                        Logilink<br>#}
+{#                        17 rue de la République<br>#}
+{#                        13002, Marseille#}
+{#                    </p>#}
+{#                    <div class="cta">#}
+{#                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="footer-copyright">#}
+{#                <p>&copy; 2023 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>#}
+{#                <span>-</span>#}
+{#                <a class="footer-link" href="{{ path('app_mentions') }}">Mentions légales</a>#}
+{#                <a class="footer-link" href="{{ path('app_politique') }}">Politique de confidentialité</a>#}
+{#                <a class="footer-link" href="{{ path('app_cookies') }}">Gestion des cookies</a>#}
+{#                {% if is_granted('ROLE_ADMIN') %}#}
+{#                    <a class="footer-link" href="{{ path('admin_homepage') }}">Espace administrateur</a>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </footer>#}
 {% endblock %}
