@@ -81,6 +81,7 @@ nav{
   margin: var(--espaceDiv) 12px 0 12px;
   padding-top: var(--espaceDiv);
   border-top: 1px solid var(--grey1);
+  font-weight: 600;
 }
 
 .nav-sub-item{
@@ -204,6 +205,7 @@ nav{
   .nav-cta{
     display: block;
     width: 242px;
+    font-weight: 600;
 
     .nav-menu{
       justify-content: flex-end;

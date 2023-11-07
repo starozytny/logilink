@@ -60,7 +60,9 @@ function menu() {
                 links.forEach(l => { l.classList.remove('hover') })
                 navExpand.classList.add('active');
                 navExpandBody.classList.add('active');
-                link.classList.add('hover');
+                if(!link.classList.contains('active')){
+                    link.classList.add('hover');
+                }
             })
         }else{
             link.addEventListener('mouseover', () => {
