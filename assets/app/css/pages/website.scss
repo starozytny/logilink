@@ -16,33 +16,13 @@
   }
 }
 
-section{
-  position: relative;
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
 .etude{
-  position: relative;
-  @include flex(column, center, flex-end, var(--espaceLayout));
-  padding-top: calc(var(--espaceLayout) * 2);
-  padding-bottom: calc(var(--espaceLayout) * 2);
+  justify-content: flex-end;
 
   .etude-content{
-    max-width: 568px;
     padding-right: 16%;
-    padding-left: var(--espaceLayout);
-    margin-bottom: var(--espaceLayout);
-  }
-
-  .etude-image{
-    width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .etude-content{
-      padding-left: 16%;
-    }
   }
 
   @media (min-width: 1024px) {
@@ -53,7 +33,6 @@ section{
     .etude-content{
       padding-top: calc(var(--espaceLayout) * 2);
       padding-right: 5%;
-      margin-bottom: 0;
     }
   }
 
@@ -82,25 +61,11 @@ section{
 //----------------------------------------------------------------------------------------------------------------------
 
 .proposition{
-  position: relative;
-  @include flex(column-reverse, center, flex-start, var(--espaceLayout));
-  padding: calc(var(--espaceLayout) * 2) 0;
+  flex-direction: column-reverse;
 
   .proposition-image{
-    width: 100%;
     max-height: 280px;
     overflow: hidden;
-  }
-  .proposition-content{
-    max-width: 568px;
-    padding: 0 var(--espaceLayout);
-    margin-bottom: var(--espaceLayout);
-  }
-
-  @media (min-width: 768px) {
-    .proposition-content{
-      padding-left: 16%;
-    }
   }
 
   @media (min-width: 1024px) {
@@ -113,7 +78,6 @@ section{
 
     .proposition-content{
       padding-left: 5%;
-      margin-bottom: 0;
     }
   }
 }
@@ -121,32 +85,20 @@ section{
 //----------------------------------------------------------------------------------------------------------------------
 
 .development{
-  position: relative;
-  @include flex(column, center, flex-start, var(--espaceLayout));
-
   .development-content{
     @include flex(column, flex-start, flex-start);
-    margin-bottom: var(--espaceLayout);
-    padding: 0 var(--espaceLayout);
 
-    p{
-      max-width: 328px;
+    p + p{
+      margin-top: var(--espaceLayout);
     }
   }
 
-  .development-illustration{
+  .development-image{
     @include flex(row, flex-start, flex-start, var(--espaceDiv));
     overflow: auto;
-    width: 100%;
 
     img{
       width: 280px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .development-content{
-      padding-left: 10%;
     }
   }
 
@@ -156,10 +108,11 @@ section{
       justify-content: flex-end;
       flex-wrap: wrap;
       padding-left: 0;
+      max-width: initial;
 
       h2{
-        text-align: right;
         width: 100%;
+        text-align: right;
       }
 
       p{
@@ -168,39 +121,39 @@ section{
 
       p + p{
         margin-left: 72px;
+        margin-top: 0;
       }
     }
-    .development-illustration{
+    .development-image{
       overflow: hidden;
       justify-content: flex-end;
     }
   }
+
   @media (min-width: 1280px) {
     padding: calc(var(--espaceLayout) * 2) 0 calc(var(--espaceLayout) * 2) 20%;
 
     .development-content{
       justify-content: flex-start;
+      flex-wrap: initial;
+      gap: var(--espaceLayout);
 
       h2{
         text-align: left;
+        width: auto;
+      }
+
+      p + p{
+        margin-left: 0;
       }
     }
   }
   @media (min-width: 1440px) {
     .development-content{
-      flex-wrap: initial;
       gap: 72px;
-
-      h2{
-        width: initial;
-      }
 
       p{
         max-width: 328px;
-      }
-
-      p + p{
-        margin-left: 0;
       }
     }
   }
@@ -216,28 +169,13 @@ section{
 //----------------------------------------------------------------------------------------------------------------------
 
 .online{
-  position: relative;
-  @include flex(column, center, flex-start, var(--espaceLayout));
-  padding-top: calc(var(--espaceLayout) * 2);
-
-  .online-content{
-    max-width: 568px;
-    padding: var(--espaceLayout);
-    margin-bottom: var(--espaceLayout);
-  }
-
-  .online-illustration{
+  .online-image{
     max-height: 180px;
     overflow: hidden;
   }
 
-  @media (min-width: 768px) {
-    .online-content{
-      padding-left: 16%;
-    }
-  }
-
   @media (min-width: 1024px) {
+
     .online-content{
       margin: 0 auto;
       text-align: center;

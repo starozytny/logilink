@@ -69,3 +69,37 @@ body{
     font-size: 1.2em;
   }
 }
+
+
+
+section{
+  position: relative;
+}
+
+.section{
+  position: relative;
+  @include flex(column, center, flex-start, var(--espaceLayout));
+  padding: calc(var(--espaceLayout) * 2) 0;
+
+  .section-content{
+    max-width: 568px;
+    padding: 0 var(--espaceLayout);
+    margin-bottom: var(--espaceLayout);
+  }
+
+  .section-image{
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .section-content{
+      padding-left: 16%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-content{
+      margin-bottom: 0;
+    }
+  }
+}
