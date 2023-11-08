@@ -1,0 +1,46 @@
+@import "../../../vars/vars.scss";
+
+.garantie-section{
+    text-align: left;
+
+    .part-title{
+        @include flex(column, flex-start, flex-start);
+
+        h2{
+            @include flex(column, flex-start, flex-start);
+        }
+    }
+}
+
+.garantie-content{
+    @include flex(column, center, center);
+    
+    & > div{
+        margin-bottom: 24px;
+        max-width: 424px;
+    }
+    h3{
+        margin-bottom: 12px;
+    }
+}
+
+
+//                      __   _  ___ ____  _  _     __
+//                     | _| / |/ _ \___ \| || |   |_ |
+//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
+//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
+//                     | |  |_|\___/_____|  |_|    | |
+//                     |__|                       |__|
+@media (min-width: 1024px) {
+    .garantie{
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    .garantie-content{
+        @include flex(row, flex-start, space-between);
+
+        & > div{
+            margin-bottom: 0;
+        }
+    }
+}

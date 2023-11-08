@@ -1,0 +1,190 @@
+@import "../../../vars/vars.scss";
+
+.chronology{
+    overflow: hidden;
+
+    p{
+        max-width: 424px;
+    }
+
+    .part-title{
+        h2{
+            @include flex(row, center, flex-start);
+
+            &:after{
+                content: '';
+                background-color: var(--color3);
+                display: inline-block;
+                width: calc(30% - 10px);
+                height: 2px;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .content-50, .content-60, .content-70, .content-80, .content-90{
+        margin-bottom: 36px;
+    }
+
+    .content-50-illustration, .content-60-illustration, .content-70-illustration{
+        img{
+            max-width: 300px;
+        }
+    }
+
+    .content-50-illustration, .content-70-illustration, .content-80-illustration{
+        margin-bottom: 24px;
+    }
+
+    .content-60-illustration, .content-70-illustration{
+        margin-top: 24px;
+    }
+
+    .content-90{
+        p:first-child{
+            margin-bottom: 24px;
+        }
+    }
+}
+
+//                      __   _____ __    ___    __
+//                     | _| |___  / /_  ( _ )  |_ |
+//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+//                     | |   /_/  \___/ \___/   | |
+//                     |__|                    |__|
+@media (min-width:768px) {
+    .chronology{
+
+        .content-50, .content-60, .content-70, .content-80, .content-90{
+            margin-bottom: 60px;
+        }
+
+        .chronology-50, .chronology-90{
+            h2{
+                &:after{
+                    width: calc(52% - 10px);
+                }
+            }
+        }
+
+        .content-50, .content-80{
+            @include flex(row, flex-end, space-between);
+            .content-50-illustration, .content-80-illustration{
+                margin-bottom: 0;
+                margin-right: 32px;
+            }
+        }
+
+        .chronology-60, .chronology-80{
+            h2{
+                justify-content: center;
+
+                &:after{
+                    display: none;
+                }
+            }
+        }
+
+        .content-60{
+            @include flex(row, flex-start, space-around);
+            .content-60-illustration{
+                margin-top: 0;
+                margin-left: 32px;
+            }
+        }
+
+        .chronology-70{
+            h2{
+                flex-direction: row-reverse;
+                &:after{
+                    width: calc(52% - 10px);
+                    margin-left: 0;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .content-70{
+            @include flex(row, flex-start, center);
+            .content-70-illustration{
+                margin: 0 32px;
+                img{
+                    width: 300px;
+                }
+            }
+        }
+        .content-90{
+            @include flex(row, flex-start, space-between);
+
+            p:first-child{
+                margin-bottom: 0;
+                margin-right: 32px;
+            }
+        }
+    }    
+}
+
+//                      __   _  ___ ____  _  _     __
+//                     | _| / |/ _ \___ \| || |   |_ |
+//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
+//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
+//                     | |  |_|\___/_____|  |_|    | |
+//                     |__|                       |__|
+@media (min-width: 1024px) {
+    .chronology{
+
+        .content-50, .content-60, .content-70, .content-80, .content-90{
+            margin-bottom: 128px;
+        }
+
+        .chronology-50, .chronology-90{
+            h2{
+                &:after{
+                    width: calc(63% - 24px);
+                    margin-left: 24px;
+                }
+            }
+        }
+
+        .content-50, .content-80{
+            .content-50-illustration, .content-80-illustration{
+                margin-left: 68px;
+            }
+        }
+
+        .chronology-60, .chronology-80, .chronology-70{
+            h2{
+                margin-bottom: 68px;
+            }
+        }
+
+        .chronology-70{
+            h2{
+                &:after{
+                    width: calc(64% - 24px);
+                    margin-right: 24px;
+                }
+            }
+        }
+    }        
+}
+
+
+//                      __   _ ____  ___   ___    __
+//                     | _| / |___ \( _ ) / _ \  |_ |
+//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
+//                     | |  |_|_____\___/ \___/   | |
+//                     |__|                      |__|
+@media (min-width:1280px) {
+    .chronology{
+        max-width: 1024px;
+        margin: 0 auto;
+
+        .content-50, .content-60, .content-70, .content-80, .content-90{
+            margin-bottom: 168px;
+            margin-top: 64px;
+        }
+    }    
+}

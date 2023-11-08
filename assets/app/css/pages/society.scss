@@ -1,0 +1,37 @@
+@import "../vars/vars.scss";
+
+@import "./split/societe/chronology.scss";
+@import "./split/societe/garantie.scss";
+@import "./split/societe/history.scss";
+
+#societe{
+  overflow: hidden;
+}
+
+.history, .chronology, .garantie{
+  padding: 64px 10px;
+}
+
+//                      __   _  ___ ____  _  _     __
+//                     | _| / |/ _ \___ \| || |   |_ |
+//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
+//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
+//                     | |  |_|\___/_____|  |_|    | |
+//                     |__|                       |__|
+@media (min-width: 1024px) {
+  .history, .chronology, .garantie{
+    padding: 64px 18px;
+  }
+}
+
+//                      __   _ _____  __    __     __
+//                     | _| / |___ / / /_  / /_   |_ |
+//    _____ _____ _____| |  | | |_ \| '_ \| '_ \   | |_____ _____ _____
+//   |_____|_____|_____| |  | |___) | (_) | (_) |  | |_____|_____|_____|
+//                     | |  |_|____/ \___/ \___/   | |
+//                     |__|                       |__|
+@media (min-width: 1366px){
+  .history{
+    @include maxscreen();
+  }
+}

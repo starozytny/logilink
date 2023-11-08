@@ -192,8 +192,11 @@
 }
 
 @media (min-width: 1280px) {
-  .homepage-guard{
+  .homepage-content{
+    padding-top: 66px;
+  }
 
+  .homepage-guard{
     & > .col-1{
       .homepage-title{
         padding: 6% var(--espaceLayout) 1% 35%;
@@ -298,10 +301,17 @@
       @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
 
       .item{
+        width: 100%;
+
         .item-image{
           height: 100px;
           overflow: hidden;
           @include shadowCommon();
+        }
+
+        img{
+          height: 100%;
+          object-fit: cover;
         }
       }
     }

@@ -269,3 +269,9 @@ nav{
     color: var(--grey4);
   }
 }
+
+@media (min-width: 1280px) {
+  .nav-container{
+    padding: 0.6rem var(--espaceLayout);
+  }
+}
