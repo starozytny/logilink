@@ -1,0 +1,33 @@
+@import "../../../vars/vars.scss";
+
+.history-section, .garantie-section{
+    background-color: var(--color3);
+    color: var(--alpha);
+    text-align: center;
+
+    .part-title{
+        @include flex(column, center, center);
+
+        h2{
+            @include flex(column, center, center);
+
+            &:after{
+                content: '';
+                width: 196px;
+                height: 3px;
+                background-color: var(--color2);
+                display: block;
+                margin-top: 26px;
+            }
+        }
+    }
+
+    p{
+        max-width: 424px;
+    }
+}
+
+.history-illustration{
+    max-width: 670px;
+    margin: 64px auto 0 auto;
+}

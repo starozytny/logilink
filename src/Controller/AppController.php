@@ -38,11 +38,27 @@ class AppController extends AbstractController
         return $this->render('app/pages/legales/cookies.html.twig');
     }
 
-    #[Route('/sites-internet', name: 'app_websites', options: ['expose' => true])]
+    #[Route('/creation-sites-internet-unique', name: 'app_websites')]
     public function websites(): Response
     {
         return $this->render('app/pages/websites/index.html.twig');
     }
 
+    #[Route('/creation-applications-mobile-tablette', name: 'app_applications')]
+    public function applications(): Response
+    {
+        return $this->render('app/pages/applications/index.html.twig');
+    }
 
+    #[Route('/creation-logiciel-metier', name: 'app_software')]
+    public function software(): Response
+    {
+        return $this->render('app/pages/softwares/index.html.twig');
+    }
+
+    #[Route('/societe', name: 'app_society')]
+    public function society(): Response
+    {
+        return $this->render('app/pages/society/index.html.twig');
+    }
 }
