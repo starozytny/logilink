@@ -390,26 +390,6 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 .contact{
-  @include flex(column, center, center, var(--espaceLayout));
-  padding: calc(var(--espaceLayout) * 2) calc(var(--espaceLayout) * 4);
-  background: linear-gradient(0.45turn, var(--color1), var(--color1), var(--color0));
-  text-align: center;
-
-  .contact-content{
-    p{
-      color: var(--alpha);
-      margin-bottom: var(--espaceDiv);
-    }
-
-    .cta{
-      text-align: center;
-    }
-
-    .btn{
-      display: inline-block;
-    }
-  }
-
   @media (min-width: 1024px) {
     flex-direction: row;
     text-align: left;
@@ -419,7 +399,6 @@
     }
 
     .contact-content {
-      max-width: 768px;
       padding-left: 10%;
     }
   }
