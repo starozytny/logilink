@@ -44,5 +44,9 @@ class AppController extends AbstractController
         return $this->render('app/pages/websites/index.html.twig');
     }
 
-
+    #[Route('/applications', name: 'app_applications', options: ['expose' => true])]
+    public function applications(): Response
+    {
+        return $this->render('app/pages/applications/index.html.twig');
+    }
 }

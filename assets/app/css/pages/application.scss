@@ -5,14 +5,14 @@
 
   @media (min-width: 768px) {
     display: block;
-    left: 15%;
+    right: 15%;
     color: var(--color1);
   }
   @media (min-width: 1024px) {
-    left: 6%;
+    right: 6%;
   }
   @media (min-width: 1600px) {
-    left: 15%;
+    right: 15%;
   }
 }
 
@@ -37,7 +37,7 @@ section{
 
   @media (min-width: 768px) {
     .section-content{
-      padding-left: 16%;
+      padding-right: 16%;
     }
   }
 
@@ -58,13 +58,13 @@ section{
   }
 
   @media (min-width: 1024px) {
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: flex-start;
     padding-top: 0;
 
     .etude-content{
       padding-top: calc(var(--espaceLayout) * 2);
-      padding-right: 5%;
+      padding-left: 5%;
     }
   }
 
@@ -101,7 +101,7 @@ section{
   }
 
   @media (min-width: 1024px) {
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: flex-start;
 
     .proposition-image {
@@ -109,7 +109,7 @@ section{
     }
 
     .proposition-content{
-      padding-left: 5%;
+      padding-right: 5%;
     }
   }
 }
@@ -137,14 +137,12 @@ section{
   @media (min-width: 1024px) {
     .development-content{
       flex-direction: row;
-      justify-content: flex-end;
       flex-wrap: wrap;
-      padding-left: 0;
+      padding-right: 0;
       max-width: initial;
 
       h2{
         width: 100%;
-        text-align: right;
       }
 
       p{
@@ -163,7 +161,7 @@ section{
   }
 
   @media (min-width: 1280px) {
-    padding: calc(var(--espaceLayout) * 2) 0 calc(var(--espaceLayout) * 2) 20%;
+    padding: calc(var(--espaceLayout) * 2) 20% calc(var(--espaceLayout) * 2) 5%;
 
     .development-content{
       justify-content: flex-start;
@@ -171,7 +169,6 @@ section{
       gap: var(--espaceLayout);
 
       h2{
-        text-align: left;
         width: auto;
       }
 
@@ -207,11 +204,10 @@ section{
   }
 
   @media (min-width: 1024px) {
-
     .online-content{
       margin: 0 auto;
       text-align: center;
-      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
