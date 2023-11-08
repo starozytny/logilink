@@ -304,14 +304,9 @@
         width: 100%;
 
         .item-image{
-          height: 100px;
+          height: 180px;
           overflow: hidden;
           @include shadowCommon();
-        }
-
-        img{
-          height: 100%;
-          object-fit: cover;
         }
       }
     }
