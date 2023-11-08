@@ -36,7 +36,7 @@
 .homepage-guard{
   position: relative;
   @include flex(column, stretch, flex-start);
-  background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity4), var(--color2));
+  background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity6), var(--color2));
   min-height: 86vh;
   color: var(--alpha);
 
