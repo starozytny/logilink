@@ -8,6 +8,58 @@
   overflow: hidden;
 }
 
+.page-category-explain{
+  .society-contact{
+    font-size: 1em;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      max-width: initial;
+    }
+  }
+}
+
+.society-contact{
+  @include flex(column, flex-start, flex-start, var(--espaceLayout));
+
+  h2, h3{
+    font-size: 1.3em;
+    margin-bottom: var(--espaceEls);
+  }
+
+  h3{
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
+  }
+
+  .cta{
+    margin-top: 12px;
+  }
+
+  & > .col-1, & > .col-2{
+    width: 100%;
+  }
+
+  & > .col-2{
+    @include flex(column, flex-start, flex-start, var(--espaceLayout));
+
+    & > *{
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cta{
+      display: inline-block;
+    }
+
+    & > .col-1, & > .col-2{
+      text-align: left;
+    }
+  }
+}
+
 .history, .chronology, .garantie{
   padding: 64px 10px;
 }
