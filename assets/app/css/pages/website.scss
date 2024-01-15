@@ -50,7 +50,7 @@ section{
 
 //----------------------------------------------------------------------------------------------------------------------
 
-.etude{
+.etude, .edito{
   justify-content: flex-end;
 
   .etude-content{
@@ -74,18 +74,20 @@ section{
     }
   }
 
+  @media (min-width: 1920px) {
+    .etude-content{
+      padding-left: 6%;
+      padding-right: 8%;
+    }
+  }
+}
+
+.edito{
   @media (min-width: 1600px) {
     align-items: center;
 
     .etude-content{
       padding-top: 0;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .etude-content{
-      padding-left: 6%;
-      padding-right: 8%;
     }
   }
 }

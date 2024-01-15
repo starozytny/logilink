@@ -75,7 +75,7 @@
 
     .cta{
       @include flex(row);
-      margin-bottom: calc(var(--espaceLayout) * 2);
+      margin-bottom: 100px;
 
       a.txt-button{
         color: var(--alpha);
