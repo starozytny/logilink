@@ -133,6 +133,8 @@ section{
 
     img{
       width: 280px;
+      max-height: 180px;
+      object-fit: cover;
     }
   }
 
