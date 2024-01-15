@@ -40,7 +40,7 @@
     },
     {
         id: 3, name: "Applications", path: path('app_applications'),
-        matchRoute: ['app_applications', 'app_applications_fokus', 'app_applications_opendoc'],
+        matchRoute: ['app_applications', 'app_applications_fokus', 'app_applications_opendoc', 'app_applications_memento'],
         expanded: {
             txtCta: 'application',
             text: 'Des applications innovantes faites sur-mesure.',
@@ -53,7 +53,12 @@
                 {
                     name: "Opendoc", logo: 'opendoc.svg', path: path('app_applications_opendoc'),
                     alt: 'Logo application signature pdf',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_applications_opendoc']
+                },
+                {
+                    name: "Memento", logo: 'memento.jpg', path: path('app_applications_memento'),
+                    alt: 'Logo application gestionnaires de copropriété',
+                    matchRoute: ['app_applications_memento']
                 }
             ],
             examples: [

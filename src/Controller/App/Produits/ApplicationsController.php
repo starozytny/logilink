@@ -14,9 +14,16 @@ class ApplicationsController extends AbstractController
     {
         return $this->render('app/pages/applications/products/fokus.html.twig');
     }
+
     #[Route('/application-signature-electronique-partage-documents-opendoc', name: 'opendoc')]
     public function opendoc(): Response
     {
         return $this->render('app/pages/applications/products/opendoc.html.twig');
+    }
+
+    #[Route('/application-gestionnaires-copropriete-memento', name: 'memento')]
+    public function memento(): Response
+    {
+        return $this->render('app/pages/applications/products/memento.html.twig');
     }
 }
