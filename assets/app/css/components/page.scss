@@ -126,6 +126,16 @@ body{
     font-weight: bolder;
   }
 
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li:not(:last-child){
+      margin-bottom: 2px;
+    }
+  }
+
   & > .col-1, & > .col-2{
     width: 100%;
   }
@@ -149,6 +159,13 @@ body{
   @media (min-width: 1280px) {
     & > .col-2{
       flex-direction: row;
+
+      & > div:nth-child(2), & > div:nth-child(3){
+        width: 160px;
+      }
+      & > div:nth-child(1){
+        width: calc(100% - 320px - var(--espaceLayout) - 23px);
+      }
     }
   }
 }
