@@ -4,10 +4,6 @@
 @import "./split/societe/garantie.scss";
 @import "./split/societe/history.scss";
 
-#societe{
-  overflow: hidden;
-}
-
 .page-category-explain{
   .society-contact{
     font-size: 1em;
@@ -59,6 +55,78 @@
     }
   }
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+.skill{
+  padding: calc(var(--espaceLayout) * 2) 0;
+
+  .section-content{
+
+    p{
+      a{
+        color: var(--txt);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .skill-cta{
+    margin: var(--espaceDiv) 0;
+  }
+
+  @media (min-width: 768px) {
+    position: relative;
+    min-height: 284px;
+
+    .skill-content{
+      position: relative;
+      z-index: 5;
+      margin-top: calc(var(--espaceLayout) * 4);
+
+      h2{
+        max-width: 380px;
+      }
+
+      p{
+        max-width: 260px;
+        margin: 36px 0;
+        opacity: 0.9;
+      }
+    }
+
+    .skill-image{
+      position: absolute;
+      top: 48px; right: 24px;
+      width: 60%;
+      height: 100%;
+      overflow: hidden;
+
+      img{
+        height: calc(100% - 62px);
+        object-fit: cover;
+      }
+    }
+
+    .skill-cta{
+      display: flex;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .skill-content{
+      margin-left: 10%;
+    }
+
+    .skill-image{
+      top: 5%;
+      right: 5%;
+      width: 57%;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 .history, .chronology, .garantie{
   padding: 64px 10px;

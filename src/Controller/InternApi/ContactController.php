@@ -3,6 +3,7 @@
 namespace App\Controller\InternApi;
 
 use App\Entity\Main\Contact;
+use App\Entity\Main\User;
 use App\Repository\Main\ContactRepository;
 use App\Service\ApiResponse;
 use App\Service\Data\DataMain;
@@ -41,7 +42,7 @@ class ContactController extends AbstractController
 
         $repository->save($obj, true);
 
-        $dataEntity->createDataNotification("Demande de contact", "chat", $this->getUser());
+        $dataEntity->createDataNotification("Demande de contact", "chat", null);
         return $apiResponse->apiJsonResponseSuccessful("ok");
     }
 

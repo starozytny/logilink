@@ -32,6 +32,8 @@ $data:
 
 @each $name, $bg, $txt in $data {
   .txt-button-#{$name} {
+    color: $txt;
+
     &:hover {
       background-color: $bg;
       color: $txt;

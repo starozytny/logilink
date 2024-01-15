@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import axios   from 'axios';
+import axios from 'axios';
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
-import { Input, TextArea }  from "@commonComponents/Elements/Fields";
-import { Button }           from "@commonComponents/Elements/Button";
+import { Alert } from "@commonComponents/Elements/Alert";
+import { Button } from "@commonComponents/Elements/Button";
+import { Input, TextArea } from "@commonComponents/Elements/Fields";
 
 import Formulaire from "@commonFunctions/formulaire";
 import Validateur from "@commonFunctions/validateur";
-import {Alert} from "@commonComponents/Elements/Alert";
 
-const URL_CREATE_ELEMENT    = "intern_api_contacts_create";
-const TEXT_CREATE           = "Envoyer la demande";
+const URL_CREATE_ELEMENT = "intern_api_contacts_create";
 
 export function ContactFormulaire ()
 {
@@ -82,7 +81,11 @@ class Form extends Component {
         return <>
             <form onSubmit={this.handleSubmit}>
 
-                {messageAxios && <div className="line"><Alert type={messageAxios.status}>{messageAxios.msg}</Alert></div>}
+                {messageAxios && <div className="line">
+                    <div className="form-group">
+                        <Alert type={messageAxios.status}>{messageAxios.msg}</Alert>
+                    </div>
+                </div>}
 
                 <div className="line line-2">
                     <Input identifiant="name" valeur={name} {...params}>Nom/Prénom</Input>
@@ -96,7 +99,7 @@ class Form extends Component {
                 </div>
 
                 <div className="line-buttons">
-                    <Button isSubmit={true} type="primary">{TEXT_CREATE}</Button>
+                    <Button isSubmit={true} type="primary">Envoyer le message</Button>
                 </div>
             </form>
         </>
