@@ -39,15 +39,16 @@
         }
     },
     {
-        id: 3, name: "Applications", path: path('app_applications'), matchRoute: ['app_applications'],
+        id: 3, name: "Applications", path: path('app_applications'),
+        matchRoute: ['app_applications', 'app_applications_fokus'],
         expanded: {
             txtCta: 'application',
             text: 'Des applications innovantes faites sur-mesure.',
             products: [
                 {
-                    name: "Fokus", logo: 'fokus.png', path: path('app_homepage'),
+                    name: "Fokus", logo: 'fokus.png', path: path('app_applications_fokus'),
                     alt: 'Logo application fokus état des lieux',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_applications_fokus']
                 },
                 {
                     name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
