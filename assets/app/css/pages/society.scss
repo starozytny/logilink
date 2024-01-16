@@ -1,7 +1,6 @@
 @import "../vars/vars.scss";
 
 @import "./split/societe/chronology.scss";
-@import "./split/societe/garantie.scss";
 @import "./split/societe/history.scss";
 
 .page-category-explain{
@@ -128,7 +127,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-.history, .chronology, .garantie{
+.history, .chronology{
   padding: 64px 10px;
 }
 
@@ -139,7 +138,7 @@
 //                     | |  |_|\___/_____|  |_|    | |
 //                     |__|                       |__|
 @media (min-width: 1024px) {
-  .history, .chronology, .garantie{
+  .history, .chronology{
     padding: 64px 18px;
   }
 }

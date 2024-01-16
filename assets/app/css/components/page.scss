@@ -191,46 +191,6 @@ body{
   }
 }
 
-.section.product{
-  justify-content: flex-end;
-
-  .product-content{
-    padding-right: 16%;
-  }
-
-  @media (min-width: 1024px) {
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    padding-top: 0;
-
-    .product-content{
-      padding-top: calc(var(--espaceLayout) * 2);
-      padding-left: 5%;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .product-image{
-      max-width: 800px;
-    }
-  }
-
-  @media (min-width: 1600px) {
-    align-items: center;
-
-    .product-content{
-      padding-top: 0;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .product-content{
-      padding-left: 6%;
-      padding-right: 8%;
-    }
-  }
-}
-
 // ---------------------------------------------------------------------------------------------------------------------
 
 .contact{

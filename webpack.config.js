@@ -64,6 +64,7 @@ Encore
     .addEntry('app_application', './assets/app/js/pages/application.js')
     .addEntry('app_society', './assets/app/js/pages/society.js')
     .addEntry('app_software', './assets/app/js/pages/software.js')
+    .addEntry('app_prestation', './assets/app/js/pages/prestation.js')
 
     .addEntry('admin_app',          './assets/admin/js/app.js')
     .addEntry('admin_homepage',     './assets/admin/js/pages/homepage.js')
