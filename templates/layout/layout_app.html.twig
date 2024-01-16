@@ -64,11 +64,11 @@
                                     <div class="nav-expanded-title">{{ item.name }}</div>
                                     <p>{{ item.expanded.text }}</p>
                                     <div class="nav-cta">
-                                        <a href="{{ item.path }}" class="btn btn-primary">Créer mon {{ item.expanded.txtCta }}</a>
+                                        <a href="{{ item.path }}" class="btn btn-primary">{{ item.expanded.txtCta }}</a>
                                     </div>
                                 </div>
                                 <div class="col-2">
-                                    <div class="nav-expanded-title" style="padding-left: 8px;">Produits</div>
+                                    <div class="nav-expanded-title" style="padding-left: 8px;">Nos produits</div>
                                     <div class="items">
                                         {% for it in item.expanded.products %}
                                             <a href="{{ it.path }}" class="nav-sub-item">
@@ -82,17 +82,15 @@
                                     </div>
                                 </div>
                                 <div class="col-3">
-                                    <div class="nav-expanded-title" style="padding-left: 8px;">Exemples</div>
+                                    <div class="nav-expanded-title" style="padding-left: 8px;">Services</div>
                                     <div class="items">
-                                        {% for it in item.expanded.examples %}
-                                            <a href="{{ it.path }}" class="nav-sub-item">
-                                                <div class="logo">
-                                                    <img src="{{ asset('build/app/images/'~it.logo) }}"
-                                                         alt="{{ it.alt }}">
-                                                </div>
-                                                <div>{{ it.name }}</div>
-                                            </a>
-                                        {% endfor %}
+                                        <a href="{{ path('app_prestations') }}" class="nav-sub-item">
+                                            <div class="logo">
+                                                <img src="{{ asset('build/app/images/logo.png') }}"
+                                                     alt="prestation de services">
+                                            </div>
+                                            <div>Prestations de services</div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
