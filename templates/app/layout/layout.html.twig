@@ -3,8 +3,8 @@
 {% set menu = [
     { id: 1, name: "Logilink", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
     {
-        id: 2, name: "Logiciels", path: path('app_software'),
-        matchRoute: ['app_software', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance'],
+        id: 2, name: "Logiciels", path: path('app_softwares'),
+        matchRoute: ['app_softwares', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance'],
         expanded: {
             txtCta: 'Nos logiciels métiers',
             text: 'Des logiciels puissanntes et adpatés à votre activité.',
@@ -77,7 +77,7 @@
             ]
         }
     },
-    { id: 5, name: "Services", path: path('app_prestations'), matchRoute: ['app_prestations'], expanded: false },
+    { id: 5, name: "Webservices", path: path('app_webservices'), matchRoute: ['app_webservices'], expanded: false },
     { id: 6, name: "Société", path: path('app_society'), matchRoute: ['app_society'], expanded: false },
 ] %}
 

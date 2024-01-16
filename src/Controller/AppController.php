@@ -44,8 +44,8 @@ class AppController extends AbstractController
         return $this->render('app/pages/applications/index.html.twig');
     }
 
-    #[Route('/creation-logiciel-metier', name: 'app_software')]
-    public function software(): Response
+    #[Route('/creation-logiciel-metier', name: 'app_softwares')]
+    public function softwares(): Response
     {
         return $this->render('app/pages/softwares/index.html.twig');
     }
@@ -54,6 +54,12 @@ class AppController extends AbstractController
     public function prestations(): Response
     {
         return $this->render('app/pages/prestations/index.html.twig');
+    }
+
+    #[Route('/services-en-ligne-saas', name: 'app_webservices')]
+    public function webservices(): Response
+    {
+        return $this->render('app/pages/webservices/index.html.twig');
     }
 
     #[Route('/societe', name: 'app_society')]
