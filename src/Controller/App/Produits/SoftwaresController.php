@@ -14,4 +14,16 @@ class SoftwaresController extends AbstractController
     {
         return $this->render('app/pages/softwares/products/lotys.html.twig');
     }
+
+    #[Route('/logiciel-syndic-coproprietes-ultimmo-syndic', name: 'syndic')]
+    public function syndic(): Response
+    {
+        return $this->render('app/pages/softwares/products/syndic.html.twig');
+    }
+
+    #[Route('/logiciel-gestion-locative-gerance', name: 'gerance')]
+    public function gerance(): Response
+    {
+        return $this->render('app/pages/softwares/products/gerance.html.twig');
+    }
 }

@@ -4,20 +4,20 @@
     { id: 1, name: "Logilink", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
     {
         id: 2, name: "Logiciels", path: path('app_software'),
-        matchRoute: ['app_software', 'app_softwares_lotys'],
+        matchRoute: ['app_software', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance'],
         expanded: {
             txtCta: 'logiciel',
             text: 'Des logiciels puissanntes et adpatés à votre activité.',
             products: [
                 {
-                    name: "Syndic", logo: 'syndic.svg', path: path('app_homepage'),
+                    name: "Syndic", logo: 'syndic.svg', path: path('app_softwares_syndic'),
                     alt: 'Logo logiciel Ultimmo Syndic',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_softwares_syndic']
                 },
                 {
-                    name: "Gérance", logo: 'gerance.svg', path: path('app_homepage'),
+                    name: "Gérance", logo: 'gerance.svg', path: path('app_softwares_gerance'),
                     alt: 'Logo logiciel Utilimmo Gérance',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_softwares_gerance']
                 },
                 {
                     name: "Lotys", logo: 'lotys.svg', path: path('app_softwares_lotys'),
