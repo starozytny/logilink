@@ -103,17 +103,20 @@ body{
 .page-category-explain{
   padding: calc(var(--espaceLayout) * 2) var(--espaceLayout);
   text-align: center;
-  background-color: var(--alpha);
+  background-color: var(--color0);
+  color: var(--alpha);
 
   .category-explain-container{
     max-width: 568px;
     margin: 0 auto;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 }
 
 .page-product-explain{
   @include flex(column, flex-start, flex-start, var(--espaceLayout));
+  background-color: var(--alpha);
+  color: var(--txt);
 
   h2, h3{
     font-size: 1.3em;
