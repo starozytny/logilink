@@ -439,6 +439,7 @@
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
+        width: 100%;
       }
 
       .item{
@@ -447,8 +448,16 @@
     }
   }
 
+  @media (min-width: 1024px) {
+    .suite-content {
+      .item{
+        width: 305px;
+      }
+    }
+  }
+
   @media (min-width: 1280px) {
-    //padding: calc(var(--espaceLayout) * 4);
+    padding: calc(var(--espaceLayout) * 4);
 
     .suite-content{
 
@@ -458,7 +467,8 @@
 
       .item{
         @include flex(column, flex-start, space-between);
-        width: calc(20% - var(--espaceLayout));
+        width: calc(33% - var(--espaceLayout));
+        max-width: 354px;
       }
 
       .item-cta{
