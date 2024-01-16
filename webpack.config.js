@@ -20,6 +20,7 @@ Encore
         '@commonFolder': path.resolve(__dirname, './assets/common/js'),
         '@commonComponents': path.resolve(__dirname, './assets/common/js/components'),
         '@commonFunctions': path.resolve(__dirname, './assets/common/js/functions'),
+        '@commonHooks': path.resolve(__dirname, './assets/common/js/hooks'),
         '@appFolder': path.resolve(__dirname, './assets/app/js'),
         '@adminPages': path.resolve(__dirname, './assets/admin/js/pages/components'),
         '@nodeModulesFolder': path.resolve(__dirname, './node_modules'),
@@ -63,6 +64,8 @@ Encore
     .addEntry('app_application', './assets/app/js/pages/application.js')
     .addEntry('app_society', './assets/app/js/pages/society.js')
     .addEntry('app_software', './assets/app/js/pages/software.js')
+    .addEntry('app_prestation', './assets/app/js/pages/prestation.js')
+    .addEntry('app_webservice', './assets/app/js/pages/webservice.js')
 
     .addEntry('admin_app',          './assets/admin/js/app.js')
     .addEntry('admin_homepage',     './assets/admin/js/pages/homepage.js')

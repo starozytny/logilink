@@ -1,0 +1,120 @@
+{% extends 'app/pages/prestations/template.html.twig' %}
+
+{% block title %}Les prestations de services avec Logilink{% endblock %}
+
+{% block main_content %}
+    <div class="page-default">
+        <div class="page-category-title">
+            <h1>Connectons <span class="txt-color2">votre entreprise</span> à l'avenir numérique<span class="txt-color2">.</span></h1>
+        </div>
+        <div class="page-category-explain">
+            <div class="category-explain-container">
+                <p>
+                    Optez pour nos services informatiques pour une expertise sur mesure. Notre équipe dévouée
+                    se distingue par son innovation, sa fiabilité et son engagement envers votre réussite.
+                    <br>
+                    <br>
+                    En choisissant notre expertise, vous optez pour une collaboration basée sur l'excellence,
+                    la transparence et une passion pour l'évolution numérique.
+                </p>
+            </div>
+        </div>
+        <section>
+            <div class="col-deco">
+                <div class="pattern-dots-lg"></div>
+            </div>
+
+            <div class="garantie-section">
+                <div class="garantie">
+                    <div class="part-title">
+                        <h2 data-aos="fade-up">Nos garanties</h2>
+                    </div>
+                    <div class="garantie-content">
+                        <div data-aos="zoom-in">
+                            <h3>Qualité de services</h3>
+                            <p>
+                                Depuis sa création, Logilink a toujours associé à la vente de ses produits une politique active
+                                de services. Du système le plus simple aux configurations les plus poussées, Logilink vous
+                                garantit un suivi technique de qualité et des mises à jour régulières de vos logiciels.
+                            </p>
+                        </div>
+                        <div data-aos="zoom-in">
+                            <h3>Assistance dédiée</h3>
+                            <p>
+                                Chez Logilink nos développeurs sont aussi vos interlocuteurs, et tous maitrisent très bien les
+                                problématiques de votre métier. Ils pourront intervenir dès que nécessaire par téléphone,
+                                télémaintenance ou email.
+                            </p>
+                        </div>
+                        <div data-aos="zoom-in">
+                            <h3>Environnement technique</h3>
+                            <p>
+                                Avant la mise en route, Logilink vous conseille sur le matériel informatique approprié à vos
+                                activités professionnelles. Nous pouvons ensuite assurer l’intégralité de votre installation, de
+                                l’achat du matériel à la configuration des serveurs. Dans ce cas de figure, le suivi technique
+                                sera directement assuré par notre support dédié.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section material">
+                <div class="section-content material-content">
+                    <h2>Matériel informatique<span class="txt-color2">.</span></h2>
+                    <p>
+                        Logilink prend en charge l’analyse des besoins informatiques spécifiques de chaque client,
+                        fournit si nécessaire le matériel informatique requis pour un fonctionnement optimal, et en
+                        assure l’installation sur site : schéma de connexion des postes, gestion des pare-feu, accès
+                        mobiles (ordinateurs portables, tablettes, 3G, VPN).
+                        <br><br>
+                        Ces prestations simplifient le processus d’installation de nos clients et garantit une mise en
+                        œuvre performante de leur système informatique.
+                    </p>
+                </div>
+                <div class="section-image material-image">
+                    <img src="{{ asset('build/app/images/illu-software.jpg') }}" alt="etude projet creation site internet">
+                </div>
+            </div>
+
+            <div class="section support">
+                <div class="section-image support-image">
+                    <img src="{{ asset('build/app/images/website/illustrations/creativity.jpg') }}" alt="propositions maquette website">
+                </div>
+                <div class="section-content support-content">
+                    <h2>Support<span class="txt-color2">.</span></h2>
+                    <p>
+                        Notre service technique est là pour vous assister en toute circonstance. Après diagnostic, il
+                        interviendra dans les meilleurs délais :
+                    </p>
+                    <ul>
+                        <li>Directement dans vos locaux</li>
+                        <li>Par télémaintenance</li>
+                        <li>Par téléphone ou par email</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section reseaux">
+                <div class="section-content material-content">
+                    <h2>Serveurs et réseaux<span class="txt-color2">.</span></h2>
+                    <p>
+                        Le bon fonctionnement des réseaux de communication est un point essentiel dans l’activité
+                        des entreprises. Du fait son activité, Logilink dispose d’une solide expertise en matière de
+                        réseaux et de gestion des serveurs.
+                    </p>
+                    <ul>
+                        <li>Interconnexion de réseaux (VPN)</li>
+                        <li>Environnements virtuels</li>
+                        <li>Serveurs Windows et Linux</li>
+                        <li>Veille serveurs, sauvegardes</li>
+                        <li>Virtualisation, haute disponibilité</li>
+                    </ul>
+                </div>
+                <div class="section-image material-image">
+                    <img src="{{ asset('build/app/images/website/illustrations/editorial.jpg') }}" alt="etude projet creation site internet">
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

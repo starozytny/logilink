@@ -3,77 +3,66 @@
 {% set menu = [
     { id: 1, name: "Logilink", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
     {
-        id: 2, name: "Logiciels", path: path('app_software'), matchRoute: ['app_software'],
+        id: 2, name: "Logiciels", path: path('app_softwares'),
+        matchRoute: ['app_softwares', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance'],
         expanded: {
-            txtCta: 'logiciel',
+            txtCta: 'Nos logiciels métiers',
             text: 'Des logiciels puissanntes et adpatés à votre activité.',
             products: [
                 {
-                    name: "Syndic", logo: 'syndic.svg', path: path('app_homepage'),
+                    name: "Syndic", logo: 'syndic.svg', path: path('app_softwares_syndic'),
                     alt: 'Logo logiciel Ultimmo Syndic',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_softwares_syndic']
                 },
                 {
-                    name: "Gérance", logo: 'gerance.svg', path: path('app_homepage'),
+                    name: "Gérance", logo: 'gerance.svg', path: path('app_softwares_gerance'),
                     alt: 'Logo logiciel Utilimmo Gérance',
-                    matchRoute: ['app_users']
-                },
-            ],
-            examples: [
-                {
-                    name: "Cité de la musique", logo: 'cite.png', path: path('app_homepage'),
-                    alt: 'Logo logiciel cursus de la cité de la musique marseille',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_softwares_gerance']
                 },
                 {
-                    name: "Henry Blanc", logo: 'henry_blanc.png', path: path('app_homepage'),
-                    alt: 'Logo logiciel Henry blanc',
-                    matchRoute: ['app_users']
-                }
+                    name: "Lotys", logo: 'lotys.svg', path: path('app_softwares_lotys'),
+                    alt: 'Logo Lotys logiciel transaction en ligne',
+                    matchRoute: ['app_softwares_lotys']
+                },
             ]
         }
     },
     {
-        id: 3, name: "Applications", path: path('app_applications'), matchRoute: ['app_applications'],
+        id: 3, name: "Applications", path: path('app_applications'),
+        matchRoute: ['app_applications', 'app_applications_fokus', 'app_applications_opendoc', 'app_applications_memento'],
         expanded: {
-            txtCta: 'application',
+            txtCta: 'Créer mon application',
             text: 'Des applications innovantes faites sur-mesure.',
             products: [
                 {
-                    name: "Fokus", logo: 'fokus.png', path: path('app_homepage'),
+                    name: "Fokus", logo: 'fokus.png', path: path('app_applications_fokus'),
                     alt: 'Logo application fokus état des lieux',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_applications_fokus']
                 },
                 {
-                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
+                    name: "Memento", logo: 'memento.jpg', path: path('app_applications_memento'),
+                    alt: 'Logo application gestionnaires de copropriété',
+                    matchRoute: ['app_applications_memento']
+                },
+                {
+                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_applications_opendoc'),
                     alt: 'Logo application signature pdf',
-                    matchRoute: ['app_users']
-                }
-            ],
-            examples: [
-                {
-                    name: "Adi incendie", logo: 'adi_incendie.svg', path: path('app_homepage'),
-                    alt: 'Logo application ADI incendie',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_applications_opendoc']
                 },
-                {
-                    name: "Henry Blanc", logo: 'henry_blanc.png', path: path('app_homepage'),
-                    alt: 'Logo application henry blanc',
-                    matchRoute: ['app_users']
-                }
             ]
         }
     },
     {
-        id: 4, name: "Sites internet", path: path('app_websites'), matchRoute: ['app_websites'],
+        id: 4, name: "Sites internet", path: path('app_websites'),
+        matchRoute: ['app_websites', 'app_websites_opendoc', 'app_websites_lotys'],
         expanded: {
-            txtCta: 'site internet',
+            txtCta: 'Créer mon site internet',
             text: 'Des sites internet créatifs à votre image.',
             products: [
                 {
-                    name: "Lotys", logo: 'lotys.svg', path: path('app_homepage'),
+                    name: "Lotys", logo: 'lotys.svg', path: path('app_websites_lotys'),
                     alt: 'Logo Lotys logiciel transaction en ligne',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_websites_lotys']
                 },
                 {
                     name: "Magesto", logo: 'magesto.svg', path: path('app_homepage'),
@@ -81,26 +70,14 @@
                     matchRoute: ['app_users']
                 },
                 {
-                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_homepage'),
+                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_websites_opendoc'),
                     alt: 'Logo site de drive temporaire',
-                    matchRoute: ['app_users']
+                    matchRoute: ['app_websites_opendoc']
                 }
-            ],
-            examples: [
-                {
-                    name: "Cité de la musique", logo: 'cite.png', path: path('app_homepage'),
-                    alt: 'Logo Cité de la musique espace adhérent',
-                    matchRoute: ['app_users']
-                },
-                {
-                    name: "Fnaim formation AMP", logo: 'fnaim.png', path: path('app_homepage'),
-                    alt: 'Logo Fnaim formation AMP immobilier',
-                    matchRoute: ['app_users']
-                },
             ]
         }
     },
-    { id: 5, name: "Services", path: path('app_homepage'), matchRoute: ['app_users'], expanded: false },
+    { id: 5, name: "Webservices", path: path('app_webservices'), matchRoute: ['app_webservices'], expanded: false },
     { id: 6, name: "Société", path: path('app_society'), matchRoute: ['app_society'], expanded: false },
 ] %}
 
@@ -116,7 +93,7 @@
                 </div>
                 <div class="col-2">
                     <div class="footer-title">Solutions informatiques</div>
-                    <a class="footer-link" href="{{ path('app_homepage') }}">Découvrir nos logiciels</a>
+                    <a class="footer-link" href="{{ path('app_softwares') }}">Découvrir nos logiciels</a>
                     <a class="footer-link" href="{{ path('app_applications') }}">Découvrir nos applications</a>
                     <a class="footer-link" href="{{ path('app_websites') }}">Découvrir nos sites internet</a>
                 </div>
@@ -133,7 +110,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2023 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
+                <p>&copy; 2024 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
                 <span>-</span>
                 <a class="footer-link" href="{{ path('app_mentions') }}">Mentions légales</a>
                 <a class="footer-link" href="{{ path('app_politique') }}">Politique de confidentialité</a>

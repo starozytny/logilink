@@ -1,0 +1,123 @@
+{% extends 'app/pages/applications/template.html.twig' %}
+
+{% block title %}Opendoc, Signature électronique et partage de documents dématérialisés.{% endblock %}
+
+{% block main_content %}
+    <div class="page-default page-product">
+        <div class="page-category-title page-product-title"
+             style="background-image: url('{{ asset('build/app/images/application/products/products-opendoc.jpg') }}')"
+        >
+            <h1>Opendoc<span class="txt-color2">.</span></h1>
+            <div class="subtitle italic">
+                <p>Signature électronique et partage de documents dématérialisés.</p>
+            </div>
+        </div>
+        <div class="page-category-explain page-product-explain">
+            <div class="col-1">
+                <h2>Application<span class="txt-color2">.</span></h2>
+                <p>
+                    OPENDOC associe une application mobile Android (développement IOS en cours) et un
+                    portail internet. Développé pour la signature des baux locatifs dématérialisés à l’issue de
+                    l’état des lieux, OPENDOC vous permet de signer numériquement tout type de document en
+                    présence des personnes concernées, ou de partager des documents professionnels sur le
+                    cloud via un lien de téléchargement.
+                </p>
+            </div>
+
+            <div class="col-2">
+                <div>
+                    <h3>Avantages<span class="txt-color2">.</span></h3>
+                    <div>
+                        <ul>
+                            <li>- Signature électronique sur tablette ou mobile</li>
+                            <li>- Transmission instantanée de documents</li>
+                            <li>- Sauvegarde sur serveur sécurisé</li>
+                            <li>- Document dématérialisé, aucune impression papier</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h3>Plateforme<span class="txt-color2">.</span></h3>
+                    <div>
+                        <p>Android</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>Cible<span class="txt-color2">.</span></h3>
+                    <div>
+                        <p>Tous public</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="col-deco">
+                <div class="pattern-dots-lg"></div>
+            </div>
+
+            <div class="contact page-product-cta">
+                <div class="section-title">
+                    <h2>Informations <span class="txt-color2">et</span> tarifs</h2>
+                </div>
+                <div class="contact-content">
+                    <p>
+                        Contactez-nous dès aujourd'hui pour en savoir plus à propos d'Opendoc.
+                    </p>
+                    <div class="cta">
+                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section product">
+                <div class="section-content product-content">
+                    <h2>Dépôt de documents à signer<span class="txt-color2">.</span></h2>
+                    <p>
+                        Dès l’ouverture de votre compte sur le
+                        portail <a href="https://opendoc.fr" target="_blank">www.opendoc.fr</a>, vous pouvez déposer les
+                        documents en attente de signature ou de téléchargement. Les documents à signer seront
+                        importés automatiquement sur votre tablette. Les documents à télécharger seront
+                        communiqués aux destinataires par email contenant le lien de téléchargement.
+                    </p>
+                </div>
+                <div class="section-image product-image">
+                    <img src="{{ asset('build/app/images/illu-tablette.jpg') }}" alt="etude projet creation site internet">
+                </div>
+            </div>
+
+            <div class="section product">
+                <div class="section-content product-content">
+                    <h2>Signature électronique de bail dématérialisé<span class="txt-color2">.</span></h2>
+                    <p>
+                        Une fois importé sur votre tablette, le bail de location peut être paraphé et signé par toutes
+                        les parties. Compte tenu du volume conséquent du bail locatif et des annexes à parapher.
+                        <br>
+                        À l’issue de cette signature, le document sera automatiquement sauvegardé. Un email
+                        contenant le lien de téléchargement du document sera transmis au locataire.
+                    </p>
+                </div>
+                <div class="section-image product-image">
+                    <img src="{{ asset('build/app/images/illu-tablette.jpg') }}" alt="etude projet creation site internet">
+                </div>
+            </div>
+
+            <div class="contact">
+                <div class="section-title">
+                    <h2>Un <span class="txt-color2">projet</span> à réaliser <span class="txt-color2">?</span></h2>
+                </div>
+                <div class="contact-content">
+                    <p>
+                        Si vous cherchez à créer une application mobile ou tablette sur mesure qui incarne véritablement
+                        votre vision, n'hésitez pas à nous contacter dès aujourd'hui.
+                        <br><br>
+                        Nous sommes prêts à transformer vos idées en applications interactives et conviviales.
+                        Faites de votre présence mobile et tablette un succès incontestable avec notre expertise.
+                    </p>
+                    <div class="cta">
+                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

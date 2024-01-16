@@ -3,6 +3,7 @@ nav{
   top: 0; left: 0;
   width: 100%;
   z-index: 10;
+  @include shadowCommon();
 }
 
 .nav-container{
@@ -270,7 +271,17 @@ nav{
   }
 }
 
+//                      __   _ ____  ___   ___    __
+//                     | _| / |___ \( _ ) / _ \  |_ |
+//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
+//                     | |  |_|_____\___/ \___/   | |
+//                     |__|                      |__|
 @media (min-width: 1280px) {
+  nav{
+    box-shadow: none;
+  }
+
   .nav-container{
     padding: 0.6rem var(--espaceLayout);
   }

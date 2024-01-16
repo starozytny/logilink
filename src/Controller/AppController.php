@@ -14,12 +14,6 @@ class AppController extends AbstractController
         return $this->render('app/pages/index.html.twig', [ 'controller_name' => 'AppController' ]);
     }
 
-    #[Route('/contact', name: 'app_contact')]
-    public function contact(): Response
-    {
-        return $this->render('app/pages/contact/create.html.twig');
-    }
-
     #[Route('/legales/mentions-legales', name: 'app_mentions')]
     public function mentions(): Response
     {
@@ -50,15 +44,33 @@ class AppController extends AbstractController
         return $this->render('app/pages/applications/index.html.twig');
     }
 
-    #[Route('/creation-logiciel-metier', name: 'app_software')]
-    public function software(): Response
+    #[Route('/creation-logiciel-metier', name: 'app_softwares')]
+    public function softwares(): Response
     {
         return $this->render('app/pages/softwares/index.html.twig');
+    }
+
+    #[Route('/prestations-services', name: 'app_prestations')]
+    public function prestations(): Response
+    {
+        return $this->render('app/pages/prestations/index.html.twig');
+    }
+
+    #[Route('/services-en-ligne-saas', name: 'app_webservices')]
+    public function webservices(): Response
+    {
+        return $this->render('app/pages/webservices/index.html.twig');
     }
 
     #[Route('/societe', name: 'app_society')]
     public function society(): Response
     {
         return $this->render('app/pages/society/index.html.twig');
+    }
+
+    #[Route('/societe/histoire', name: 'app_society_history')]
+    public function history(): Response
+    {
+        return $this->render('app/pages/society/history.html.twig');
     }
 }

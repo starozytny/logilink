@@ -1,22 +1,20 @@
 {% extends 'app/pages/softwares/template.html.twig' %}
 
-{% block title %}Développer mon logiciel métier sur mesure avec Logilink{% endblock %}
+{% block title %}Nos logiciels immobiliers sur mesure avec Logilink{% endblock %}
 
 {% block main_content %}
     <div class="page-default">
         <div class="page-category-title">
-            <h1>La <span class="txt-color2">création</span> de votre logiciel métier<span class="txt-color2">.</span></h1>
+            <h1>Nos <span class="txt-color2">logiciels</span> immobiliers<span class="txt-color2">.</span></h1>
         </div>
         <div class="page-category-explain">
             <div class="category-explain-container">
+                <h2>La suite Ultimmo</h2>
                 <p>
-                    Nous sommes dévoués à la création de logiciels métier sur mesure qui répondent
-                    précisément aux besoins uniques de votre entreprise.
+                    Optimisez votre activité immobilière avec nos logiciels novateurs. Nos fonctionnalités
+                    font de nos solutions le choix idéal pour les agents, promoteurs et gestionnaires de biens.
                     <br>
-                    <br>
-                    Nous comprenons que chaque organisation est différente, tout comme ses
-                    processus et ses défis. Chaque logiciel métier est unique répondant à des demandes
-                    spécifiques de l'entreprise.
+                    Choisissez l'efficacité et l'innovation pour dominer le marché immobilier.
                 </p>
             </div>
         </div>
@@ -25,91 +23,124 @@
                 <div class="pattern-dots-lg"></div>
             </div>
 
-            <div class="section etude">
-                <div class="section-content etude-content">
-                    <h2>Adoptez le sur mesure<span class="txt-color2">.</span></h2>
+            <div class="section transfert">
+                <div class="section-image transfert-image">
+                    <img src="{{ asset('build/app/images/software/illustrations/transfert.jpg') }}" alt="propositions maquette website">
+                </div>
+                <div class="section-content transfert-content">
+                    <h2>Transfert de vos données<span class="txt-color2">.</span></h2>
                     <p>
-                        Nous concevons des logiciels métiers répondant à vos besoins, votre secteur d'activité et vos
-                        idées afin de vous proposer un logiciel unique et sur mesure.
-                        <br><br>
-                        Nous concevons des logiciels métier qui visent à améliorer l'efficacité de vos processus internes,
-                        à optimiser les flux de travail et à accroître la productivité de votre entreprise.
+                        Si besoin est, nos développeurs peuvent procéder à la migration de vos données depuis votre
+                        ancien logiciel, vous assurant ainsi un démarrage immédiat avec pas ou peu de ressaisie.
                     </p>
                 </div>
-                <div class="section-image etude-image">
+            </div>
+
+            <div class="section traitement">
+                <div class="section-content traitement-content">
+                    <h2>Traitements automatisés<span class="txt-color2">.</span></h2>
+                    <p>
+                        Les logiciels de la suite ULTIMMO sont conçus pour optimiser votre productivité en réduisant
+                        au maximum les tâches à faible valeur ajoutée.
+                        <br><br>
+                        À titre d’exemple, voici quelques processus clefs automatisés dont vous pourrez bénéficier :
+                    </p>
+                    <ul>
+                        <li>Intégration automatique des écritures bancaires</li>
+                        <li>Intégration des factures de prestataires majeurs (EDF, ENGIE, PROXHYDRO...)</li>
+                        <li>Intégration et traitement des paiements en ligne effectués sur les extranets de gérance et de syndic</li>
+                        <li>Intégration des votes en ligne aux AG effectués sur coprodirecte.fr, l’extranet des copropriétaires.</li>
+                    </ul>
+                    <p>
+                        L’échange fluide de données entre nos logiciels immobiliers permet un emploi unifié des
+                        informations communes au syndic de copropriété et à la gestion locative. Tous les biens gérés
+                        à relouer seront par exemple transférés automatiquement, à votre rythme, vers Lotys, notre
+                        logiciel de transaction immobilière en ligne.
+                        <br><br>
+                        Ces traitements récurrents évitent à vos collaborateurs toute ressaisie fastidieuse très
+                        souvent source d’erreur. Un gain substantiel de temps, de productivité et de fiabilité pour les
+                        gestionnaires, les comptables et les assistants.
+                    </p>
+                </div>
+                <div class="section-image traitement-image">
                     <img src="{{ asset('build/app/images/illu-software.jpg') }}" alt="etude projet creation site internet">
                 </div>
             </div>
 
             <div class="section development">
                 <div class="section-content development-content">
-                    <h2>Expertise technique<span class="txt-color2">.</span></h2>
+                    <h2>Solutions locales ou hébergées<span class="txt-color2">.</span></h2>
                     <p>
-                        Notre équipe d'experts en développement logiciel possède une vaste expérience dans la création
-                        de solutions personnalisées pour une variété d'industries. Nous mettons cette expertise à
-                        votre service pour concevoir un logiciel métier de qualité exceptionnelle.
+                        Si vous optez pour l’utilisation d’un serveur dans vos locaux professionnels, vous travaillerez
+                        en mode TSE (Terminal Server Environnent). Chaque poste de travail se connectera
+                        directement sur votre serveur local. Dans ce cas, notre équipe technique se chargera de
+                        l’installation et du paramétrage de votre environnement informatique afin qu’il soit optimisé
+                        pour l’utilisation de nos logiciels, et parfaitement sécurisé.
                     </p>
                     <p>
-                        Votre vision est au cœur de chaque projet. Nous travaillons en étroite collaboration avec vous
-                        à chaque étape du processus de développement pour nous assurer que le
-                        logiciel répond précisément à vos besoins.
+                        Si vous choisissez le mode hébergé, vous n’aurez pas besoin d’investir dans un serveur. Vous
+                        aurez accès aux logiciels de la suite ULTIMMO implantés dans le cloud chez un hébergeur
+                        français offrant toutes les garanties nécessaires de débit et de sécurité. Les serveurs sont mis
+                        en place et administrés par nos soins. Ce mode de fonctionnement réduit les délais d’attente,
+                        il vous assure une qualité de maintenance, une réactivité et une sécurisation optimisées.
                     </p>
                 </div>
                 <div class="section-image development-image">
-                    <img src="{{ asset('build/app/images/illu-software.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/illu-software.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/illu-software.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/serv1.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/serv2.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/serv3.jpg') }}" alt="propositions maquette website">
                 </div>
             </div>
 
-            <div class="section proposition">
-                <div class="section-content proposition-content">
-                    <h2>Notre suite Ultimmo<span class="txt-color2">.</span></h2>
+            <div class="section transfert">
+                <div class="section-image transfert-image">
+                    <img src="{{ asset('build/app/images/software/illustrations/save.jpg') }}" alt="propositions maquette website">
+                </div>
+                <div class="section-content transfert-content">
+                    <h2>Sauvegarde de vos données<span class="txt-color2">.</span></h2>
                     <p>
-                        Les logiciels immobiliers de la gamme ULTIMMO ont été conçus pour fonctionner de manière rapide
-                        et autonome. Ils s'adaptent de manière transparente au volume de données à traiter.
+                        Si vous travaillez en local, vous pouvez opter pour une sauvegarde automatique de vos
+                        données.
                         <br><br>
-                        Chacun d'entre eux peut être utilisé seul ou associé aux autres logiciels de la gamme ULTIMMO.
-                        <br><br>
-                        En matière d'efficacité, ULTIMMO fait des prouesses et ne laisse rien au hasard. Accès direct
-                        aux fonctions récurrentes, traitements automatiques, passerelles intelligentes, raccourcis
-                        pour vos mises à jour, tout a été pensé pour écourter les procédures. Et pour les rendre sûres.
+                        Si vous avez choisi le mode cloud, la sauvegarde est intégrée dans nos prestations.
                     </p>
                 </div>
-                <div class="section-image proposition-list">
-                    <div class="items">
-                        <div class="item">
-                            <h3>Puissance de traitement</h3>
-                            <p>
-                                La synergie entre transaction, gestion, syndic et fournisseurs
-                                offre une puissance de travail inégalée.
-                            </p>
-                        </div>
-                        <div class="item">
-                            <h3>Processsus sécurisés</h3>
-                            <p>
-                                Archivage quotidien des données, restauration des sauvegardes, gestion des
-                                droits d'accès, liaisons par cryptage.
-                            </p>
-                        </div>
-                        <div class="item">
-                            <h3>Confort utilisateur</h3>
-                            <p>
-                                Alertes et tris paramétrables, mise à jour automatique, bibliothèque de
-                                documents personnalisables, formation sur site, télémaintenance et hotline.
-                            </p>
-                        </div>
-                        <div class="item">
-                            <h3>Comptes et gestion</h3>
-                            <p>
-                                Fournir un service à distance pour les clients qui disposent de tous les documents
-                                utiles à leur gestion.
-                                <br>
-                                Meilleur moyen de diminuer le volume téléphoniques qui mobilise le personnel d'une
-                                société immobilière.
-                            </p>
-                        </div>
-                    </div>
+            </div>
+
+            <div class="section development">
+                <div class="section-content development-content">
+                    <h2>Support et formations<span class="txt-color2">.</span></h2>
+                    <p>
+                        Une formation initiale est conseillée à la prise en main des logiciels de la suite
+                        ULTIMMO. D’autres formations peuvent être dispensées selon vos attentes
+                        spécifiques.
+                    </p>
+                    <p>
+                        Pour toute question ponctuelle concernant l’utilisation de nos logiciels, contactez
+                        directement notre support par téléphone ou par email. Un système efficace de
+                        télémaintenance permet à nos développeurs d’intervenir rapidement dès que
+                        nécessaire.
+                    </p>
+                </div>
+                <div class="section-image development-image">
+                    <img src="{{ asset('build/app/images/software/illustrations/doc.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/support.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/formation.jpg') }}" alt="propositions maquette website">
+                </div>
+            </div>
+
+            <div class="section parc">
+                <div class="section-content parc-content">
+                    <h2>Parc de matériel<span class="txt-color2">.</span></h2>
+                    <p>
+                        Logilink dispose de son propre service technique par souci d’indépendance, de flexibilité et
+                        d’efficacité. Nos techniciens sont là pour vous conseiller sur vos équipements informatiques
+                        et votre infrastructure réseau. En cas de difficultés techniques, ils pourront intervenir
+                        rapidement sur site ou à distance.
+                    </p>
+                </div>
+                <div class="section-image parc-image">
+                    <img src="{{ asset('build/app/images/software/illustrations/parc.jpg') }}" alt="propositions maquette website">
                 </div>
             </div>
 

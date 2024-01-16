@@ -29,16 +29,16 @@
                 </div>
             </div>
             <div class="col-2">
-                <div class="btn-start">
+                <a class="btn-start" href="#ultimmo">
                     <span class="icon-down-arrow"></span>
-                </div>
+                </a>
             </div>
         </div>
 
         <div class="homepage-products">
             {% set products = [
                 {
-                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_software'),
+                    numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_softwares'),
                     text: 'Des solutions logicielles puissantes et adaptées à votre entreprise.'
                 },
                 {
@@ -50,8 +50,8 @@
                     text: 'Des sites internet qui captivent l\'attention et stimulent la croissance de votre entreprise.'
                 },
                 {
-                    numero: 4, name: 'Services', txtBtn: 'Les services', pathBtn: path('app_homepage'),
-                    text: 'Simplifiez vous l\'installation du matériel informatique et l\'intégration de logiciels.'
+                    numero: 4, name: 'Webservices', txtBtn: 'Les services en ligne', pathBtn: path('app_webservices'),
+                    text: 'Des services en ligne et des solutions SaaS pour tout secteur d\'activité.'
                 }
             ] %}
             <div class="items">
@@ -72,51 +72,113 @@
             </div>
         </div>
 
-        <section class="lastwork">
+        <section class="suite" id="ultimmo">
             <div class="section-title">
-                <h2>Découvrez nos derniers travaux<span class="txt-color2">.</span></h2>
+                <h2>Notre gamme immobilière<span class="txt-color2">.</span></h2>
                 <p>
-                    La qualité et la performance sont au cœur de tout ce que nous faisons. Vos solutions seront rapides,
-                    fiables et conçues pour offrir une expérience utilisateur exceptionnelle.
+                    La suite ULTIMMO offre aux professionnels de l'immobilier une solution logicielle intégrée
+                    complète. Elle couvre tous les besoins spécifiques des administrateurs de biens et des
+                    transactionnaires en associant logiciels métiers, applications mobiles et services en ligne.
                 </p>
             </div>
 
-            <div class="lastwork-content">
-                <div class="item">
-                    <div class="item-image">
-                        <img src="{{ asset('build/app/images/website/dashboard-lotys.png') }}" alt="logiciel en ligne transaction immobiliere lotys">
-                    </div>
-                    <div class="item-content">
-                        <div class="badge badge-0">Site internet</div>
-                        <h3>Lotys</h3>
-                        <p>Logiciel de transaction immobilière en ligne</p>
-                        <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
-                    </div>
-                </div>
+            <div class="suite-content">
                 <div class="items">
+
                     <div class="item">
-                        <div class="item-image">
-                            <img src="{{ asset('build/app/images/website/dashboard-magesto.png') }}" alt="logiciel en ligne de facturation et de devis magesto">
+                        <div>
+                            <div class="logo">
+                                <img src="{{ asset('build/app/images/syndic.svg') }}" alt="">
+                            </div>
+                            <h3>Ultimmo Syndic</h3>
+                            <p>
+                                Apprécié des administrateurs de biens, gérez vos copropriétés dans son intégralité.
+                            </p>
                         </div>
-                        <div class="item-content">
-                            <div class="badge badge-0">Site internet</div>
-                            <h3>Magesto</h3>
-                            <p>Logiciel de devis et facturation en ligne</p>
-                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
+                        <div class="item-cta">
+                            <a class="link-italic" href="{{ path('app_softwares_syndic') }}">
+                                <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
+                            </a>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="item-image">
-                            <img src="{{ asset('build/app/images/website/dashboard-opendoc.png') }}" alt="application tablette et mobile de signature pdf">
+                        <div>
+                            <div class="logo">
+                                <img src="{{ asset('build/app/images/memento.jpg') }}" alt="">
+                            </div>
+                            <h3>Memento</h3>
+                            <p>
+                                Application de visite de copropriété. <br> Peut être associé à Ultimmo Syndic.
+                            </p>
                         </div>
-                        <div class="item-content">
-                            <div class="badge badge-1">Application</div>
-                            <h3>OpenDoc</h3>
-                            <p>Service de signature PDF et de partage de fichiers en ligne</p>
-                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
+                        <div class="item-cta">
+                            <a class="link-italic" href="{{ path('app_applications_memento') }}">
+                                <span>Voir l'application </span> <span class="icon-right-arrow"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div>
+                            <div class="logo">
+                                <img src="{{ asset('build/app/images/gerance.svg') }}" alt="">
+                            </div>
+                            <h3>Ultimmo Gérance</h3>
+                            <p>
+                                Dédiée à la gestion locative, sa conception repose sur de longues années de développement.
+                            </p>
+                        </div>
+                        <div class="item-cta">
+                            <a class="link-italic" href="{{ path('app_softwares_gerance') }}">
+                                <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div>
+                            <div class="logo">
+                                <img src="{{ asset('build/app/images/fokus.png') }}" alt="">
+                            </div>
+                            <h3>Fokus</h3>
+                            <p>
+                                Application mobile d’état des lieux. <br> Peut être associé à Ultimmo Gérance.
+                            </p>
+                        </div>
+                        <div class="item-cta">
+                            <a class="link-italic" href="{{ path('app_applications_fokus') }}">
+                                <span>Voir l'application </span> <span class="icon-right-arrow"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div>
+                            <div class="logo">
+                                <img src="{{ asset('build/app/images/lotys.svg') }}" alt="">
+                            </div>
+                            <h3>Lotys Transaction</h3>
+                            <p>
+                                Spécialement développé pour la transaction immobilière, autonome ou associé à Ultimmo Gérance.
+                            </p>
+                        </div>
+                        <div class="item-cta">
+                            <a class="link-italic" href="{{ path('app_softwares_lotys') }}">
+                                <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+
+
+            <div class="section-title">
+                <p>
+                    Nos logiciels immobiliers ULTIMMO Syndic et ULTIMMO gérance peuvent être utilisés en
+                    local, sur votre serveur, ou en mode cloud via notre hébergement sécurisé.
+                </p>
+
+                <a class="link-italic" href="{{ path('app_softwares') }}">
+                    <span>En savoir plus </span> <span class="icon-right-arrow"></span>
+                </a>
             </div>
         </section>
 
@@ -136,56 +198,52 @@
             </div>
         </div>
 
-        <section class="suite">
+        <section class="lastwork">
             <div class="section-title">
-                <h2>Notre gamme immobilière<span class="txt-color2">.</span></h2>
+                <h2>Découvrez nos derniers travaux<span class="txt-color2">.</span></h2>
                 <p>
-                    La suite logicielle dédiée à l'immobilier a tout pour doper votre activité.
+                    La qualité et la performance sont au cœur de tout ce que nous faisons. Vos solutions seront rapides,
+                    fiables et conçues pour offrir une expérience utilisateur exceptionnelle.
                 </p>
             </div>
 
-            <div class="suite-content">
+            <div class="lastwork-content">
+                <div class="item">
+                    <div class="item-image">
+                        <img src="{{ asset('build/app/images/website/dashboard-lotys.png') }}" alt="logiciel en ligne transaction immobiliere lotys">
+                    </div>
+                    <div class="item-content">
+                        <div class="badge badge-0">Logiciel en ligne</div>
+                        <h3>Lotys</h3>
+                        <p>Logiciel en ligne de transaction immobilière en ligne</p>
+                        <a class="link-italic" href="{{ path('app_softwares_lotys') }}">
+                            <span>Découvrir le projet</span> <span class="icon-right-arrow"></span>
+                        </a>
+                    </div>
+                </div>
                 <div class="items">
                     <div class="item">
-                        <div>
-                            <div class="logo">
-                                <img src="{{ asset('build/app/images/lotys.svg') }}" alt="">
-                            </div>
-                            <h3>Lotys</h3>
-                            <p>
-                                Spécialement développé pour la transaction immobilière, autonome ou associé à Ultimmo Gérance.
-                            </p>
+                        <div class="item-image">
+                            <img src="{{ asset('build/app/images/website/dashboard-magesto.png') }}" alt="logiciel en ligne de facturation et de devis magesto">
                         </div>
-                        <div class="item-cta">
-                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
+                        <div class="item-content">
+                            <div class="badge badge-0">Site internet</div>
+                            <h3>Magesto</h3>
+                            <p>Logiciel en ligne de devis et facturation en ligne</p>
+                            <a href="" class="link-italic"><span>Découvrir le projet</span> <span class="icon-right-arrow"></span></a>
                         </div>
                     </div>
                     <div class="item">
-                       <div>
-                           <div class="logo">
-                               <img src="{{ asset('build/app/images/gerance.svg') }}" alt="">
-                           </div>
-                           <h3>Ultimmo Gérance</h3>
-                           <p>
-                               Dédiée à la gestion locative, sa conception repose sur de longues années de développement.
-                           </p>
-                       </div>
-                        <div class="item-cta">
-                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
+                        <div class="item-image">
+                            <img src="{{ asset('build/app/images/website/dashboard-opendoc.png') }}" alt="application tablette et mobile de signature pdf">
                         </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <div class="logo">
-                                <img src="{{ asset('build/app/images/syndic.svg') }}" alt="">
-                            </div>
-                            <h3>Ultimmo Syndic</h3>
-                            <p>
-                                Apprécié des administrateurs de biens, gérez vos copropriétés dans son intégralité.
-                            </p>
-                        </div>
-                        <div class="item-cta">
-                            <a href="" class="link-italic"><span>En savoir plus </span> <span class="icon-right-arrow"></span></a>
+                        <div class="item-content">
+                            <div class="badge badge-1">Application</div>
+                            <h3>OpenDoc</h3>
+                            <p>Service de signature PDF et de partage de fichiers en ligne</p>
+                            <a class="link-italic" href="{{ path('app_applications_opendoc') }}">
+                                <span>Découvrir le projet</span> <span class="icon-right-arrow"></span>
+                            </a>
                         </div>
                     </div>
                 </div>

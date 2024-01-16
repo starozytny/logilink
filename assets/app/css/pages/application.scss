@@ -48,6 +48,70 @@ section{
   }
 }
 
+.page-product{
+  @import "../components/section";
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+.realisation{
+  .section-examples{
+    @include flex(column, stretch, space-between, var(--espaceLayout));
+    margin: 0 var(--espaceDiv);
+
+    .item{
+      background-color: var(--alpha);
+      @include shadowCommon();
+      border-radius: var(--radius2);
+      padding: var(--espaceLayout);
+    }
+
+    .logo{
+      width: 64px; height: 64px;
+      background-color: var(--color0Opacity1);
+      padding: 12px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+    }
+
+    h3{
+      margin-bottom: 8px;
+      font-size: 1.4em;
+    }
+
+    .item-cta{
+      text-align: right;
+    }
+  }
+
+  @media (min-width: 768px) {
+    align-items: flex-start;
+
+    .section-examples {
+      justify-content: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .item{
+        width: 354px;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-examples {
+      .item{
+        width: 380px;
+      }
+
+      .item-cta{
+        width: 100%;
+      }
+    }
+  }
+}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 .etude{
@@ -96,7 +160,7 @@ section{
   flex-direction: column-reverse;
 
   .proposition-image{
-    max-height: 280px;
+    max-height: 412px;
     overflow: hidden;
   }
 
@@ -131,6 +195,8 @@ section{
 
     img{
       width: 280px;
+      max-height: 180px;
+      object-fit: cover;
     }
   }
 
