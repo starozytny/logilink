@@ -59,6 +59,14 @@ p{
   font-size: 14px;
 
   [class^="icon-"]{
+    display: inline-block;
     padding-left: 12px;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover{
+    [class^="icon-"]{
+      transform: translateX(4px);
+    }
   }
 }
