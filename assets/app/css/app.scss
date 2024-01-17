@@ -17,7 +17,7 @@ body {
   @include fontRegular();
 }
 
-h1{
+h1, h3{
   @include fontBold();
 }
 
