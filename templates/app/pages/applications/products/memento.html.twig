@@ -1,6 +1,15 @@
 {% extends 'app/pages/applications/template.html.twig' %}
 
-{% block title %}Memento, Signature électronique et partage de documents dématérialisés.{% endblock %}
+{% block title %}Memento, application dédié aux gestionnaires de copropriété.{% endblock %}
+
+{% block meta_description %}Optimisez les visites des gestionnaires de copropriété avec notre application spécialisée. Simplifiez la planification, la documentation et le suivi des visites pour une gestion efficace des copropriétés.{% endblock %}
+{% block meta_keywords %}application gestion copropriété, visites gestionnaires copropriété, planification visites, documentation visites{% endblock %}
+{% block openGraph %}
+    <meta property="og:description" content="Optimisez les visites des gestionnaires de copropriété avec notre application spécialisée. Simplifiez la planification, la documentation et le suivi des visites pour une gestion efficace des copropriétés.">
+{% endblock %}
+{% block twitter %}
+    <meta name="twitter:description" content="Optimisez les visites des gestionnaires de copropriété avec notre application spécialisée. Simplifiez la planification, la documentation et le suivi des visites pour une gestion efficace des copropriétés.">
+{% endblock %}
 
 {% block main_content %}
     <div class="page-default page-product">
@@ -17,8 +26,8 @@
                 <h2>Application<span class="txt-color2">.</span></h2>
                 <p>
                     L’application mobile Memento est une application Android dédiée aux syndics de copropriété
-                    équipés du logiciel ULTIMMO Syndic. Dotée d’une interface graphique conviviale, elle
-                    fonctionne sur tablette et mobile.
+                    équipés du logiciel <a href="{{ path('app_softwares_syndic') }}">ULTIMMO Syndic</a>. Dotée d’une
+                    interface graphique conviviale, elle fonctionne sur tablette et mobile.
                 </p>
 
                 <a class="link-italic" href="https://memento.immo" target="_blank">
@@ -66,10 +75,12 @@
                     <h2>Import des informations de la copropriété<span class="txt-color2">.</span></h2>
                     <p>
                         Lors de la visite d’une copropriété, le gestionnaire doit se montrer proactif et communiquer
-                        son rapport dans les meilleurs délais. Memento répond parfaitement à ces exigences, tout
-                        d’abord en important les informations relatives aux personnes et à l’immeuble : liste des
-                        copropriétaires et membres du CS avec leurs coordonnées, liste des fournisseurs, bâtiments et
-                        escaliers.
+                        son rapport dans les meilleurs délais.
+                        <br>
+                        <br>
+                        Memento répond parfaitement à ces exigences, tout d’abord en important les informations
+                        relatives aux personnes et à l’immeuble : liste des copropriétaires et membres du CS avec leurs
+                        coordonnées, liste des fournisseurs, bâtiments et escaliers.
                         <br><br>
                         Il vous suffit de cocher les présents et de sélectionner le type de visite (réunion CS, visite
                         contractuelle, expertise…) pour être opérationnel.
@@ -137,23 +148,7 @@
                 </div>
             </div>
 
-            <div class="contact">
-                <div class="section-title">
-                    <h2>Un <span class="txt-color2">projet</span> à réaliser <span class="txt-color2">?</span></h2>
-                </div>
-                <div class="contact-content">
-                    <p>
-                        Si vous cherchez à créer une application mobile ou tablette sur mesure qui incarne véritablement
-                        votre vision, n'hésitez pas à nous contacter dès aujourd'hui.
-                        <br><br>
-                        Nous sommes prêts à transformer vos idées en applications interactives et conviviales.
-                        Faites de votre présence mobile et tablette un succès incontestable avec notre expertise.
-                    </p>
-                    <div class="cta">
-                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                    </div>
-                </div>
-            </div>
+            {% include 'app/pages/applications/cta/contact.html.twig' %}
         </section>
     </div>
 {% endblock %}
