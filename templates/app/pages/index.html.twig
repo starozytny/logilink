@@ -93,41 +93,7 @@
 
             <div class="suite-content">
                 <div class="items">
-                    <div class="items">
-                        <div class="item">
-                            <div>
-                                <div class="logo">
-                                    <img src="{{ asset('build/app/images/lotys.svg') }}"
-                                         alt="logo lotys logiciel en lien de transaction immobilière">
-                                </div>
-                                <h3>Lotys Transaction</h3>
-                                <p>
-                                    Spécialement développé pour la transaction immobilière, autonome ou associé à ULTIMMO Gérance.
-                                </p>
-                            </div>
-                            <div class="item-cta">
-                                <a class="link-italic" href="{{ path('app_softwares_lotys') }}">
-                                    <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <div class="logo">
-                                    <img src="{{ asset('build/app/images/gerance.svg') }}"
-                                         alt="logo logiciel de gestion locative ULTIMMO Gérance">
-                                </div>
-                                <h3>ULTIMMO Gérance</h3>
-                                <p>
-                                    Dédiée à la gestion locative, sa conception repose sur de longues années de développement.
-                                </p>
-                            </div>
-                            <div class="item-cta">
-                                <a class="link-italic" href="{{ path('app_softwares_gerance') }}">
-                                    <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="items items-logiciels">
                         <div class="item">
                             <div>
                                 <div class="logo">
@@ -145,25 +111,42 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="items">
                         <div class="item">
                             <div>
                                 <div class="logo">
-                                    <img src="{{ asset('build/app/images/fokus.png') }}"
-                                         alt="logo application etat des lieux fokus immo">
+                                    <img src="{{ asset('build/app/images/gerance.svg') }}"
+                                         alt="logo logiciel de gestion locative ULTIMMO Gérance">
                                 </div>
-                                <h3>Fokus</h3>
+                                <h3>ULTIMMO Gérance</h3>
                                 <p>
-                                    Application mobile d’état des lieux. <br> Peut être associé à ULTIMMO Gérance.
+                                    Dédiée à la gestion locative, sa conception repose sur des années de développement.
                                 </p>
                             </div>
                             <div class="item-cta">
-                                <a class="link-italic" href="{{ path('app_applications_fokus') }}">
-                                    <span>Voir l'application </span> <span class="icon-right-arrow"></span>
+                                <a class="link-italic" href="{{ path('app_softwares_gerance') }}">
+                                    <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
                                 </a>
                             </div>
                         </div>
+                        <div class="item">
+                            <div>
+                                <div class="logo">
+                                    <img src="{{ asset('build/app/images/lotys.svg') }}"
+                                         alt="logo lotys logiciel en lien de transaction immobilière">
+                                </div>
+                                <h3>Lotys Transaction</h3>
+                                <p>
+                                    Logiciel en ligne pour la transaction immobilière.
+                                </p>
+                            </div>
+                            <div class="item-cta">
+                                <a class="link-italic" href="{{ path('app_softwares_lotys') }}">
+                                    <span>Voir le logiciel </span> <span class="icon-right-arrow"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="items items-applications">
                         <div class="item">
                             <div>
                                 <div class="logo">
@@ -172,7 +155,7 @@
                                 </div>
                                 <h3>Memento</h3>
                                 <p>
-                                    Application de visite de copropriété. <br> Peut être associé à ULTIMMO Syndic.
+                                    Application de visite de copropriété.
                                 </p>
                             </div>
                             <div class="item-cta">
@@ -181,7 +164,26 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="item">
+                            <div>
+                                <div class="logo">
+                                    <img src="{{ asset('build/app/images/fokus.png') }}"
+                                         alt="logo application etat des lieux fokus immo">
+                                </div>
+                                <h3>Fokus</h3>
+                                <p>
+                                    Application mobile d’état des lieux.
+                                </p>
+                            </div>
+                            <div class="item-cta">
+                                <a class="link-italic" href="{{ path('app_applications_fokus') }}">
+                                    <span>Voir l'application </span> <span class="icon-right-arrow"></span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                    <div class="item-link-syndic"></div>
+                    <div class="item-link-gerance"></div>
                 </div>
             </div>
 
