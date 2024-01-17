@@ -1,0 +1,50 @@
+{% extends 'app/pages/support/template.html.twig' %}
+
+{% block title %}Support technique de Logilink{% endblock %}
+
+{% block main_content %}
+    <div class="page-default">
+        <div class="page-category-title">
+            <h1>Support technique<span class="txt-color2">.</span></h1>
+        </div>
+        <div class="page-category-explain">
+            <div class="category-explain-container society-contact">
+                <div class="col-1">
+                    <h2>Télémaintenance<span class="txt-color2">.</span></h2>
+                    <div>
+                        <div>
+                            <div>BitVise</div>
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div>
+                        <h3>Contact<span class="txt-color2">.</span></h3>
+                        <div>
+                            <div class="address">
+                                <a target="_blank"
+                                   href="https://www.google.com/maps/place/17+Rue+de+la+R%C3%A9publique,+13002+Marseille/data=!4m2!3m1!1s0x12c9c0c07e1e99af:0xbfca9a09cb1a9b10?sa=X&ved=2ahUKEwiMyeufkeSDAxWCxAIHHblvC4AQ8gF6BAgWEAA">
+                                    Logilink <br>
+                                    17 rue de la République<br>
+                                    13002, Marseille
+                                </a>
+                            </div>
+                            <div class="cta">
+                                <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Nous écrire<span class="txt-color2">.</span></h3>
+                        <div id="contacts_create">
+                            {% include "layout/components/loader.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

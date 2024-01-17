@@ -56,7 +56,7 @@ class AppController extends AbstractController
         return $this->render('app/pages/prestations/index.html.twig');
     }
 
-    #[Route('/services-en-ligne-saas', name: 'app_webservices')]
+    #[Route('/services-en-ligne', name: 'app_webservices')]
     public function webservices(): Response
     {
         return $this->render('app/pages/webservices/index.html.twig');
@@ -72,5 +72,11 @@ class AppController extends AbstractController
     public function history(): Response
     {
         return $this->render('app/pages/society/history.html.twig');
+    }
+
+    #[Route('/support-technique', name: 'app_support')]
+    public function support(): Response
+    {
+        return $this->render('app/pages/support/index.html.twig');
     }
 }
