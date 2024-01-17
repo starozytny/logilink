@@ -87,10 +87,19 @@ section{
   @media (min-width: 768px) {
     align-items: flex-start;
 
+    .realisation-content{
+      max-width: initial;
+      text-align: center;
+      width: 100%;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
     .section-examples {
-      justify-content: flex-start;
+      justify-content: center;
       flex-direction: row;
       flex-wrap: wrap;
+      width: 100%;
 
       .item{
         width: 354px;

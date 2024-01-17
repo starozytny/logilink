@@ -146,6 +146,16 @@ body{
     }
   }
 
+  .product-logo{
+    margin-bottom: var(--espaceEls);
+
+    img{
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+  }
+
   & > .col-1, & > .col-2{
     width: 100%;
   }

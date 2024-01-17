@@ -52,32 +52,8 @@
             ]
         }
     },
-    {
-        id: 4, name: "Sites internet", path: path('app_websites'),
-        matchRoute: ['app_websites', 'app_websites_opendoc', 'app_websites_lotys'],
-        expanded: {
-            txtCta: 'Créer mon site internet',
-            text: 'Des sites internet créatifs à votre image.',
-            products: [
-                {
-                    name: "Lotys", logo: 'lotys.svg', path: path('app_websites_lotys'),
-                    alt: 'Logo Lotys logiciel transaction en ligne',
-                    matchRoute: ['app_websites_lotys']
-                },
-                {
-                    name: "Magesto", logo: 'magesto.svg', path: path('app_homepage'),
-                    alt: 'Logo Magesto logiciel facturation en ligne',
-                    matchRoute: ['app_users']
-                },
-                {
-                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_websites_opendoc'),
-                    alt: 'Logo site de drive temporaire',
-                    matchRoute: ['app_websites_opendoc']
-                }
-            ]
-        }
-    },
-    { id: 5, name: "Webservices", path: path('app_webservices'), matchRoute: ['app_webservices'], expanded: false },
+    { id: 4, name: "Sites internet", path: path('app_websites'), matchRoute: ['app_websites'], expanded: false },
+    { id: 5, name: "Services en ligne", path: path('app_webservices'), matchRoute: ['app_webservices'], expanded: false },
     { id: 6, name: "Société", path: path('app_society'), matchRoute: ['app_society'], expanded: false },
 ] %}
 
@@ -96,6 +72,10 @@
                     <a class="footer-link" href="{{ path('app_softwares') }}">Découvrir nos logiciels</a>
                     <a class="footer-link" href="{{ path('app_applications') }}">Découvrir nos applications</a>
                     <a class="footer-link" href="{{ path('app_websites') }}">Découvrir nos sites internet</a>
+                    <a class="footer-link" href="{{ path('app_webservices') }}">Découvrir nos services en ligne</a>
+                    <a class="footer-link" href="{{ path('app_prestations') }}">Découvrir nos prestations de services</a>
+                    <div class="footer-title" style="margin-top: 12px">Support</div>
+                    <a class="footer-link" href="{{ path('app_support') }}">Support technique</a>
                 </div>
                 <div class="col-3">
                     <div class="footer-title">Contact</div>
@@ -110,7 +90,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2024 <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
+                <p>&copy; 2024 - <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
                 <span>-</span>
                 <a class="footer-link" href="{{ path('app_mentions') }}">Mentions légales</a>
                 <a class="footer-link" href="{{ path('app_politique') }}">Politique de confidentialité</a>
