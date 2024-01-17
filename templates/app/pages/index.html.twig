@@ -2,6 +2,15 @@
 
 {% block title %}Logilink, éditeur de logiciel, applications et sites internet sur mesure{% endblock %}
 
+{% block meta_description %}Découvrez notre agence Logilink basée à Marseille, spécialisée dans le développement de logiciels, d'applications mobiles, de services web et de sites internet, avec une spécialisation approfondie dans le secteur de l'immobilier. Notre équipe dédiée conjugue innovation technologique et connaissance approfondie du marché immobilier pour offrir des solutions numériques sur mesure. Contactez-nous pour bénéficier de services de pointe, centrés sur la performance, la sécurité et l'expérience utilisateur, spécifiquement adaptés aux besoins du secteur immobilier à Marseille et ses environs.{% endblock %}
+{% block meta_keywords %}logiciel immobilier, applications immobilières, agence web Marseille, développement d'applications, services web, sites internet, solutions numériques, expertise immobilière, innovation technologique, développement sur mesure{% endblock %}
+{% block openGraph %}
+    <meta property="og:description" content="Experts en développement numérique à Marseille, nous proposons des solutions sur mesure pour logiciels, applications, services web, avec une spécialisation avancée dans le secteur immobilier. Contactez-nous pour des projets innovants et performants spécifiquement adaptés aux besoins immobiliers.">
+{% endblock %}
+{% block twitter %}
+    <meta name="twitter:description" content="Experts en développement numérique à Marseille, nous proposons des solutions sur mesure pour logiciels, applications, services web, avec une spécialisation avancée dans le secteur immobilier. Contactez-nous pour des projets innovants et performants spécifiquement adaptés aux besoins immobiliers.">
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('app_homepage') }}
@@ -18,7 +27,7 @@
                     <div class="prefix">Nos logiciels vous <span class="italic">simplifient la vie</span>.</div>
                     <h1>Transformez vos <span class="txt-color2">idées en</span> réalité numériques<span class="txt-color2">.</span></h1>
                     <p>
-                        Editeur de logiciels d'entreprise, d'applications mobile et tablette innovante et de sites internet
+                        Editeur de logiciels d'entreprise, d'applications mobiles et de sites internet
                         sur-mesure, Logilink développe des solutions modernes, fiables et performants en réponse à toutes
                         vos exigences professionnelles.
                     </p>
@@ -74,7 +83,7 @@
 
         <section class="suite" id="ultimmo">
             <div class="section-title">
-                <h2>Notre gamme immobilière<span class="txt-color2">.</span></h2>
+                <h2>Syndic - Gérance - Transaction<span class="txt-color2">.</span></h2>
                 <p>
                     La suite ULTIMMO offre aux professionnels de l'immobilier une solution logicielle intégrée
                     complète. Elle couvre tous les besoins spécifiques des administrateurs de biens et des
@@ -85,16 +94,15 @@
             <div class="suite-content">
                 <div class="items">
                     <div class="items">
-
-
                         <div class="item">
                             <div>
                                 <div class="logo">
-                                    <img src="{{ asset('build/app/images/lotys.svg') }}" alt="">
+                                    <img src="{{ asset('build/app/images/lotys.svg') }}"
+                                         alt="logo lotys logiciel en lien de transaction immobilière">
                                 </div>
                                 <h3>Lotys Transaction</h3>
                                 <p>
-                                    Spécialement développé pour la transaction immobilière, autonome ou associé à Ultimmo Gérance.
+                                    Spécialement développé pour la transaction immobilière, autonome ou associé à ULTIMMO Gérance.
                                 </p>
                             </div>
                             <div class="item-cta">
@@ -106,9 +114,10 @@
                         <div class="item">
                             <div>
                                 <div class="logo">
-                                    <img src="{{ asset('build/app/images/gerance.svg') }}" alt="">
+                                    <img src="{{ asset('build/app/images/gerance.svg') }}"
+                                         alt="logo logiciel de gestion locative ULTIMMO Gérance">
                                 </div>
-                                <h3>Ultimmo Gérance</h3>
+                                <h3>ULTIMMO Gérance</h3>
                                 <p>
                                     Dédiée à la gestion locative, sa conception repose sur de longues années de développement.
                                 </p>
@@ -122,9 +131,10 @@
                         <div class="item">
                             <div>
                                 <div class="logo">
-                                    <img src="{{ asset('build/app/images/syndic.svg') }}" alt="">
+                                    <img src="{{ asset('build/app/images/syndic.svg') }}"
+                                         alt="logo logiciel de gestion de copropriété ULTIMMO Syndic">
                                 </div>
-                                <h3>Ultimmo Syndic</h3>
+                                <h3>ULTIMMO Syndic</h3>
                                 <p>
                                     Apprécié des administrateurs de biens, gérez vos copropriétés dans son intégralité.
                                 </p>
@@ -140,11 +150,12 @@
                         <div class="item">
                             <div>
                                 <div class="logo">
-                                    <img src="{{ asset('build/app/images/fokus.png') }}" alt="">
+                                    <img src="{{ asset('build/app/images/fokus.png') }}"
+                                         alt="logo application etat des lieux fokus immo">
                                 </div>
                                 <h3>Fokus</h3>
                                 <p>
-                                    Application mobile d’état des lieux. <br> Peut être associé à Ultimmo Gérance.
+                                    Application mobile d’état des lieux. <br> Peut être associé à ULTIMMO Gérance.
                                 </p>
                             </div>
                             <div class="item-cta">
@@ -156,11 +167,12 @@
                         <div class="item">
                             <div>
                                 <div class="logo">
-                                    <img src="{{ asset('build/app/images/memento.jpg') }}" alt="">
+                                    <img src="{{ asset('build/app/images/memento.jpg') }}"
+                                         alt="logo application visite copropriete memento">
                                 </div>
                                 <h3>Memento</h3>
                                 <p>
-                                    Application de visite de copropriété. <br> Peut être associé à Ultimmo Syndic.
+                                    Application de visite de copropriété. <br> Peut être associé à ULTIMMO Syndic.
                                 </p>
                             </div>
                             <div class="item-cta">
@@ -176,7 +188,7 @@
 
             <div class="section-title">
                 <p>
-                    Nos logiciels immobiliers ULTIMMO Syndic et ULTIMMO gérance peuvent être utilisés en
+                    Nos logiciels immobiliers ULTIMMO Syndic et ULTIMMO Gérance peuvent être utilisés en
                     local, sur votre serveur, ou en mode cloud via notre hébergement sécurisé.
                 </p>
 
@@ -192,7 +204,7 @@
             </div>
             <div class="contact-content">
                 <p>
-                    Contactez-nous dès aujourd'hui pour discuter de votre projet numérique.
+                    Contactez-nous dès aujourd'hui pour discuter de votre projet.
                     <br>
                     Logilink est déterminé à faire de vos idées une réalité numérique unique.
                 </p>
@@ -214,7 +226,8 @@
             <div class="lastwork-content">
                 <div class="item">
                     <div class="item-image">
-                        <img src="{{ asset('build/app/images/website/dashboard-lotys.png') }}" alt="logiciel en ligne transaction immobiliere lotys">
+                        <img src="{{ asset('build/app/images/website/dashboard-lotys.png') }}"
+                             alt="accueil logiciel en ligne transaction immobiliere lotys">
                     </div>
                     <div class="item-content">
                         <div class="badge badge-0">Logiciel en ligne</div>
@@ -228,7 +241,8 @@
                 <div class="items">
                     <div class="item">
                         <div class="item-image">
-                            <img src="{{ asset('build/app/images/website/dashboard-magesto.png') }}" alt="logiciel en ligne de facturation et de devis magesto">
+                            <img src="{{ asset('build/app/images/website/dashboard-magesto.png') }}"
+                                 alt="accueil logiciel en ligne de facturation et de devis magesto">
                         </div>
                         <div class="item-content">
                             <div class="badge badge-0">Site internet</div>
@@ -239,13 +253,16 @@
                     </div>
                     <div class="item">
                         <div class="item-image">
-                            <img src="{{ asset('build/app/images/website/dashboard-opendoc.png') }}" alt="application tablette et mobile de signature pdf">
+                            <img src="{{ asset('build/app/images/website/dashboard-opendoc.png') }}"
+                                 alt="accueil application tablette et mobile de signature de pdf opendoc">
                         </div>
                         <div class="item-content">
                             <div class="badge badge-1">Application</div>
                             <h3>OpenDoc</h3>
-                            <p>Service de signature PDF et de partage de fichiers en ligne</p>
-                            <a class="link-italic" href="{{ path('app_applications_opendoc') }}">
+                            <p>Application de signatures de PDF et de partage de fichiers en ligne</p>
+                            <a class="link-italic"
+                               href="{{ path('app_applications_opendoc') }}"
+                            >
                                 <span>Découvrir le projet</span> <span class="icon-right-arrow"></span>
                             </a>
                         </div>
