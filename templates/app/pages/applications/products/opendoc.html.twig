@@ -2,6 +2,9 @@
 
 {% block title %}Opendoc, Signature électronique et partage de documents dématérialisés.{% endblock %}
 
+{% block meta_description %}Facilitez la signature électronique et le partage de documents avec notre application spécialisée. Sécurisez vos transactions et simplifiez la collaboration grâce à notre solution de signature électronique avancée.{% endblock %}
+{% block meta_keywords %}application signature électronique, partage de documents, sécurité transaction, collaboration professionnelle{% endblock %}
+
 {% block main_content %}
     <div class="page-default page-product">
         <div class="page-category-title page-product-title"
@@ -75,13 +78,16 @@
                     <p>
                         Dès l’ouverture de votre compte sur le
                         portail <a href="https://opendoc.fr" target="_blank">www.opendoc.fr</a>, vous pouvez déposer les
-                        documents en attente de signature ou de téléchargement. Les documents à signer seront
-                        importés automatiquement sur votre tablette. Les documents à télécharger seront
-                        communiqués aux destinataires par email contenant le lien de téléchargement.
+                        documents en attente de signature ou de téléchargement.
+                        <br>
+                        <br>
+                        Les documents à signer seront importés automatiquement sur votre tablette.
+                        Les documents à télécharger seront communiqués aux destinataires par email contenant
+                        le lien de téléchargement.
                     </p>
                 </div>
                 <div class="section-image product-image">
-                    <img src="{{ asset('build/app/images/illu-tablette.jpg') }}" alt="etude projet creation site internet">
+                    <img src="{{ asset('build/app/images/application/products/opendoc/depot.jpg') }}" alt="accueil depot de document opendoc">
                 </div>
             </div>
 
@@ -89,11 +95,12 @@
                 <div class="section-content product-content">
                     <h2>Signature électronique de bail dématérialisé<span class="txt-color2">.</span></h2>
                     <p>
-                        Une fois importé sur votre tablette, le bail de location peut être paraphé et signé par toutes
-                        les parties. Compte tenu du volume conséquent du bail locatif et des annexes à parapher.
+                        Une fois importé sur votre tablette, le <strong>bail de location</strong> peut être paraphé et
+                        signé par toutes les parties. Compte tenu du volume conséquent du bail locatif et des annexes à parapher.
+                        <br>
                         <br>
                         À l’issue de cette signature, le document sera automatiquement sauvegardé. Un email
-                        contenant le lien de téléchargement du document sera transmis au locataire.
+                        contenant <strong>le lien de téléchargement du document</strong> sera transmis au locataire.
                     </p>
                 </div>
                 <div class="section-image product-image">
@@ -101,23 +108,7 @@
                 </div>
             </div>
 
-            <div class="contact">
-                <div class="section-title">
-                    <h2>Un <span class="txt-color2">projet</span> à réaliser <span class="txt-color2">?</span></h2>
-                </div>
-                <div class="contact-content">
-                    <p>
-                        Si vous cherchez à créer une application mobile ou tablette sur mesure qui incarne véritablement
-                        votre vision, n'hésitez pas à nous contacter dès aujourd'hui.
-                        <br><br>
-                        Nous sommes prêts à transformer vos idées en applications interactives et conviviales.
-                        Faites de votre présence mobile et tablette un succès incontestable avec notre expertise.
-                    </p>
-                    <div class="cta">
-                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                    </div>
-                </div>
-            </div>
+            {% include 'app/pages/applications/cta/contact.html.twig' %}
         </section>
     </div>
 {% endblock %}

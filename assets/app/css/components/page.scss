@@ -106,6 +106,13 @@ body{
   background-color: var(--color0);
   color: var(--alpha);
 
+  p, ul{
+    a{
+      color: var(--primary);
+      text-decoration: underline;
+    }
+  }
+
   .category-explain-container{
     max-width: 568px;
     margin: 0 auto;

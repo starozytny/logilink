@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="{% block meta_description %}{% endblock %}" />
         <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
         {% block noindex %}{% endblock %}
+        <meta property="og:title" content="Logilink - Développement de Logiciels, Applications, Services Web et Spécialiste en Immobilier à Marseille">
+        <meta property="og:image" content="{{ app.request.schemeAndHttpHost ~ asset('logo-logilink.png') }}">
+        <meta property="og:site_name" content="Logilink">
+        <meta property="og:type" content="website">
         {% block openGraph %}{% endblock %}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Logilink - Développement de Logiciels, Applications, Services Web et Spécialiste en Immobilier à Marseille">
+        <meta name="twitter:image" content="{{ app.request.schemeAndHttpHost ~ asset('logo-logilink.png') }}">
+        {% block twitter %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/ico">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="apple-touch-icon" href="{{ asset('logo-apple-touch.png') }}"/>
+        <title>{% block title %}Logilink{% endblock %}</title>
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('common_app') }}

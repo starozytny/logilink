@@ -2,6 +2,15 @@
 
 {% block title %}Développer mon application mobile et tablette sur mesure avec Logilink{% endblock %}
 
+{% block meta_description %}Création d'applications mobiles et tablettes sur mesure chez Logilink basé sur Marseille. Transformez vos idées en applications innovantes avec notre expertise.{% endblock %}
+{% block meta_keywords %}applications mobiles, applications tablettes, création d'applications, agence web, Marseille, développement sur mesure{% endblock %}
+{% block openGraph %}
+    <meta property="og:description" content="Création d'applications mobiles et tablettes sur mesure. Transformez vos idées en applications innovantes avec notre expertise.">
+{% endblock %}
+{% block twitter %}
+    <meta name="twitter:description" content="Création d'applications mobiles et tablettes sur mesure. Transformez vos idées en applications innovantes avec notre expertise.">
+{% endblock %}
+
 {% block main_content %}
     <div class="page-default">
         <div class="page-category-title">
@@ -33,7 +42,8 @@
                     <div class="item">
                         <div>
                             <div class="logo">
-                                <img src="{{ asset('build/app/images/fokus.png') }}" alt="">
+                                <img src="{{ asset('build/app/images/fokus.png') }}"
+                                     alt="logo fokus application mobile etat des lieux">
                             </div>
                             <h3>Fokus</h3>
                             <p>
@@ -49,7 +59,8 @@
                     <div class="item">
                         <div>
                             <div class="logo">
-                                <img src="{{ asset('build/app/images/memento.jpg') }}" alt="">
+                                <img src="{{ asset('build/app/images/memento.jpg') }}"
+                                     alt="logo memento application mobile pour visite de copropriete">
                             </div>
                             <h3>Memento</h3>
                             <p>
@@ -65,7 +76,8 @@
                     <div class="item">
                         <div>
                             <div class="logo">
-                                <img src="{{ asset('build/app/images/opendoc.svg') }}" alt="">
+                                <img src="{{ asset('build/app/images/opendoc.svg') }}"
+                                     alt="logo opendoc application de signature electronique et partage de documents">
                             </div>
                             <h3>Opendoc</h3>
                             <p>
@@ -101,18 +113,18 @@
                     <p>
                         Nous croyons que la première étape cruciale pour créer une application est de
                         comprendre la vision de votre entreprise et les objectifs que vous souhaitez atteindre.
-                        <br>
+                        <br><br>
                         Notre équipe collabore étroitement avec vous pour cerner les détails et les nuances de votre idée.
                     </p>
                 </div>
                 <div class="section-image etude-image">
-                    <img src="{{ asset('build/app/images/illu-tablette.jpg') }}" alt="etude projet creation site internet">
+                    <img src="{{ asset('build/app/images/application/illustrations/vision.jpg') }}" alt="tablette tenu avec une main">
                 </div>
             </div>
 
             <div class="section proposition">
                 <div class="section-image proposition-image">
-                    <img src="{{ asset('build/app/images/application/illustrations/conception.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/application/illustrations/conception.jpg') }}" alt="feuilles de conception d'application mobile">
                 </div>
                 <div class="section-content proposition-content">
                     <h2>Conception innovante et intuitive<span class="txt-color2">.</span></h2>
@@ -120,7 +132,7 @@
                         Nous pensons que le design est plus qu'une simple esthétique, c'est une expérience.
                         <br>
                         <br>
-                        En étroite collaboration avec vous, nous veillons à développer une interface intuitive
+                        En étroite collaboration avec vous, nous veillons à <strong>développer une interface intuitive</strong>
                         pour une expérience utilisateur inégalable.
                         <br>
                         <br>
@@ -134,7 +146,7 @@
                 <div class="section-content development-content">
                     <h2>Développement<span class="txt-color2">.</span></h2>
                     <p>
-                        Loin des solutions prêtes à l'emploi, nous optons pour un développement sur mesure.
+                        Loin des solutions prêtes à l'emploi, nous optons pour un <strong>développement sur mesure</strong>.
                         <br>
                         Chaque fonctionnalité, chaque interaction, est conçue spécifiquement pour répondre
                         à vos besoins particuliers.
@@ -145,9 +157,9 @@
                     </p>
                 </div>
                 <div class="section-image development-image">
-                    <img src="{{ asset('build/app/images/application/illustrations/dev-01.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/application/illustrations/dev-02.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/application/illustrations/dev-03.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/application/illustrations/dev-01.jpg') }}" alt="ecrit un design application sur papier">
+                    <img src="{{ asset('build/app/images/application/illustrations/dev-02.jpg') }}" alt="ordinateur portable de developpement d'application">
+                    <img src="{{ asset('build/app/images/application/illustrations/dev-03.jpg') }}" alt="tablette posé sur un sac">
                 </div>
             </div>
 
@@ -161,27 +173,11 @@
                     </p>
                 </div>
                 <div class="section-image online-image">
-                    <img src="{{ asset('build/app/images/application/illustrations/online.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/application/illustrations/online.jpg') }}" alt="femme tient une tablette dans les mains">
                 </div>
             </div>
 
-            <div class="contact">
-                <div class="section-title">
-                    <h2>Un <span class="txt-color2">projet</span> à réaliser <span class="txt-color2">?</span></h2>
-                </div>
-                <div class="contact-content">
-                    <p>
-                        Si vous cherchez à créer une application mobile ou tablette sur mesure qui incarne véritablement
-                        votre vision, n'hésitez pas à nous contacter dès aujourd'hui.
-                        <br><br>
-                        Nous sommes prêts à transformer vos idées en applications interactives et conviviales.
-                        Faites de votre présence mobile et tablette un succès incontestable avec notre expertise.
-                    </p>
-                    <div class="cta">
-                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                    </div>
-                </div>
-            </div>
+            {% include 'app/pages/applications/cta/contact.html.twig' %}
         </section>
     </div>
 {% endblock %}

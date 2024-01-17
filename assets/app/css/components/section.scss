@@ -11,6 +11,13 @@ section{
     max-width: 568px;
     padding: 0 var(--espaceLayout);
     margin-bottom: var(--espaceLayout);
+
+    p, ul{
+      a{
+        color: var(--primary);
+        text-decoration: underline;
+      }
+    }
   }
 
   .section-image{
