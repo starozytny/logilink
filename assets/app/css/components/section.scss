@@ -12,9 +12,9 @@ section{
     padding: 0 var(--espaceLayout);
     margin-bottom: var(--espaceLayout);
 
-    p{
+    p, ul{
       a{
-        color: var(--txt);
+        color: var(--primary);
         text-decoration: underline;
       }
     }

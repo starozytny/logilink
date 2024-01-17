@@ -2,6 +2,9 @@
 
 {% block title %}Nos logiciels immobiliers sur mesure avec Logilink{% endblock %}
 
+{% block meta_description %}Découvrez notre gamme de logiciels immobiliers à Marseille. Des solutions innovantes pour la gestion, la vente et la location de biens immobiliers. Optimisez votre activité immobilière avec nos outils performants.{% endblock %}
+{% block meta_keywords %}logiciel immobilier, gestion immobilière, vente immobilière, location immobilière, outils immobiliers{% endblock %}
+
 {% block main_content %}
     <div class="page-default">
         <div class="page-category-title">
@@ -9,10 +12,11 @@
         </div>
         <div class="page-category-explain">
             <div class="category-explain-container">
-                <h2>La suite Ultimmo</h2>
+                <h2>La suite ULTIMMO</h2>
                 <p>
                     Optimisez votre activité immobilière avec nos logiciels novateurs. Nos fonctionnalités
                     font de nos solutions le choix idéal pour les agents, promoteurs et gestionnaires de biens.
+                    <br>
                     <br>
                     Choisissez l'efficacité et l'innovation pour dominer le marché immobilier.
                 </p>
@@ -25,12 +29,12 @@
 
             <div class="section transfert">
                 <div class="section-image transfert-image">
-                    <img src="{{ asset('build/app/images/software/illustrations/transfert.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/transfert.jpg') }}" alt="illustration d'un metro en movement pour le transfert de données">
                 </div>
                 <div class="section-content transfert-content">
                     <h2>Transfert de vos données<span class="txt-color2">.</span></h2>
                     <p>
-                        Si besoin est, nos développeurs peuvent procéder à la migration de vos données depuis votre
+                        Si besoin est, nos développeurs peuvent procéder à la <strong>migration de vos données</strong> depuis votre
                         ancien logiciel, vous assurant ainsi un démarrage immédiat avec pas ou peu de ressaisie.
                     </p>
                 </div>
@@ -49,13 +53,18 @@
                         <li>Intégration automatique des écritures bancaires</li>
                         <li>Intégration des factures de prestataires majeurs (EDF, ENGIE, PROXHYDRO...)</li>
                         <li>Intégration et traitement des paiements en ligne effectués sur les extranets de gérance et de syndic</li>
-                        <li>Intégration des votes en ligne aux AG effectués sur coprodirecte.fr, l’extranet des copropriétaires.</li>
+                        <li>
+                            Intégration des votes en ligne aux AG effectués
+                            sur <a href="https://coprodirecte.fr" target="_blank">coprodirecte.fr</a>,
+                            l’extranet des copropriétaires.
+                        </li>
                     </ul>
                     <p>
-                        L’échange fluide de données entre nos logiciels immobiliers permet un emploi unifié des
+                        <strong>L’échange fluide de données entre nos logiciels immobiliers</strong> permet un emploi unifié des
                         informations communes au syndic de copropriété et à la gestion locative. Tous les biens gérés
-                        à relouer seront par exemple transférés automatiquement, à votre rythme, vers Lotys, notre
-                        logiciel de transaction immobilière en ligne.
+                        à relouer seront par exemple transférés automatiquement, à votre rythme,
+                        vers <a href="{{ path('app_softwares_lotys') }}">Lotys</a>, notre
+                        <i>logiciel de transaction immobilière en ligne</i>.
                         <br><br>
                         Ces traitements récurrents évitent à vos collaborateurs toute ressaisie fastidieuse très
                         souvent source d’erreur. Un gain substantiel de temps, de productivité et de fiabilité pour les
@@ -63,7 +72,7 @@
                     </p>
                 </div>
                 <div class="section-image traitement-image">
-                    <img src="{{ asset('build/app/images/illu-software.jpg') }}" alt="etude projet creation site internet">
+                    <img src="{{ asset('build/app/images/software/illustrations/traitement.jpg') }}" alt="ordinateur et clavier">
                 </div>
             </div>
 
@@ -71,30 +80,37 @@
                 <div class="section-content development-content">
                     <h2>Solutions locales ou hébergées<span class="txt-color2">.</span></h2>
                     <p>
-                        Si vous optez pour l’utilisation d’un serveur dans vos locaux professionnels, vous travaillerez
-                        en mode TSE (Terminal Server Environnent). Chaque poste de travail se connectera
-                        directement sur votre serveur local. Dans ce cas, notre équipe technique se chargera de
-                        l’installation et du paramétrage de votre environnement informatique afin qu’il soit optimisé
-                        pour l’utilisation de nos logiciels, et parfaitement sécurisé.
+                        Si vous optez pour l’utilisation d’un <strong>serveur dans vos locaux professionnels</strong>,
+                        vous travaillerez en mode TSE (Terminal Server Environnent).
+                        <br>
+                        <br>
+                        Chaque poste de travail se connectera directement sur votre serveur local.
+                        <br>
+                        Dans ce cas, <strong>notre équipe technique se chargera de l’installation</strong> et du paramétrage de votre
+                        environnement informatique afin qu’il soit optimisé pour l’utilisation de nos logiciels, et
+                        parfaitement sécurisé.
                     </p>
                     <p>
-                        Si vous choisissez le mode hébergé, vous n’aurez pas besoin d’investir dans un serveur. Vous
-                        aurez accès aux logiciels de la suite ULTIMMO implantés dans le cloud chez un hébergeur
-                        français offrant toutes les garanties nécessaires de débit et de sécurité. Les serveurs sont mis
-                        en place et administrés par nos soins. Ce mode de fonctionnement réduit les délais d’attente,
-                        il vous assure une qualité de maintenance, une réactivité et une sécurisation optimisées.
+                        Si vous choisissez le <strong>mode hébergé</strong>, vous n’aurez pas besoin d’investir dans un serveur.
+                        <br><br>
+                        Vous aurez accès aux logiciels de la suite ULTIMMO implantés dans le cloud chez un hébergeur
+                        français offrant toutes les garanties nécessaires de débit et de sécurité.
+                        <br>
+                        Les serveurs sont <strong>mis en place et administrés par nos soins</strong>. Ce mode de
+                        fonctionnement réduit les délais d’attente, il vous assure une qualité de maintenance, une
+                        réactivité et une sécurisation optimisées.
                     </p>
                 </div>
                 <div class="section-image development-image">
-                    <img src="{{ asset('build/app/images/software/illustrations/serv1.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/software/illustrations/serv2.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/software/illustrations/serv3.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/serv1.jpg') }}" alt="ordinateur avec fond d'ecran">
+                    <img src="{{ asset('build/app/images/software/illustrations/serv2.jpg') }}" alt="cablage serveur">
+                    <img src="{{ asset('build/app/images/software/illustrations/serv3.jpg') }}" alt="illustration de maillage">
                 </div>
             </div>
 
             <div class="section transfert">
                 <div class="section-image transfert-image">
-                    <img src="{{ asset('build/app/images/software/illustrations/save.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/save.jpg') }}" alt="illustration de sauvegarde de donnee dans le temps">
                 </div>
                 <div class="section-content transfert-content">
                     <h2>Sauvegarde de vos données<span class="txt-color2">.</span></h2>
@@ -123,9 +139,9 @@
                     </p>
                 </div>
                 <div class="section-image development-image">
-                    <img src="{{ asset('build/app/images/software/illustrations/doc.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/software/illustrations/support.jpg') }}" alt="propositions maquette website">
-                    <img src="{{ asset('build/app/images/software/illustrations/formation.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/doc.jpg') }}" alt="ordinateur portable sous une lumière">
+                    <img src="{{ asset('build/app/images/software/illustrations/support.jpg') }}" alt="passage de document de main à main">
+                    <img src="{{ asset('build/app/images/software/illustrations/formation.jpg') }}" alt="ecrit du texte sur un cahier">
                 </div>
             </div>
 
@@ -140,27 +156,11 @@
                     </p>
                 </div>
                 <div class="section-image parc-image">
-                    <img src="{{ asset('build/app/images/software/illustrations/parc.jpg') }}" alt="propositions maquette website">
+                    <img src="{{ asset('build/app/images/software/illustrations/parc.jpg') }}" alt="composants informatique processeur">
                 </div>
             </div>
 
-            <div class="contact">
-                <div class="section-title">
-                    <h2>Un <span class="txt-color2">projet</span> à réaliser <span class="txt-color2">?</span></h2>
-                </div>
-                <div class="contact-content">
-                    <p>
-                        Si vous recherchez un logiciel métier sur mesure qui s'adapte parfaitement à vos
-                        idées et à votre entreprise, nous sommes là pour vous.
-                        <br><br>
-                        Contactez-nous aujourd'hui pour discuter de votre projet et découvrez comment Logilink peut
-                        transformer vos idées en une solution logicielle métier performante et sur mesure.
-                    </p>
-                    <div class="cta">
-                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
-                    </div>
-                </div>
-            </div>
+            {% include 'app/pages/softwares/cta/contact.html.twig' %}
         </section>
     </div>
 {% endblock %}
