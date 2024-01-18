@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Service\StorageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -75,8 +77,42 @@ class AppController extends AbstractController
     }
 
     #[Route('/support-technique', name: 'app_support')]
-    public function support(): Response
+    public function support(StorageService $storageService): Response
     {
-        return $this->render('app/pages/support/index.html.twig');
+        [$directories, $files] = $storageService->getDirectories('support');
+
+        foreach($directories as $directory){
+            [$nDirectories, $nFiles] = $storageService->getDirectories($directory['path']);
+
+            $tmpFiles = [];
+            foreach($nFiles as $file){
+                if($directory['path'] == "support/Rustdesk"){
+                    $tmpName = $file['name'];
+
+                    $tmpName = substr($tmpName, 0, strpos($tmpName, 'host'));
+                    $file['name'] = $tmpName . 'Logilink.exe';
+
+                }
+
+                $file['parent'] = $directory['path'];
+                $tmpFiles[] = $file;
+            }
+
+            $files = array_merge($files, $tmpFiles);
+        }
+
+        return $this->render('app/pages/support/index.html.twig', [
+            'directories' => $directories,
+            'files' => $files
+        ]);
+    }
+
+    #[Route('/support-technique/telecharger/{path}', name: 'app_support_download', requirements: ['path' => '.+'], defaults: ['path' => null])]
+    public function supportDownload($path): BinaryFileResponse
+    {
+        $file = $this->getParameter('private_directory') . $path;
+
+        $info = new \SplFileInfo($file);
+        return $this->file($file, $info->getFilename());
     }
 }
