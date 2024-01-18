@@ -26,8 +26,7 @@
 
   h3{
     text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
-    font-weight: bolder;
+    @include fontPoppinsBold();
     margin-bottom: var(--espaceDiv);
   }
 

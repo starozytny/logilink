@@ -32,7 +32,7 @@ p{
 }
 
 .italic{
-  font-family: "Libre Baskerville", serif;
+  @include fontLibreItalic();
 }
 
 .txt-primary{
@@ -53,7 +53,7 @@ p{
 
 .link-italic{
   display: inline-block;
-  font-family: "Libre Baskerville", serif;
+  @include fontLibreItalic();
   color: var(--color1);
   margin-top: 12px;
   border-bottom: 1px solid var(--color1);

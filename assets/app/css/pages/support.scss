@@ -73,8 +73,7 @@
       font-size: 1.3em;
       margin-bottom: var(--espaceDiv);
       text-transform: uppercase;
-      font-family: "Poppins", sans-serif;
-      font-weight: bolder;
+      @include fontPoppinsBold();
     }
 
     .cta{

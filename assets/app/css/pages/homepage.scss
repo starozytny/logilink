@@ -6,8 +6,7 @@
 
   h2{
     font-size: 2em;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
+    @include fontPoppinsBold();
     margin-bottom: var(--espaceDiv);
   }
 
@@ -59,8 +58,7 @@
         color: var(--color0);
         text-transform: uppercase;
         margin-bottom: var(--espaceDiv);
-        font-family: 'Poppins', sans-serif;
-        font-weight: bolder;
+        @include fontPoppinsBold();
         font-size: 2.3em;
       }
 

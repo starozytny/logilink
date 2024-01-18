@@ -15,7 +15,7 @@
 
 .footer-title{
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  @include fontPoppinsRegular();
   font-weight: 600;
   color: var(--grey3);
   width: 100%;
