@@ -36,7 +36,7 @@
 
   @media (min-width: 1024px) {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
 
     .transfert-image {
       width: 50%;
@@ -45,6 +45,10 @@
     .transfert-content{
       padding-left: 5%;
     }
+  }
+
+  @media (min-width: 1920px) {
+    align-items: flex-start;
   }
 }
 
@@ -59,7 +63,7 @@
 
   @media (min-width: 1024px) {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
     padding-top: 0;
 
     .traitement-content{
@@ -83,6 +87,8 @@
   }
 
   @media (min-width: 1920px) {
+    align-items: flex-start;
+
     .traitement-content{
       max-width: 664px;
       padding-left: 6%;

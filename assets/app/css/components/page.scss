@@ -166,6 +166,14 @@ body{
     & > *{
       width: 100%;
     }
+
+    & > div:last-child{
+      @include flex(column, flex-start, flex-start, var(--espaceLayout));
+
+      & > *{
+        width: 100%;
+      }
+    }
   }
 
   @media (min-width: 1024px) {
@@ -180,11 +188,13 @@ body{
     & > .col-2{
       flex-direction: row;
 
-      & > div:nth-child(2), & > div:nth-child(3){
-        width: 160px;
-      }
       & > div:nth-child(1){
-        width: calc(100% - 320px - var(--espaceLayout) - 23px);
+        width: calc(100% - 160px);
+      }
+
+      & > div:nth-child(2){
+        width: 160px;
+        text-align: right;
       }
     }
   }

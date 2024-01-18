@@ -1,6 +1,7 @@
 .footer-container{
   @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
   padding: calc(var(--espaceLayout) * 2) var(--espaceLayout) var(--espaceLayout) var(--espaceLayout);
+  border-top: 1px solid var(--grey1);
 
   .footer-link{
     color: var(--txt);

@@ -2,5 +2,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('app_society') }}
+    {{ encore_entry_link_tags('app_support') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_support') }}
 {% endblock %}
