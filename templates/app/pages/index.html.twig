@@ -23,7 +23,7 @@
                 <div class="col-deco">
                     <div class="pattern-dots-lg"></div>
                 </div>
-                <div class="homepage-title">
+                <div class="homepage-title" data-aos="fade-right">
                     <div class="prefix">Nos logiciels vous <span class="italic">simplifient la vie</span>.</div>
                     <h1>Transformez vos <span class="txt-color2">idées en</span> réalité numériques<span class="txt-color2">.</span></h1>
                     <p>
@@ -33,12 +33,12 @@
                     </p>
                 </div>
 
-                <div class="cta">
+                <div class="cta" data-aos="fade-right">
                     <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
                 </div>
             </div>
             <div class="col-2">
-                <a class="btn-start" href="#ultimmo">
+                <a class="btn-start" href="#ultimmo" data-aos="fade-down">
                     <span class="icon-down-arrow"></span>
                 </a>
             </div>
@@ -48,24 +48,28 @@
             {% set products = [
                 {
                     numero: 1, name: 'Logiciels', txtBtn: 'Les logiciels', pathBtn: path('app_softwares'),
-                    text: 'Des solutions logicielles puissantes et adaptées à votre entreprise.'
+                    text: 'Des solutions logicielles puissantes et adaptées à votre entreprise.',
+                    delay: 100
                 },
                 {
                     numero: 2, name: 'Applications', txtBtn: 'Les applications', pathBtn: path('app_applications'),
-                    text: 'Des applications conviviales et innovantes pour améliorer votre productivité.'
+                    text: 'Des applications conviviales et innovantes pour améliorer votre productivité.',
+                    delay: 200
                 },
                 {
                     numero: 3, name: 'Sites internet', txtBtn: 'Les sites internet', pathBtn: path('app_websites'),
-                    text: 'Des sites internet qui captivent l\'attention et stimulent la croissance de votre entreprise.'
+                    text: 'Des sites internet qui captivent l\'attention et stimulent la croissance de votre entreprise.',
+                    delay: 300
                 },
                 {
                     numero: 4, name: 'Webservices', txtBtn: 'Les services en ligne', pathBtn: path('app_webservices'),
-                    text: 'Des services en ligne et des solutions SaaS pour tout secteur d\'activité.'
+                    text: 'Des services en ligne et des solutions SaaS pour tout secteur d\'activité.',
+                    delay: 400
                 }
             ] %}
             <div class="items">
                 {% for item in products %}
-                    <div class="item">
+                    <div class="item" data-aos="fade-down" data-aos-delay="{{ item.delay }}">
                         <h2>{{ item.name }}</h2>
                         <div class="item-body">
                             <p>{{ item.text }}</p>
@@ -92,7 +96,7 @@
             </div>
 
             <div class="suite-content">
-                <div class="items">
+                <div class="items" data-aos="fade-up">
                     <div class="items items-logiciels">
                         <div class="item">
                             <div>
@@ -225,7 +229,7 @@
             </div>
 
             <div class="lastwork-content">
-                <div class="item">
+                <div class="item" data-aos="fade-up">
                     <div class="item-image">
                         <img src="{{ asset('build/app/images/articles/article-lotys.png') }}"
                              alt="accueil logiciel en ligne transaction immobiliere lotys">
@@ -240,7 +244,7 @@
                     </div>
                 </div>
                 <div class="items">
-                    <div class="item">
+                    <div class="item" data-aos="fade-up" data-aos-delay="100">
                         <div class="item-image">
                             <img src="{{ asset('build/app/images/articles/article-opendoc.jpg') }}"
                                  alt="accueil application tablette et mobile de signature de pdf opendoc">
@@ -256,7 +260,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="item">
+                    <div class="item" data-aos="fade-up" data-aos-delay="100">
                         <div class="item-image">
                             <img src="{{ asset('build/app/images/articles/article-fokus.jpg') }}"
                                  alt="accueil application etat des lieux fokus">
