@@ -50,6 +50,12 @@ section{
     align-items: flex-start;
     padding-top: 0;
 
+    .product-content-center{
+      margin: 0 auto;
+      text-align: center;
+      padding: calc(var(--espaceLayout) * 2) 0;
+    }
+
     .product-content{
       padding-top: calc(var(--espaceLayout) * 2);
       padding-left: 5%;
@@ -65,7 +71,7 @@ section{
   @media (min-width: 1600px) {
     align-items: center;
 
-    .product-content{
+    .product-content:not(.product-content-center){
       padding-top: 0;
     }
   }
