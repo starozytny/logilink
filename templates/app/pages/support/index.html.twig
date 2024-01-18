@@ -8,33 +8,36 @@
             <h1>Support technique<span class="txt-color2">.</span></h1>
         </div>
         <div class="page-category-explain">
-            <div class="category-explain-container support-contact">
-                <div class="col-1">
-                    <h2>Télémaintenance<span class="txt-color2">.</span></h2>
-                    <div class="support-storage">
-                        {% for directory in directories %}
-                            <div class="support-storage-directory" data-id="{{ loop.index0 }}">
-                                <span class="icon-folder"></span>
-                                <span>{{ directory.name }}</span>
-                            </div>
-                            <div class="support-storage-files support-storage-files-{{ loop.index0 }}">
-                                {% for file in files %}
-                                    {% if file.parent == directory.path %}
-                                        <ul>
-                                            <li>
-                                                <a href="{{ path('app_support_download', {path: file.path}) }}" download>
-                                                    <span class="icon-file"></span>
-                                                    <span>{{ file.name }}</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        {% endfor %}
-                    </div>
+            <div class="category-explain-container support-container">
+                <h2>Télémaintenance<span class="txt-color2">.</span></h2>
+                <div class="support-storage">
+                    {% for directory in directories %}
+                        <div class="support-storage-directory" data-id="{{ loop.index0 }}">
+                            <span class="icon-folder"></span>
+                            <span>{{ directory.name }}</span>
+                        </div>
+                        <div class="support-storage-files support-storage-files-{{ loop.index0 }}">
+                            {% for file in files %}
+                                {% if file.parent == directory.path %}
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('app_support_download', {path: file.path}) }}" download>
+                                                <span class="icon-file"></span>
+                                                <span>{{ file.name }}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="col-2">
+            </div>
+        </div>
+
+        <section>
+            <div class="section product">
+                <div class="section-content product-content product-content-center contact-content">
                     <div>
                         <h3>Contact<span class="txt-color2">.</span></h3>
                         <div>
@@ -59,6 +62,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 {% endblock %}

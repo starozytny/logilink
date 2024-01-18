@@ -18,17 +18,21 @@
 }
 
 .society-contact{
-  @include flex(column, flex-start, flex-start, var(--espaceLayout));
+  @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 4));
 
   h2, h3{
     font-size: 1.3em;
-    margin-bottom: var(--espaceEls);
   }
 
   h3{
     text-transform: uppercase;
     font-family: "Poppins", sans-serif;
     font-weight: bolder;
+    margin-bottom: var(--espaceDiv);
+  }
+
+  .address > a{
+    color: var(--primary);
   }
 
   .cta{
@@ -40,7 +44,7 @@
   }
 
   & > .col-2{
-    @include flex(column, flex-start, flex-start, var(--espaceLayout));
+    @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 4));
 
     & > *{
       width: 100%;
@@ -48,12 +52,18 @@
   }
 
   @media (min-width: 1024px) {
+    gap: calc(var(--espaceLayout) * 2);
+
     .cta{
       display: inline-block;
     }
 
     & > .col-1, & > .col-2{
       text-align: left;
+    }
+
+    & > .col-2{
+      gap: calc(var(--espaceLayout) * 2);
     }
   }
 }
