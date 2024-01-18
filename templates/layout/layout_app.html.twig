@@ -44,6 +44,11 @@
                                 {% endfor %}
                             {% endif %}
                         {% endfor %}
+
+                        <a class="nav-link-item nav-item nav-link-item-presta {{- app.request.get('_route') in ['app_prestations'] ? " active" : "" -}}"
+                           href="{{ path('app_prestations') }}">
+                            <div>Prestations de services</div>
+                        </a>
                     </div>
                     <div class="nav-menu-cta">
                         <a href="tel:0491994443" class="btn btn-color2">04 91 99 44 43</a>
@@ -71,7 +76,9 @@
                                     <div class="nav-expanded-title" style="padding-left: 8px;">Nos produits</div>
                                     <div class="items">
                                         {% for it in item.expanded.products %}
-                                            <a href="{{ it.path }}" class="nav-sub-item">
+                                            <a class="nav-sub-item nav-item {{- app.request.get('_route') in it.matchRoute ? " active" : "" -}}"
+                                               href="{{ it.path }}"
+                                            >
                                                 <div class="logo">
                                                     <img src="{{ asset('build/app/images/logos/'~it.logo) }}"
                                                          alt="{{ it.alt }}">
@@ -84,7 +91,8 @@
                                 <div class="col-3">
                                     <div class="nav-expanded-title" style="padding-left: 8px;">Services</div>
                                     <div class="items">
-                                        <a href="{{ path('app_prestations') }}" class="nav-sub-item">
+                                        <a class="nav-sub-item nav-item {{- app.request.get('_route') in ['app_prestations'] ? " active" : "" -}}"
+                                           href="{{ path('app_prestations') }}">
                                             <div class="logo">
                                                 <img src="{{ asset('build/app/images/logo.png') }}"
                                                      alt="prestation de services">

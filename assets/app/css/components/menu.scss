@@ -62,7 +62,7 @@ nav{
       transform: translateY(-2px);
     }
 
-    &.active{
+    &.active:not(.nav-sub-item){
       background-color: var(--color0);
       color: var(--alpha);
     }
@@ -75,6 +75,11 @@ nav{
   .nav-sub-item{
     padding-left: 48px;
     font-size: 14px;
+    width: 100%;
+
+    &.active{
+      font-weight: 600;
+    }
   }
 }
 
@@ -112,6 +117,10 @@ nav{
 
   &:hover{
     background-color: var(--color2);
+  }
+
+  &.active{
+    font-weight: 600;
   }
 }
 
@@ -193,6 +202,10 @@ nav{
     .nav-item{
       border-radius: var(--radius);
       text-align: center;
+    }
+
+    .nav-link-item-presta{
+      display: none;
     }
 
     .nav-sub-item{

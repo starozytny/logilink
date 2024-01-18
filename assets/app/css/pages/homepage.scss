@@ -409,6 +409,7 @@
 
     .items{
       @include flex(column, flex-start, space-between, var(--espaceLayout));
+      width: 100%;
     }
 
     .item{
@@ -416,6 +417,7 @@
       @include shadowCommon();
       border-radius: var(--radius2);
       padding: var(--espaceLayout);
+      width: 100%;
     }
 
     .logo{
