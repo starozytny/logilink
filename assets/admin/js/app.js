@@ -7,6 +7,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Notifications } from "@commonComponents/Elements/Notifications";
 import { Theme } from "@commonComponents/Modules/Theme/Theme";
+import { Storage } from "@adminPages/Storage/Storage";
 
 Routing.setRoutingData(routes);
 
@@ -18,6 +19,11 @@ if(notifs){
 let theme = document.getElementById("theme_switcher");
 if(theme){
     createRoot(theme).render(<Theme {...theme.dataset} />)
+}
+
+let el = document.getElementById("storage_list");
+if(el){
+    createRoot(el).render(<Storage />)
 }
 
 menu();

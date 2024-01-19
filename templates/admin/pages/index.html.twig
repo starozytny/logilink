@@ -91,42 +91,15 @@
         </div>
 
         <div class="dashboard-line-2">
-
             <div class="card">
                 <div class="card-header">
-                    <div class="icon"><span class="icon-refresh1"></span></div>
-                    <div class="title">Informations des mises à jours</div>
-                </div>
-                <div class="card-body">
-                    <div class="changelogs-view">
-                        {% if changelogs | length <= 0 %}
-                            <div class="changelog-view changelog-type-1">
-                                <div class="col-1">
-                                    <span class="icon-follow"></span>
-                                </div>
-                                <div class="col-2">
-                                    <div class="name">Site internet à jour</div>
-                                    <div class="date">{{ "now" | date | format_datetime('full', 'short', locale="fr") | replace({":": "h"}) | capitalize }}</div>
-                                </div>
-                            </div>
-                        {% else %}
-                            {% for elem in changelogs %}
-                                <div class="changelog-view changelog-type-{{ elem.type }}">
-                                    <div class="col-1">
-                                        <span class="icon-{{ elem.icon }}"></span>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="name">{{ elem.name }}</div>
-                                        <div class="date">{{ elem.createdAt | format_datetime('full', 'short', locale="fr") | replace({":": "h"}) | capitalize }}</div>
-                                        <div class="content">{{ elem.content | raw }}</div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
+                    <div class="icon"><span class="icon-box"></span></div>
+                    <div class="title">Stockage</div>
                 </div>
             </div>
-
+            <div id="storage_list" style="margin-top: 24px;">
+                {% include "layout/components/loader.html.twig" %}
+            </div>
         </div>
 
     </div>

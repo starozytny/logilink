@@ -19,6 +19,7 @@ $c-02: #a6dcee;
   width: 100%;
   background-color: var(--color0);
   @include flex(row, flex-start, flex-start);
+  border-radius: var(--radius2);
 }
 
 .loader-txt{

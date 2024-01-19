@@ -1,6 +1,7 @@
 @import "../vars/vars";
 
 @import "../components/changelog";
+@import "../components/storage";
 
 .dashboard{
   .card{
@@ -38,6 +39,15 @@
 .dashboard-line-1{
   @include flex(column, stretch, flex-start, 12px);
   margin-bottom: 12px;
+}
+
+.dashboard-line-2{
+  #storage_list{
+    .loader-content{
+      margin: 0;
+      width: 100%;
+    }
+  }
 }
 
 //                      __   _____ __    ___    __
