@@ -4,8 +4,8 @@
 @mixin fontSemibold() { font-family: 'barlowsemibold', sans-serif; }
 @mixin fontBold() { font-family: 'barlowbold', sans-serif; }
 
-@mixin fontPoppinsBold() { font-family: 'poppinsextrabold', sans-serif; }
-@mixin fontPoppinsRegular() { font-family: 'poppinsregular', sans-serif; }
+@mixin fontPoppinsBold() { font-family: 'Poppins', sans-serif; }
+@mixin fontPoppinsRegular() { font-family: 'Poppins', sans-serif; }
 @mixin fontLibreItalic() { font-family: 'libre_baskervilleitalic', sans-serif; }
 
 @mixin maxscreen(){

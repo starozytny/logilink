@@ -16,7 +16,7 @@
 @import "./components/footer";
 
 body {
-  @include fontRegular();
+  @include fontPoppinsRegular();
 }
 
 h1, h3{
