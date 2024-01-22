@@ -103,3 +103,5 @@ RedirectPermanent https://logilink.fr/logiciel-immobilier/transaction-immobilier
 RedirectPermanent https://logilink.fr/creation-site-internet https://logilink.fr/creation-sites-internet-unique
 RedirectPermanent https://logilink.fr/service-informatique https://logilink.fr/prestations-service
 RedirectPermanent https://logilink.fr/historique-societe https://logilink.fr/editeur-de-logiciels-professionnels/histoire
+
+deny from 81.185.81.254
