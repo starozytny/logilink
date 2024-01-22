@@ -16,15 +16,17 @@ class StorageService
         $this->privateDirectory = $privateDirectory;
     }
 
-    public function getDirectories($in): array
+    public function getDirectories($in, $rootDirectory = null): array
     {
         $finderDirs = new Finder();
         $finderFils = new Finder();
 
-        $finderDirs->directories()->in($this->privateDirectory . $in)->depth('== 0');
+        $directory = $rootDirectory ?: $this->privateDirectory;
+
+        $finderDirs->directories()->in($directory . $in)->depth('== 0');
         $directories = $this->getData($finderDirs, $in);
 
-        $finderFils->files()->in($this->privateDirectory . $in)->depth('== 0');
+        $finderFils->files()->in($directory . $in)->depth('== 0');
         $files = $this->getData($finderFils, $in);
 
         return [$directories, $files];

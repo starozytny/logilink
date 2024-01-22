@@ -79,14 +79,14 @@ class AppController extends AbstractController
     #[Route('/support-clients', name: 'app_support')]
     public function support(StorageService $storageService): Response
     {
-        [$directories, $files] = $storageService->getDirectories('support');
+        [$directories, $files] = $storageService->getDirectories('telemaint', $this->getParameter('support_directory'));
 
         foreach($directories as $directory){
-            [$nDirectories, $nFiles] = $storageService->getDirectories($directory['path']);
+            [$nDirectories, $nFiles] = $storageService->getDirectories($directory['path'], $this->getParameter('support_directory'));
 
             $tmpFiles = [];
             foreach($nFiles as $file){
-                if($directory['path'] == "support/Rustdesk"){
+                if($directory['path'] == "telemaint/Rustdesk"){
                     $tmpName = $file['name'];
 
                     $tmpName = substr($tmpName, 0, strpos($tmpName, 'host'));
@@ -110,7 +110,7 @@ class AppController extends AbstractController
     #[Route('/support-technique/telecharger/{path}', name: 'app_support_download', requirements: ['path' => '.+'], defaults: ['path' => null])]
     public function supportDownload($path): BinaryFileResponse
     {
-        $file = $this->getParameter('private_directory') . $path;
+        $file = $this->getParameter('support_directory') . $path;
 
         $info = new \SplFileInfo($file);
         return $this->file($file, $info->getFilename());
