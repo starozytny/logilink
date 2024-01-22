@@ -46,7 +46,7 @@ class ContactController extends AbstractController
         $repository->save($obj, true);
 
         if(!$mailerService->sendMail(
-            ['chanbora@logilink.fr'],
+            [$settingsService->getEmailContact()],
             "Logilink - Demande de contact",
             "Logilink - Demande de contact",
             'app/email/contact/contact.html.twig',
