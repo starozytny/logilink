@@ -25,9 +25,14 @@
         <link href="https://unpkg.com/pattern.css" rel="stylesheet">
         {% set consent = "logilinkLocalCookie" %} <!-- CONSENT Value -->
 
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('common_app') }}
+        {% endblock %}
     </head>
     <body>
 
@@ -44,9 +49,5 @@
                 <pre>{{ message }}</pre>
             {% endfor %}
         {% endfor %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('common_app') }}
-        {% endblock %}
     </body>
 </html>
