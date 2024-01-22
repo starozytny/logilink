@@ -45,7 +45,9 @@ class StorageController extends AbstractController
             }
         }
 
-        $directory = $admin == "true" ? $this->getParameter('admin_directory') : $this->getParameter('private_directory');
+        $directory = $admin == "true"
+            ? $this->getParameter('admin_directory') . 'install-windev.logilink.fr/'
+            : $this->getParameter('private_directory');
 
         $finder->files()->in($directory . $deepFolder . ($dir == "racine" ? "" : $dir));
         if(!$finder->hasResults()){
