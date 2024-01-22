@@ -23,8 +23,10 @@
 .material, .reseaux{
   justify-content: flex-end;
 
-  .material-content{
-    padding-right: 16%;
+  @media (min-width: 768px) {
+    .material-content{
+      padding-right: 16%;
+    }
   }
 
   @media (min-width: 1024px) {
