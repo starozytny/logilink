@@ -95,3 +95,11 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ /public/$1 [L]
+
+RedirectPermanent https://logilink.fr/logiciel-immobilier https://logilink.fr/logiciels-metier
+RedirectPermanent https://logilink.fr/logiciel-immobilier/syndic-de-copropriete https://logilink.fr/logiciels-metier/logiciel-syndic-coproprietes-ultimmo-syndic
+RedirectPermanent https://logilink.fr/logiciel-immobilier/gestion-immobiliere https://logilink.fr/logiciels-metier/logiciel-gestion-locative-gerance
+RedirectPermanent https://logilink.fr/logiciel-immobilier/transaction-immobiliere https://logilink.fr/logiciels-metier/logiciel-transaction-immobiliere-lotys
+RedirectPermanent https://logilink.fr/creation-site-internet https://logilink.fr/creation-sites-internet-unique
+RedirectPermanent https://logilink.fr/service-informatique https://logilink.fr/prestations-service
+RedirectPermanent https://logilink.fr/historique-societe https://logilink.fr/societe/histoire
