@@ -9,7 +9,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/intern/api/storage', name: 'intern_api_storage_')]
@@ -21,11 +21,10 @@ class StorageController extends AbstractController
     {
         $data = json_decode($request->getContent());
 
-        if($data->isAdmin){
-            [$directories, $files] = $storageService->getDirectories($data->path, $this->getParameter('admin_directory'));
-        }else{
-            [$directories, $files] = $storageService->getDirectories($data->path);
-        }
+        [$directories, $files] = $storageService->getDirectories(
+            $data->path,
+            $data->isAdmin ? $this->getParameter('admin_directory') : null
+        );
 
         return $apiResponse->apiJsonResponseCustom([
             'directories' => json_encode($directories),
