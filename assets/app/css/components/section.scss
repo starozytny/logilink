@@ -98,4 +98,11 @@ section{
       padding-top: 0;
     }
   }
+
+  @media (min-width: 1800px) {
+    .product-content{
+      padding-left: 6%;
+      padding-right: 8%;
+    }
+  }
 }
