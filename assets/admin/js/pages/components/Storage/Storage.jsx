@@ -19,6 +19,7 @@ export class Storage extends Component {
         super(props);
 
         this.state = {
+            isAdmin: props.path === "install-windev.logilink.fr",
             backs: [],
             directories: [],
             files: [],
@@ -30,7 +31,7 @@ export class Storage extends Component {
     componentDidMount = () => { this.handleClick(this.props.path ? this.props.path : "", false, true); }
 
     handleClick = (path, isBack, force = false) => {
-        const { loadData, backs } = this.state;
+        const { isAdmin, loadData, backs } = this.state;
 
         if((!loadData || force) && path !== undefined){
             this.setState({ loadData: true })
@@ -39,7 +40,7 @@ export class Storage extends Component {
             if(isBack){ nBacks.pop(); }
 
             let self = this;
-            axios({ method: "POST", url: Routing.generate(URL_CLICK_DIRECTORY), data: {'path': path} })
+            axios({ method: "POST", url: Routing.generate(URL_CLICK_DIRECTORY), data: {isAdmin: isAdmin, path: path} })
                 .then(function (response) {
                     let data = response.data;
                     self.setState({
@@ -56,7 +57,7 @@ export class Storage extends Component {
     }
 
     render () {
-        const { loadData, backs, directories, files, directory } = this.state;
+        const { isAdmin, loadData, backs, directories, files, directory } = this.state;
 
         let back = backs[backs.length - 2];
 
@@ -97,7 +98,7 @@ export class Storage extends Component {
 
                                 {files.length > 0
                                     ? files.map((elem, index) => {
-                                        return <File elem={elem} directory={directory} deep={backs.length - 2} key={index} />;
+                                        return <File elem={elem} directory={directory} deep={backs.length - 2} isAdmin={isAdmin} key={index} />;
                                     })
                                     : <Alert>Aucun fichier dans le dossier.</Alert>
                                 }
@@ -129,7 +130,7 @@ Directory.propTypes = {
     isBack: PropTypes.bool.isRequired
 }
 
-function File ({ elem, directory, deep }) {
+function File ({ elem, directory, deep, isAdmin }) {
     let [loadData, setLoadData] = useState(false)
     let [icon, setIcon] = useState(elem.icon)
 
@@ -143,7 +144,11 @@ function File ({ elem, directory, deep }) {
 
             let tab = directory.split("/");
             let dir = tab[tab.length - 1];
-            axios({ method: "GET", url: Routing.generate(URL_DOWNLOAD_FILE, {'deep': deep, 'dir': dir === ".." ? "racine" : dir, 'filename': elem.name}), data: {} })
+            axios({
+                method: "GET",
+                url: Routing.generate(URL_DOWNLOAD_FILE, {'admin': isAdmin, 'deep': deep, 'dir': dir === ".." ? "racine" : dir, 'filename': elem.name}),
+                data: {}
+            })
                 .then(function (response){
                     const link = document.createElement('a');
                     link.href = response.data.url;

@@ -20,12 +20,13 @@ class StorageController extends AbstractController
     public function directory(Request $request, ApiResponse $apiResponse, StorageService $storageService): Response
     {
         $data = json_decode($request->getContent());
-        if($data->path === "admin"){
-            [$directories, $files] = $storageService->getDirectories('install-windev.logilink.fr', $this->getParameter('admin_directory'));
+
+        dump($data);
+        if($data->isAdmin){
+            [$directories, $files] = $storageService->getDirectories($data->path, $this->getParameter('admin_directory'));
         }else{
             [$directories, $files] = $storageService->getDirectories($data->path);
         }
-
 
         return $apiResponse->apiJsonResponseCustom([
             'directories' => json_encode($directories),
@@ -33,8 +34,8 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/download/{deep}/{dir}/{filename}', name: 'download', options: ['expose' => true], methods: 'GET')]
-    public function download(Request $request, $deep, $dir, $filename, ApiResponse $apiResponse): BinaryFileResponse|Response
+    #[Route('/download/{admin}/{deep}/{dir}/{filename}', name: 'download', options: ['expose' => true], methods: 'GET')]
+    public function download(Request $request, $admin, $deep, $dir, $filename, ApiResponse $apiResponse): BinaryFileResponse|Response
     {
         $finder = new Finder();
 
@@ -45,7 +46,9 @@ class StorageController extends AbstractController
             }
         }
 
-        $finder->files()->in($this->getParameter('private_directory') . $deepFolder . ($dir == "racine" ? "" : $dir));
+        $directory = $admin == "true" ? $this->getParameter('admin_directory') : $this->getParameter('private_directory');
+
+        $finder->files()->in($directory . $deepFolder . ($dir == "racine" ? "" : $dir));
         if(!$finder->hasResults()){
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
         }
@@ -67,7 +70,7 @@ class StorageController extends AbstractController
         }
 
         return $apiResponse->apiJsonResponseCustom(['url' => $this->generateUrl('intern_api_storage_download', [
-            'deep' => $deep, 'dir' => $dir, 'filename' => $filename, 'file' => 1
+            'admin' => $admin, 'deep' => $deep, 'dir' => $dir, 'filename' => $filename, 'file' => 1
         ])]);
     }
 }
