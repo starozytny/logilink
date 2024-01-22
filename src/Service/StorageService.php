@@ -43,6 +43,7 @@ class StorageService
         return [
             'path' => $in . "/" . $file->getRelativePathname(),
             'name' => $file->getRelativePathname(),
+            'nameToSort' => mb_strtolower($file->getRelativePathname()),
             'dateAt' => $dateAt,
             'size' => $file->getSize(),
             'icon' => $file->getType() == "dir" ? "folder" : $this->getIcon($file->getExtension())

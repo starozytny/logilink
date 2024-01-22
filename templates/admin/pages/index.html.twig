@@ -11,93 +11,96 @@
 {% block main_content %}
 <div class="main-content">
     <div class="dashboard">
-        <div class="dashboard-line-0">
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon"><span class="icon-settings"></span></div>
-                    <div class="title">Paramètres</div>
-                </div>
-                <div class="card-body">
-                    {% if settings %}
-                        <div>{{ settings.websiteName }}</div>
-                        <div>{{ settings.emailGlobal }}</div>
-                    {% endif %}
-                    <div style="margin-top: 8px;">
-                        <a href="{{ path('admin_settings_update') }}">Accéder aux paramètres</a>
+        {% if is_granted('ROLE_DEVELOPER') %}
+            <div class="dashboard-line-0">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon"><span class="icon-settings"></span></div>
+                        <div class="title">Paramètres</div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="dashboard-line-1">
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon"><span class="icon-bank"></span></div>
-                    <div class="title">Sociétés</div>
-                </div>
-                <div class="card-body">
-                    <div>{{ nbSocieties }}</div>
-                    <div>
-                        <a href="{{ path('admin_societies_index') }}">Voir les sociétés</a>
+                    <div class="card-body">
+                        {% if settings %}
+                            <div>{{ settings.websiteName }}</div>
+                            <div>{{ settings.emailGlobal }}</div>
+                        {% endif %}
+                        <div style="margin-top: 8px;">
+                            <a href="{{ path('admin_settings_update') }}">Accéder aux paramètres</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon"><span class="icon-group"></span></div>
-                    <div class="title">Qui s'est connecté ?</div>
-                </div>
-                <div class="card-body">
-                    <div>{{ nbUsersConnected }} / {{ nbUsers }}</div>
-                    <a href="{{ path('admin_users_index') }}">Voir les utilisateurs</a>
-                </div>
-            </div>
+            <div class="dashboard-line-1">
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon"><span class="icon-follow"></span></div>
-                    <div class="title">Changelogs</div>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <a href="{{ path('admin_changelogs_create') }}">Ajouter un changelog</a>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon"><span class="icon-bank"></span></div>
+                        <div class="title">Sociétés</div>
+                    </div>
+                    <div class="card-body">
+                        <div>{{ nbSocieties }}</div>
+                        <div>
+                            <a href="{{ path('admin_societies_index') }}">Voir les sociétés</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon"><span class="icon-chat"></span></div>
-                    <div class="title">Contacts</div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon"><span class="icon-group"></span></div>
+                        <div class="title">Qui s'est connecté ?</div>
+                    </div>
+                    <div class="card-body">
+                        <div>{{ nbUsersConnected }} / {{ nbUsers }}</div>
+                        <a href="{{ path('admin_users_index') }}">Voir les utilisateurs</a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    {% if nbContactsNew > 0 %}
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon"><span class="icon-follow"></span></div>
+                        <div class="title">Changelogs</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <a href="{{ path('admin_changelogs_create') }}">Ajouter un changelog</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon"><span class="icon-chat"></span></div>
+                        <div class="title">Contacts</div>
+                    </div>
+                    <div class="card-body">
+                        {% if nbContactsNew > 0 %}
+                            <div>
+                                <a href="{{ path('admin_contacts_index') }}">
+                                    {{ nbContactsNew }} {{ nbContactsNew > 1 ? "nouveaux messages" : "nouveau message" }}
+                                </a>
+                            </div>
+                        {% endif %}
                         <div>
                             <a href="{{ path('admin_contacts_index') }}">
-                                {{ nbContactsNew }} {{ nbContactsNew > 1 ? "nouveaux messages" : "nouveau message" }}
+                                <span class="txt-alpha">Voir le{{ nbContacts | plurial }} {{ nbContacts }} message{{ nbContacts | plurial }}</span>
                             </a>
                         </div>
-                    {% endif %}
-                    <div>
-                        <a href="{{ path('admin_contacts_index') }}">
-                            <span class="txt-alpha">Voir le{{ nbContacts | plurial }} {{ nbContacts }} message{{ nbContacts | plurial }}</span>
-                        </a>
                     </div>
                 </div>
             </div>
-
-        </div>
+        {% endif %}
 
         <div class="dashboard-line-2">
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon"><span class="icon-box"></span></div>
-                    <div class="title">Stockage</div>
+            {% if is_granted('ROLE_DEVELOPER') %}
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon"><span class="icon-box"></span></div>
+                        <div class="title">Stockage dossier ADMIN</div>
+                    </div>
                 </div>
-            </div>
-            <div id="storage_list" style="margin-top: 24px;" data-path="install-windev.logilink.fr">
+            {% endif %}
+            <div id="storage_list" data-path="install-windev.logilink.fr">
                 {% include "layout/components/loader.html.twig" %}
             </div>
         </div>

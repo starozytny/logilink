@@ -30,6 +30,10 @@
       }
     }
   }
+
+  .card + #storage_list{
+    margin-top: var(--espaceLayout);
+  }
 }
 
 .dashboard-line-0{
