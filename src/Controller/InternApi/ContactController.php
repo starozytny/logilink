@@ -7,6 +7,8 @@ use App\Entity\Main\User;
 use App\Repository\Main\ContactRepository;
 use App\Service\ApiResponse;
 use App\Service\Data\DataMain;
+use App\Service\MailerService;
+use App\Service\SettingsService;
 use App\Service\ValidatorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +28,8 @@ class ContactController extends AbstractController
 
     #[Route('/create', name: 'create', options: ['expose' => true], methods: 'POST')]
     public function create(Request $request, ApiResponse $apiResponse, ValidatorService $validator,
-                           DataMain $dataEntity, ContactRepository $repository): Response
+                           DataMain $dataEntity, ContactRepository $repository, MailerService $mailerService,
+                           SettingsService $settingsService): Response
     {
         $data = json_decode($request->getContent());
         if ($data === null) {
@@ -41,6 +44,19 @@ class ContactController extends AbstractController
         }
 
         $repository->save($obj, true);
+
+        if(!$mailerService->sendMail(
+            ['chanbora@logilink.fr'],
+            "Logilink - Demande de contact",
+            "Logilink - Demande de contact",
+            'app/email/contact/contact.html.twig',
+            ['contact' => $obj, 'settings' => $settingsService->getSettings()]
+        )) {
+            return $apiResponse->apiJsonResponseValidationFailed([[
+                'name' => 'to',
+                'message' => "Le message n\'a pas pu être délivré. Veuillez contacter le support."
+            ]]);
+        }
 
         $dataEntity->createDataNotification("Demande de contact", "chat", null);
         return $apiResponse->apiJsonResponseSuccessful("ok");
