@@ -21,7 +21,6 @@ class StorageController extends AbstractController
     {
         $data = json_decode($request->getContent());
 
-        dump($data);
         if($data->isAdmin){
             [$directories, $files] = $storageService->getDirectories($data->path, $this->getParameter('admin_directory'));
         }else{
