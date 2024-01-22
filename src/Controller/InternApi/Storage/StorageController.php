@@ -26,6 +26,9 @@ class StorageController extends AbstractController
             $data->isAdmin ? $this->getParameter('admin_directory') : null
         );
 
+        $names = array_column($directories, 'nameToSort');
+        array_multisort($names, SORT_ASC, $directories);
+
         return $apiResponse->apiJsonResponseCustom([
             'directories' => json_encode($directories),
             'files' => json_encode($files),
