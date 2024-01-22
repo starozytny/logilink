@@ -8,10 +8,16 @@ import AOS from "aos/dist/aos";
 import { createRoot } from "react-dom/client";
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
 import { Cookies } from "@commonComponents/Modules/Cookies/Cookies";
+import { win } from "@publicFolder/tinymce";
 
 Routing.setRoutingData(routes);
 
-AOS.init();
+AOS.init({
+    startEvent: 'load'
+});
+window.addEventListener('load', () => {
+    AOS.refresh();
+})
 
 let el = document.getElementById("contacts_create");
 if(el){
