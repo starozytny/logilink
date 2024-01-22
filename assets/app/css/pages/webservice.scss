@@ -23,8 +23,10 @@
 .etude{
   justify-content: flex-end;
 
-  .etude-content{
-    padding-right: 16%;
+  @media (min-width: 768px) {
+    .etude-content{
+      padding-right: 16%;
+    }
   }
 
   @media (min-width: 1024px) {

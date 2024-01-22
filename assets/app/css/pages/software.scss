@@ -57,8 +57,10 @@
 .traitement{
   justify-content: flex-end;
 
-  .traitement-content{
-    padding-right: 16%;
+  @media (min-width: 768px) {
+    .traitement-content{
+      padding-right: 16%;
+    }
   }
 
   @media (min-width: 1024px) {

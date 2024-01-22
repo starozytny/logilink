@@ -44,7 +44,7 @@ export class Storage extends Component {
                 .then(function (response) {
                     let data = response.data;
                     self.setState({
-                        directory: path === "" ? ".." : path.replace('/', ''),
+                        directory: path === "" ? ".." : path,
                         directories: JSON.parse(data.directories),
                         files: JSON.parse(data.files),
                         backs: isBack ? nBacks : [...backs, ...[path]],
@@ -66,7 +66,7 @@ export class Storage extends Component {
                 <div className="title">Dossiers</div>
                 <div className="content-infos">
                     <div className="directories">
-                        {back !== undefined && <Directory elem={{'path': back, name: back === "" ? ".." : back }}
+                        {back !== undefined && <Directory elem={{'path': back, name: ".." }}
                                                           onClick={this.handleClick} isBack={true} />}
                         {loadData
                             ? <LoaderTxt />

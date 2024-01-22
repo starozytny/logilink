@@ -83,7 +83,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[Groups(['user_list'])]
     private ?string $manager = "default";
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\ManyToOne(fetch: 'EAGER', inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['user_list', 'user_form'])]
     private ?Society $society = null;
@@ -194,7 +194,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
