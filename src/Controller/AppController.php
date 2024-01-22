@@ -46,7 +46,7 @@ class AppController extends AbstractController
         return $this->render('app/pages/applications/index.html.twig');
     }
 
-    #[Route('/creation-logiciel-metier', name: 'app_softwares')]
+    #[Route('/logiciels-metier', name: 'app_softwares')]
     public function softwares(): Response
     {
         return $this->render('app/pages/softwares/index.html.twig');
@@ -64,19 +64,19 @@ class AppController extends AbstractController
         return $this->render('app/pages/webservices/index.html.twig');
     }
 
-    #[Route('/societe', name: 'app_society')]
+    #[Route('/editeur-de-logiciels-professionnels', name: 'app_society')]
     public function society(): Response
     {
         return $this->render('app/pages/society/index.html.twig');
     }
 
-    #[Route('/societe/histoire', name: 'app_society_history')]
+    #[Route('/editeur-de-logiciels-professionnels/histoire', name: 'app_society_history')]
     public function history(): Response
     {
         return $this->render('app/pages/society/history.html.twig');
     }
 
-    #[Route('/support-technique', name: 'app_support')]
+    #[Route('/support-clients', name: 'app_support')]
     public function support(StorageService $storageService): Response
     {
         [$directories, $files] = $storageService->getDirectories('support');
