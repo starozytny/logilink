@@ -20,7 +20,12 @@ class StorageController extends AbstractController
     public function directory(Request $request, ApiResponse $apiResponse, StorageService $storageService): Response
     {
         $data = json_decode($request->getContent());
-        [$directories, $files] = $storageService->getDirectories($data->path);
+        if($data->path === "admin"){
+            [$directories, $files] = $storageService->getDirectories('install-windev.logilink.fr', $this->getParameter('admin_directory'));
+        }else{
+            [$directories, $files] = $storageService->getDirectories($data->path);
+        }
+
 
         return $apiResponse->apiJsonResponseCustom([
             'directories' => json_encode($directories),

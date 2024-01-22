@@ -21,9 +21,9 @@ if(theme){
     createRoot(theme).render(<Theme {...theme.dataset} />)
 }
 
-let el = document.getElementById("storage_list");
-if(el){
-    createRoot(el).render(<Storage />)
+let storage = document.getElementById("storage_list");
+if(storage){
+    createRoot(storage).render(<Storage {...storage.dataset} />)
 }
 
 menu();
