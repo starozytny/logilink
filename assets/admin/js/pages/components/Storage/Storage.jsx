@@ -27,7 +27,7 @@ export class Storage extends Component {
         }
     }
 
-    componentDidMount = () => { this.handleClick("", false, true); }
+    componentDidMount = () => { this.handleClick(this.props.path ? this.props.path : "", false, true); }
 
     handleClick = (path, isBack, force = false) => {
         const { loadData, backs } = this.state;
