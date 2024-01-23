@@ -25,7 +25,7 @@ class StorageController extends AbstractController
     {
         $data = json_decode($request->getContent());
 
-        [$directories, $files] = $storageService->getDirectories($data->path);
+        [$directories, $files] = $storageService->getDirectories($data->path, $data->isAdmin == "true" ? $this->getParameter('admin_directory') : null);
 
         $names = array_column($directories, 'nameToSort');
         array_multisort($names, SORT_ASC, $directories);
