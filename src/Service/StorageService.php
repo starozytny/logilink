@@ -43,10 +43,13 @@ class StorageService
         $dateAt = new DateTime();
         $dateAt->setTimestamp($file->getATime());
 
+        $pathName = $file->getRelativePathname();
+        $name = mb_convert_encoding($pathName, "UTF-8", "auto");
+
         return [
-            'path' => $in . "/" . $file->getRelativePathname(),
-            'name' => $file->getRelativePathname(),
-            'nameToSort' => strtolower($file->getRelativePathname()),
+            'path' => $in . "/" . $name,
+            'name' => $name,
+            'nameToSort' => strtolower($name),
             'dateAt' => $dateAt,
             'size' => $file->getSize(),
             'icon' => $file->getType() == "dir" ? "folder" : $this->getIcon($file->getExtension())
