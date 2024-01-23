@@ -118,7 +118,7 @@ class StorageController extends AbstractController
             }
 
             if(count($directories1) > 0){
-//                $directories1 = $this->recuDirectories($storageService, $adminDirectory, $directories1, $deep);
+                $directories1 = $this->recuDirectories($storageService, $adminDirectory, $directories1, $deep);
 
                 $directory['files'] = $files1;
                 $directory['children'] = $directories1;
