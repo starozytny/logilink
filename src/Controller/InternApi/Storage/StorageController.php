@@ -21,10 +21,7 @@ class StorageController extends AbstractController
     {
         $data = json_decode($request->getContent());
 
-        [$directories, $files] = $storageService->getDirectories(
-            $data->path,
-            $data->isAdmin ? $this->getParameter('admin_directory') : null
-        );
+        [$directories, $files] = $storageService->getDirectories($data->path);
 
         $names = array_column($directories, 'nameToSort');
         array_multisort($names, SORT_ASC, $directories);
@@ -48,8 +45,9 @@ class StorageController extends AbstractController
         }
 
         $directory = $admin == "true"
-            ? $this->getParameter('admin_directory') . 'install-windev.logilink.fr/'
-            : $this->getParameter('private_directory');
+            ? $this->getParameter('admin_directory') . ($deep >= 1 ? 'install-windev.logilink.fr/' : '')
+            : $this->getParameter('private_directory')
+        ;
 
         $finder->files()->in($directory . $deepFolder . ($dir == "racine" ? "" : $dir));
         if(!$finder->hasResults()){
@@ -75,5 +73,59 @@ class StorageController extends AbstractController
         return $apiResponse->apiJsonResponseCustom(['url' => $this->generateUrl('intern_api_storage_download', [
             'admin' => $admin, 'deep' => $deep, 'dir' => $dir, 'filename' => $filename, 'file' => 1
         ])]);
+    }
+
+    #[Route('/directories', name: 'directories', options: ['expose' => true], methods: 'GET')]
+    public function directories(ApiResponse $apiResponse, StorageService $storageService): Response
+    {
+        $adminDirectory =  $this->getParameter('admin_directory');
+
+        [$directories, $files] = $storageService->getDirectories("install-windev.logilink.fr", $adminDirectory);
+
+        $names = array_column($directories, 'nameToSort');
+        array_multisort($names, SORT_ASC, $directories);
+
+        $directories = $this->recuDirectories($storageService, $adminDirectory, $directories, 0);
+
+        return $apiResponse->apiJsonResponseCustom([
+            'directories' => json_encode($directories),
+            'rootFiles' => json_encode($files),
+        ]);
+    }
+
+    private function recuDirectories(StorageService $storageService, $adminDirectory, $directories, $deep): array
+    {
+        $deep = $deep + 1;
+
+        $nDirectories = [];
+        foreach($directories as $directory){
+            $directory['deep'] = $deep - 1;
+
+            [$directories1, $files1] = $storageService->getDirectories($directory['path'], $adminDirectory);
+
+            $names = array_column($directories1, 'nameToSort');
+            array_multisort($names, SORT_ASC, $directories1);
+
+            $files1 = count($files1) > 0 ? $files1 : null;
+
+            if($files1){
+                $names = array_column($files1, 'nameToSort');
+                array_multisort($names, SORT_ASC, $files1);
+            }
+
+            if(count($directories1) > 0){
+                $directories1 = $this->recuDirectories($storageService, $adminDirectory, $directories1, $deep);
+
+                $directory['files'] = $files1;
+                $directory['children'] = $directories1;
+            }else{
+                $directory['files'] = $files1;
+                $directory['children'] = null;
+            }
+
+            $nDirectories[] = $directory;
+        }
+
+        return $nDirectories;
     }
 }

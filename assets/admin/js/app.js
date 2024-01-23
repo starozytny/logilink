@@ -7,7 +7,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Notifications } from "@commonComponents/Elements/Notifications";
 import { Theme } from "@commonComponents/Modules/Theme/Theme";
-import { Storage } from "@adminPages/Storage/Storage";
+import { StorageAdmin } from "@adminPages/Storage/StorageAdmin";
 
 Routing.setRoutingData(routes);
 
@@ -23,7 +23,7 @@ if(theme){
 
 let storage = document.getElementById("storage_list");
 if(storage){
-    createRoot(storage).render(<Storage {...storage.dataset} />)
+    createRoot(storage).render(<StorageAdmin {...storage.dataset} />)
 }
 
 menu();
