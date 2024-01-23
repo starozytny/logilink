@@ -4,6 +4,7 @@ namespace App\Controller\InternApi\Storage;
 
 use App\Service\ApiResponse;
 use App\Service\StorageService;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -16,6 +17,9 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_ADMIN')]
 class StorageController extends AbstractController
 {
+    /**
+     * @throws Exception
+     */
     #[Route('/directory', name: 'directory', options: ['expose' => true], methods: 'POST')]
     public function directory(Request $request, ApiResponse $apiResponse, StorageService $storageService): Response
     {
