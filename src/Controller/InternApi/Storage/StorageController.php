@@ -61,7 +61,7 @@ class StorageController extends AbstractController
         $filePath = null;
         foreach ($finder as $item) {
             if($item->getRelativePathname() == $filename){
-                $filePath = $item->getLinkTarget();
+                $filePath = $item->getPathname();
             }
         }
 
