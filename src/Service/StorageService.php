@@ -16,6 +16,9 @@ class StorageService
         $this->privateDirectory = $privateDirectory;
     }
 
+    /**
+     * @throws Exception
+     */
     public function getDirectories($in, $rootDirectory = null): array
     {
         $finderDirs = new Finder();
@@ -43,7 +46,7 @@ class StorageService
         return [
             'path' => $in . "/" . $file->getRelativePathname(),
             'name' => $file->getRelativePathname(),
-            'nameToSort' => mb_strtolower($file->getRelativePathname()),
+            'nameToSort' => strtolower($file->getRelativePathname()),
             'dateAt' => $dateAt,
             'size' => $file->getSize(),
             'icon' => $file->getType() == "dir" ? "folder" : $this->getIcon($file->getExtension())
