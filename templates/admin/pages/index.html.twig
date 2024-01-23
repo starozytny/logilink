@@ -92,16 +92,17 @@
         {% endif %}
 
         <div class="dashboard-line-2">
-            {% if is_granted('ROLE_DEVELOPER') %}
-                <div class="card">
-                    <div class="card-header">
-                        <div class="icon"><span class="icon-box"></span></div>
-                        <div class="title">Stockage dossier ADMIN</div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon"><span class="icon-box"></span></div>
+                    <div class="title">Stockage dossier ADMIN</div>
+                </div>
+
+                <div class="card-body">
+                    <div id="storage_list">
+                        {% include "layout/components/loader.html.twig" %}
                     </div>
                 </div>
-            {% endif %}
-            <div id="storage_list" data-path="install-windev.logilink.fr">
-                {% include "layout/components/loader.html.twig" %}
             </div>
         </div>
 
