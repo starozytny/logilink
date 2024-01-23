@@ -65,7 +65,7 @@ export class StorageAdmin extends Component {
                                 </div>
                                 <div className="name">RACINE</div>
                             </div>
-                            <div className="directory-body">
+                            <div className="directory-body active">
                                 <div className="files">
                                     {rootFiles.map((elem, index) => {
                                         return <File elem={elem} directory="install-windev.logilink.fr" deep={0} key={index} />;
