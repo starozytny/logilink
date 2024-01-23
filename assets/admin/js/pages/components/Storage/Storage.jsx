@@ -159,7 +159,7 @@ function File ({ elem, directory, deep, isAdmin }) {
 
                     setLoadData(false);
                 })
-                .catch(function (error) { Formulaire.displayErrors(self, error); })
+                .catch(function (error) { console.log(error); console.log(error.response); Formulaire.displayErrors(self, error); })
                 .then(function () { setIcon(elem.icon); })
             ;
         }
