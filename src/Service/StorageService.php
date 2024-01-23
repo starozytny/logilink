@@ -47,7 +47,7 @@ class StorageService
         $name = mb_convert_encoding($pathName, "UTF-8", "auto");
 
         return [
-            'path' => $in . "/" . $file->getRelativePathname(),
+            'path' => $in . "/" . $name,
             'name' => $name,
             'nameToSort' => strtolower($name),
             'dateAt' => $dateAt,

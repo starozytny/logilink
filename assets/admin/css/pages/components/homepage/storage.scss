@@ -29,7 +29,7 @@
   .directory-body{
     @include flex(column, flex-start, flex-start, var(--espaceEls));
     overflow: auto;
-    //display: none;
+    display: none;
 
     &.active{
       display: flex;
