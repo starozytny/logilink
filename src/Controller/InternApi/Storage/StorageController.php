@@ -89,7 +89,7 @@ class StorageController extends AbstractController
         $names = array_column($directories, 'nameToSort');
         array_multisort($names, SORT_ASC, $directories);
 
-        $directories = $this->recuDirectories($storageService, $adminDirectory, $directories, 0);
+//        $directories = $this->recuDirectories($storageService, $adminDirectory, $directories, 0);
 
         return $apiResponse->apiJsonResponseCustom([
             'directories' => json_encode($directories),
