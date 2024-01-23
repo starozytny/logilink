@@ -25,7 +25,7 @@ class StorageController extends AbstractController
     {
         $data = json_decode($request->getContent());
 
-        [$directories, $files] = $storageService->getDirectories($data->path, $data->isAdmin == "true" ? $this->getParameter('admin_directory') : null);
+        [$directories, $files] = $storageService->getDirectories($data->path);
 
         $names = array_column($directories, 'nameToSort');
         array_multisort($names, SORT_ASC, $directories);
@@ -49,8 +49,7 @@ class StorageController extends AbstractController
         }
 
         $directory = $admin == "true"
-//            ? $this->getParameter('admin_directory') . ($deep >= 1 ? 'install-windev.logilink.fr/' : '')
-            ? $this->getParameter('admin_directory') . 'install-windev.logilink.fr/'
+            ? $this->getParameter('admin_directory') . ($deep >= 1 ? 'install-windev.logilink.fr/' : '')
             : $this->getParameter('private_directory')
         ;
 
