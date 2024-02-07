@@ -4,7 +4,7 @@ namespace App\Controller\App\Produits;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/logiciels-metier', name: 'app_softwares_')]
 class SoftwaresController extends AbstractController
