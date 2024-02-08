@@ -49,7 +49,7 @@ nav{
 .nav-menu{
   overflow: auto;
   @include scrollbar();
-  max-height: 72vh;
+  max-height: 64vh;
 
   .nav-item{
     @include flex(row, center, flex-start, 8px);
@@ -88,6 +88,10 @@ nav{
   padding-top: var(--espaceDiv);
   border-top: 1px solid var(--grey1);
   font-weight: 600;
+
+  & > *:not(:last-child){
+    margin-bottom: var(--espaceDiv);
+  }
 }
 
 .nav-sub-item{
@@ -132,12 +136,6 @@ nav{
   display: none;
 }
 
-//                      __   _____ __    ___    __
-//                     | _| |___  / /_  ( _ )  |_ |
-//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
-//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
-//                     | |   /_/  \___/ \___/   | |
-//                     |__|                    |__|
 @media (min-width:768px) {
   .nav-content{
     &.active{
@@ -150,7 +148,7 @@ nav{
   }
 
   .nav-menu{
-    max-height: initial;
+    max-height: 76vh;
   }
 }
 
@@ -162,14 +160,12 @@ nav{
   .nav-logo {
     width: 194px;
   }
+
+  .nav-menu{
+    max-height: 70vh;
+  }
 }
 
-//                      __   _ ____  ___   ___    __
-//                     | _| / |___ \( _ ) / _ \  |_ |
-//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
-//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
-//                     | |  |_|_____\___/ \___/   | |
-//                     |__|                      |__|
 @media (min-width: 1280px) {
   nav{
     box-shadow: none;
@@ -212,6 +208,7 @@ nav{
 
   .nav-menu{
     @include flex(row, flex-start, flex-start, var(--espaceEls));
+    max-height: initial;
 
     .nav-item{
       border-radius: var(--radius);
@@ -235,13 +232,6 @@ nav{
     display: block;
     width: 242px;
     font-weight: 600;
-
-    .nav-menu{
-      justify-content: flex-end;
-      .nav-item{
-        background-color: var(--color2);
-      }
-    }
   }
 
   .nav-expanded{
@@ -291,6 +281,7 @@ nav{
       margin-top: var(--espaceDiv);
     }
   }
+
   .nav-expanded-title{
     text-transform: uppercase;
     @include fontSemibold();

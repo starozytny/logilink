@@ -1,13 +1,14 @@
 {% extends 'app/pages/security/template.html.twig' %}
 
-{% block title %}Connexion à son espace{% endblock %}
+{% block title %}Connexion à son espace Logilink{% endblock %}
 
 {% block main_content %}
 <div class="page-default">
     <div class="login-page">
         <div class="col-1">
             <div class="title-page">
-                <h1>Espace membre</h1>
+                <h1><em>Mon espace</em> Logilink</h1>
+                <p>Entrez votre identifiant et mot de passe ci-dessous pour accéder à votre espace</p>
             </div>
 
             <div class="content">
@@ -22,7 +23,7 @@
                         <div class="form-group">
                             <label for="username">
                                 <span class="icon-user"></span>
-                                <span>Nom utilisateur</span>
+                                <span>Identifiant</span>
                             </label>
                             <input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus/>
                         </div>

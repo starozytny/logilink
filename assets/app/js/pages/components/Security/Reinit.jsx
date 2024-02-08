@@ -64,11 +64,11 @@ export class Reinit extends Component {
 
         return <>
             <div className="title-page">
-                <h1>Réinitialiser son mot de passe</h1>
+                <h1><em>Réinitialiser</em> son mot de passe</h1>
             </div>
 
             <div className="content">
-                <div className="form">
+            <div className="form">
                     <form onSubmit={this.handleSubmit}>
 
                         {success !== false && <Alert type="info">{success}</Alert>}

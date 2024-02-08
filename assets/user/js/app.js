@@ -5,26 +5,8 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min';
 
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { Notifications } from "@commonComponents/Elements/Notifications";
-import { Theme } from "@commonComponents/Modules/Theme/Theme";
-import { StorageAdmin } from "@adminPages/Storage/StorageAdmin";
 
 Routing.setRoutingData(routes);
-
-let notifs = document.getElementById("notifs_list");
-if(notifs){
-    createRoot(notifs).render(<Notifications />)
-}
-
-let theme = document.getElementById("theme_switcher");
-if(theme){
-    createRoot(theme).render(<Theme {...theme.dataset} />)
-}
-
-let storage = document.getElementById("storage_list");
-if(storage){
-    createRoot(storage).render(<StorageAdmin {...storage.dataset} />)
-}
 
 menu();
 
