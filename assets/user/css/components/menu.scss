@@ -38,7 +38,7 @@
   position: absolute;
   top: -200.0rem; left: 0;
   padding: 2.4rem 0;
-  background-color: var(--colorMenu);
+  background: linear-gradient(var(--colorMenu), #272a4b);
   opacity: 0;
   z-index: -1;
 
@@ -102,7 +102,7 @@
 //                     |__|                       |__|
 @media (min-width: 1024px) {
   nav{
-    background-color: var(--colorMenu);
+    background: linear-gradient(var(--colorMenu), #272a4b);
   }
 
   .nav-container{

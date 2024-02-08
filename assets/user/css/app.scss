@@ -25,7 +25,7 @@
 
 body {
   color: var(--txt);
-  background-color: var(--color1);
+  background: linear-gradient(190deg, var(--color1), #8b8c93);
   @include fontRegular();
 }
 
