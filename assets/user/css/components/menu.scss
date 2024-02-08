@@ -5,7 +5,7 @@
 
 .nav-logo{
   @include flex(row, center, center);
-  width: 100px;
+  width: 148px;
   padding: 1.2rem;
 
   a {
@@ -25,6 +25,10 @@
   margin-bottom: 2.4rem;
 }
 
+.nav-header-infos{
+  color: var(--alpha);
+}
+
 .nav-header-actions{
   @include flex(row, center, flex-start);
   gap: 0.8rem;
@@ -34,7 +38,7 @@
   position: absolute;
   top: -200.0rem; left: 0;
   padding: 2.4rem 0;
-  background-color: var(--color2);
+  background-color: var(--colorMenu);
   opacity: 0;
   z-index: -1;
 
@@ -49,13 +53,15 @@
 .nav-menu{
   .nav-item{
     @include flex(row, center, flex-start, 8px);
-    color: var(--txt);
-    padding: 12px;
+    color: var(--alpha);
+    padding: 14px 16px;
     transition: all 0.2s ease-in-out;
+    @include fontSemibold();
 
     [class^="icon-"]{
       display: inline-block;
-      transform: translateY(-2px);
+      transform: translateY(-1px);
+      font-weight: bold;
     }
 
     &.active{
@@ -64,7 +70,7 @@
     }
 
     &:not(&.active):hover{
-      background-color: var(--color4);
+      background-color: var(--primaryOpacity4);
     }
   }
 }
@@ -95,6 +101,10 @@
 //                     | |  |_|\___/_____|  |_|    | |
 //                     |__|                       |__|
 @media (min-width: 1024px) {
+  nav{
+    background-color: var(--colorMenu);
+  }
+
   .nav-container{
     flex-direction: column;
     align-items: flex-start;
@@ -121,8 +131,6 @@
   }
 
   .nav-header-infos{
-    margin: 0;
-
     & > div{
       max-width: 180px;
       white-space: nowrap;
@@ -161,7 +169,7 @@
     }
 
     .nav-item{
-      border-radius: 4px;
+      border-radius: 12px;
       width: 100%;
     }
   }
