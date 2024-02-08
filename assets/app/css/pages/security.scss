@@ -15,7 +15,10 @@
 
   h1{
     font-size: 36px;
-    @include fontLibreItalic();
+
+    em{
+      @include fontLibreItalic();
+    }
 
     & + p{
       margin-top: 8px;
