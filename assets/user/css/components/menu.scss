@@ -49,7 +49,7 @@
 .nav-menu{
   .nav-item{
     @include flex(row, center, flex-start, 8px);
-    color: var(--alpha);
+    color: var(--txt);
     padding: 12px;
     transition: all 0.2s ease-in-out;
 
@@ -60,10 +60,11 @@
 
     &.active{
       background-color: var(--primary);
+      color: var(--alpha);
     }
 
     &:not(&.active):hover{
-      background-color: var(--color2);
+      background-color: var(--color4);
     }
   }
 }

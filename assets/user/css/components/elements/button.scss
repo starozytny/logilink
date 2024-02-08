@@ -38,11 +38,6 @@ $data:
   background-color: var(--color0);
 }
 
-.btn-outline-default,
-.btn-icon-outline-default{
-  border-color: var(--color2);
-}
-
 $data:
         "primary" var(--primaryOpacity1) var(--primary),
         "warning" var(--warningOpacity1) var(--warning),
