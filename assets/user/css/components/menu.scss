@@ -194,6 +194,10 @@
 //                     | |  |_|\___/ \___/ \___/   | |
 //                     |__|                       |__|
 @media (min-width: 1600px){
+  .nav-logo{
+    width: 180px;
+  }
+
   .nav-header-infos{
     & > div{
       max-width: 240px;
