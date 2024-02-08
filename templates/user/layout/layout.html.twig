@@ -13,6 +13,13 @@
         path: path('app_homepage'), matchRoute: ['app_homepage'] },
 ] %}
 
+{% if is_granted('ROLE_ADMIN') %}
+    {% set menu_bottom = [
+        { name: "Espace admin",  icon: "earth",
+            path: path('admin_homepage'), matchRoute: ['admin_homepage'] },
+    ] | merge(menu_bottom) %}
+{% endif %}
+
 {% block footer %}
     <footer>
         <div class="footer-container">
