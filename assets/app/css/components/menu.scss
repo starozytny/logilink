@@ -132,12 +132,6 @@ nav{
   display: none;
 }
 
-//                      __   _____ __    ___    __
-//                     | _| |___  / /_  ( _ )  |_ |
-//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
-//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
-//                     | |   /_/  \___/ \___/   | |
-//                     |__|                    |__|
 @media (min-width:768px) {
   .nav-content{
     &.active{
@@ -147,10 +141,6 @@ nav{
 
   .nav-logo{
     width: 238px;
-  }
-
-  .nav-menu{
-    max-height: initial;
   }
 }
 
@@ -164,12 +154,6 @@ nav{
   }
 }
 
-//                      __   _ ____  ___   ___    __
-//                     | _| / |___ \( _ ) / _ \  |_ |
-//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
-//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
-//                     | |  |_|_____\___/ \___/   | |
-//                     |__|                      |__|
 @media (min-width: 1280px) {
   nav{
     box-shadow: none;
@@ -212,6 +196,7 @@ nav{
 
   .nav-menu{
     @include flex(row, flex-start, flex-start, var(--espaceEls));
+    max-height: initial;
 
     .nav-item{
       border-radius: var(--radius);
@@ -291,6 +276,7 @@ nav{
       margin-top: var(--espaceDiv);
     }
   }
+
   .nav-expanded-title{
     text-transform: uppercase;
     @include fontSemibold();
