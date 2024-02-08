@@ -42,10 +42,18 @@ Encore
         from: './assets/admin/images',
         to: 'admin/images/[path][name].[ext]',
     })
+    .copyFiles({
+        from: './assets/user/fonts',
+        to: 'user/fonts/[path][name].[ext]',
+    })
+    .copyFiles({
+        from: './assets/user/images',
+        to: 'user/images/[path][name].[ext]',
+    })
 
     .configureFilenames({
-        css: !Encore.isProduction() ? 'css/[name].css' : 'css/[name].[hash:8].css',
-        js: !Encore.isProduction() ? 'js/[name].js' : 'js/[name].[hash:8].js'
+        css: !Encore.isProduction() ? 'css/[name].css' : 'css/[name].[fullhash:8].css',
+        js: !Encore.isProduction() ? 'js/[name].js' : 'js/[name].[fullhash:8].js'
     })
 
     /*
