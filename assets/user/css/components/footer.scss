@@ -1,74 +1,75 @@
-footer{
-  background-color: var(--color0Opacity4);
-  color: var(--alpha);
+.footer-container{
+  @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+  padding: calc(var(--espaceLayout) * 2) var(--espaceLayout) var(--espaceLayout) var(--espaceLayout);
+  border-top: 1px solid var(--grey1);
+  background-color: var(--color0);
 
-  a{
-    color: var(--alpha);
+  .footer-link{
+    color: var(--txt);
+    opacity: 0.9;
 
     &:hover{
-      text-decoration: underline;
+      opacity: 1;
     }
   }
+}
+
+.footer-title{
+  text-transform: uppercase;
+  color: var(--grey3);
+  width: 100%;
+}
+
+.footer-menu{
+  @include flex(column, center, space-between, calc(var(--espaceLayout) * 2));
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+
+  & > .col-1{
+    width: 128px;
+  }
+
+  & > .col-2,
+  & > .col-3{
+    @include flex(column, center, center, 4px);
+  }
+
+  .cta{
+    margin-top: 12px;
+  }
+}
+
+.footer-copyright{
+  @include flex(row, flex-start, center, var(--espaceEls));
+  flex-wrap: wrap;
+  font-size: 14px;
+  width: 100%;
 
   .copyright{
-    @include flex(row, center, flex-end, 8px);
+    color: var(--primary);
   }
 }
 
-.footer{
-  .footer-menu{
-    @include flex(column, flex-start, flex-start, 24px);
-    margin-bottom: 24px;
-  }
-
-  .footer-logo{
-    @include flex(column, flex-start, flex-start, 12px);
-    @include fontSemibold();
-
-    img{
-      width: 100px;
-    }
-  }
-
-  .footer-items{
-    @include flex(column, flex-start, flex-start, 4px);
-
-    a{
-      opacity: 0.7;
-      &:hover{ opacity: 1; }
-    }
-  }
-}
-
-//                      __   _____ __    ___    __
-//                     | _| |___  / /_  ( _ )  |_ |
-//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
-//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
-//                     | |   /_/  \___/ \___/   | |
-//                     |__|                    |__|
 @media (min-width:768px) {
-  .footer{
-    .footer-items{
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 12px;
+  .footer-menu{
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+
+    & > .col-2,
+    & > .col-3{
+      align-items: flex-start;
+      justify-content: flex-start;
     }
   }
 }
 
-//                      __   _  ___ ____  _  _     __
-//                     | _| / |/ _ \___ \| || |   |_ |
-//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
-//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
-//                     | |  |_|\___/_____|  |_|    | |
-//                     |__|                       |__|
 @media (min-width: 1024px) {
-  .footer{
-    padding: 1.8rem;
-
-    .footer-logo{
-      flex-direction: row;
-      align-items: center;
+  .footer-menu{
+    & > .col-1{
+      width: 228px;
     }
   }
 }

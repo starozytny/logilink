@@ -38,7 +38,7 @@
       border-style: solid;
       min-width: 120px;
       text-align: center;
-      background-color: var(--color4);
+      background-color: var(--color2);
     }
 
     .item-selected{
@@ -80,17 +80,21 @@
 
 input, textarea, select, .input-view{
   background-color: var(--color4);
-  border-color: var(--color3Opacity4);
-  color: var(--grey3);
+  border-color: var(--grey1);
+  color: var(--alpha);
 
   &::placeholder{
     color: var(--grey3);
+  }
+
+  &:focus{
+    border-color: var(--grey2);
   }
 }
 
 .file-uploader{
   .file-uploader-container{
-    background-color: var(--color4);
+    background-color: var(--color2);
 
     .infos{
       color: var(--grey3);

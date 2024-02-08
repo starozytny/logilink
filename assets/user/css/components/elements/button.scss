@@ -9,13 +9,13 @@
 }
 
 $data:
-        "primary" var(--primary) var(--primary) var(--alpha),
-        "warning" var(--warning) var(--warning) var(--alpha),
-        "danger" var(--danger) var(--danger) var(--alpha),
-        "success" var(--success) var(--success) var(--alpha),
-        "grey3" var(--grey3) var(--grey3) var(--alpha),
-        "grey4" var(--grey4) var(--grey4) var(--alpha),
-        "default" var(--alpha) var(--grey2) var(--txt),
+        "primary" var(--primary) var(--primary) var(--txt),
+        "warning" var(--warning) var(--warning) var(--txt),
+        "danger" var(--danger) var(--danger) var(--txt),
+        "success" var(--success) var(--success) var(--txt),
+        "grey3" var(--grey3) var(--grey3) var(--txt),
+        "grey4" var(--grey4) var(--grey4) var(--txt),
+        "default" var(--txt) var(--grey2) var(--alpha),
 ;
 
 @each $name, $bg, $border, $txt in $data {

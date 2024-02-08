@@ -8,4 +8,47 @@
 ] %}
 
 {% block footer %}
+    <footer>
+        <div class="footer-container">
+            <div class="footer-menu">
+                <div class="col-1">
+                    <a href="{{ path('app_homepage') }}">
+                        <img src="{{ asset('build/app/images/logo-logilink.svg') }}" alt="Logo logilink editeur logiciel immobilier">
+                    </a>
+                    <span class="icon-linkedin"></span>
+                </div>
+                <div class="col-2">
+                    <div class="footer-title">Solutions informatiques</div>
+                    <a class="footer-link" href="{{ path('app_softwares') }}">Découvrir nos logiciels</a>
+                    <a class="footer-link" href="{{ path('app_applications') }}">Découvrir nos applications</a>
+                    <a class="footer-link" href="{{ path('app_websites') }}">Découvrir nos sites internet</a>
+                    <a class="footer-link" href="{{ path('app_webservices') }}">Découvrir nos services en ligne</a>
+                    <a class="footer-link" href="{{ path('app_prestations') }}">Découvrir nos prestations de services</a>
+                    <div class="footer-title" style="margin-top: 12px">Support</div>
+                    <a class="footer-link" href="{{ path('app_support') }}">Support technique</a>
+                </div>
+                <div class="col-3">
+                    <div class="footer-title">Contact</div>
+                    <p class="address">
+                        Logilink<br>
+                        17 rue de la République<br>
+                        13002, Marseille
+                    </p>
+                    <div class="cta">
+                        <a class="btn btn-color2" href="tel:0491994443">04 91 99 44 43</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 - <a href="https://logilink.fr" class="copyright">Logilink.fr</a></p>
+                <span>-</span>
+                <a class="footer-link" href="{{ path('app_mentions') }}">Mentions légales</a>
+                <a class="footer-link" href="{{ path('app_politique') }}">Politique de confidentialité</a>
+                <a class="footer-link" href="{{ path('app_cookies') }}">Gestion des cookies</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="footer-link" href="{{ path('admin_homepage') }}">Espace administrateur</a>
+                {% endif %}
+            </div>
+        </div>
+    </footer>
 {% endblock %}
