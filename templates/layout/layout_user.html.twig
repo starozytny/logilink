@@ -24,6 +24,27 @@
                 </div>
 
                 <div class="nav-content">
+
+                    <div class="nav-header">
+                        <div class="avatar">
+                            {% if app.user.avatarFile %}
+                                <img src="{{ app.user.avatarFile }}" alt="Avatar utilisateur">
+                            {% else %}
+                                <div class="avatar-letter">{{ app.user.lastname | slice(0, 1) }}{{ app.user.firstname | slice(0,1) }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="nav-header-infos">
+                            <div>{{ app.user.userIdentifier }}</div>
+                            <div>{{ app.user.email }}</div>
+                        </div>
+                        <div class="nav-header-actions">
+                            <a href="{{ path('app_logout') }}" class="btn-icon btn-icon-outline-default">
+                                <span class="icon-logout"></span>
+                                <span class="tooltip" style="width: 108px;">Se déconnecter</span>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="nav-menu">
                         {% for item in menu %}
                             <a class="nav-item {{- app.request.get('_route') == item.nameRoute ? " active" : "" -}}"
