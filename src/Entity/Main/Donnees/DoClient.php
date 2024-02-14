@@ -4,6 +4,8 @@ namespace App\Entity\Main\Donnees;
 
 use App\Entity\Main\User;
 use App\Repository\Main\Donnees\DoClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DoClientRepository::class)]
@@ -37,6 +39,14 @@ class DoClient
 
     #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
     private ?User $user = null;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: DoExtrait::class)]
+    private Collection $extraits;
+
+    public function __construct()
+    {
+        $this->extraits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -145,6 +155,36 @@ class DoClient
         }
 
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DoExtrait>
+     */
+    public function getExtraits(): Collection
+    {
+        return $this->extraits;
+    }
+
+    public function addExtrait(DoExtrait $extrait): static
+    {
+        if (!$this->extraits->contains($extrait)) {
+            $this->extraits->add($extrait);
+            $extrait->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExtrait(DoExtrait $extrait): static
+    {
+        if ($this->extraits->removeElement($extrait)) {
+            // set the owning side to null (unless already changed)
+            if ($extrait->getClient() === $this) {
+                $extrait->setClient(null);
+            }
+        }
 
         return $this;
     }

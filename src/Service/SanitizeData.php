@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use DateTime;
+use DateTimeImmutable;
 use Symfony\Component\String\AbstractUnicodeString;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
@@ -61,12 +62,20 @@ class SanitizeData
         return $return;
     }
 
-    public function createDatePicker($value, $return = null): ?DateTime
+    public function createDatePicker($value, $return = null): DateTime|DateTimeImmutable|null
     {
         if($value != "" && $value != null){
             return DateTime::createFromFormat('d/m/Y', $value);
         }
 
         return $return;
+    }
+
+    public function setToFloat($value, $return = null): ?float
+    {
+        if($value == 0 || $value == "0"){
+            return ($value == null) ? $return : (float) $value;
+        }
+        return ($value == "" || $value == null) ? $return : (float) $value;
     }
 }

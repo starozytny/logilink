@@ -3,6 +3,7 @@
 namespace App\Command\Donnees;
 
 use App\Entity\Main\Donnees\DoClient;
+use App\Entity\Main\Donnees\DoExtrait;
 use App\Entity\Main\Society;
 use App\Entity\Main\User;
 use App\Service\Data\DataMain;
@@ -76,7 +77,6 @@ class DonneesClientsSyncCommand extends Command
 
                     $io->title("Synchronisation des clients");
 
-                     //read file
                     $csv = Reader::createFromPath($directoryExtract . "/clients.csv", 'r');
                     $csv->setOutputBOM(ByteSequence::BOM_UTF8);
                     $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
@@ -131,7 +131,58 @@ class DonneesClientsSyncCommand extends Command
 
                     $progressBar->finish();
                     $this->registry->getManager()->flush();
+
+                    $io->newLine();
+                    $io->newLine();
+                    $io->title("Synchronisation des extraits de comptes");
+
+                    $clients = $this->registry->getRepository(DoClient::class)->findAll();
+
+                    $csv = Reader::createFromPath($directoryExtract . "/extraitcompte.csv", 'r');
+                    $csv->setOutputBOM(ByteSequence::BOM_UTF8);
+                    $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
+                    $csv->setDelimiter(';');
+                    $records = $csv->getRecords();
+
+                    $progressBar = new ProgressBar($output, iterator_count($records));
+                    $progressBar->start();
+
+                    foreach($records as $item){
+                        $numero = $this->sanitizeData->trimData($item[0]);
+
+                        $client = null;
+                        foreach($clients as $cl){
+                            if($cl->getNumero() == $numero){
+                                $client = $cl;
+                            }
+                        }
+
+                        if(!$client){
+                            $io->error('Client introuvable : ' . $item[0] . ' - ' . $item[1]);
+                        }else{
+                            $extrait = (new DoExtrait())
+                                ->setNumero($numero)
+                                ->setAccount($this->sanitizeData->trimData($item[1]))
+                                ->setWriteAt($this->sanitizeData->createDatePicker($item[2]))
+                                ->setCode($this->sanitizeData->trimData($item[3]))
+                                ->setPiece($this->sanitizeData->trimData($item[4]))
+                                ->setName($this->sanitizeData->trimData($item[5]))
+                                ->setLetter($this->sanitizeData->trimData($item[6]))
+                                ->setDebit($this->sanitizeData->setToFloat($item[7], 0))
+                                ->setCredit($this->sanitizeData->setToFloat($item[8], 0))
+                                ->setClient($client)
+                                ->setArchive($dir)
+                            ;
+
+                            $this->registry->getManager()->persist($extrait);
+                            $progressBar->advance();
+                        }
+                    }
+
+                    $progressBar->finish();
+                    $this->registry->getManager()->flush();
                 } else {
+                    $io->newLine();
                     $io->error('Fichier : ' . $dir . ' n\'est pas une archive.');
                 }
             }
