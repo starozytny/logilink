@@ -58,7 +58,8 @@
                                                 <span>{{ solde | price }}</span>
                                             </div>
                                             <div class="col-7 actions">
-                                                <a href="" class="btn-icon btn-icon-outline-primary" target="_blank">
+                                                <a href="{{ path('user_download_invoice', {'id': elem.id}) }}"
+                                                   class="btn-icon btn-icon-outline-primary" target="_blank">
                                                     <span class="icon-receipt"></span>
                                                     <span class="tooltip">Facture</span>
                                                 </a>

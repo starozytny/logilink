@@ -30,9 +30,9 @@ use ZipArchive;
 class DonneesClientsSyncCommand extends Command
 {
     const FOLDER = 'clients/';
-    const FOLDER_ARCHIVE = 'clients/archive';
-    const FOLDER_EXTRACT = 'clients/extract';
-    const FOLDER_INVOICE = 'clients/files/invoices';
+    const FOLDER_ARCHIVE = 'clients/archive/';
+    const FOLDER_EXTRACT = 'clients/extract/';
+    const FOLDER_INVOICE = DoExtrait::FOLDER_INVOICE;
 
     public function __construct(private readonly string $privateDirectory,
                                 private readonly ManagerRegistry $registry,
@@ -80,7 +80,7 @@ class DonneesClientsSyncCommand extends Command
 
                     $io->title("Synchronisation des clients");
 
-                    $csv = Reader::createFromPath($directoryExtract . "/clients.csv", 'r');
+                    $csv = Reader::createFromPath($directoryExtract . "clients.csv", 'r');
                     $csv->setOutputBOM(ByteSequence::BOM_UTF8);
                     $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
                     $csv->setDelimiter(';');
@@ -141,7 +141,7 @@ class DonneesClientsSyncCommand extends Command
 
                     $clients = $this->registry->getRepository(DoClient::class)->findAll();
 
-                    $csv = Reader::createFromPath($directoryExtract . "/extraitcompte.csv", 'r');
+                    $csv = Reader::createFromPath($directoryExtract . "extraitcompte.csv", 'r');
                     $csv->setOutputBOM(ByteSequence::BOM_UTF8);
                     $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
                     $csv->setDelimiter(';');
@@ -178,11 +178,11 @@ class DonneesClientsSyncCommand extends Command
                             ;
 
                             $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
-                            $attach = $directoryExtract . "/FACTURES/" . $attachName;
+                            $attach = $directoryExtract . "FACTURES/" . $attachName;
 
                             if(file_exists($attach)){
                                 $extrait->setFile($attachName);
-                                rename($attach, $directoryInvoice . "/" . $attachName);
+                                rename($attach, $directoryInvoice . $attachName);
                             }
 
                             $this->registry->getManager()->persist($extrait);
@@ -193,7 +193,7 @@ class DonneesClientsSyncCommand extends Command
                     $progressBar->finish();
                     $this->registry->getManager()->flush();
 
-                    rename($file, $directoryArchive . "/" . $dir);
+                    rename($file, $directoryArchive . $dir);
 
                     $this->rrmdir($directoryExtract);
                 } else {

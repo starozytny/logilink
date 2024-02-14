@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: DoExtraitRepository::class)]
 class DoExtrait
 {
+    const FOLDER_INVOICE = "clients/files/invoices/";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
