@@ -40,6 +40,9 @@ class DoExtrait
     #[ORM\Column(nullable: true)]
     private ?float $credit = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $file = null;
+
     #[ORM\ManyToOne(inversedBy: 'extraits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?DoClient $client = null;
@@ -156,6 +159,18 @@ class DoExtrait
     public function setCredit(?float $credit): static
     {
         $this->credit = $credit;
+
+        return $this;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(?string $file): static
+    {
+        $this->file = $file;
 
         return $this;
     }

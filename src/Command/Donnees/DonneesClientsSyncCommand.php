@@ -174,6 +174,13 @@ class DonneesClientsSyncCommand extends Command
                                 ->setArchive($dir)
                             ;
 
+                            $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
+                            $attach = $directoryExtract . "/FACTURES/" . $attachName;
+
+                            if(file_exists($attach)){
+                                $extrait->setFile($attachName);
+                            }
+
                             $this->registry->getManager()->persist($extrait);
                             $progressBar->advance();
                         }
