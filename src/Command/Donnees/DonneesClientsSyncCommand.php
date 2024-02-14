@@ -2,8 +2,18 @@
 
 namespace App\Command\Donnees;
 
+use App\Entity\Main\Donnees\DoClient;
+use App\Service\SanitizeData;
+use League\Csv\ByteSequence;
+use League\Csv\Exception;
+use League\Csv\InvalidArgument;
+use League\Csv\Reader;
+use League\Csv\UnavailableFeature;
+use League\Csv\UnavailableStream;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -19,11 +29,19 @@ class DonneesClientsSyncCommand extends Command
     const FOLDER_ARCHIVE = 'clients/archive';
     const FOLDER_EXTRACT = 'clients/extract';
 
-    public function __construct(private readonly string $privateDirectory)
+    public function __construct(private readonly string $privateDirectory,
+                                private readonly ManagerRegistry $registry,
+                                private readonly SanitizeData $sanitizeData)
     {
         parent::__construct();
     }
 
+    /**
+     * @throws InvalidArgument
+     * @throws UnavailableStream
+     * @throws UnavailableFeature
+     * @throws Exception
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -36,6 +54,8 @@ class DonneesClientsSyncCommand extends Command
 
         if(!is_dir($directoryArchive)) mkdir($directoryArchive);
         if(!is_dir($directoryExtract)) mkdir($directoryExtract);
+
+        $clients = $this->registry->getRepository(DoClient::class)->findAll();
 
         $scanned_directory = array_diff(scandir($directory), array('..', '.', '.gitignore', '.ftpquota'));
 
@@ -50,13 +70,54 @@ class DonneesClientsSyncCommand extends Command
 
                     $io->title("Synchronisation des clients");
 
+                     //read file
+                    $csv = Reader::createFromPath($directoryExtract . "/clients.csv", 'r');
+                    $csv->setOutputBOM(ByteSequence::BOM_UTF8);
+                    $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
+                    $csv->setDelimiter(';');
+                    $records = $csv->getRecords();
 
+                    $progressBar = new ProgressBar($output, iterator_count($records));
+                    $progressBar->start();
+
+                    foreach($records as $item){
+//                        dump($item);
+
+                        $code = $this->sanitizeData->trimData($item[0]);
+
+                        $client = new DoClient();
+                        foreach($clients as $cl){
+                            if($cl->getCode() == $code){
+                                $client = $cl;
+                            }
+                        }
+
+                        $client = ($client)
+                            ->setCode($code)
+                            ->setName($this->sanitizeData->trimData($item[1]))
+                            ->setNumero($this->sanitizeData->trimData($item[6]))
+                            ->setAddress($this->sanitizeData->trimData($item[2]))
+                            ->setComplement($this->sanitizeData->trimData($item[3]))
+                            ->setZipcode($this->sanitizeData->trimData($item[4]))
+                            ->setCity($this->sanitizeData->trimData($item[5]))
+                        ;
+
+                        $this->registry->getManager()->persist($client);
+                        $progressBar->advance();
+                    }
+
+                    $progressBar->finish();
+                    $this->registry->getManager()->flush();
                 } else {
                     $io->error('Fichier : ' . $dir . ' n\'est pas une archive.');
                 }
             }
         }
 
+
+        $io->newLine();
+        $io->newLine();
+        $io->comment('--- [FIN DE LA COMMANDE] ---');
         return Command::SUCCESS;
     }
 }

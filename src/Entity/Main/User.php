@@ -3,6 +3,7 @@
 namespace App\Entity\Main;
 
 use App\Entity\DataEntity;
+use App\Entity\Main\Donnees\DoClient;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -94,6 +95,9 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Mail::class)]
     private Collection $mails;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?DoClient $client = null;
 
     /**
      * @throws Exception
@@ -401,6 +405,18 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
                 $mail->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getClient(): ?DoClient
+    {
+        return $this->client;
+    }
+
+    public function setClient(?DoClient $client): static
+    {
+        $this->client = $client;
 
         return $this;
     }

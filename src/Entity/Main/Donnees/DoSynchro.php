@@ -2,11 +2,11 @@
 
 namespace App\Entity\Main\Donnees;
 
-use App\Repository\Main\Donnees\SynchroRepository;
+use App\Repository\Main\Donnees\DoSynchroRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: SynchroRepository::class)]
-class Synchro
+#[ORM\Entity(repositoryClass: DoSynchroRepository::class)]
+class DoSynchro
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

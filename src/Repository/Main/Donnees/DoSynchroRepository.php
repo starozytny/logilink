@@ -2,23 +2,23 @@
 
 namespace App\Repository\Main\Donnees;
 
-use App\Entity\Main\Donnees\Synchro;
+use App\Entity\Main\Donnees\DoSynchro;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Synchro>
+ * @extends ServiceEntityRepository<DoSynchro>
  *
- * @method Synchro|null find($id, $lockMode = null, $lockVersion = null)
- * @method Synchro|null findOneBy(array $criteria, array $orderBy = null)
- * @method Synchro[]    findAll()
- * @method Synchro[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method DoSynchro|null find($id, $lockMode = null, $lockVersion = null)
+ * @method DoSynchro|null findOneBy(array $criteria, array $orderBy = null)
+ * @method DoSynchro[]    findAll()
+ * @method DoSynchro[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SynchroRepository extends ServiceEntityRepository
+class DoSynchroRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Synchro::class);
+        parent::__construct($registry, DoSynchro::class);
     }
 
 //    /**
