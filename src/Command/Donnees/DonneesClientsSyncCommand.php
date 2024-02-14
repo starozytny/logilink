@@ -122,6 +122,7 @@ class DonneesClientsSyncCommand extends Command
                             ->setClient($client)
                             ->setSociety($society)
                             ->setManager($society->getManager())
+                            ->setBlocked($this->sanitizeData->trimData($item[7]) == 1)
                         ;
 
                         $this->registry->getManager()->persist($user);

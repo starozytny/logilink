@@ -4,17 +4,18 @@ const routes = require('@publicFolder/js/fos_js_routes.json');
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min';
 
 import React from "react";
+import toastr from "toastr";
 import AOS from "aos/dist/aos";
 import { createRoot } from "react-dom/client";
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
 import { Cookies } from "@commonComponents/Modules/Cookies/Cookies";
-import { win } from "@publicFolder/tinymce";
 
 Routing.setRoutingData(routes);
 
 AOS.init({
     startEvent: 'load'
 });
+
 window.addEventListener('load', () => {
     AOS.refresh();
 })
@@ -82,6 +83,20 @@ function menu() {
                 navExpands.forEach(n => { n.classList.remove('active') })
                 links.forEach(l => { l.classList.remove('hover') })
             })
+        }
+    })
+}
+
+
+let flashes = document.getElementById("flashes");
+if(flashes){
+    let data = JSON.parse(flashes.dataset.flashes);
+    Object.entries(data).forEach(([key, value]) => {
+        switch (key){
+            case 'error':
+                toastr.error(value, 'Erreur'); break;
+            default:
+                toastr.info(value); break;
         }
     })
 }
