@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/espace-membre', name: 'user_')]
 class UserController extends AbstractController
@@ -22,6 +23,19 @@ class UserController extends AbstractController
 
         return $this->render('user/pages/index.html.twig', [
             'extraits' => $extraits
+        ]);
+    }
+
+    #[Route('/profil', name: 'profil', options: ['expose' => true])]
+    public function profil(SerializerInterface $serializer): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $user = $serializer->serialize($user, 'json', ['groups' => User::FORM]);
+
+        return $this->render('user/pages/profil/index.html.twig', [
+            'obj' => $user
         ]);
     }
 

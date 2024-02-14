@@ -46,6 +46,7 @@
       top: -4px;
       right: -10px;
       background: var(--primary);
+      color: var(--alpha);
       transform: rotate(45deg) translateY(-5px);
       width: 40px;
       padding-top: 8px;
@@ -79,37 +80,39 @@
 }
 
 input, textarea, select, .input-view{
-  background-color: var(--color4);
-  border-color: var(--grey1);
-  color: var(--alpha);
+  background-color: var(--alpha);
+  border-color: var(--grey3);
+  padding: 12px 10px;
 
   &::placeholder{
-    color: var(--grey3);
+    color: var(--grey1);
   }
 
   &:focus{
-    border-color: var(--grey2);
+    border-color: var(--grey4);
   }
 }
 
 .file-uploader{
   .file-uploader-container{
-    background-color: var(--color2);
+    background-color: var(--alpha);
+    border: 1px solid var(--grey3);
 
     .infos{
-      color: var(--grey3);
+      color: var(--grey4);
     }
   }
 
   &:hover{
     .file-uploader-container{
       .infos{
-        border-color: var(--alpha);
+        border-color: var(--grey4);
       }
     }
   }
 }
 
-.input-show{
-  color: var(--grey3);
+.input-view{
+  color: var(--grey4);
+  background-color: var(--color1);
 }

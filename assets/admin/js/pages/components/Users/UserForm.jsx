@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import axios   from 'axios';
+import axios from 'axios';
+import toastr from 'toastr';
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
-import { Checkbox, Input, InputFile, SelectCustom } from "@commonComponents/Elements/Fields";
+import { Checkbox, Input, InputFile, InputView, SelectCustom } from "@commonComponents/Elements/Fields";
 import { Button }         from "@commonComponents/Elements/Button";
 import { LoaderElements } from "@commonComponents/Elements/Loader";
 import { Password }       from "@commonComponents/Modules/User/Password";
@@ -14,6 +15,7 @@ import Validateur from "@commonFunctions/validateur";
 import Sort       from "@commonFunctions/sort";
 
 const URL_SELECT_SOCIETIES  = "intern_api_selection_societies";
+const URL_PROFIL_PAGE       = "user_profil";
 const URL_INDEX_ELEMENTS    = "admin_users_index";
 const URL_CREATE_ELEMENT    = "intern_api_users_create";
 const URL_UPDATE_ELEMENT    = "intern_api_users_update";
@@ -22,7 +24,7 @@ const TEXT_UPDATE           = "Enregistrer les modifications";
 
 let societies = [];
 
-export function UserFormulaire ({ context, element })
+export function UserFormulaire ({ context, element, isProfil })
 {
     let url = Routing.generate(URL_CREATE_ELEMENT);
 
@@ -31,6 +33,7 @@ export function UserFormulaire ({ context, element })
     }
 
     let form = <Form
+        isProfil={isProfil}
         context={context}
         url={url}
         society={element ? Formulaire.setValue(element.society.id) : ""}
@@ -114,7 +117,7 @@ class Form extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        const { context, url } = this.props;
+        const { isProfil, context, url } = this.props;
         const { username, firstname, lastname, password, password2, email, roles, society, } = this.state;
 
         this.setState({ errors: [] });
@@ -123,7 +126,6 @@ class Form extends Component {
             {type: "text",  id: 'username',  value: username},
             {type: "text",  id: 'firstname', value: firstname},
             {type: "text",  id: 'lastname',  value: lastname},
-            {type: "email", id: 'email',     value: email},
             {type: "array", id: 'roles',     value: roles},
             {type: "text",  id: 'society',   value: society}
         ];
@@ -133,6 +135,12 @@ class Form extends Component {
                     ...[{type: "password", id: 'password', value: password, idCheck: 'password2', valueCheck: password2}]
                 ];
             }
+        }
+
+        if(email !== ""){
+            paramsToValidate = [...paramsToValidate,
+                ...[{type: "email", id: 'email', value: email}]
+            ];
         }
 
         let validate = Validateur.validateur(paramsToValidate)
@@ -146,13 +154,18 @@ class Form extends Component {
             formData.append("data", JSON.stringify(this.state));
 
             let file = this.file.current;
-            if(file.state.files.length > 0){
+            if(file && file.state.files.length > 0){
                 formData.append("avatar", file.state.files[0]);
             }
 
             axios({ method: "POST", url: url, data: formData, headers: {'Content-Type': 'multipart/form-data'} })
                 .then(function (response) {
-                    location.href = Routing.generate(URL_INDEX_ELEMENTS, {'h': response.data.id});
+                    if(isProfil){
+                        toastr.info("Données mises à jour.")
+                        location.href = Routing.generate(URL_PROFIL_PAGE);
+                    }else{
+                        location.href = Routing.generate(URL_INDEX_ELEMENTS, {'h': response.data.id});
+                    }
                 })
                 .catch(function (error) { Formulaire.displayErrors(self, error); Formulaire.loader(false); })
             ;
@@ -160,7 +173,7 @@ class Form extends Component {
     }
 
     render () {
-        const { context, avatarFile } = this.props;
+        const { context, avatarFile, isProfil } = this.props;
         const { errors, loadData, username, firstname, lastname, email, password, password2, roles, societyName } = this.state;
 
         let rolesItems = [
@@ -178,59 +191,75 @@ class Form extends Component {
                     <div className="line">
                         <div className="line-col-1">
                             <div className="title">Identifiants</div>
-                            <div className="subtitle">Les deux informations peuvent être utilisées pour se connecter.</div>
+                            <div className="subtitle">
+                                Le nom utilisateur est utilisé pour se connecter. <br/>
+                                L'email permet de retrouver son mot de passe.
+                            </div>
                         </div>
                         <div className="line-col-2">
                             <div className="line line-2">
-                                <Input identifiant="username" valeur={username} {...paramsInput0}>Nom utilisateur</Input>
-                                <Input identifiant="email"    valeur={email}    {...paramsInput0} type="email">Adresse e-mail</Input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="line">
-                        <div className="line-col-1">
-                            <div className="title">Informations personnelles</div>
-                        </div>
-                        <div className="line-col-2">
-                            <div className="line line-2">
-                                <Input identifiant="firstname"  valeur={firstname}  {...paramsInput0}>Prénom</Input>
-                                <Input identifiant="lastname"   valeur={lastname}   {...paramsInput0}>Nom</Input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="line">
-                        <div className="line-col-1">
-                            <div className="title">Profil utilisateur</div>
-                        </div>
-                        <div className="line-col-2">
-                            <div className="line line-fat-box">
-                                <Checkbox items={rolesItems} identifiant="roles" valeur={roles} {...paramsInput0}>
-                                    Rôles
-                                </Checkbox>
-                            </div>
-
-                            <div className="line">
-                                {loadData
+                                {isProfil
                                     ? <>
-                                        <label>Société</label>
-                                        <LoaderElements text="Récupération des sociétés..." />
+                                        <InputView identifiant="username" valeur={username} errors={errors}>Nom utilisateur</InputView>
+                                        <InputView identifiant="email" valeur={email ? email : "."} errors={errors}>Adresse e-mail</InputView>
                                     </>
-                                    : <SelectCustom ref={this.select} identifiant="society" inputValue={societyName}
-                                              items={societies} {...paramsInput1}>
-                                        Société
-                                    </SelectCustom>
+                                    : <>
+                                        <Input identifiant="username" valeur={username} {...paramsInput0}>Nom utilisateur</Input>
+                                        <Input identifiant="email"    valeur={email}    {...paramsInput0} type="email">Adresse e-mail</Input>
+                                    </>
                                 }
-                            </div>
 
-                            <div className="line">
-                                <InputFile ref={this.file} type="simple" identifiant="avatar" valeur={avatarFile}
-                                           placeholder="Glissez et déposer votre avatar ou" {...paramsInput0}>
-                                    Avatar
-                                </InputFile>
                             </div>
                         </div>
                     </div>
+                    {isProfil
+                        ? null
+                        : <>
+                            <div className="line">
+                                <div className="line-col-1">
+                                    <div className="title">Informations personnelles</div>
+                                </div>
+                                <div className="line-col-2">
+                                    <div className="line line-2">
+                                        <Input identifiant="firstname" valeur={firstname}  {...paramsInput0}>Prénom</Input>
+                                        <Input identifiant="lastname" valeur={lastname}   {...paramsInput0}>Nom</Input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="line">
+                                <div className="line-col-1">
+                                    <div className="title">Profil utilisateur</div>
+                                </div>
+                                <div className="line-col-2">
+                                    <div className="line line-fat-box">
+                                        <Checkbox items={rolesItems} identifiant="roles" valeur={roles} {...paramsInput0}>
+                                            Rôles
+                                        </Checkbox>
+                                    </div>
 
+                                    <div className="line">
+                                        {loadData
+                                            ? <>
+                                                <label>Société</label>
+                                                <LoaderElements text="Récupération des sociétés..." />
+                                            </>
+                                            : <SelectCustom ref={this.select} identifiant="society" inputValue={societyName}
+                                                            items={societies} {...paramsInput1}>
+                                                Société
+                                            </SelectCustom>
+                                        }
+                                    </div>
+
+                                    <div className="line">
+                                        <InputFile ref={this.file} type="simple" identifiant="avatar" valeur={avatarFile}
+                                                   placeholder="Glissez et déposer votre avatar ou" {...paramsInput0}>
+                                            Avatar
+                                        </InputFile>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    }
                     <Password template="inline" context={context} password={password} password2={password2} params={paramsInput0} />
                 </div>
 
