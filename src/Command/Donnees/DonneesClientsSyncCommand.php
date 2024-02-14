@@ -128,6 +128,8 @@ class DonneesClientsSyncCommand extends Command
                             ->setBlocked($this->sanitizeData->trimData($item[7]) == 1)
                         ;
 
+                        $client->setUser($user);
+
                         $this->registry->getManager()->persist($user);
                         $progressBar->advance();
                     }

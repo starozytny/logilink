@@ -37,15 +37,20 @@ class DoClient
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
 
-    #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
-    private ?User $user = null;
-
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: DoExtrait::class)]
     private Collection $extraits;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: User::class)]
+    private Collection $users;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function __construct()
     {
         $this->extraits = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,28 +142,6 @@ class DoClient
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($user === null && $this->user !== null) {
-            $this->user->setClient(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($user !== null && $user->getClient() !== $this) {
-            $user->setClient($this);
-        }
-
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, DoExtrait>
      */
@@ -185,6 +168,48 @@ class DoClient
                 $extrait->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getClient() === $this) {
+                $user->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

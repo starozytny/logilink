@@ -5,7 +5,7 @@ import { Alert } from "@commonComponents/Elements/Alert";
 
 import { UsersItem } from "@adminPages/Users/UsersItem";
 
-export function UsersList ({ data, highlight, onModal }) {
+export function UsersList ({ data, highlight, onModal, onSwitchClient }) {
     return <div className="list">
         <div className="list-table">
             <div className="items items-users">
@@ -22,7 +22,8 @@ export function UsersList ({ data, highlight, onModal }) {
 
                 {data.length > 0
                     ? data.map((elem) => {
-                        return <UsersItem key={elem.id} elem={elem} highlight={highlight} onModal={onModal} />;
+                        return <UsersItem key={elem.id} elem={elem} highlight={highlight} onModal={onModal}
+                                          onSwitchClient={onSwitchClient} />;
                     })
                     : <Alert>Aucune donnée enregistrée.</Alert>
                 }

@@ -96,7 +96,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Mail::class)]
     private Collection $mails;
 
-    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'users')]
     private ?DoClient $client = null;
 
     /**

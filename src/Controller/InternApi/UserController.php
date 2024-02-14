@@ -235,4 +235,25 @@ class UserController extends AbstractController
         $repository->save($user, true);
         return $apiResponse->apiJsonResponse($user, User::LIST);
     }
+
+    #[Route('/client/switch/{token}', name: 'switch_client', options: ['expose' => true], methods: 'put')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function switchClient($token, ApiResponse $apiResponse, UserRepository $repository): Response
+    {
+        /** @var User $me */
+        $me = $this->getUser();
+        $user = $repository->findOneBy(['token' => $token]);
+
+        if(!$user->getClient()){
+            return $apiResponse->apiJsonResponseBadRequest("Cet utilisateur n'est pas rattaché à un client.");
+        }
+
+        $me->setClient($user->getClient());
+
+        $repository->save($me, true);
+
+        $url = $this->generateUrl('user_homepage');
+
+        return $apiResponse->apiJsonResponseCustom(['url' => $url]);
+    }
 }

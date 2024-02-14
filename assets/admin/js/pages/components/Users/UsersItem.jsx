@@ -13,7 +13,7 @@ const URL_UPDATE_PAGE   = "admin_users_update";
 const URL_READ_PAGE     = "admin_users_read";
 const URL_PASSWORD_PAGE = "admin_users_password";
 
-export function UsersItem ({ elem, highlight, onModal })
+export function UsersItem ({ elem, highlight, onModal, onSwitchClient })
 {
     const refItem = useRef(null);
 
@@ -37,6 +37,9 @@ export function UsersItem ({ elem, highlight, onModal })
         </a> },
         { data: <a onClick={() => onModal("blocked", elem)}>
                 <span className={"icon-" + (elem.blocked ? "unlock" : "disabled")} /> <span>{elem.blocked ? "Débloquer" : "Bloquer"}</span>
+        </a> },
+        { data: <a onClick={() => onSwitchClient(elem)}>
+                <span className="icon-arrow-swap-horizontal" /> <span>Accéder à son espace</span>
         </a> }
     ]
 
