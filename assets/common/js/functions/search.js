@@ -21,7 +21,7 @@ function switchFunction(type, search, v) {
     switch (type) {
         case "user":
             if(searchStartWith(v.username, search)
-                || searchStartWith(v.email, search)
+                || (v.email && searchStartWith(v.email, search))
                 || searchStartWith(v.firstname, search)
                 || searchStartWith(v.lastname, search)
             ){
