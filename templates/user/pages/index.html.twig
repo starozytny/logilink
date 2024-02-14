@@ -1,10 +1,77 @@
 {% extends 'user/layout/layout.html.twig' %}
 
 {% block title %}Dashboard espace utilisateur{% endblock %}
-{% set page_title %}Dashboard{% endset %}
+{% set page_title %}Bienvenu sur votre espace{% endset %}
+{% set page_subtitle %}Retrouvez ci-dessous votre extrait de compte et la facture associée.{% endset %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('user_homepage') }}
+{% endblock %}
 
 {% block main_content %}
 <div class="main-content">
-    <h1>Hello world</h1>
+    <div class="dashboard-line-0">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-name">
+                    <h2>Extrait de compte</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="list">
+                    <div class="list-table">
+                        <div class="items items-extrait">
+                            <div class="item item-header">
+                                <div class="item-content">
+                                    <div class="item-infos">
+                                        <div class="col-1">Date</div>
+                                        <div class="col-2">Libellé</div>
+                                        <div class="col-3">Lettre</div>
+                                        <div class="col-4">Débit (€)</div>
+                                        <div class="col-5">Crédit (€)</div>
+                                        <div class="col-6">Solde (€)</div>
+                                        <div class="col-7 actions"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% set solde = 0 %}
+                            {% for elem in extraits %}
+                                <div class="item">
+                                    <div class="item-content">
+                                        <div class="item-infos">
+                                            <div class="col-1">{{ elem.writeAt | date('d/m/Y') }}</div>
+                                            <div class="col-2">{{ elem.name }}</div>
+                                            <div class="col-3">{{ elem.letter }}</div>
+                                            <div class="col-4">
+                                                <span class="sub">Débit</span>
+                                                <span>{{ elem.debit | price }}</span>
+                                            </div>
+                                            <div class="col-5">
+                                                <span class="sub">Crédit</span>
+                                                <span>{{ elem.credit | price }}</span>
+                                            </div>
+                                            <div class="col-6">
+                                                {% set solde = solde - (elem.debit) + (elem.credit) %}
+
+                                                <span class="sub">Solde</span>
+                                                <span>{{ solde | price }}</span>
+                                            </div>
+                                            <div class="col-7 actions">
+                                                <a href="" class="btn-icon btn-icon-outline-primary" target="_blank">
+                                                    <span class="icon-receipt"></span>
+                                                    <span class="tooltip">Facture</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -90,6 +90,7 @@ Encore
     .addEntry('admin_mails', './assets/admin/js/pages/mails.js')
 
     .addEntry('user_app', './assets/user/js/app.js')
+    .addEntry('user_homepage', './assets/user/js/pages/homepage.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

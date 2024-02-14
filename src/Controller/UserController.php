@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Main\User;
+use App\Repository\Main\Donnees\DoExtraitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,8 +12,19 @@ use Symfony\Component\Routing\Attribute\Route;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function index(): Response
+    public function index(DoExtraitRepository $extraitRepository): Response
     {
-        return $this->render('user/pages/index.html.twig');
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $extraits = $extraitRepository->findBy(['client' => $user->getClient()], ['writeAt' => 'ASC']);
+
+        foreach($extraits as $extrait){
+//            dump($extrait);
+        }
+
+        return $this->render('user/pages/index.html.twig', [
+            'extraits' => $extraits
+        ]);
     }
 }
