@@ -192,6 +192,10 @@ class DonneesClientsSyncCommand extends Command
 
                     $progressBar->finish();
                     $this->registry->getManager()->flush();
+
+                    rename($file, $directoryArchive . "/" . $dir);
+
+                    $this->rrmdir($directoryExtract);
                 } else {
                     $io->newLine();
                     $io->error('Fichier : ' . $dir . ' n\'est pas une archive.');
@@ -204,5 +208,23 @@ class DonneesClientsSyncCommand extends Command
         $io->newLine();
         $io->comment('--- [FIN DE LA COMMANDE] ---');
         return Command::SUCCESS;
+    }
+
+    function rrmdir($dir): void
+    {
+        if (is_dir($dir)) {
+            $objects = scandir($dir);
+            foreach ($objects as $object) {
+                if ($object != "." && $object != "..") {
+                    if (is_dir($dir. DIRECTORY_SEPARATOR .$object) && !is_link($dir."/".$object))
+                        $this->rrmdir($dir . DIRECTORY_SEPARATOR . $object);
+                    else
+                        unlink($dir. DIRECTORY_SEPARATOR .$object);
+                }
+            }
+            if ((count(scandir($dir)) == 2)) {
+                rmdir($dir);
+            }
+        }
     }
 }
