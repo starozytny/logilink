@@ -40,12 +40,12 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var ?string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['user_list', 'user_form'])]
     private ?string $email = null;
 
@@ -96,7 +96,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Mail::class)]
     private Collection $mails;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     private ?DoClient $client = null;
 
     /**
@@ -209,7 +209,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 

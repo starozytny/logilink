@@ -29,8 +29,8 @@ class DataMain
 
         return ($obj)
             ->setUsername($this->sanitizeData->fullSanitize($data->username))
-            ->setFirstname($this->sanitizeData->sanitizeString($data->firstname))
-            ->setLastname($this->sanitizeData->sanitizeString($data->lastname))
+            ->setFirstname($this->sanitizeData->trimData($data->firstname))
+            ->setLastname($this->sanitizeData->trimData($data->lastname))
             ->setEmail($data->email)
         ;
     }

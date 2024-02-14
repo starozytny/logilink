@@ -3,6 +3,9 @@
 namespace App\Command\Donnees;
 
 use App\Entity\Main\Donnees\DoClient;
+use App\Entity\Main\Society;
+use App\Entity\Main\User;
+use App\Service\Data\DataMain;
 use App\Service\SanitizeData;
 use League\Csv\ByteSequence;
 use League\Csv\Exception;
@@ -31,7 +34,8 @@ class DonneesClientsSyncCommand extends Command
 
     public function __construct(private readonly string $privateDirectory,
                                 private readonly ManagerRegistry $registry,
-                                private readonly SanitizeData $sanitizeData)
+                                private readonly SanitizeData $sanitizeData,
+                                private readonly DataMain $dataMain)
     {
         parent::__construct();
     }
@@ -56,6 +60,8 @@ class DonneesClientsSyncCommand extends Command
         if(!is_dir($directoryExtract)) mkdir($directoryExtract);
 
         $clients = $this->registry->getRepository(DoClient::class)->findAll();
+        $society = $this->registry->getRepository(Society::class)->findOneBy(['code' => 999]);
+        $password = password_hash("azerty", PASSWORD_DEFAULT);
 
         $scanned_directory = array_diff(scandir($directory), array('..', '.', '.gitignore', '.ftpquota'));
 
@@ -81,8 +87,6 @@ class DonneesClientsSyncCommand extends Command
                     $progressBar->start();
 
                     foreach($records as $item){
-//                        dump($item);
-
                         $code = $this->sanitizeData->trimData($item[0]);
 
                         $client = new DoClient();
@@ -103,6 +107,24 @@ class DonneesClientsSyncCommand extends Command
                         ;
 
                         $this->registry->getManager()->persist($client);
+
+                        $user = $this->dataMain->setDataUser($client->getUser() ?: new User(), json_decode(
+                            json_encode([
+                                'username' => $code,
+                                'firstname' => "Client",
+                                'lastname' => $client->getName(),
+                                'email' => null,
+                                'roles' => ['ROLE_USER']
+                            ])
+                        ));
+                        $user = ($user)
+                            ->setPassword($password)
+                            ->setClient($client)
+                            ->setSociety($society)
+                            ->setManager($society->getManager())
+                        ;
+
+                        $this->registry->getManager()->persist($user);
                         $progressBar->advance();
                     }
 

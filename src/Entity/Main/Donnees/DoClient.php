@@ -2,6 +2,7 @@
 
 namespace App\Entity\Main\Donnees;
 
+use App\Entity\Main\User;
 use App\Repository\Main\Donnees\DoClientRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,6 +34,9 @@ class DoClient
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
+
+    #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -119,6 +123,28 @@ class DoClient
     public function setCity(?string $city): static
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setClient(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getClient() !== $this) {
+            $user->setClient($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }
