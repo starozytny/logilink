@@ -32,6 +32,7 @@ class DonneesClientsSyncCommand extends Command
     const FOLDER = 'clients/';
     const FOLDER_ARCHIVE = 'clients/archive';
     const FOLDER_EXTRACT = 'clients/extract';
+    const FOLDER_INVOICE = 'clients/files/invoices';
 
     public function __construct(private readonly string $privateDirectory,
                                 private readonly ManagerRegistry $registry,
@@ -56,9 +57,11 @@ class DonneesClientsSyncCommand extends Command
         $directory = $this->privateDirectory . self::FOLDER;
         $directoryArchive = $this->privateDirectory . self::FOLDER_ARCHIVE;
         $directoryExtract = $this->privateDirectory . self::FOLDER_EXTRACT;
+        $directoryInvoice = $this->privateDirectory . self::FOLDER_INVOICE;
 
         if(!is_dir($directoryArchive)) mkdir($directoryArchive);
         if(!is_dir($directoryExtract)) mkdir($directoryExtract);
+        if(!is_dir($directoryInvoice)) mkdir($directoryInvoice, 0755, true);
 
         $clients = $this->registry->getRepository(DoClient::class)->findAll();
         $society = $this->registry->getRepository(Society::class)->findOneBy(['code' => 999]);
@@ -179,6 +182,7 @@ class DonneesClientsSyncCommand extends Command
 
                             if(file_exists($attach)){
                                 $extrait->setFile($attachName);
+                                rename($attach, $directoryInvoice . "/" . $attachName);
                             }
 
                             $this->registry->getManager()->persist($extrait);
