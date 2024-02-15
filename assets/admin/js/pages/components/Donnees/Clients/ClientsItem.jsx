@@ -9,8 +9,9 @@ export function ClientsItem ({ elem, onTakeAccount }) {
             <div className="item-infos">
                 <div className="col-1">
                     <div className="infos">
-                        <div className="name">
+                        <div className={"name" + (elem.blocked ? " blocked" : "")}>
                             <span>{elem.name}</span>
+                            {elem.blocked ? <span className="icon-disabled" title="Bloqué" /> : null}
                         </div>
                     </div>
                 </div>

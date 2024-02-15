@@ -1,5 +1,19 @@
 @import "../vars/vars";
 
+.blocked{
+  color: var(--danger);
+
+  span:first-child{
+    text-decoration: line-through;
+  }
+
+  [class^="icon-"]{
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 14px;
+  }
+}
+
 #clients_list{
   @import "components/components";
 

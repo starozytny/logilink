@@ -17,7 +17,7 @@ class ClientController extends AbstractController
     #[Route('/extraits', name: 'extraits', methods: 'GET')]
     public function clientsExtraits(DoClientRepository $repository, DoExtraitRepository $extraitRepository): Response
     {
-        $clients = $repository->findAll();
+        $clients = $repository->findBy(['blocked' => false]);
         $extraits = $extraitRepository->findBy([], ['writeAt' => 'ASC']);
 
         $jsonClients = [];

@@ -54,6 +54,10 @@ class DoClient
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column]
+    #[Groups(['client_list'])]
+    private ?bool $blocked = null;
+
     public function __construct()
     {
         $this->extraits = new ArrayCollection();
@@ -217,6 +221,18 @@ class DoClient
     public function setUser(User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function isBlocked(): ?bool
+    {
+        return $this->blocked;
+    }
+
+    public function setBlocked(bool $blocked): static
+    {
+        $this->blocked = $blocked;
 
         return $this;
     }

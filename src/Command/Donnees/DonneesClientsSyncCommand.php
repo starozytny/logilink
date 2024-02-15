@@ -91,6 +91,7 @@ class DonneesClientsSyncCommand extends Command
 
                     foreach($records as $item){
                         $code = $this->sanitizeData->trimData($item[0]);
+                        $blocked = $this->sanitizeData->trimData($item[7]) == 1;
 
                         $client = new DoClient();
                         foreach($clients as $cl){
@@ -98,6 +99,7 @@ class DonneesClientsSyncCommand extends Command
                                 $client = $cl;
                             }
                         }
+
 
                         $client = ($client)
                             ->setCode($code)
@@ -107,6 +109,7 @@ class DonneesClientsSyncCommand extends Command
                             ->setComplement($this->sanitizeData->trimData($item[3]))
                             ->setZipcode($this->sanitizeData->trimData($item[4]))
                             ->setCity($this->sanitizeData->trimData($item[5]))
+                            ->setBlocked($blocked)
                         ;
 
                         $this->registry->getManager()->persist($client);
@@ -125,7 +128,7 @@ class DonneesClientsSyncCommand extends Command
                             ->setClient($client)
                             ->setSociety($society)
                             ->setManager($society->getManager())
-                            ->setBlocked($this->sanitizeData->trimData($item[7]) == 1)
+                            ->setBlocked($blocked)
                         ;
 
                         $client->setUser($user);
