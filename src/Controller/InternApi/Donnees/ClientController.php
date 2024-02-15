@@ -30,7 +30,7 @@ class ClientController extends AbstractController
                                     SerializerInterface $serializer, ApiResponse $apiResponse): Response
     {
         $clients = $serializer->serialize($repository->findAll(), 'json', ['groups' => DoClient::LIST]);
-        $extraits = $serializer->serialize($extraitRepository->findAll(), 'json', ['groups' => DoExtrait::LIST]);
+        $extraits = $serializer->serialize($extraitRepository->findBy([], ['writeAt' => 'ASC']), 'json', ['groups' => DoExtrait::LIST]);
 
         return $apiResponse->apiJsonResponseCustom([
             'clients' => $clients,

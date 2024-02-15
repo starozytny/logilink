@@ -84,6 +84,8 @@ export class Extraits extends Component {
     render () {
         const { loadingData, clientsSearch, extraitsClient, clientId, clientSearch, errors } = this.state;
 
+        let solde = 0;
+
         return <div className="page-extrait">
             <div className="col-1">
                 <div className="card">
@@ -142,7 +144,9 @@ export class Extraits extends Component {
                                             </div>
                                             {extraitsClient.length > 0
                                                 ? extraitsClient.map(elem => {
-                                                    return <ExtraitItem key={elem.id} elem={elem} />
+                                                    solde = solde - (elem.debit) + (elem.credit);
+
+                                                    return <ExtraitItem key={elem.id} solde={solde} elem={elem} />
                                                 })
                                                 : <div className="item">Aucun enregistrement pour le moment.</div>
                                             }
@@ -159,7 +163,7 @@ export class Extraits extends Component {
     }
 }
 
-function ExtraitItem ({ elem }) {
+function ExtraitItem ({ elem, solde }) {
     return <div className="item">
         <div className="item-content">
             <div className="item-infos">
@@ -178,7 +182,7 @@ function ExtraitItem ({ elem }) {
                 </div>
                 <div className="col-6">
                     <span className="sub">Solde</span>
-                    <span>{Sanitaze.toFormatCurrency(elem.credit)}</span>
+                    <span>{Sanitaze.toFormatCurrency(solde)}</span>
                 </div>
                 <div className="col-7 actions">
                     <ButtonIcon icon="receipt" outline={true} element="a" target="_blank"
