@@ -72,142 +72,147 @@ class DonneesClientsSyncCommand extends Command
         foreach($scanned_directory as $dir){
             $file = $directory . $dir;
             if(!is_dir($file)){
-                $zip = new ZipArchive;
-                if ($zip->open($file) === TRUE) {
-                    $zip->extractTo($directoryExtract);
-                    $zip->close();
-                    $io->text("Données extraites.");
 
-                    $io->title("Synchronisation des clients");
+                $nameFile = substr($dir, strrpos($dir, '_') + 1);
+                if($nameFile === "registre001.zip" || $nameFile === "registre002.zip"){
+                    $codeSoc = $nameFile == "registre001.zip" ? "001" : "002";
 
-                    $csv = Reader::createFromPath($directoryExtract . "clients.csv", 'r');
-                    $csv->setOutputBOM(ByteSequence::BOM_UTF8);
-                    $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
-                    $csv->setDelimiter(';');
-                    $records = $csv->getRecords();
+                    $zip = new ZipArchive;
+                    if ($zip->open($file) === TRUE) {
+                        $zip->extractTo($directoryExtract);
+                        $zip->close();
+                        $io->text("Données extraites.");
 
-                    $progressBar = new ProgressBar($output, iterator_count($records));
-                    $progressBar->start();
+                        $io->title("Synchronisation des clients");
 
-                    foreach($records as $item){
-                        $code = $this->sanitizeData->trimData($item[0]);
-                        $blocked = $this->sanitizeData->trimData($item[7]) == 1;
+                        $csv = Reader::createFromPath($directoryExtract . "clients.csv", 'r');
+                        $csv->setOutputBOM(ByteSequence::BOM_UTF8);
+                        $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
+                        $csv->setDelimiter(';');
+                        $records = $csv->getRecords();
 
-                        $client = new DoClient();
-                        foreach($clients as $cl){
-                            if($cl->getCode() == $code){
-                                $client = $cl;
+                        $progressBar = new ProgressBar($output, iterator_count($records));
+                        $progressBar->start();
+
+                        foreach($records as $item){
+                            $code = $this->sanitizeData->trimData($item[0]);
+                            $blocked = $this->sanitizeData->trimData($item[7]) == 1;
+
+                            $client = new DoClient();
+                            foreach($clients as $cl){
+                                if($cl->getCode() == $code){
+                                    $client = $cl;
+                                }
                             }
-                        }
 
 
-                        $client = ($client)
-                            ->setCode($code)
-                            ->setName($this->sanitizeData->trimData($item[1]))
-                            ->setNumero($this->sanitizeData->trimData($item[6]))
-                            ->setAddress($this->sanitizeData->trimData($item[2]))
-                            ->setComplement($this->sanitizeData->trimData($item[3]))
-                            ->setZipcode($this->sanitizeData->trimData($item[4]))
-                            ->setCity($this->sanitizeData->trimData($item[5]))
-                            ->setBlocked($blocked)
-                        ;
-
-                        $this->registry->getManager()->persist($client);
-
-                        $user = $this->dataMain->setDataUser($client->getUser() ?: new User(), json_decode(
-                            json_encode([
-                                'username' => $code,
-                                'firstname' => "Client",
-                                'lastname' => $client->getName(),
-                                'email' => null,
-                                'roles' => ['ROLE_USER']
-                            ])
-                        ));
-                        $user = ($user)
-                            ->setPassword($password)
-                            ->setClient($client)
-                            ->setSociety($society)
-                            ->setManager($society->getManager())
-                            ->setBlocked($blocked)
-                        ;
-
-                        $client->setUser($user);
-
-                        $this->registry->getManager()->persist($user);
-                        $progressBar->advance();
-                    }
-
-                    $progressBar->finish();
-                    $this->registry->getManager()->flush();
-
-                    $io->newLine();
-                    $io->newLine();
-                    $io->title("Synchronisation des extraits de comptes");
-
-                    $clients = $this->registry->getRepository(DoClient::class)->findAll();
-
-                    $csv = Reader::createFromPath($directoryExtract . "extraitcompte.csv", 'r');
-                    $csv->setOutputBOM(ByteSequence::BOM_UTF8);
-                    $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
-                    $csv->setDelimiter(';');
-                    $records = $csv->getRecords();
-
-                    $progressBar = new ProgressBar($output, iterator_count($records));
-                    $progressBar->start();
-
-                    foreach($records as $item){
-                        $numero = $this->sanitizeData->trimData($item[0]);
-
-                        $client = null;
-                        foreach($clients as $cl){
-                            if($cl->getNumero() == $numero){
-                                $client = $cl;
-                            }
-                        }
-
-                        if(!$client){
-                            $io->error('Client introuvable : ' . $item[0] . ' - ' . $item[1]);
-                        }else{
-                            $extrait = (new DoExtrait())
-                                ->setNumero($numero)
-                                ->setAccount($this->sanitizeData->trimData($item[1]))
-                                ->setWriteAt($this->sanitizeData->createDatePicker($item[2]))
-                                ->setCode($this->sanitizeData->trimData($item[3]))
-                                ->setPiece($this->sanitizeData->trimData($item[4]))
-                                ->setName($this->sanitizeData->trimData($item[5]))
-                                ->setLetter($this->sanitizeData->trimData($item[6]))
-                                ->setDebit($this->sanitizeData->setToFloat($item[7], 0))
-                                ->setCredit($this->sanitizeData->setToFloat($item[8], 0))
-                                ->setClient($client)
-                                ->setArchive($dir)
+                            $client = ($client)
+                                ->setCode($code)
+                                ->setName($this->sanitizeData->trimData($item[1]))
+                                ->setNumero($this->sanitizeData->trimData($item[6]))
+                                ->setAddress($this->sanitizeData->trimData($item[2]))
+                                ->setComplement($this->sanitizeData->trimData($item[3]))
+                                ->setZipcode($this->sanitizeData->trimData($item[4]))
+                                ->setCity($this->sanitizeData->trimData($item[5]))
+                                ->setBlocked($blocked)
                             ;
 
-                            $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
-                            $attach = $directoryExtract . "FACTURES/" . $attachName;
+                            $this->registry->getManager()->persist($client);
 
-                            if(file_exists($attach)){
-                                $extrait->setFile($attachName);
-                                rename($attach, $directoryInvoice . $attachName);
-                            }
+                            $user = $this->dataMain->setDataUser($client->getUser() ?: new User(), json_decode(
+                                json_encode([
+                                    'username' => $codeSoc.$code,
+                                    'firstname' => "Client",
+                                    'lastname' => $client->getName(),
+                                    'email' => null,
+                                    'roles' => ['ROLE_USER']
+                                ])
+                            ));
+                            $user = ($user)
+                                ->setPassword($password)
+                                ->setClient($client)
+                                ->setSociety($society)
+                                ->setManager($society->getManager())
+                                ->setBlocked($blocked)
+                            ;
 
-                            $this->registry->getManager()->persist($extrait);
+                            $client->setUser($user);
+
+                            $this->registry->getManager()->persist($user);
                             $progressBar->advance();
                         }
+
+                        $progressBar->finish();
+                        $this->registry->getManager()->flush();
+
+                        $io->newLine();
+                        $io->newLine();
+                        $io->title("Synchronisation des extraits de comptes");
+
+                        $clients = $this->registry->getRepository(DoClient::class)->findAll();
+
+                        $csv = Reader::createFromPath($directoryExtract . "extraitcompte.csv", 'r');
+                        $csv->setOutputBOM(ByteSequence::BOM_UTF8);
+                        $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
+                        $csv->setDelimiter(';');
+                        $records = $csv->getRecords();
+
+                        $progressBar = new ProgressBar($output, iterator_count($records));
+                        $progressBar->start();
+
+                        foreach($records as $item){
+                            $numero = $this->sanitizeData->trimData($item[0]);
+
+                            $client = null;
+                            foreach($clients as $cl){
+                                if($cl->getNumero() == $numero){
+                                    $client = $cl;
+                                }
+                            }
+
+                            if(!$client){
+                                $io->error('Client introuvable : ' . $item[0] . ' - ' . $item[1]);
+                            }else{
+                                $extrait = (new DoExtrait())
+                                    ->setNumero($numero)
+                                    ->setAccount($this->sanitizeData->trimData($item[1]))
+                                    ->setWriteAt($this->sanitizeData->createDatePicker($item[2]))
+                                    ->setCode($this->sanitizeData->trimData($item[3]))
+                                    ->setPiece($this->sanitizeData->trimData($item[4]))
+                                    ->setName($this->sanitizeData->trimData($item[5]))
+                                    ->setLetter($this->sanitizeData->trimData($item[6]))
+                                    ->setDebit($this->sanitizeData->setToFloat($item[7], 0))
+                                    ->setCredit($this->sanitizeData->setToFloat($item[8], 0))
+                                    ->setClient($client)
+                                    ->setArchive($dir)
+                                ;
+
+                                $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
+                                $attach = $directoryExtract . "FACTURES/" . $attachName;
+
+                                if(file_exists($attach)){
+                                    $extrait->setFile($attachName);
+                                    rename($attach, $directoryInvoice . $attachName);
+                                }
+
+                                $this->registry->getManager()->persist($extrait);
+                                $progressBar->advance();
+                            }
+                        }
+
+                        $progressBar->finish();
+                        $this->registry->getManager()->flush();
+
+                        rename($file, $directoryArchive . $dir);
+
+                        $this->rrmdir($directoryExtract);
+                    } else {
+                        $io->newLine();
+                        $io->error('Fichier : ' . $dir . ' n\'est pas une archive.');
                     }
-
-                    $progressBar->finish();
-                    $this->registry->getManager()->flush();
-
-                    rename($file, $directoryArchive . $dir);
-
-                    $this->rrmdir($directoryExtract);
-                } else {
-                    $io->newLine();
-                    $io->error('Fichier : ' . $dir . ' n\'est pas une archive.');
                 }
             }
         }
-
 
         $io->newLine();
         $io->newLine();
