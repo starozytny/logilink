@@ -28,6 +28,7 @@ function switchFunction(type, search, v) {
                 return v;
             }
             break;
+        case "client":
         case "society":
             if(searchStartWith(v.name, search)
                 || searchStartWith(v.code, search)
