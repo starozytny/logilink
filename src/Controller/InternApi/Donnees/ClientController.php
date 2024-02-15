@@ -29,7 +29,7 @@ class ClientController extends AbstractController
     public function clientsExtraits(DoClientRepository $repository, DoExtraitRepository $extraitRepository,
                                     SerializerInterface $serializer, ApiResponse $apiResponse): Response
     {
-        $clients = $serializer->serialize($repository->findBy(['blocked' => false]), 'json', ['groups' => DoClient::LIST]);
+        $clients = $serializer->serialize($repository->findAll(), 'json', ['groups' => DoClient::LIST]);
         $extraits = $serializer->serialize($extraitRepository->findBy([], ['writeAt' => 'ASC']), 'json', ['groups' => DoExtrait::LIST]);
 
         return $apiResponse->apiJsonResponseCustom([
