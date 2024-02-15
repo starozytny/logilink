@@ -1,5 +1,9 @@
 {% extends 'admin/pages/clients/template.html.twig' %}
 
+{% set breadcrumbs = [
+    { icon: 'user-octagon', text: "Clients"  }
+] %}
+
 {% set page_title %}Clients synchronisés{% endset %}
 {% set page_subtitle %}Gestion des clients synchronisés.{% endset %}
 

@@ -17,7 +17,7 @@ class DoClient
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['client_list'])]
+    #[Groups(['client_list', 'extraits_list'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]

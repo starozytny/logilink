@@ -39,7 +39,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/telecharger/facture/{id}', name: 'download_invoice')]
+    #[Route('/telecharger/facture/{id}', name: 'download_invoice', options: ['expose' => true])]
     public function downloadInvoice(DoExtrait $extrait): Response
     {
         $file = $this->getParameter('private_directory') . DoExtrait::FOLDER_INVOICE . $extrait->getFile();

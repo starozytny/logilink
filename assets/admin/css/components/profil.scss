@@ -55,3 +55,17 @@
   }
 
 }
+
+.light-mode{
+  .page-profil-0 {
+    .page-profil-header {
+      background-color: var(--txt);
+    }
+
+    .page-profil-body {
+      .profil-card {
+        background-color: var(--txt);
+      }
+    }
+  }
+}

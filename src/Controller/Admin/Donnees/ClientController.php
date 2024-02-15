@@ -14,4 +14,10 @@ class ClientController extends AbstractController
     {
         return $this->render('admin/pages/clients/index.html.twig');
     }
+
+    #[Route('/extraits', name: 'extraits')]
+    public function extraits(): Response
+    {
+        return $this->render('admin/pages/clients/extraits.html.twig');
+    }
 }

@@ -1,0 +1,16 @@
+{% extends 'admin/pages/clients/template.html.twig' %}
+
+{% set breadcrumbs = [
+    { icon: 'book-1', text: "Extraits de compte"  }
+] %}
+
+{% set page_title %}Extraits de compte{% endset %}
+{% set page_subtitle %}Affichage des extraits de compte en fonction du client sélectionné.{% endset %}
+
+{% set mainStyle = "max-width: 1280px" %}
+
+{% block main_content %}
+    <div id="clients_extraits">
+        {% include "layout/components/loader.html.twig" %}
+    </div>
+{% endblock %}
