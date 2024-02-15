@@ -43,8 +43,6 @@ export class Extraits extends Component {
 
                 clients.sort(Sort.compareName);
 
-                console.log(extraits);
-
                 self.setState({ clients: clients, clientsSearch: clients, extraits: extraits, loadingData: false })
             })
             .catch(function (error) { Formulaire.displayErrors(self, error); })
