@@ -27,7 +27,7 @@ export function UsersItem ({ elem, highlight, onModal, onSwitchClient })
 
     let menu = [
         { data: <a onClick={() => onModal("reinit", elem)}>
-                <span className="icon-refresh" /> <span>Générer un nouveau mot de passe</span>
+                <span className="icon-refresh" /> <span>Réinitialiser son mot de passe</span>
         </a> },
         { data: <a href={urlPass}>
                 <span className="icon-lock-1" /> <span>Modifier son mot de passe</span>

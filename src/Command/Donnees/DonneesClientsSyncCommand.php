@@ -19,6 +19,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use ZipArchive;
@@ -40,6 +41,13 @@ class DonneesClientsSyncCommand extends Command
                                 private readonly DataMain $dataMain)
     {
         parent::__construct();
+    }
+
+    protected function configure(): void
+    {
+        $this
+            ->addOption('password', "p", InputOption::VALUE_NONE, 'set password')
+        ;
     }
 
     /**
@@ -65,7 +73,6 @@ class DonneesClientsSyncCommand extends Command
 
         $clients = $this->registry->getRepository(DoClient::class)->findAll();
         $society = $this->registry->getRepository(Society::class)->findOneBy(['code' => 999]);
-        $password = password_hash("azerty", PASSWORD_DEFAULT);
 
         $scanned_directory = array_diff(scandir($directory), array('..', '.', '.gitignore', '.ftpquota'));
 
@@ -105,7 +112,6 @@ class DonneesClientsSyncCommand extends Command
                                 }
                             }
 
-
                             $client = ($client)
                                 ->setCode($code)
                                 ->setName($this->sanitizeData->trimData($item[1]))
@@ -128,8 +134,17 @@ class DonneesClientsSyncCommand extends Command
                                     'roles' => ['ROLE_USER']
                                 ])
                             ));
+
+                            if ($input->getOption('password')) {
+                                $password = password_hash(
+                                    $this->dataMain->getPasswordGeneric($codeSoc.$code),
+                                    PASSWORD_DEFAULT
+                                );
+
+                                $user->setPassword($password);
+                            }
+
                             $user = ($user)
-                                ->setPassword($password)
                                 ->setClient($client)
                                 ->setSociety($society)
                                 ->setManager($society->getManager())

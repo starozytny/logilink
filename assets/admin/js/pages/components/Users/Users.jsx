@@ -221,7 +221,7 @@ export class Users extends Component {
                     </ModalDelete>
 
                     <Modal ref={this.reinit} identifiant="reinit" maxWidth={414}
-                           title={element ? "Générer un nouveau mot de passe pour " + element.lastname : ""}
+                           title={element ? "Réinitialiser le mot de passe de " + element.lastname : ""}
                            content={null} footer={null}/>
                     <Modal ref={this.mail} identifiant="mail" maxWidth={768} margin={2} title="Envoyer un mail" isForm={true}
                            content={<MailFormulaire identifiant="mail" element={element} tos={dataImmuable} />} footer={null} />
@@ -235,8 +235,11 @@ export class Users extends Component {
 }
 
 function modalReinit (self) {
-    self.reinit.current.handleUpdateContent(<p>Le nouveau mot de passe est généré automatiquement et prendra la place du mot de passe actuel.</p>);
-    self.reinit.current.handleUpdateFooter(<Button onClick={self.handleReinitPassword} type="primary">Confirmer la génération</Button>);
+    self.reinit.current.handleUpdateContent(<p>
+        Après confirmation, le mot de passe sera affiché sur cette boite de dialogue
+        et prendra la place du mot de passe actuel.
+    </p>);
+    self.reinit.current.handleUpdateFooter(<Button onClick={self.handleReinitPassword} type="primary">Confirmer</Button>);
     self.reinit.current.handleUpdateCloseTxt("Annuler");
 }
 

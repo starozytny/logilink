@@ -200,10 +200,13 @@ class UserController extends AbstractController
 
     #[Route('/password/reinit/{token}', name: 'password_reinit', options: ['expose' => true], methods: 'post')]
     public function passwordReinit($token, ValidatorService $validator, UserPasswordHasherInterface $passwordHasher,
-                                   ApiResponse $apiResponse, UserRepository $repository): Response
+                                   ApiResponse $apiResponse, UserRepository $repository, DataMain $dataMain): Response
     {
         $user = $repository->findOneBy(['token' => $token]);
-        $pass = uniqid();
+        $pass = ($user->getClient() && !$user->isAdmin())
+            ? $dataMain->getPasswordGeneric($user->getUsername())
+            : uniqid()
+        ;
 
         $user = ($user)
             ->setPassword($passwordHasher->hashPassword($user, $pass))
