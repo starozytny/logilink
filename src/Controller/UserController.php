@@ -44,7 +44,7 @@ class UserController extends AbstractController
     {
         $file = $this->getParameter('private_directory') . DoExtrait::FOLDER_INVOICE . $extrait->getFile();
 
-        if(!$file){
+        if(!$file || !file_exists($file)){
             $this->addFlash('error', 'Fichier introuvable.');
             return $this->redirectToRoute('user_homepage');
         }
