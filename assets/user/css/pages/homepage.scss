@@ -3,7 +3,7 @@
 .card{
   @include flex(column, flex-start, flex-start, 8px);
   background-color: var(--alpha);
-  padding: 1.8rem 1.2rem;
+  padding: 1.2rem;
   width: 100%;
 
   .card-header{
