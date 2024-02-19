@@ -34,7 +34,7 @@
             {{ encore_entry_script_tags('common_app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="light-mode">
 
         <div id="cookies" data-consent="{{ consent }}"></div>
 
@@ -43,11 +43,6 @@
             {% block body %}{% endblock %}
         </div>
 
-        {% for label, messages in app.flashes %}
-            <div>{{ label }}</div>
-            {% for message in messages %}
-                <pre>{{ message }}</pre>
-            {% endfor %}
-        {% endfor %}
+        <div id="flashes" data-flashes="{{ app.flashes | json_encode }}"></div>
     </body>
 </html>

@@ -22,13 +22,16 @@ class LoginController extends AbstractController
         if ($this->getUser()) {
             if($this->isGranted('ROLE_ADMIN')) return $this->redirectToRoute('admin_homepage');
             if($this->isGranted('ROLE_USER')) return $this->redirectToRoute('user_homepage');
+
+            if($this->isGranted('ROLE_BLOCKED')) {
+                $this->addFlash('error', 'Vous n\'avez pas les droits nécessaires pour accéder à votre espace.');
+            }
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('app/pages/security/index.html.twig', [
-            'controller_name' => 'LoginController',
             'last_username' => $lastUsername,
             'error' => $error
         ]);

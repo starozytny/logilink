@@ -1,14 +1,20 @@
 {% extends 'app/pages/security/template.html.twig' %}
 
-{% block title %}Réinitialisation de mot de passe{% endblock %}
+{% block noindex %}
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+{% endblock %}
+
+{% block title %}Réinitialisation de mot de passe pour l'espace client Logilink{% endblock %}
 
 {% block main_content %}
+<div class="page-default">
     <div class="login-page">
         <div class="col-1">
 
             {% if error is defined %}
                 <div class="title-page">
-                    <h1>Lien expiré</h1>
+                    <h1><em>Lien</em> expiré</h1>
                     <p>
                         Ce lien de réinitialisation de mot de passe a expiré, veuillez recommencer la procédure. <br><br>
                     </p>
@@ -28,8 +34,9 @@
 
         <div class="col-2">
             <div class="image">
-                <img src="{{ asset('build/app/images/login-page.jpg') }}" alt="formulaire connexion">
+                <img src="{{ asset('build/app/images/reinit-page.jpg') }}" alt="formulaire connexion">
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

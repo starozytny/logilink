@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('admin_app') }}
+    {{ encore_entry_link_tags('user_app') }}
 {% endblock %}
 
 {% block body %}
@@ -15,7 +15,7 @@
             <div class="nav-container">
                 <div class="nav-logo">
                     <a href="{{ path('app_homepage') }}">
-                        <img src="{{ asset('build/admin/images/logo.png') }}" alt="Logo societe">
+                        <img src="{{ asset('build/user/images/logo-logilink.svg') }}" alt="Logo Logilink">
                     </a>
                 </div>
 
@@ -24,15 +24,58 @@
                 </div>
 
                 <div class="nav-content">
-                    <div class="nav-menu">
-                        {% for item in menu %}
-                            <a class="nav-item {{- app.request.get('_route') == item.nameRoute ? " active" : "" -}}"
-                               href="{{ path(item.nameRoute) }}"
+                    <div class="nav-header">
+                        <div class="avatar">
+                            {% if app.user.avatarFile %}
+                                <img src="{{ app.user.avatarFile }}" alt="Avatar utilisateur">
+                            {% else %}
+                                <div class="avatar-letter">{{ app.user.lastname | slice(0, 1) }}{{ app.user.firstname | slice(0,1) }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="nav-header-infos">
+                            {% if is_granted('ROLE_ADMIN') and app.user.client %}
+                                <div class="txt-warning">({{ app.user.client.user.userIdentifier }})</div>
+                            {% endif %}
+                            <div>{{ app.user.userIdentifier }}</div>
+                            <div>{{ app.user.email }}</div>
+                        </div>
+                        <div class="nav-header-actions">
+                            <a href="{{ path('user_profil') }}"
+                               class="btn-icon {{- app.request.get('_route') == "user_profil"
+                               ? " btn-icon-primary"
+                               : " btn-icon-outline-default" -}}"
                             >
-                                <span class="icon-{{ item.icon }}"></span>
-                                <span>{{ item.name }}</span>
+                                <span class="icon-settings"></span>
+                                <span class="tooltip" style="width: 88px">Mon compte</span>
                             </a>
-                        {% endfor %}
+                            <a href="{{ path('app_logout') }}" class="btn-icon btn-icon-outline-default">
+                                <span class="icon-logout"></span>
+                                <span class="tooltip" style="width: 108px;">Se déconnecter</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="nav-menu">
+                        <div class="nav-items">
+                            {% for item in menu %}
+                                <a class="nav-item {{- app.request.get('_route') in item.matchRoute ? " active" : "" -}}"
+                                   href="{{ item.path }}"
+                                >
+                                    <span class="icon-{{ item.icon }}"></span>
+                                    <span>{{ item.name }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div class="nav-items">
+                            {% for item in menu_bottom %}
+                                <a class="nav-item {{- app.request.get('_route') in item.matchRoute ? " active" : "" -}}"
+                                   href="{{ item.path }}"
+                                >
+                                    <span class="icon-{{ item.icon }}"></span>
+                                    <span>{{ item.name }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
 
@@ -41,18 +84,22 @@
 
         <main>
 
+            {% block breadcrumb %}
+                {% include "admin/layout/components/breadcrumbs.html.twig" %}
+            {% endblock %}
+
             {% include "layout/components/admin/page_title.html.twig" %}
 
             <div>
                 {% block main_content %}{% endblock %}
             </div>
-
-            {% block footer %}{% endblock %}
         </main>
     </div>
+
+    {% block footer %}{% endblock %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('admin_app') }}
+    {{ encore_entry_script_tags('user_app') }}
 {% endblock %}

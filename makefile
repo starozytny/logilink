@@ -5,6 +5,9 @@ git:
 route:
 	php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
 
+db:
+	php bin/console do:sc:up -f --complete
+
 init_test_db:
 	php bin/console --env=test do:sc:up -f
 

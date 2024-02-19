@@ -14,12 +14,14 @@ if(el){
 
 el = document.getElementById("users_update");
 if(el){
-    createRoot(el).render(<UserFormulaire context="update" element={JSON.parse(el.dataset.obj)} />)
+    createRoot(el).render(<UserFormulaire context="update" element={JSON.parse(el.dataset.obj)}
+                                          isProfil={false} />)
 }
 
 el = document.getElementById("users_create");
 if(el){
-    createRoot(el).render(<UserFormulaire context="create" element={null} />)
+    createRoot(el).render(<UserFormulaire context="create" element={null}
+                                          isProfil={false} />)
 }
 
 el = document.getElementById("users_password");

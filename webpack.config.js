@@ -42,10 +42,18 @@ Encore
         from: './assets/admin/images',
         to: 'admin/images/[path][name].[ext]',
     })
+    .copyFiles({
+        from: './assets/user/fonts',
+        to: 'user/fonts/[path][name].[ext]',
+    })
+    .copyFiles({
+        from: './assets/user/images',
+        to: 'user/images/[path][name].[ext]',
+    })
 
     .configureFilenames({
-        css: !Encore.isProduction() ? 'css/[name].css' : 'css/[name].[hash:8].css',
-        js: !Encore.isProduction() ? 'js/[name].js' : 'js/[name].[hash:8].js'
+        css: !Encore.isProduction() ? 'css/[name].css' : 'css/[name].[fullhash:8].css',
+        js: !Encore.isProduction() ? 'js/[name].js' : 'js/[name].[fullhash:8].js'
     })
 
     /*
@@ -68,18 +76,23 @@ Encore
     .addEntry('app_webservice', './assets/app/js/pages/webservice.js')
     .addEntry('app_support', './assets/app/js/pages/support.js')
 
-    .addEntry('admin_app',          './assets/admin/js/app.js')
-    .addEntry('admin_homepage',     './assets/admin/js/pages/homepage.js')
-    .addEntry('admin_settings',     './assets/admin/js/pages/settings.js')
-    .addEntry('admin_users',        './assets/admin/js/pages/users.js')
-    .addEntry('admin_societies',    './assets/admin/js/pages/societies.js')
-    .addEntry('admin_changelogs',   './assets/admin/js/pages/changelogs.js')
-    .addEntry('admin_contacts',     './assets/admin/js/pages/contacts.js')
-    .addEntry('admin_agenda',       './assets/admin/js/pages/agenda.js')
-    .addEntry('admin_help',         './assets/admin/js/pages/help.js')
-    .addEntry('admin_storage',      './assets/admin/js/pages/storage.js')
-    .addEntry('admin_styleguide',   './assets/admin/js/pages/styleguide.js')
-    .addEntry('admin_mails',        './assets/admin/js/pages/mails.js')
+    .addEntry('admin_app', './assets/admin/js/app.js')
+    .addEntry('admin_homepage', './assets/admin/js/pages/homepage.js')
+    .addEntry('admin_settings', './assets/admin/js/pages/settings.js')
+    .addEntry('admin_users', './assets/admin/js/pages/users.js')
+    .addEntry('admin_societies', './assets/admin/js/pages/societies.js')
+    .addEntry('admin_changelogs', './assets/admin/js/pages/changelogs.js')
+    .addEntry('admin_contacts', './assets/admin/js/pages/contacts.js')
+    .addEntry('admin_agenda', './assets/admin/js/pages/agenda.js')
+    .addEntry('admin_help', './assets/admin/js/pages/help.js')
+    .addEntry('admin_storage', './assets/admin/js/pages/storage.js')
+    .addEntry('admin_styleguide', './assets/admin/js/pages/styleguide.js')
+    .addEntry('admin_mails', './assets/admin/js/pages/mails.js')
+    .addEntry('admin_clients', './assets/admin/js/pages/clients.js')
+
+    .addEntry('user_app', './assets/user/js/app.js')
+    .addEntry('user_homepage', './assets/user/js/pages/homepage.js')
+    .addEntry('user_profil', './assets/user/js/pages/profil.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
