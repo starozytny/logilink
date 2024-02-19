@@ -100,6 +100,10 @@ section{
   @media (min-width: 1600px) {
     align-items: center;
 
+    .product-content{
+      max-width: 700px;
+    }
+
     .product-content:not(.product-content-center){
       padding-top: 0;
     }
