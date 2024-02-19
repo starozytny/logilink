@@ -126,6 +126,7 @@ class DonneesClientsSyncCommand extends Command
 
                             $this->registry->getManager()->persist($client);
 
+                            $existe = (bool)$client->getUser();
                             $user = $this->dataMain->setDataUser($client->getUser() ?: new User(), json_decode(
                                 json_encode([
                                     'username' => $codeSoc.$code,
@@ -136,7 +137,7 @@ class DonneesClientsSyncCommand extends Command
                                 ])
                             ));
 
-                            if ($input->getOption('password')) {
+                            if ($input->getOption('password') || !$existe) {
                                 $password = password_hash(
                                     $this->dataMain->getPasswordGeneric($codeSoc.$code),
                                     PASSWORD_DEFAULT

@@ -41,6 +41,12 @@ section{
     }
   }
 
+  @media (min-width: 1600px) {
+    .section-content{
+      max-width: 620px;
+    }
+  }
+
   @media (min-width: 1800px) {
     .section-content{
       padding-left: 6%;
@@ -93,6 +99,10 @@ section{
 
   @media (min-width: 1600px) {
     align-items: center;
+
+    .product-content{
+      max-width: 700px;
+    }
 
     .product-content:not(.product-content-center){
       padding-top: 0;
