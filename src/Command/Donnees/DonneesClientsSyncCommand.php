@@ -114,6 +114,7 @@ class DonneesClientsSyncCommand extends Command
 
                             $client = ($client)
                                 ->setCode($code)
+                                ->setCodeSociety($codeSoc)
                                 ->setName($this->sanitizeData->trimData($item[1]))
                                 ->setNumero($this->sanitizeData->trimData($item[6]))
                                 ->setAddress($this->sanitizeData->trimData($item[2]))
@@ -190,6 +191,7 @@ class DonneesClientsSyncCommand extends Command
                             }else{
                                 $extrait = (new DoExtrait())
                                     ->setNumero($numero)
+                                    ->setCodeSociety($codeSoc)
                                     ->setAccount($this->sanitizeData->trimData($item[1]))
                                     ->setWriteAt($this->sanitizeData->createDatePicker($item[2]))
                                     ->setCode($this->sanitizeData->trimData($item[3]))

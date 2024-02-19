@@ -19,6 +19,9 @@ class DoExtrait
     #[Groups(['extraits_list'])]
     private ?int $id = null;
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $codeSociety = null;
+
     #[ORM\Column(length: 255)]
     #[Groups(['extraits_list'])]
     private ?string $numero = null;
@@ -209,6 +212,18 @@ class DoExtrait
     public function setArchive(string $archive): static
     {
         $this->archive = $archive;
+
+        return $this;
+    }
+
+    public function getCodeSociety(): ?string
+    {
+        return $this->codeSociety;
+    }
+
+    public function setCodeSociety(?string $codeSociety): static
+    {
+        $this->codeSociety = $codeSociety;
 
         return $this;
     }
