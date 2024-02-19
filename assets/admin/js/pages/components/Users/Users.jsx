@@ -23,6 +23,7 @@ const URL_GET_DATA        = "intern_api_users_list";
 const URL_DELETE_ELEMENT  = "admin_users_delete";
 const URL_REINIT_PASSWORD = "intern_api_users_password_reinit";
 const URL_SWITCH_BLOCKED  = "intern_api_users_switch_blocked";
+const URL_SWITCH_CLIENT   = "intern_api_users_switch_client";
 
 let sorters = [
     { value: 0, identifiant: 'sorter-nom', label: 'Nom' },
@@ -170,6 +171,16 @@ export class Users extends Component {
         ;
     }
 
+    handleSwitchClient = (element) => {
+        let self = this;
+        axios({ method: "PUT", url: Routing.generate(URL_SWITCH_CLIENT, {'token': element.token}), data: {} })
+            .then(function (response) {
+                location.href = response.data.url;
+            })
+            .catch(function (error) { Formulaire.displayErrors(self, error); })
+        ;
+    }
+
     render () {
         const { highlight } = this.props;
         const { data, dataImmuable, currentData, element, loadingData, perPage, currentPage, filters, nbSorter } = this.state;
@@ -197,7 +208,8 @@ export class Users extends Component {
                                          onClick={this.handlePaginationClick} nbSorter={nbSorter}
                                          onPerPage={this.handlePerPage} onSorter={this.handleSorter} />
 
-                    <UsersList data={currentData} highlight={parseInt(highlight)} onModal={this.handleModal} />
+                    <UsersList data={currentData} highlight={parseInt(highlight)} onModal={this.handleModal}
+                               onSwitchClient={this.handleSwitchClient} />
 
                     <Pagination ref={this.pagination} items={data} taille={data.length} currentPage={currentPage}
                                 perPage={perPage} onUpdate={this.handleUpdateData} onChangeCurrentPage={this.handleChangeCurrentPage}/>
@@ -209,7 +221,7 @@ export class Users extends Component {
                     </ModalDelete>
 
                     <Modal ref={this.reinit} identifiant="reinit" maxWidth={414}
-                           title={element ? "Générer un nouveau mot de passe pour " + element.lastname : ""}
+                           title={element ? "Réinitialiser le mot de passe de " + element.lastname : ""}
                            content={null} footer={null}/>
                     <Modal ref={this.mail} identifiant="mail" maxWidth={768} margin={2} title="Envoyer un mail" isForm={true}
                            content={<MailFormulaire identifiant="mail" element={element} tos={dataImmuable} />} footer={null} />
@@ -223,8 +235,11 @@ export class Users extends Component {
 }
 
 function modalReinit (self) {
-    self.reinit.current.handleUpdateContent(<p>Le nouveau mot de passe est généré automatiquement et prendra la place du mot de passe actuel.</p>);
-    self.reinit.current.handleUpdateFooter(<Button onClick={self.handleReinitPassword} type="primary">Confirmer la génération</Button>);
+    self.reinit.current.handleUpdateContent(<p>
+        Après confirmation, le mot de passe sera affiché sur cette boite de dialogue
+        et prendra la place du mot de passe actuel.
+    </p>);
+    self.reinit.current.handleUpdateFooter(<Button onClick={self.handleReinitPassword} type="primary">Confirmer</Button>);
     self.reinit.current.handleUpdateCloseTxt("Annuler");
 }
 

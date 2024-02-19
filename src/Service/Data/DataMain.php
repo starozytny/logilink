@@ -29,10 +29,15 @@ class DataMain
 
         return ($obj)
             ->setUsername($this->sanitizeData->fullSanitize($data->username))
-            ->setFirstname($this->sanitizeData->sanitizeString($data->firstname))
-            ->setLastname($this->sanitizeData->sanitizeString($data->lastname))
+            ->setFirstname($this->sanitizeData->trimData($data->firstname))
+            ->setLastname($this->sanitizeData->trimData($data->lastname))
             ->setEmail($data->email)
         ;
+    }
+
+    public function getPasswordGeneric($username): string
+    {
+        return (substr(md5("reg$username"), 0, 8));
     }
 
     public function setDataSociety(Society $obj, $data, Settings $settings): Society

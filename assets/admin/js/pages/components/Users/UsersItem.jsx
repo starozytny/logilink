@@ -13,7 +13,7 @@ const URL_UPDATE_PAGE   = "admin_users_update";
 const URL_READ_PAGE     = "admin_users_read";
 const URL_PASSWORD_PAGE = "admin_users_password";
 
-export function UsersItem ({ elem, highlight, onModal })
+export function UsersItem ({ elem, highlight, onModal, onSwitchClient })
 {
     const refItem = useRef(null);
 
@@ -27,7 +27,7 @@ export function UsersItem ({ elem, highlight, onModal })
 
     let menu = [
         { data: <a onClick={() => onModal("reinit", elem)}>
-                <span className="icon-refresh" /> <span>Générer un nouveau mot de passe</span>
+                <span className="icon-refresh" /> <span>Réinitialiser son mot de passe</span>
         </a> },
         { data: <a href={urlPass}>
                 <span className="icon-lock-1" /> <span>Modifier son mot de passe</span>
@@ -37,6 +37,9 @@ export function UsersItem ({ elem, highlight, onModal })
         </a> },
         { data: <a onClick={() => onModal("blocked", elem)}>
                 <span className={"icon-" + (elem.blocked ? "unlock" : "disabled")} /> <span>{elem.blocked ? "Débloquer" : "Bloquer"}</span>
+        </a> },
+        { data: <a onClick={() => onSwitchClient(elem)}>
+                <span className="icon-arrow-swap-horizontal" /> <span>Accéder à son espace</span>
         </a> }
     ]
 

@@ -33,10 +33,21 @@
                             {% endif %}
                         </div>
                         <div class="nav-header-infos">
+                            {% if is_granted('ROLE_ADMIN') and app.user.client %}
+                                <div class="txt-warning">({{ app.user.client.user.userIdentifier }})</div>
+                            {% endif %}
                             <div>{{ app.user.userIdentifier }}</div>
                             <div>{{ app.user.email }}</div>
                         </div>
                         <div class="nav-header-actions">
+                            <a href="{{ path('user_profil') }}"
+                               class="btn-icon {{- app.request.get('_route') == "user_profil"
+                               ? " btn-icon-primary"
+                               : " btn-icon-outline-default" -}}"
+                            >
+                                <span class="icon-settings"></span>
+                                <span class="tooltip" style="width: 88px">Mon compte</span>
+                            </a>
                             <a href="{{ path('app_logout') }}" class="btn-icon btn-icon-outline-default">
                                 <span class="icon-logout"></span>
                                 <span class="tooltip" style="width: 108px;">Se déconnecter</span>

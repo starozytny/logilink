@@ -4,6 +4,7 @@ nav{
 
 main{
   min-height: 80vh;
+  margin-bottom: calc(var(--espaceLayout) * 2);
 }
 
 .main-content{

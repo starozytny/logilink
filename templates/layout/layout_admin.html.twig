@@ -85,7 +85,7 @@
             </div>
         </nav>
 
-        <main>
+        <main {% if mainStyle is defined %}style="{{ mainStyle }}"{% endif %}>
 
             {% block breadcrumb %}
                 {% include "admin/layout/components/breadcrumbs.html.twig" %}

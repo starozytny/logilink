@@ -1,0 +1,44 @@
+.items-extrait{
+
+  .item-infos{
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    & > .col-1, & > .col-2, & > .col-3{
+      width: 100%;
+    }
+    & > .col-4, & > .col-5, & > .col-6{
+      @include flex(column, flex-end, flex-end, 4px);
+      width: calc(33% - 5px);
+    }
+  }
+
+  $col1: 100px; $col3: 60px; $col4: 80px; $col5: 80px; $col6: 80px; $col7: 60px; $colGap: 48px;
+  //                      __   _____ __    ___    __
+  //                     | _| |___  / /_  ( _ )  |_ |
+  //    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+  //   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+  //                     | |   /_/  \___/ \___/   | |
+  //                     |__|                    |__|
+  @media (min-width:768px) {
+    .item-infos{
+      flex-wrap: initial;
+
+      & > .col-1{ width: $col1; }
+      & > .col-2{
+        width: calc(100% - $col1 - $col3 - $col4 - $col5 - $col6 - $col7 - $colGap);
+        max-width: 320px;
+      }
+      & > .col-3{ width: $col3; }
+      & > .col-4{ width: $col4; }
+      & > .col-5{ width: $col5; }
+      & > .col-6{ width: $col6; }
+      & > .col-4, & > .col-5, & > .col-6{
+        & > span:first-child{
+          display: none;
+        }
+      }
+      & > .col-7.actions{ width: $col7; }
+    }
+  }
+}

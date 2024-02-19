@@ -3,6 +3,7 @@
 namespace App\Entity\Main;
 
 use App\Entity\DataEntity;
+use App\Entity\Main\Donnees\DoClient;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -39,12 +40,12 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var ?string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['user_list', 'user_form'])]
     private ?string $email = null;
 
@@ -94,6 +95,9 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Mail::class)]
     private Collection $mails;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?DoClient $client = null;
 
     /**
      * @throws Exception
@@ -205,7 +209,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -403,5 +407,22 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         }
 
         return $this;
+    }
+
+    public function getClient(): ?DoClient
+    {
+        return $this->client;
+    }
+
+    public function setClient(?DoClient $client): static
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->getHighRoleCode() == self::CODE_ROLE_DEVELOPER || $this->getHighRoleCode() == self::CODE_ROLE_ADMIN;
     }
 }
