@@ -49,6 +49,6 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_homepage');
         }
 
-        return $this->file($file, null, ResponseHeaderBag::DISPOSITION_INLINE);
+        return $this->file($file, null, ResponseHeaderBag::DISPOSITION_ATTACHMENT);
     }
 }
