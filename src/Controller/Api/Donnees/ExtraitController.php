@@ -23,11 +23,6 @@ class ExtraitController extends AbstractController
             return $this->json('Fichier introuvable', 404);
         }
 
-        $response = $this->file($file, null, ResponseHeaderBag::DISPOSITION_INLINE);
-
-        $response->headers->set('Content-Type', 'application/octet-stream');
-        $response->headers->set('Content-Disposition', 'inline; filename="'.$extrait->getFile().'"');
-
-        return $response;
+        return $this->file($file, null, ResponseHeaderBag::DISPOSITION_INLINE);
     }
 }
