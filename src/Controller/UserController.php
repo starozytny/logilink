@@ -49,6 +49,11 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_homepage');
         }
 
-        return $this->file($file, null, ResponseHeaderBag::DISPOSITION_INLINE);
+        $response = $this->file($file, null, ResponseHeaderBag::DISPOSITION_INLINE);
+
+        $response->headers->set('Content-Type', 'application/octet-stream');
+        $response->headers->set('Content-Disposition', 'inline; filename="'.$extrait->getFile().'"');
+
+        return $response;
     }
 }
