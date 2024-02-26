@@ -26,42 +26,40 @@ class ClientController extends AbstractController
 
             $jsonClients = [];
             foreach ($clients as $client) {
-                if($client->getCodeSociety() == $society){
-                    $solde = 0;
-                    $clientExtrait = [];
-                    foreach ($extraits as $extrait) {
-                        if ($extrait->getClient()->getId() == $client->getId()) {
+                $solde = 0;
+                $clientExtrait = [];
+                foreach ($extraits as $extrait) {
+                    if ($extrait->getClient()->getId() == $client->getId()) {
 
-                            $solde = $solde - ($extrait->getDebit()) + ($extrait->getCredit());
-                            $fileUrl = $extrait->getFile()
-                                ? $this->generateUrl(
-                                    'api_data_extraits_extrait_invoice',
-                                    ['id' => $extrait->getId()],
-                                    UrlGeneratorInterface::ABSOLUTE_URL
-                                )
-                                : null;
+                        $solde = $solde - ($extrait->getDebit()) + ($extrait->getCredit());
+                        $fileUrl = $extrait->getFile()
+                            ? $this->generateUrl(
+                                'api_data_extraits_extrait_invoice',
+                                ['id' => $extrait->getId()],
+                                UrlGeneratorInterface::ABSOLUTE_URL
+                            )
+                            : null;
 
-                            $clientExtrait[] = [
-                                'id' => $extrait->getId(),
-                                'writeAt' => $extrait->getWriteAt()->format('d/m/Y'),
-                                'name' => $extrait->getName(),
-                                'letter' => $extrait->getLetter(),
-                                'debit' => $extrait->getDebit(),
-                                'credit' => $extrait->getCredit(),
-                                'solde' => $solde,
-                                'file' => $fileUrl
-                            ];
-                        }
+                        $clientExtrait[] = [
+                            'id' => $extrait->getId(),
+                            'writeAt' => $extrait->getWriteAt()->format('d/m/Y'),
+                            'name' => $extrait->getName(),
+                            'letter' => $extrait->getLetter(),
+                            'debit' => $extrait->getDebit(),
+                            'credit' => $extrait->getCredit(),
+                            'solde' => $solde,
+                            'file' => $fileUrl
+                        ];
                     }
-
-                    $jsonClients[] = [
-                        'id' => $client->getId(),
-                        'code' => $client->getCode(),
-                        'name' => $client->getName(),
-                        'numero' => $client->getNumero(),
-                        'extrait' => $clientExtrait
-                    ];
                 }
+
+                $jsonClients[] = [
+                    'id' => $client->getId(),
+                    'code' => $client->getCode(),
+                    'name' => $client->getName(),
+                    'numero' => $client->getNumero(),
+                    'extrait' => $clientExtrait
+                ];
             }
 
             $jsonData[] = [

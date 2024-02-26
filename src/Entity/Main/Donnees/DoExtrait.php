@@ -9,7 +9,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: DoExtraitRepository::class)]
 class DoExtrait
 {
-    const FOLDER_INVOICE = "clients/files/invoices/";
+    const FOLDER_INVOICE_001 = "clients/files/invoices-001/";
+    const FOLDER_INVOICE_002 = "clients/files/invoices-002/";
 
     const LIST = ['extraits_list'];
 
@@ -226,5 +227,10 @@ class DoExtrait
         $this->codeSociety = $codeSociety;
 
         return $this;
+    }
+
+    public function getFolder(): string
+    {
+        return $this->getCodeSociety() == "001" ? self::FOLDER_INVOICE_001 : self::FOLDER_INVOICE_002;
     }
 }

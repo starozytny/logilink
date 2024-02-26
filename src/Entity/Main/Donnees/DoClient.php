@@ -20,9 +20,6 @@ class DoClient
     #[Groups(['client_list', 'extraits_list'])]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
-    private ?string $codeSociety = null;
-
     #[ORM\Column(length: 255)]
     #[Groups(['client_list'])]
     private ?string $code = null;
@@ -236,18 +233,6 @@ class DoClient
     public function setBlocked(bool $blocked): static
     {
         $this->blocked = $blocked;
-
-        return $this;
-    }
-
-    public function getCodeSociety(): ?string
-    {
-        return $this->codeSociety;
-    }
-
-    public function setCodeSociety(?string $codeSociety): static
-    {
-        $this->codeSociety = $codeSociety;
 
         return $this;
     }
