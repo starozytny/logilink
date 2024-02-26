@@ -60,7 +60,7 @@ class UserController extends AbstractController
     }
 
 
-    #[Route('/factures', name: 'invoices', options: ['expose' => true])]
+    #[Route('/factures', name: 'invoices')]
     public function invoices(Request $request, DoExtraitRepository $extraitRepository): Response
     {
         /** @var User $user */
