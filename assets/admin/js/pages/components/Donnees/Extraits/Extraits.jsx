@@ -209,10 +209,13 @@ function ExtraitItem ({ elem, solde }) {
                     <span>{Sanitaze.toFormatCurrency(solde)}</span>
                 </div>
                 <div className="col-7 actions">
-                    <ButtonIcon icon="receipt" outline={true} element="a" target="_blank"
-                                onClick={Routing.generate(URL_DOWNLOAD_INVOICE, { 'id': elem.id })}>
-                        Facture
-                    </ButtonIcon>
+                    {elem.file
+                        ? <ButtonIcon icon="receipt" outline={true} element="a" target="_blank"
+                                      onClick={Routing.generate(URL_DOWNLOAD_INVOICE, { 'id': elem.id })}>
+                            Facture
+                        </ButtonIcon>
+                        : null
+                    }
                 </div>
             </div>
         </div>
