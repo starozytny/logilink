@@ -11,7 +11,7 @@ import Formulaire from "@commonFunctions/formulaire";
 import { LoaderTxt } from "@commonComponents/Elements/Loader";
 import { Input } from "@commonComponents/Elements/Fields";
 import { Alert } from "@commonComponents/Elements/Alert";
-import { ButtonIcon } from "@commonComponents/Elements/Button";
+import { Button, ButtonIcon } from "@commonComponents/Elements/Button";
 
 const URL_GET_CLIENTS = "intern_api_data_clients_clients_extraits";
 const URL_DOWNLOAD_INVOICE = "user_download_invoice";
@@ -22,13 +22,15 @@ export class Extraits extends Component {
 
         this.state = {
             clients: [],
-            extraits: [],
+            extraits1: [],
             loadingData: false,
             errors: [],
             clientId: null,
             clientSearch: "",
             clientsSearch: [],
-            extraitsClient: [],
+            extraits1Client: [],
+            extraits2Client: [],
+            extraitActive: "logilink"
         }
     }
 
@@ -39,11 +41,12 @@ export class Extraits extends Component {
         axios({ method: "GET", url: Routing.generate(URL_GET_CLIENTS), data: {} })
             .then(function (response) {
                 let clients = JSON.parse(response.data.clients);
-                let extraits = JSON.parse(response.data.extraits);
+                let extraits1 = JSON.parse(response.data.extraits1);
+                let extraits2 = JSON.parse(response.data.extraits2);
 
                 clients.sort(Sort.compareName);
 
-                self.setState({ clients: clients, clientsSearch: clients, extraits: extraits, loadingData: false })
+                self.setState({ clients: clients, clientsSearch: clients, extraits1: extraits1, extraits2: extraits2, loadingData: false })
             })
             .catch(function (error) { Formulaire.displayErrors(self, error); })
         ;
@@ -65,24 +68,35 @@ export class Extraits extends Component {
     }
 
     handleClickClient = (clientId) => {
-        const { extraits } = this.state;
+        const { extraits1, extraits2 } = this.state;
 
         let id = this.state.clientId !== clientId ? clientId : null;
 
-        let nExtraits = [];
-        extraits.forEach(ex => {
+        let nExtraits1 = [], nExtraits2 = [];
+        extraits1.forEach(ex => {
             if(ex.client.id === id){
-                nExtraits.push(ex);
+                nExtraits1.push(ex);
+            }
+        })
+        extraits2.forEach(ex => {
+            if(ex.client.id === id){
+                nExtraits2.push(ex);
             }
         })
 
-        this.setState({ clientId: id, extraitsClient: nExtraits })
+        let extraitActive = nExtraits1.length > 0 ? "logilink" : "2ilink";
+
+        this.setState({ clientId: id, extraits1Client: nExtraits1, extraits2Client: nExtraits2, extraitActive })
     }
 
+    handleClickExtrait = (extraitActive) => { this.setState({ extraitActive }) }
+
     render () {
-        const { loadingData, clientsSearch, extraitsClient, clientId, clientSearch, errors } = this.state;
+        const { loadingData, clientsSearch, extraits1Client, extraits2Client, clientId, clientSearch, errors, extraitActive } = this.state;
 
         let solde = 0;
+
+        let extraits = extraitActive === "logilink" ? extraits1Client : extraits2Client;
 
         return <div className="page-extrait">
             <div className="col-1">
@@ -124,33 +138,45 @@ export class Extraits extends Component {
                         {loadingData
                             ? <LoaderTxt />
                             : (clientId
-                                ? <div className="list">
-                                    <div className="list-table">
-                                        <div className="items items-extrait">
-                                            <div className="item item-header">
-                                                <div className="item-content">
-                                                    <div className="item-infos">
-                                                        <div className="col-1">Date</div>
-                                                        <div className="col-2">Libellé</div>
-                                                        <div className="col-3">Lettre</div>
-                                                        <div className="col-4">Débit (€)</div>
-                                                        <div className="col-5">Crédit (€)</div>
-                                                        <div className="col-6">Solde (€)</div>
-                                                        <div className="col-7 actions"></div>
+                                ? <>
+                                    <div className="card-extrait-actions">
+                                        <Button type="primary" outline={extraitActive !== "logilink"}
+                                                onClick={() => this.handleClickExtrait('logilink')}>
+                                            Extrait Logilink
+                                        </Button>
+                                        <Button type="primary" outline={extraitActive !== "2ilink"}
+                                                onClick={() => this.handleClickExtrait('2ilink')}>
+                                            Extrait 2ilink
+                                        </Button>
+                                    </div>
+                                    <div className="list">
+                                        <div className="list-table">
+                                            <div className="items items-extrait">
+                                                <div className="item item-header">
+                                                    <div className="item-content">
+                                                        <div className="item-infos">
+                                                            <div className="col-1">Date</div>
+                                                            <div className="col-2">Libellé</div>
+                                                            <div className="col-3">Lettre</div>
+                                                            <div className="col-4">Débit (€)</div>
+                                                            <div className="col-5">Crédit (€)</div>
+                                                            <div className="col-6">Solde (€)</div>
+                                                            <div className="col-7 actions"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            {extraitsClient.length > 0
-                                                ? extraitsClient.map(elem => {
-                                                    solde = solde - (elem.debit) + (elem.credit);
+                                                {extraits.length > 0
+                                                    ? extraits.map(elem => {
+                                                        solde = solde - (elem.debit) + (elem.credit);
 
-                                                    return <ExtraitItem key={elem.id} solde={solde} elem={elem} />
-                                                })
-                                                : <div className="item">Aucun enregistrement pour le moment.</div>
-                                            }
+                                                        return <ExtraitItem key={elem.id} solde={solde} elem={elem} />
+                                                    })
+                                                    : <div className="item">Aucun enregistrement pour le moment.</div>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </>
                                 : <Alert type="info">Sélectionnez un client</Alert>
                             )
                         }
