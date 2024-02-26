@@ -27,7 +27,7 @@
 
 .btn-icon{
   padding: 6px;
-  opacity: 0.9;
+  opacity: 1;
 
   span:not(.tooltip, [class^="icon-"]){
     font-size: 14px;
@@ -35,7 +35,7 @@
   }
 
   &:hover{
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 
