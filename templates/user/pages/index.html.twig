@@ -19,6 +19,18 @@
                 </div>
             </div>
             <div class="card-body">
+                {% if haveTwo %}
+                    <div class="card-extrait-actions">
+                        <a href="{{ path('user_homepage') }}"
+                           class="btn {{ active == "logilink" ? "btn-primary" : "btn-outline-primary" }}">
+                            Extrait LOGILINK
+                        </a>
+                        <a href="{{ path('user_homepage', {extrait: '2ilink'}) }}"
+                           class="btn {{ active == "2ilink" ? "btn-primary" : "btn-outline-primary" }}">
+                            Extrait 2ILINK
+                        </a>
+                    </div>
+                {% endif %}
                 {% if extraits is empty %}
                     <div>Aucun enregistrement pour le moment.</div>
                 {% else %}
