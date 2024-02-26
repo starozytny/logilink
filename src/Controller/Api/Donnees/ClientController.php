@@ -28,6 +28,7 @@ class ClientController extends AbstractController
             foreach ($clients as $client) {
                 $solde = 0;
                 $clientExtrait = [];
+                $account = $client->getName();
                 foreach ($extraits as $extrait) {
                     if($extrait->getCodeSociety() == $society) {
                         if ($extrait->getClient()->getId() == $client->getId()) {
@@ -40,6 +41,8 @@ class ClientController extends AbstractController
                                     UrlGeneratorInterface::ABSOLUTE_URL
                                 )
                                 : null;
+
+                            $account = $extrait->getAccount();
 
                             $clientExtrait[] = [
                                 'id' => $extrait->getId(),
@@ -59,7 +62,7 @@ class ClientController extends AbstractController
                     $jsonClients[] = [
                         'id' => $client->getId(),
                         'code' => $client->getCode(),
-                        'name' => $client->getName(),
+                        'name' => $account,
                         'numero' => $client->getNumero(),
                         'extrait' => $clientExtrait
                     ];
