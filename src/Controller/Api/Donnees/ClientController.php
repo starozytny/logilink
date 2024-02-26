@@ -53,13 +53,15 @@ class ClientController extends AbstractController
                     }
                 }
 
-                $jsonClients[] = [
-                    'id' => $client->getId(),
-                    'code' => $client->getCode(),
-                    'name' => $client->getName(),
-                    'numero' => $client->getNumero(),
-                    'extrait' => $clientExtrait
-                ];
+                if(count($clientExtrait) > 0){
+                    $jsonClients[] = [
+                        'id' => $client->getId(),
+                        'code' => $client->getCode(),
+                        'name' => $client->getName(),
+                        'numero' => $client->getNumero(),
+                        'extrait' => $clientExtrait
+                    ];
+                }
             }
 
             $jsonData[] = [
