@@ -17,7 +17,7 @@ class ExtraitController extends AbstractController
     #[Route('/extrait/{id}/invoice', name: 'extrait_invoice', methods: 'GET')]
     public function invoice(DoExtrait $extrait): BinaryFileResponse|JsonResponse
     {
-        $file = $this->getParameter('private_directory') . DoExtrait::FOLDER_INVOICE . $extrait->getFile();
+        $file = $this->getParameter('private_directory') . $extrait->getFolder() . $extrait->getFile();
 
         if(!$file || !file_exists($file)){
             return $this->json('Fichier introuvable', 404);

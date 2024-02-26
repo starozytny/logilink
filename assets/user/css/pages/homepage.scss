@@ -14,6 +14,11 @@
   .card-body{
     width: 100%;
   }
+
+  .card-extrait-actions{
+    @include flex(row, flex-start, flex-start, 8px);
+    margin-bottom: 24px;
+  }
 }
 
 @import "../../../common/css/pages/extraits";

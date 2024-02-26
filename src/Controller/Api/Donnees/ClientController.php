@@ -26,10 +26,10 @@ class ClientController extends AbstractController
 
             $jsonClients = [];
             foreach ($clients as $client) {
-                if($client->getCodeSociety() == $society){
-                    $solde = 0;
-                    $clientExtrait = [];
-                    foreach ($extraits as $extrait) {
+                $solde = 0;
+                $clientExtrait = [];
+                foreach ($extraits as $extrait) {
+                    if($extrait->getCodeSociety() == $society) {
                         if ($extrait->getClient()->getId() == $client->getId()) {
 
                             $solde = $solde - ($extrait->getDebit()) + ($extrait->getCredit());
@@ -53,7 +53,9 @@ class ClientController extends AbstractController
                             ];
                         }
                     }
+                }
 
+                if(count($clientExtrait) > 0){
                     $jsonClients[] = [
                         'id' => $client->getId(),
                         'code' => $client->getCode(),
