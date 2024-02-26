@@ -58,6 +58,11 @@
   @include flex(column, flex-start, flex-start, var(--espaceLayout));
   padding: 0 1.2rem;
 
+  .card-extrait-actions{
+    @include flex(row, flex-start, flex-start, 8px);
+    margin-bottom: 24px;
+  }
+
   & > .col-1, & > .col-2{
     width: 100%;
   }
