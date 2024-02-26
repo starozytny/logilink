@@ -32,7 +32,7 @@ class ClientController extends AbstractController
                     if($extrait->getCodeSociety() == $society) {
                         if ($extrait->getClient()->getId() == $client->getId()) {
 
-                            $solde = $solde - ($extrait->getDebit()) + ($extrait->getCredit());
+                            $solde = round($solde - ($extrait->getDebit()) + ($extrait->getCredit()), 2);
                             $fileUrl = $extrait->getFile()
                                 ? $this->generateUrl(
                                     'api_data_extraits_extrait_invoice',
