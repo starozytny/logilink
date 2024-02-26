@@ -10,10 +10,11 @@
     & > .col-4, & > .col-5, & > .col-6{
       @include flex(column, flex-end, flex-end, 4px);
       width: calc(33% - 5px);
+      text-align: right;
     }
   }
 
-  $col1: 100px; $col3: 60px; $col4: 80px; $col5: 80px; $col6: 80px; $col7: 60px; $colGap: 48px;
+  $col1: 100px; $col3: 45px; $col4: 100px; $col5: 100px; $col6: 100px; $col7: 40px; $colGap: 48px;
   //                      __   _____ __    ___    __
   //                     | _| |___  / /_  ( _ )  |_ |
   //    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
