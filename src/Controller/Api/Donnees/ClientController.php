@@ -44,6 +44,7 @@ class ClientController extends AbstractController
                             $clientExtrait[] = [
                                 'id' => $extrait->getId(),
                                 'writeAt' => $extrait->getWriteAt()->format('d/m/Y'),
+                                'account' => $extrait->getAccount(),
                                 'name' => $extrait->getName(),
                                 'letter' => $extrait->getLetter(),
                                 'debit' => $extrait->getDebit(),
