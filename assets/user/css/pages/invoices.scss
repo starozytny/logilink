@@ -1,4 +1,27 @@
-.items-extrait{
+@import "../vars/vars";
+
+.card{
+  @include flex(column, flex-start, flex-start, 8px);
+  background-color: var(--alpha);
+  padding: 1.2rem;
+  width: 100%;
+
+  .card-header{
+    @include flex(row, flex-start, flex-start, 8px);
+    font-size: 18px;
+  }
+
+  .card-body{
+    width: 100%;
+  }
+
+  .card-extrait-actions{
+    @include flex(row, flex-start, flex-start, 8px);
+    margin-bottom: 24px;
+  }
+}
+
+.items-invoices{
 
   .item-infos{
     flex-direction: row;
@@ -7,14 +30,9 @@
     & > .col-1, & > .col-2, & > .col-3{
       width: 100%;
     }
-    & > .col-4, & > .col-5, & > .col-6{
-      @include flex(column, flex-end, flex-end, 4px);
-      width: calc(33% - 5px);
-      text-align: right;
-    }
   }
 
-  $col1: 100px; $col3: 45px; $col4: 100px; $col5: 100px; $col6: 100px; $col7: 40px; $colGap: 48px;
+  $col1: 100px; $col3: 260px; $colGap: 48px;
   //                      __   _____ __    ___    __
   //                     | _| |___  / /_  ( _ )  |_ |
   //    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
@@ -27,19 +45,11 @@
 
       & > .col-1{ width: $col1; }
       & > .col-2{
-        width: calc(100% - $col1 - $col3 - $col4 - $col5 - $col6 - $col7 - $colGap);
+        width: calc(100% - $col1 - $col3 - $colGap);
         max-width: 320px;
       }
-      & > .col-3{ width: $col3; }
-      & > .col-4{ width: $col4; }
-      & > .col-5{ width: $col5; }
-      & > .col-6{ width: $col6; }
-      & > .col-4, & > .col-5, & > .col-6{
-        & > span:first-child{
-          display: none;
-        }
-      }
-      & > .col-7.actions{ width: $col7; }
+      & > .col-3.actions{ width: $col3; }
     }
   }
 }
+

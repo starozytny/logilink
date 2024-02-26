@@ -3,8 +3,11 @@
 {% set page_prefix = "Espace membre" %}
 
 {% set menu = [
-    { name: "Dashboard",    icon: "home",
+    { name: "Dashboard", icon: "home",
         path: path('user_homepage'), matchRoute: ['user_homepage']
+    },
+    { name: "Factures", icon: "receipt",
+        path: path('user_invoices'), matchRoute: ['user_invoices']
     },
 ] %}
 

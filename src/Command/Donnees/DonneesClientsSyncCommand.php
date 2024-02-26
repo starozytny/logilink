@@ -31,9 +31,9 @@ use ZipArchive;
 class DonneesClientsSyncCommand extends Command
 {
     const FOLDER = 'clients/';
+    const FOLDER_CLOSE = 'clients/tmp/';
     const FOLDER_ARCHIVE = 'clients/archive/';
     const FOLDER_EXTRACT = 'clients/extract/';
-    const FOLDER_INVOICE = DoExtrait::FOLDER_INVOICE;
 
     public function __construct(private readonly string $privateDirectory,
                                 private readonly ManagerRegistry $registry,
@@ -63,13 +63,15 @@ class DonneesClientsSyncCommand extends Command
         $io->title("Lecture des archives");
 
         $directory = $this->privateDirectory . self::FOLDER;
+        $directoryClose = $this->privateDirectory . self::FOLDER_CLOSE;
         $directoryArchive = $this->privateDirectory . self::FOLDER_ARCHIVE;
-        $directoryExtract = $this->privateDirectory . self::FOLDER_EXTRACT;
-        $directoryInvoice = $this->privateDirectory . self::FOLDER_INVOICE;
+        $directoryInvoice001 = $this->privateDirectory . DoExtrait::FOLDER_INVOICE_001;
+        $directoryInvoice002 = $this->privateDirectory . DoExtrait::FOLDER_INVOICE_002;
 
+        if(!is_dir($directoryClose)) mkdir($directoryClose);
         if(!is_dir($directoryArchive)) mkdir($directoryArchive);
-        if(!is_dir($directoryExtract)) mkdir($directoryExtract);
-        if(!is_dir($directoryInvoice)) mkdir($directoryInvoice, 0755, true);
+        if(!is_dir($directoryInvoice001)) mkdir($directoryInvoice001, 0755, true);
+        if(!is_dir($directoryInvoice002)) mkdir($directoryInvoice002, 0755, true);
 
         $clients = $this->registry->getRepository(DoClient::class)->findAll();
         $society = $this->registry->getRepository(Society::class)->findOneBy(['code' => 999]);
@@ -86,6 +88,9 @@ class DonneesClientsSyncCommand extends Command
 
                     $zip = new ZipArchive;
                     if ($zip->open($file) === TRUE) {
+                        $directoryExtract = $this->privateDirectory . self::FOLDER_EXTRACT;
+                        if(!is_dir($directoryExtract)) mkdir($directoryExtract, 0755, true);
+
                         $zip->extractTo($directoryExtract);
                         $zip->close();
                         $io->text("Données extraites.");
@@ -114,7 +119,6 @@ class DonneesClientsSyncCommand extends Command
 
                             $client = ($client)
                                 ->setCode($code)
-                                ->setCodeSociety($codeSoc)
                                 ->setName($this->sanitizeData->trimData($item[1]))
                                 ->setNumero($this->sanitizeData->trimData($item[6]))
                                 ->setAddress($this->sanitizeData->trimData($item[2]))
@@ -129,7 +133,7 @@ class DonneesClientsSyncCommand extends Command
                             $existe = (bool)$client->getUser();
                             $user = $this->dataMain->setDataUser($client->getUser() ?: new User(), json_decode(
                                 json_encode([
-                                    'username' => $codeSoc.$code,
+                                    'username' => $code,
                                     'firstname' => "Client",
                                     'lastname' => $client->getName(),
                                     'email' => null,
@@ -139,7 +143,7 @@ class DonneesClientsSyncCommand extends Command
 
                             if ($input->getOption('password') || !$existe) {
                                 $password = password_hash(
-                                    $this->dataMain->getPasswordGeneric($codeSoc.$code),
+                                    $this->dataMain->getPasswordGeneric($code),
                                     PASSWORD_DEFAULT
                                 );
 
@@ -210,6 +214,9 @@ class DonneesClientsSyncCommand extends Command
 
                                 if(file_exists($attach)){
                                     $extrait->setFile($attachName);
+
+                                    $directoryInvoice = $codeSoc == "001" ? $directoryInvoice001 : $directoryInvoice002;
+
                                     rename($attach, $directoryInvoice . $attachName);
                                 }
 
@@ -220,6 +227,11 @@ class DonneesClientsSyncCommand extends Command
 
                         $progressBar->finish();
                         $this->registry->getManager()->flush();
+
+                        $csv = null;
+                        unset($csv);
+                        $records = null;
+                        unset($records);
 
                         rename($file, $directoryArchive . $dir);
 

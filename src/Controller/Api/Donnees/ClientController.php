@@ -26,13 +26,14 @@ class ClientController extends AbstractController
 
             $jsonClients = [];
             foreach ($clients as $client) {
-                if($client->getCodeSociety() == $society){
-                    $solde = 0;
-                    $clientExtrait = [];
-                    foreach ($extraits as $extrait) {
+                $solde = 0;
+                $clientExtrait = [];
+                $account = $client->getName();
+                foreach ($extraits as $extrait) {
+                    if($extrait->getCodeSociety() == $society) {
                         if ($extrait->getClient()->getId() == $client->getId()) {
 
-                            $solde = $solde - ($extrait->getDebit()) + ($extrait->getCredit());
+                            $solde = round($solde - ($extrait->getDebit()) + ($extrait->getCredit()), 2);
                             $fileUrl = $extrait->getFile()
                                 ? $this->generateUrl(
                                     'api_data_extraits_extrait_invoice',
@@ -40,6 +41,8 @@ class ClientController extends AbstractController
                                     UrlGeneratorInterface::ABSOLUTE_URL
                                 )
                                 : null;
+
+                            $account = $extrait->getAccount();
 
                             $clientExtrait[] = [
                                 'id' => $extrait->getId(),
@@ -53,11 +56,13 @@ class ClientController extends AbstractController
                             ];
                         }
                     }
+                }
 
+                if(count($clientExtrait) > 0){
                     $jsonClients[] = [
                         'id' => $client->getId(),
                         'code' => $client->getCode(),
-                        'name' => $client->getName(),
+                        'name' => $account,
                         'numero' => $client->getNumero(),
                         'extrait' => $clientExtrait
                     ];
