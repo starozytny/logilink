@@ -50,7 +50,8 @@ class ContactController extends AbstractController
             "Logilink - Demande de contact",
             "Logilink - Demande de contact",
             'app/email/contact/contact.html.twig',
-            ['contact' => $obj, 'settings' => $settingsService->getSettings()]
+            ['contact' => $obj, 'settings' => $settingsService->getSettings()],
+            [], [], $obj->getEmail()
         )) {
             return $apiResponse->apiJsonResponseValidationFailed([[
                 'name' => 'to',
