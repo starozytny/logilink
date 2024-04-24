@@ -9,8 +9,12 @@ use App\Repository\Main\Donnees\DoClientRepository;
 use App\Repository\Main\Donnees\DoExtraitRepository;
 use App\Repository\Main\UserRepository;
 use App\Service\ApiResponse;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -19,6 +23,20 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[IsGranted('ROLE_ADMIN')]
 class ClientController extends AbstractController
 {
+    #[Route('/ftp', name: 'ftp', options: ['expose' => true], methods: 'GET')]
+    public function ftp(KernelInterface $kernel): Response
+    {
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(['command' => 'do:clients:sy']);
+
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+
+        return $this->redirectToRoute('admin_data_clients_extraits');
+    }
+
     #[Route('/list', name: 'list', options: ['expose' => true], methods: 'GET')]
     public function list(DoClientRepository $repository, ApiResponse $apiResponse): Response
     {

@@ -40,7 +40,13 @@
                                 <div class="item item-header">
                                     <div class="item-content">
                                         <div class="item-infos">
-                                            <div class="col-1">Date</div>
+                                            <a class="col-1" href="{{ path('user_homepage', {sort: sorter == "ASC" ? "DESC" : "ASC"}) }}">
+                                                <div>Date</div>
+                                                <div class="col-sort">
+                                                    <span class="icon-up-arrow"></span>
+                                                    <span class="icon-down-arrow"></span>
+                                                </div>
+                                            </a>
                                             <div class="col-2">Libellé</div>
                                             <div class="col-3">Lettre</div>
                                             <div class="col-4">Débit (€)</div>
@@ -70,7 +76,7 @@
                                                     {% set solde = solde - (elem.debit) + (elem.credit) %}
 
                                                     <span class="sub">Solde</span>
-                                                    <span>{{ solde | price }}</span>
+                                                    <span>{{ (sorter == "DESC" ? solde * (-1) : solde) | price }}</span>
                                                 </div>
                                                 <div class="col-7 actions">
                                                     {% if elem.file %}
