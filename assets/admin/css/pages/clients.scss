@@ -63,6 +63,10 @@
     margin-bottom: 24px;
   }
 
+  & > .col-1{
+    @include flex(column, flex-start, flex-start, 8px);
+  }
+
   & > .col-1, & > .col-2{
     width: 100%;
   }

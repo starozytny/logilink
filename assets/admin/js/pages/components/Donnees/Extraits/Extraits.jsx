@@ -14,6 +14,7 @@ import { Alert } from "@commonComponents/Elements/Alert";
 import { Button, ButtonIcon } from "@commonComponents/Elements/Button";
 
 const URL_GET_CLIENTS = "intern_api_data_clients_clients_extraits";
+const URL_CALL_FTP = "intern_api_data_clients_ftp";
 const URL_DOWNLOAD_INVOICE = "user_download_invoice";
 
 export class Extraits extends Component {
@@ -125,12 +126,17 @@ export class Extraits extends Component {
                         }
                     </div>
                 </div>
+                <div class="card">
+                    <div className="card-body">
+                        <Button element="a" type="primary" onClick={Routing.generate(URL_CALL_FTP)}>Extraire les données FTP</Button>
+                    </div>
+                </div>
             </div>
             <div className="col-2">
                 <div className="card">
                     <div className="card-header">
                         <div className="card-header-name">
-                            Extrait de compte
+                        Extrait de compte
                         </div>
                     </div>
 
@@ -155,14 +161,7 @@ export class Extraits extends Component {
                                                 <div className="item item-header">
                                                     <div className="item-content">
                                                         <div className="item-infos">
-                                                            <div className="col-1">
-                                                                <div>Date</div>
-                                                                {/*<ColSort activeUp={3} activeDown={2} nbSorter={nbSorter} />*/}
-                                                                {/*<div className="cursor-pointer translat">*/}
-                                                                {/*    <span className={"icon-arrow-up !font-bold " + (activeUp === nbSorter ? "text-blue-700" : "text-gray-400")} />*/}
-                                                                {/*    <span className={"icon-arrow-bottom !font-bold " + (activeDown === nbSorter ? "text-blue-700" : "text-gray-400")} />*/}
-                                                                {/*</div>*/}
-                                                            </div>
+                                                            <div className="col-1">Date</div>
                                                             <div className="col-2">Libellé</div>
                                                             <div className="col-3">Lettre</div>
                                                             <div className="col-4">Débit (€)</div>
