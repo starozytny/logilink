@@ -90,6 +90,14 @@
 
 #clients_extraits{
   @import "../../../common/css/pages/extraits";
+
+  .items-extrait {
+    .item-infos {
+      & > .col-1 {
+        color: var(--alpha);
+      }
+    }
+  }
 }
 
 .clients-choices{
