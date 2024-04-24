@@ -21,9 +21,11 @@ class UserController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
+        $sorter = $request->query->get('sort') == "DESC" ? "DESC" : "ASC";
+
         $client = $user->getClient();
-        $extraits1 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '001'], ['writeAt' => 'ASC']);
-        $extraits2 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '002'], ['writeAt' => 'ASC']);
+        $extraits1 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '001'], ['writeAt' => $sorter]);
+        $extraits2 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '002'], ['writeAt' => $sorter]);
 
         $whichExtrait = $request->query->get('extrait');
 
@@ -42,7 +44,8 @@ class UserController extends AbstractController
         return $this->render('user/pages/index.html.twig', [
             'extraits' => $extraits,
             'haveTwo' => count($extraits1) > 0 && count($extraits2) > 0,
-            'active' => $active
+            'active' => $active,
+            'sorter' => $sorter
         ]);
     }
 

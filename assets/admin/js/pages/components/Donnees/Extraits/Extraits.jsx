@@ -155,7 +155,14 @@ export class Extraits extends Component {
                                                 <div className="item item-header">
                                                     <div className="item-content">
                                                         <div className="item-infos">
-                                                            <div className="col-1">Date</div>
+                                                            <div className="col-1">
+                                                                <div>Date</div>
+                                                                {/*<ColSort activeUp={3} activeDown={2} nbSorter={nbSorter} />*/}
+                                                                {/*<div className="cursor-pointer translat">*/}
+                                                                {/*    <span className={"icon-arrow-up !font-bold " + (activeUp === nbSorter ? "text-blue-700" : "text-gray-400")} />*/}
+                                                                {/*    <span className={"icon-arrow-bottom !font-bold " + (activeDown === nbSorter ? "text-blue-700" : "text-gray-400")} />*/}
+                                                                {/*</div>*/}
+                                                            </div>
                                                             <div className="col-2">Libellé</div>
                                                             <div className="col-3">Lettre</div>
                                                             <div className="col-4">Débit (€)</div>
