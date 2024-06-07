@@ -41,7 +41,7 @@ class StorageService
     private function setData($in, SplFileInfo $file): array
     {
         $dateAt = new DateTime();
-        $dateAt->setTimestamp($file->getATime());
+        $dateAt->setTimestamp($file->getCTime());
 
         $pathName = $file->getRelativePathname();
         $name = mb_convert_encoding($pathName, "UTF-8", "auto");

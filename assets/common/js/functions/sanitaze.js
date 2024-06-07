@@ -106,11 +106,14 @@ function toFormatCalendar(value, retour = "") {
     return retour;
 }
 
-function toDateFormat(date, format = 'LLL', retour = "", replaceHours = true) {
+function toDateFormat(date, format = 'LLL', retour = "", replaceHours = true, useUtc = false) {
     if(date === null) return retour;
+
+    date = useUtc ? moment(date).utc() : moment(date);
+
     return replaceHours
-        ? moment(date).format(format).replace(':', 'h')
-        : moment(date).format(format)
+        ? date.format(format).replace(':', 'h')
+        : date.format(format)
     ;
 }
 
