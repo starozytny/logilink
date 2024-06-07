@@ -154,7 +154,7 @@ function File ({ elem, directory, deep }) {
             </div>
         </div>
         <div className="col-2">
-            <div className="sub">{Sanitaze.toDateFormat(new Date(elem.dateAt.date), 'L LT', "", false)}</div>
+            <div className="sub">{Sanitaze.toDateFormat(new Date(elem.dateAt.date), 'L LT', "", false, true)}</div>
         </div>
         <div className="col-3">
             <div className="sub">{Sanitaze.toFormatBytesToSize(elem.size)}</div>
