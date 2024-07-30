@@ -35,6 +35,10 @@ p{
   @include fontLibreItalic();
 }
 
+.semibold{
+  @include fontSemibold();
+}
+
 .txt-primary{
   color: var(--primary);
 }

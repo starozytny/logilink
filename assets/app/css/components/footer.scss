@@ -42,6 +42,19 @@
   }
 }
 
+.footer-link-recrutement{
+  margin-top: 12px;
+
+  a{
+    @include fontSemibold();
+    color: var(--txt);
+  }
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
 .footer-copyright{
   @include flex(row, flex-start, center, var(--espaceEls));
   flex-wrap: wrap;
