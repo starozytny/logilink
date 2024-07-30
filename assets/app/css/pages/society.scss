@@ -15,6 +15,21 @@
       max-width: initial;
     }
   }
+
+  .contact-recrutement{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--espaceLayout) * 4);
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+
+      & > div{
+        width: 50%;
+      }
+    }
+  }
 }
 
 .society-contact{
