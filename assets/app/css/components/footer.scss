@@ -47,7 +47,7 @@
 
   a{
     @include fontSemibold();
-    color: var(--txt);
+    color: var(--primary);
   }
 
   &:hover{

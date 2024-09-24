@@ -4,7 +4,7 @@
     { id: 1, name: "Logilink", path: path('app_homepage'), matchRoute: ['app_homepage'], expanded: false },
     {
         id: 2, name: "Logiciels", path: path('app_softwares'),
-        matchRoute: ['app_softwares', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance'],
+        matchRoute: ['app_softwares', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance', 'app_softwares_magesto'],
         expanded: {
             txtCta: 'Nos logiciels métiers',
             text: 'Des logiciels puissanntes et adpatés à votre activité.',
@@ -23,6 +23,11 @@
                     name: "Lotys", logo: 'lotys.svg', path: path('app_softwares_lotys'),
                     alt: 'Logo Lotys logiciel transaction en ligne',
                     matchRoute: ['app_softwares_lotys']
+                },
+                {
+                    name: "Magesto", logo: 'magesto.svg', path: path('app_softwares_magesto'),
+                    alt: 'Logo Magesto logiciel de facturation en ligne',
+                    matchRoute: ['app_softwares_magesto']
                 },
             ]
         }
@@ -54,7 +59,7 @@
     },
     { id: 4, name: "Sites internet", path: path('app_websites'), matchRoute: ['app_websites'], expanded: false },
     { id: 5, name: "Services en ligne", path: path('app_webservices'), matchRoute: ['app_webservices'], expanded: false },
-    { id: 6, name: "Société", path: path('app_society'), matchRoute: ['app_society'], expanded: false },
+    { id: 6, name: "Société", path: path('app_society'), matchRoute: ['app_society', 'app_society_history'], expanded: false },
     { id: 6, name: "Support", path: path('app_support'), matchRoute: ['app_support'], expanded: false },
 ] %}
 

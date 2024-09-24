@@ -26,4 +26,10 @@ class SoftwaresController extends AbstractController
     {
         return $this->render('app/pages/softwares/products/gerance.html.twig');
     }
+
+    #[Route('/logiciel-facturation-magesto', name: 'magesto')]
+    public function magesto(): Response
+    {
+        return $this->render('app/pages/softwares/products/magesto.html.twig');
+    }
 }
