@@ -41,6 +41,9 @@
 .page-category-title{
   padding: calc(var(--espaceLayout) * 2) var(--espaceLayout);
   background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity4), var(--color2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h1{
     color: var(--color0);
