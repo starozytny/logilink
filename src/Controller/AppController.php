@@ -40,7 +40,7 @@ class AppController extends AbstractController
         return $this->render('app/pages/websites/index.html.twig');
     }
 
-    #[Route('/creation-sites-internet-unique/references', name: 'app_websites_references')]
+    #[Route('/creation-site-internet/references', name: 'app_websites_references')]
     public function websitesReferences(): Response
     {
         return $this->render('app/pages/websites/references.html.twig');
