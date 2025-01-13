@@ -39,6 +39,7 @@ class DoExtrait
     private ?string $code = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['extraits_list'])]
     private ?string $piece = null;
 
     #[ORM\Column(length: 255)]

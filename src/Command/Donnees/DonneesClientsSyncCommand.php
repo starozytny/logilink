@@ -218,15 +218,25 @@ class DonneesClientsSyncCommand extends Command
                                     ->setLogicielId($this->sanitizeData->setToInt($item[9], 0))
                                 ;
 
-                                $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
-                                $attach = $directoryExtract . "FACTURES/" . $attachName;
 
-                                if(file_exists($attach)){
-                                    $extrait->setFile($attachName);
+                                if($extrait->getPiece()){
+                                    $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
+                                    $attach = $directoryExtract . "FACTURES/" . $attachName;
 
                                     $directoryInvoice = $codeSoc == "001" ? $directoryInvoice001 : $directoryInvoice002;
 
-                                    rename($attach, $directoryInvoice . $attachName);
+                                    if(file_exists($attach)){
+                                        $extrait->setFile($attachName);
+                                        rename($attach, $directoryInvoice . $attachName);
+                                    }else{
+                                        $scannedDirInvoices = array_diff(scandir($directoryInvoice), array('..', '.'));
+
+                                        foreach($scannedDirInvoices as $nameFileInvoice){
+                                            if($nameFileInvoice === $attachName){
+                                                $extrait->setFile($attachName);
+                                            }
+                                        }
+                                    }
                                 }
 
                                 $this->registry->getManager()->persist($extrait);

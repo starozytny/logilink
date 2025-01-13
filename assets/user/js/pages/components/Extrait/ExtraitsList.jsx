@@ -12,12 +12,12 @@ export function ExtraitsList ({ data }) {
                     <div className="item-content">
                         <div className="item-infos">
                             <div className="col-1">Date</div>
-                            <div className="col-2">Libellé</div>
-                            <div className="col-3">Lettre</div>
-                            <div className="col-4">Débit (€)</div>
-                            <div className="col-5">Crédit (€)</div>
-                            <div className="col-6">Solde (€)</div>
-                            <div className="col-7 actions" />
+                            <div className="col-2">Pièce</div>
+                            <div className="col-3">Libellé</div>
+                            <div className="col-4">Let.</div>
+                            <div className="col-5">Débit (€)</div>
+                            <div className="col-6">Crédit (€)</div>
+                            <div className="col-7">Solde (€)</div>
                         </div>
                     </div>
                 </div>
