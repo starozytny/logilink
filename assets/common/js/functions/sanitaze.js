@@ -73,22 +73,22 @@ function toFormatPhone(elem){
     }
 }
 
-function toFormatCurrency(number)
+function toFormatCurrency(number, withSymbole, defaultValue = "0,00")
 {
     if(number){
         let num = new Intl.NumberFormat("de-DE", {style: "currency", currency: "EUR"}).format(number)
 
-        let main = num.substr(0, num.length - 5);
-        let decimale = num.substr(num.length - 5, 3);
+        let main = num.slice(0, num.length - 5);
+        let decimale = num.slice(num.length - 5, num.length - 2);
         if(decimale === ",00"){
             decimale = "";
         }
-        num = main + decimale + " €";
+        num = main + decimale + (withSymbole ? " €" : "");
 
         return num.replaceAll('.', ' ');
     }
 
-    return "0,00 €";
+    return (`${defaultValue} ${withSymbole ? "€" : ""}`).trim();
 }
 
 function toFormatBytesToSize(bytes) {

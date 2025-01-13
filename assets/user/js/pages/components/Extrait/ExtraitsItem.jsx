@@ -12,7 +12,6 @@ export function ExtraitsItem ({ elem }) {
 		<div className="item-content">
 			<div className="item-infos">
 				<div className="col-1">
-					<div>{elem.rang}</div>
 					{Sanitaze.toDateFormat(elem.writeAt, 'L')}
 				</div>
 				<div className="col-2">
@@ -22,19 +21,22 @@ export function ExtraitsItem ({ elem }) {
 					{elem.letter}
 				</div>
 				<div className="col-4">
-					{elem.debit}
+					{Sanitaze.toFormatCurrency(elem.debit, false, 0)}
 				</div>
 				<div className="col-5">
-					{elem.credit}
+					{Sanitaze.toFormatCurrency(elem.credit, false, 0)}
 				</div>
 				<div className="col-6">
-					0
+					{Sanitaze.toFormatCurrency(elem.solde, false, 0)}
 				</div>
 				<div className="col-7 actions">
-					<ButtonIconA type="default" icon="receipt" target="_blank"
-								 onClick={Routing.generate(URL_DOWNLOAD_ELEMENT, {id: elem.id})}>
-						Facture
-					</ButtonIconA>
+					{elem.file
+						? <ButtonIconA type="default" icon="receipt" target="_blank"
+									   onClick={Routing.generate(URL_DOWNLOAD_ELEMENT, {id: elem.id})}>
+							Facture
+						</ButtonIconA>
+						: null
+					}
 				</div>
 			</div>
 		</div>
