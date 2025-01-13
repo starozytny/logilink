@@ -1,64 +1,10 @@
 @use "vars/fonts";
 @use "vars/vars";
-@use "vars/variables";
 
-@use "components/layout";
-@use "components/menu";
-@use "components/footer";
-@use "components/page";
-
-@use "components/avatar";
-
-@use "components/elements/alert";
-@use "components/elements/card";
-@use "components/elements/breadcrumb";
-@use "components/elements/button";
-@use "components/elements/dropdown";
-@use "components/elements/tooltip";
 @use "components/loader";
-@use "components/badge";
-@use "components/list";
 @use "components/pagination";
-@use "components/toolbar";
-@use "components/form";
-@use "components/modal";
+@use "components/list";
 
-body {
-  color: var(--txt);
-  background: linear-gradient(190deg, var(--color1), #8b8c93);
+html{
   @include vars.fontRegular();
-}
-
-h1{
-  font-weight: bold;
-}
-
-h2{
-  font-weight: 600;
-}
-
-b, strong{
-  font-weight: bold;
-}
-
-#toast-container{
-  .toast{
-    .toast-title{
-      font-weight: 600;
-    }
-  }
-}
-
-$data:
-        "alpha"   var(--alpha),
-        "primary" var(--primary),
-        "warning" var(--warning),
-        "danger"  var(--danger),
-        "success" var(--success),
-;
-
-@each $name, $txt in $data {
-  .txt-#{$name}{
-    color: $txt;
-  }
 }

@@ -21,6 +21,7 @@ class DoExtrait
     private ?int $id = null;
 
     #[ORM\Column(length: 20, nullable: true)]
+    #[Groups(['extraits_list'])]
     private ?string $codeSociety = null;
 
     #[ORM\Column(length: 255)]

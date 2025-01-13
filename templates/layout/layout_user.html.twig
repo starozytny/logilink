@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('admin_app') }}
+    {{ encore_entry_link_tags('user_app') }}
 {% endblock %}
 
 {% block body %}
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            {% include "admin/layout/components/page_title.html.twig" %}
+            {% include "layout/components/user/page_title.html.twig" %}
 
             <div class="mx-auto max-w-screen-qhd px-4 py-8 min-h-screen sm:px-6 lg:px-8">
                 {% block main_content %}{% endblock %}
@@ -109,5 +109,5 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('admin_app') }}
+    {{ encore_entry_script_tags('user_app') }}
 {% endblock %}

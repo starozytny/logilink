@@ -16,36 +16,17 @@ use Symfony\Component\Serializer\SerializerInterface;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function index(Request $request, DoExtraitRepository $extraitRepository): Response
+    public function index(DoExtraitRepository $extraitRepository, SerializerInterface $serializer): Response
     {
         /** @var User $user */
         $user = $this->getUser();
-
-        $sorter = $request->query->get('sort') == "DESC" ? "DESC" : "ASC";
-
         $client = $user->getClient();
-        $extraits1 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '001'], ['writeAt' => $sorter]);
-        $extraits2 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '002'], ['writeAt' => $sorter]);
 
-        $whichExtrait = $request->query->get('extrait');
-
-        $active = "logilink";
-        if($whichExtrait == null){
-            $extraits = count($extraits1) > 0 ? $extraits1 : $extraits2;
-        }else{
-            if($whichExtrait == "2ilink"){
-                $extraits = $extraits2;
-                $active = "2ilink";
-            }else{
-                $extraits = $extraits1;
-            }
-        }
+        $extraits = $extraitRepository->findBy(['client' => $client]);
+        $extraits = $serializer->serialize($extraits, 'json', ['groups' => DoExtrait::LIST]);
 
         return $this->render('user/pages/index.html.twig', [
             'extraits' => $extraits,
-            'haveTwo' => count($extraits1) > 0 && count($extraits2) > 0,
-            'active' => $active,
-            'sorter' => $sorter
         ]);
     }
 
@@ -61,7 +42,6 @@ class UserController extends AbstractController
             'obj' => $user
         ]);
     }
-
 
     #[Route('/factures', name: 'invoices')]
     public function invoices(Request $request, DoExtraitRepository $extraitRepository): Response

@@ -1,24 +1,3 @@
 @use "../vars/vars";
 
-@use "../../../common/css/pages/extraits";
-
-.card{
-  @include vars.flex(column, flex-start, flex-start, 8px);
-  background-color: var(--alpha);
-  padding: 1.2rem;
-  width: 100%;
-
-  .card-header{
-    @include vars.flex(row, flex-start, flex-start, 8px);
-    font-size: 18px;
-  }
-
-  .card-body{
-    width: 100%;
-  }
-
-  .card-extrait-actions{
-    @include vars.flex(row, flex-start, flex-start, 8px);
-    margin-bottom: 24px;
-  }
-}
+@use "extraits";
