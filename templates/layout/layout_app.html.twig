@@ -84,7 +84,10 @@
                                                     <img src="{{ asset('build/app/images/logos/'~it.logo) }}"
                                                          alt="{{ it.alt }}">
                                                 </div>
-                                                <div>{{ it.name }}</div>
+                                                <div>
+                                                    <div>{{ it.name }}</div>
+                                                    <div style="opacity: 0.6; font-size: 11px;">{{ it.subname is defined ? it.subname : "" }}</div>
+                                                </div>
                                             </a>
                                         {% endfor %}
                                     </div>
