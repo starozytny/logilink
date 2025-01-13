@@ -71,7 +71,6 @@ Encore
     .addEntry('app_app', './assets/app/js/app.js')
     .addEntry('app_homepage', './assets/app/js/pages/homepage.js')
     .addEntry('app_security', './assets/app/js/pages/security.js')
-
     .addEntry('app_website', './assets/app/js/pages/website.js')
     .addEntry('app_application', './assets/app/js/pages/application.js')
     .addEntry('app_society', './assets/app/js/pages/society.js')
@@ -81,14 +80,13 @@ Encore
     .addEntry('app_support', './assets/app/js/pages/support.js')
 
     .addEntry('admin_app', './assets/admin/js/app.js')
-
+    .addEntry('admin_homepage', './assets/admin/js/pages/homepage.js')
     .addEntry('admin_settings', './assets/admin/js/pages/settings.js')
     .addEntry('admin_users', './assets/admin/js/pages/users.js')
     .addEntry('admin_societies', './assets/admin/js/pages/societies.js')
     .addEntry('admin_changelogs', './assets/admin/js/pages/changelogs.js')
     .addEntry('admin_contacts', './assets/admin/js/pages/contacts.js')
     .addEntry('admin_agenda', './assets/admin/js/pages/agenda.js')
-
     .addEntry('admin_storage', './assets/admin/js/pages/storage.js')
     .addEntry('admin_mails', './assets/admin/js/pages/mails.js')
     .addEntry('admin_clients', './assets/admin/js/pages/clients.js')

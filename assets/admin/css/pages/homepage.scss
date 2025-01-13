@@ -1,6 +1,14 @@
-@use "../../../vars/vars";
+@use "../vars/vars";
 
 .directories{
+
+  --espaceLayout: 1.2rem;
+  --espaceDiv: 1.2rem;
+  --espaceEls: 8px;
+
+  --grey1: #e8e8e8;
+  --grey4: #838383;
+
   @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
 
   .directory{
