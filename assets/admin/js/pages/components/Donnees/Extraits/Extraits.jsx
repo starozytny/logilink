@@ -8,10 +8,10 @@ import Search from "@commonFunctions/search";
 import Sanitaze from "@commonFunctions/sanitaze";
 import Formulaire from "@commonFunctions/formulaire";
 
-import { LoaderElements } from "@tailwindComponents/Elements/Loader";
-import { Input } from "@tailwindComponents/Elements/Fields";
 import { Alert } from "@tailwindComponents/Elements/Alert";
-import { Button, ButtonIcon } from "@tailwindComponents/Elements/Button";
+import { Input } from "@tailwindComponents/Elements/Fields";
+import { LoaderElements } from "@tailwindComponents/Elements/Loader";
+import { Button, ButtonA, ButtonIcon, ButtonIconA } from "@tailwindComponents/Elements/Button";
 
 const URL_GET_CLIENTS = "intern_api_data_clients_clients_extraits";
 const URL_CALL_FTP = "intern_api_data_clients_ftp";
@@ -24,6 +24,7 @@ export class Extraits extends Component {
         this.state = {
             clients: [],
             extraits1: [],
+            extraits2: [],
             loadingData: false,
             errors: [],
             clientId: null,
@@ -31,7 +32,7 @@ export class Extraits extends Component {
             clientsSearch: [],
             extraits1Client: [],
             extraits2Client: [],
-            extraitActive: "logilink"
+            extraitActive: "001"
         }
     }
 
@@ -85,7 +86,7 @@ export class Extraits extends Component {
             }
         })
 
-        let extraitActive = nExtraits1.length > 0 ? "logilink" : "2ilink";
+        let extraitActive = nExtraits1.length > 0 ? "001" : "002";
 
         this.setState({ clientId: id, extraits1Client: nExtraits1, extraits2Client: nExtraits2, extraitActive })
     }
@@ -97,28 +98,26 @@ export class Extraits extends Component {
 
         let solde = 0;
 
-        let extraits = extraitActive === "logilink" ? extraits1Client : extraits2Client;
+        let extraits = extraitActive === "001" ? extraits1Client : extraits2Client;
 
-        return <div className="page-extrait">
-            <div className="col-1">
-                <div className="card">
-                    <div className="card-header">
-                        <div className="card-header-name">
-                            Clients
-                        </div>
+        return <div className="flex flex-col gap-4 xl:grid xl:grid-cols-4">
+            <div className="flex flex-col-reverse gap-4 xl:flex-col">
+                <div className="bg-white p-4 rounded-md border">
+                    <div className="text-lg font-semibold pb-2 mb-2 border-b">
+                        Sélectionner un client
                     </div>
-                    <div className="card-body">
+                    <div>
                         {loadingData
                             ? <LoaderElements />
-                            : <div className="clients-choices">
+                            : <div>
                                 <Input identifiant="clientSearch" valeur={clientSearch} errors={errors} onChange={this.handleChange}
                                        placeholder="Rechercher par nom ou code.." />
-                                <div className="choices">
+                                <div className="overflow-y-auto max-h-96 border rounded-md border-t-none mt-1">
                                     {clientsSearch.map(cl => {
-                                        return <div className={`item${clientId === cl.id ? " active" : ""}`} key={cl.id}
+                                        return <div className={`p-2 cursor-pointer ${clientId === cl.id ? "bg-blue-700 text-slate-50" : "hover:bg-gray-50"}`} key={cl.id}
                                                     onClick={() => this.handleClickClient(cl.id)}>
-                                            <div className="name">{cl.name}</div>
-                                            <div className="code">{cl.code}</div>
+                                            <div className="font-medium">{cl.name}</div>
+                                            <div className="text-sm">{cl.code}</div>
                                         </div>
                                     })}
                                 </div>
@@ -126,48 +125,43 @@ export class Extraits extends Component {
                         }
                     </div>
                 </div>
-                <div class="card">
-                    <div className="card-body">
-                        <Button element="a" type="primary" onClick={Routing.generate(URL_CALL_FTP)}>Extraire les données FTP</Button>
-                    </div>
+                <div>
+                    <ButtonA type="default" onClick={Routing.generate(URL_CALL_FTP)} width="w-full text-center">Synchro manuellement les données FTP</ButtonA>
                 </div>
             </div>
-            <div className="col-2">
-                <div className="card">
-                    <div className="card-header">
-                        <div className="card-header-name">
-                        Extrait de compte
-                        </div>
+            <div className="xl:col-span-3">
+                <div className="bg-white rounded-md border">
+                    <div className="text-lg font-semibold px-4 pt-4 pb-2 border-b">
+                        Extrait de compte du client sélectionné
                     </div>
-
-                    <div className="card-body">
+                    <div>
                         {loadingData
-                            ? <LoaderElements />
+                            ? <div className="p-4"><LoaderElements /></div>
                             : (clientId
                                 ? <>
-                                    <div className="card-extrait-actions">
-                                        <Button type="primary" outline={extraitActive !== "logilink"}
-                                                onClick={() => this.handleClickExtrait('logilink')}>
-                                            Extrait Logilink
+                                    <div className="flex gap-1 p-4">
+                                        <Button type={extraitActive === '001' ? 'blue' : 'default'}
+                                                onClick={() => this.handleClickExtrait('001')}>
+                                            Extrait de compte LOGILINK
                                         </Button>
-                                        <Button type="primary" outline={extraitActive !== "2ilink"}
-                                                onClick={() => this.handleClickExtrait('2ilink')}>
-                                            Extrait 2ilink
+                                        <Button type={extraitActive === '002' ? 'blue' : 'default'}
+                                                onClick={() => this.handleClickExtrait('002')}>
+                                            Extrait de compte 2ILINK
                                         </Button>
                                     </div>
                                     <div className="list">
-                                        <div className="list-table">
+                                        <div className="list-table bg-white rounded-md shadow">
                                             <div className="items items-extrait">
-                                                <div className="item item-header">
+                                                <div className="item item-header uppercase text-sm border-y bg-gray-100 text-gray-600">
                                                     <div className="item-content">
                                                         <div className="item-infos">
                                                             <div className="col-1">Date</div>
-                                                            <div className="col-2">Libellé</div>
-                                                            <div className="col-3">Lettre</div>
-                                                            <div className="col-4">Débit (€)</div>
-                                                            <div className="col-5">Crédit (€)</div>
-                                                            <div className="col-6">Solde (€)</div>
-                                                            <div className="col-7 actions"></div>
+                                                            <div className="col-2">Pièce</div>
+                                                            <div className="col-3">Libellé</div>
+                                                            <div className="col-4"><span className="xl:hidden">Let.</span><span className="hidden xl:inline">Lettre</span></div>
+                                                            <div className="col-5">Débit (€)</div>
+                                                            <div className="col-6">Crédit (€)</div>
+                                                            <div className="col-7">Solde (€)</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,7 +177,9 @@ export class Extraits extends Component {
                                         </div>
                                     </div>
                                 </>
-                                : <Alert type="info">Sélectionnez un client</Alert>
+                                : <div className="p-4">
+                                    <Alert type="gray">Sélectionnez un client en cliquant dessus</Alert>
+                                </div>
                             )
                         }
                     </div>
@@ -194,34 +190,40 @@ export class Extraits extends Component {
 }
 
 function ExtraitItem ({ elem, solde }) {
-    return <div className="item">
+    return <div className="item border-t hover:bg-slate-50">
         <div className="item-content">
             <div className="item-infos">
-                <div className="col-1">
+                <div className="col-1 text-sm 2xl:text-base">
                     {Sanitaze.toDateFormat(elem.writeAt, 'L')}
                 </div>
-                <div className="col-2">{elem.name}</div>
-                <div className="col-3">{elem.letter}</div>
-                <div className="col-4">
-                    <span className="sub">Débit</span>
-                    <span>{Sanitaze.toFormatCurrency(elem.debit)}</span>
-                </div>
-                <div className="col-5">
-                    <span className="sub">Crédit</span>
-                    <span>{Sanitaze.toFormatCurrency(elem.credit)}</span>
-                </div>
-                <div className="col-6">
-                    <span className="sub">Solde</span>
-                    <span>{Sanitaze.toFormatCurrency(solde)}</span>
-                </div>
-                <div className="col-7 actions">
+                <div className="col-2 text-sm 2xl:text-base">
                     {elem.file
-                        ? <ButtonIcon icon="receipt" outline={true} element="a" target="_blank"
-                                      onClick={Routing.generate(URL_DOWNLOAD_INVOICE, { 'id': elem.id })}>
-                            Facture
-                        </ButtonIcon>
+                        ? <a className="cursor-pointer group" target="_blank"
+                             href={Routing.generate(URL_DOWNLOAD_INVOICE, { id: elem.id })}
+                        >
+                            <span className="pr-1 group-hover:underline">{elem.piece}</span>
+                            <span className="icon-link-2 text-blue-500 group-hover:text-blue-700"></span>
+                        </a>
                         : null
                     }
+                </div>
+                <div className="col-3 text-sm 2xl:text-base">
+                    {elem.name}
+                </div>
+                <div className="col-4 text-sm 2xl:text-base">
+                    {elem.letter}
+                </div>
+                <div className="col-5 flex flex-col">
+                    <span className="text-xs text-gray-500">Débit</span>
+                    <span className="md:text-sm 2xl:text-base">{Sanitaze.toFormatCurrency(elem.debit, false, 0)}</span>
+                </div>
+                <div className="col-6 flex flex-col">
+                    <span className="text-xs text-gray-500">Crédit</span>
+                    <span className="md:text-sm 2xl:text-base">{Sanitaze.toFormatCurrency(elem.credit, false, 0)}</span>
+                </div>
+                <div className="col-7 flex flex-col">
+                    <span className="text-xs text-gray-500">Solde</span>
+                    <span className="md:text-sm 2xl:text-base">{Sanitaze.toFormatCurrency(solde, false, 0)}</span>
                 </div>
             </div>
         </div>
