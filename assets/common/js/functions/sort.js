@@ -76,6 +76,15 @@ function compareRang(a, b){
     return comparison(a.rang, b.rang);
 }
 
+function compareWriteAtThenRang(a, b){
+    if (a.writeAt > b.writeAt) {
+        return 1;
+    } else if (a.writeAt < b.writeAt) {
+        return -1;
+    }
+    return comparison(a.rang, b.rang);
+}
+
 function comparison (objA, objB){
     if(objA === objB){
         return 0;
@@ -106,4 +115,5 @@ module.exports = {
     compareRankThenLabel,
     compareLabel,
     compareRang,
+    compareWriteAtThenRang,
 }

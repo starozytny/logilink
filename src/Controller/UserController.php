@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Main\Donnees\DoExtrait;
+use App\Entity\Main\Donnees\DoInvoice;
 use App\Entity\Main\User;
 use App\Repository\Main\Donnees\DoExtraitRepository;
+use App\Repository\Main\Donnees\DoInvoiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,13 +18,13 @@ use Symfony\Component\Serializer\SerializerInterface;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function index(DoExtraitRepository $extraitRepository, SerializerInterface $serializer): Response
+    public function index(DoExtraitRepository $repository, SerializerInterface $serializer): Response
     {
         /** @var User $user */
         $user = $this->getUser();
         $client = $user->getClient();
 
-        $extraits = $extraitRepository->findBy(['client' => $client]);
+        $extraits = $repository->findBy(['client' => $client]);
         $extraits = $serializer->serialize($extraits, 'json', ['groups' => DoExtrait::LIST]);
 
         return $this->render('user/pages/index.html.twig', [
@@ -44,14 +46,14 @@ class UserController extends AbstractController
     }
 
     #[Route('/factures', name: 'invoices')]
-    public function invoices(DoExtraitRepository $extraitRepository, SerializerInterface $serializer): Response
+    public function invoices(DoInvoiceRepository $repository, SerializerInterface $serializer): Response
     {
         /** @var User $user */
         $user = $this->getUser();
         $client = $user->getClient();
 
-        $extraits = $extraitRepository->findBy(['client' => $client]);
-        $extraits = $serializer->serialize($extraits, 'json', ['groups' => DoExtrait::LIST]);
+        $extraits = $repository->findBy(['client' => $client]);
+        $extraits = $serializer->serialize($extraits, 'json', ['groups' => DoInvoice::LIST]);
 
         return $this->render('user/pages/invoices/index.html.twig', [
             'extraits' => $extraits,

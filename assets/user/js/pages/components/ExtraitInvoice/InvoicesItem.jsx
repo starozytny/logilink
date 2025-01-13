@@ -21,7 +21,7 @@ export function InvoicesItem ({ elem }) {
 					{elem.name}
 				</div>
 				<div className="col-4 text-sm 2xl:text-base">
-					<span className="md:text-sm 2xl:text-base">{Sanitaze.toFormatCurrency(elem.debit, false, 0)}</span>
+					<span className="md:text-sm 2xl:text-base">{Sanitaze.toFormatCurrency(elem.total, false, 0)}</span>
 				</div>
 				<div className="col-5 actions">
 					<ButtonA type="default" iconLeft="vision" target="_blank"

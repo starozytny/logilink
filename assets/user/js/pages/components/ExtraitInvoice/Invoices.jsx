@@ -13,11 +13,10 @@ export class Invoices extends Component {
 
 		this.state = {
 			currentPage: 0,
-			sorter: Sort.compareRang,
+			sorter: Sort.compareWriteAtThenRang,
 			loadingData: true,
 			societyActive: '001',
 			haveSecondSociety: false
-
 		}
 	}
 
@@ -32,7 +31,7 @@ export class Invoices extends Component {
 		let data = [];
 		let dataImmuable = [];
 
-		let solde = 0, haveSecondSociety = false;
+		let haveSecondSociety = false;
 		JSON.parse(donnees).forEach(item => {
 			if(item.codeSociety === societyActive){
 				if(item.file){
@@ -67,12 +66,12 @@ export class Invoices extends Component {
 					<div className="mb-2 flex flex-row gap-2">
 						<Button type={societyActive === '001' ? 'blue' : 'default'}
 								onClick={() => this.handleChangeSocietyActive('001')}>
-							Extrait de compte LOGILINK
+							Factures LOGILINK
 						</Button>
 						{haveSecondSociety
 							? <Button type={societyActive === '002' ? 'blue' : 'default'}
 									  onClick={() => this.handleChangeSocietyActive('002')}>
-								Extrait de compte 2ILINK
+								Factures 2ILINK
 							</Button>
 							: null
 						}

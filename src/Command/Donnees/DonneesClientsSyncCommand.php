@@ -4,6 +4,7 @@ namespace App\Command\Donnees;
 
 use App\Entity\Main\Donnees\DoClient;
 use App\Entity\Main\Donnees\DoExtrait;
+use App\Entity\Main\Donnees\DoInvoice;
 use App\Entity\Main\Society;
 use App\Entity\Main\User;
 use App\Service\Data\DataMain;
@@ -228,6 +229,21 @@ class DonneesClientsSyncCommand extends Command
                                     if(file_exists($attach)){
                                         $extrait->setFile($attachName);
                                         rename($attach, $directoryInvoice . $attachName);
+
+                                        $newInvoice = (new DoInvoice())
+                                            ->setFile($attachName)
+                                            ->setCodeSociety($codeSoc)
+                                            ->setWriteAt($this->sanitizeData->createDate($item[2], 'd/m/Y'))
+                                            ->setPiece($this->sanitizeData->trimData($item[4]))
+                                            ->setName($this->sanitizeData->trimData($item[5]))
+                                            ->setTotal($this->sanitizeData->setToFloat($item[7], 0))
+                                            ->setClient($client)
+                                            ->setArchive($dir)
+                                            ->setRang($i)
+                                            ->setLogicielId($this->sanitizeData->setToInt($item[9], 0))
+                                        ;
+
+                                        $this->registry->getManager()->persist($newInvoice);
                                     }else{
                                         $scannedDirInvoices = array_diff(scandir($directoryInvoice), array('..', '.'));
 
