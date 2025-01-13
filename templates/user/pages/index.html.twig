@@ -6,6 +6,7 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('user_homepage') }}
+    {{ encore_entry_link_tags('user_extraits') }}
 {% endblock %}
 
 {% block main_content %}
@@ -19,4 +20,5 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('user_homepage') }}
+    {{ encore_entry_script_tags('user_extraits') }}
 {% endblock %}

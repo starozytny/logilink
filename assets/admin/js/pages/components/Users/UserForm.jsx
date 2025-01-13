@@ -20,7 +20,7 @@ const URL_UPDATE_ELEMENT = "intern_api_users_update";
 
 let societies = [];
 
-export function UserFormulaire ({ context, element, isProfil }) {
+export function UserFormulaire ({ context, element }) {
 	let url = Routing.generate(URL_CREATE_ELEMENT);
 
 	if (context === "update") {
@@ -29,7 +29,6 @@ export function UserFormulaire ({ context, element, isProfil }) {
 
 
 	return  <Form
- 		isProfil={isProfil}
         context={context}
         url={url}
         society={element ? Formulaire.setValue(element.society.id) : ""}
@@ -113,7 +112,7 @@ class Form extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		const { isProfil, context, url } = this.props;
+		const { context, url } = this.props;
 		const { username, firstname, lastname, password, password2, email, roles, society, } = this.state;
 
 		this.setState({ errors: [] });
