@@ -3,8 +3,6 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Sanitaze from "@commonFunctions/sanitaze";
 
-import { ButtonA } from "@tailwindComponents/Elements/Button";
-
 const URL_DOWNLOAD_ELEMENT = "user_download_invoice";
 
 export function ExtraitsItem ({ elem }) {
@@ -20,7 +18,7 @@ export function ExtraitsItem ({ elem }) {
 							 href={Routing.generate(URL_DOWNLOAD_ELEMENT, { id: elem.id })}
 						>
 							<span className="pr-1 group-hover:underline">{elem.piece}</span>
-							<span class="icon-link-2 text-blue-500 group-hover:text-blue-700"></span>
+							<span className="icon-link-2 text-blue-500 group-hover:text-blue-700"></span>
 						</a>
 						: null
 					}

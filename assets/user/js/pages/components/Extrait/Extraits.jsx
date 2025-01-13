@@ -16,6 +16,7 @@ export class Extraits extends Component {
 			sorter: Sort.compareRang,
 			loadingData: true,
 			societyActive: '001',
+			haveSecondSociety: false
 
 		}
 	}
@@ -31,7 +32,7 @@ export class Extraits extends Component {
 		let data = [];
 		let dataImmuable = [];
 
-		let solde = 0;
+		let solde = 0, haveSecondSociety = false;
 		JSON.parse(donnees).forEach(item => {
 			if(item.codeSociety === societyActive){
 				solde = solde - (item.debit ? item.debit : 0) + (item.credit ? item.credit : 0)
@@ -40,12 +41,16 @@ export class Extraits extends Component {
 				data.push(item);
 				dataImmuable.push(item);
 			}
+
+			if(item.codeSociety === "002"){
+				haveSecondSociety = true;
+			}
 		})
 
 		if(sorter) data.sort(sorter);
 		if(sorter) dataImmuable.sort(sorter);
 
-		this.setState({ data: data, dataImmuable: dataImmuable, loadingData: false })
+		this.setState({ data: data, dataImmuable: dataImmuable, haveSecondSociety: haveSecondSociety, loadingData: false })
 	}
 
 	handleChangeSocietyActive = (societyActive) => {
@@ -54,7 +59,7 @@ export class Extraits extends Component {
 	}
 
 	render () {
-		const { data, loadingData, societyActive } = this.state;
+		const { data, loadingData, societyActive, haveSecondSociety } = this.state;
 
 		return <>
 			{loadingData
@@ -65,10 +70,13 @@ export class Extraits extends Component {
 								onClick={() => this.handleChangeSocietyActive('001')}>
 							Extrait de compte LOGILINK
 						</Button>
-						<Button type={societyActive === '002' ? 'blue' : 'default'}
-								onClick={() => this.handleChangeSocietyActive('002')}>
-							Extrait de compte 2ILINK
-						</Button>
+						{haveSecondSociety
+							? <Button type={societyActive === '002' ? 'blue' : 'default'}
+									  onClick={() => this.handleChangeSocietyActive('002')}>
+								Extrait de compte 2ILINK
+							</Button>
+							: null
+						}
 					</div>
 
 					<ExtraitsList data={data} />

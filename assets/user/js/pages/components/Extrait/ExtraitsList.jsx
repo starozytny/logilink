@@ -14,7 +14,7 @@ export function ExtraitsList ({ data }) {
                             <div className="col-1">Date</div>
                             <div className="col-2">Pièce</div>
                             <div className="col-3">Libellé</div>
-                            <div className="col-4">Let.</div>
+                            <div className="col-4"><span className="xl:hidden">Let.</span><span className="hidden xl:inline">Lettre</span></div>
                             <div className="col-5">Débit (€)</div>
                             <div className="col-6">Crédit (€)</div>
                             <div className="col-7">Solde (€)</div>
