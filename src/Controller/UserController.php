@@ -46,10 +46,23 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/telecharger/facture/{id}', name: 'download_invoice', options: ['expose' => true])]
-    public function downloadInvoice(DoExtrait $extrait): Response
+    #[Route('/telecharger/extraits/facture/{id}', name: 'download_invoice_by_extrait', options: ['expose' => true])]
+    public function downloadInvoiceByExtrait(DoExtrait $obj): Response
     {
-        $file = $this->getParameter('private_directory') . $extrait->getFolder() . $extrait->getFile();
+        $file = $this->getParameter('private_directory') . $obj->getFolder() . $obj->getFile();
+
+        if(!$file || !file_exists($file)){
+            $this->addFlash('error', 'Fichier introuvable.');
+            return $this->redirectToRoute('user_homepage');
+        }
+
+        return $this->file($file, null, ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    #[Route('/telecharger/factures/facture/{id}', name: 'download_invoice', options: ['expose' => true])]
+    public function downloadInvoice(DoInvoice $obj): Response
+    {
+        $file = $this->getParameter('private_directory') . $obj->getFolder() . $obj->getFile();
 
         if(!$file || !file_exists($file)){
             $this->addFlash('error', 'Fichier introuvable.');
