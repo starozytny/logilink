@@ -10,6 +10,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: DoInvoiceRepository::class)]
 class DoInvoice
 {
+    const FOLDER_INVOICE_001 = "clients/files/invoices-001/";
+    const FOLDER_INVOICE_002 = "clients/files/invoices-002/";
+
     const LIST = ['invoices_list'];
 
     #[ORM\Id]
@@ -179,5 +182,10 @@ class DoInvoice
         $this->client = $client;
 
         return $this;
+    }
+
+    public function getFolder(): string
+    {
+        return $this->getCodeSociety() == "001" ? DoInvoice::FOLDER_INVOICE_001 : DoInvoice::FOLDER_INVOICE_002;
     }
 }
