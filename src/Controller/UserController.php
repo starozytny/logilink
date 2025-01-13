@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Main\Donnees\DoExtrait;
+use App\Entity\Main\Donnees\DoInvoice;
 use App\Entity\Main\User;
 use App\Repository\Main\Donnees\DoExtraitRepository;
+use App\Repository\Main\Donnees\DoInvoiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Attribute\Route;
@@ -16,84 +17,32 @@ use Symfony\Component\Serializer\SerializerInterface;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function index(Request $request, DoExtraitRepository $extraitRepository): Response
+    public function index(DoExtraitRepository $repository, SerializerInterface $serializer): Response
     {
         /** @var User $user */
         $user = $this->getUser();
-
-        $sorter = $request->query->get('sort') == "DESC" ? "DESC" : "ASC";
-
         $client = $user->getClient();
-        $extraits1 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '001'], ['writeAt' => $sorter]);
-        $extraits2 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '002'], ['writeAt' => $sorter]);
 
-        $whichExtrait = $request->query->get('extrait');
-
-        $active = "logilink";
-        if($whichExtrait == null){
-            $extraits = count($extraits1) > 0 ? $extraits1 : $extraits2;
-        }else{
-            if($whichExtrait == "2ilink"){
-                $extraits = $extraits2;
-                $active = "2ilink";
-            }else{
-                $extraits = $extraits1;
-            }
-        }
+        $extraits = $repository->findBy(['client' => $client]);
+        $extraits = $serializer->serialize($extraits, 'json', ['groups' => DoExtrait::LIST]);
 
         return $this->render('user/pages/index.html.twig', [
             'extraits' => $extraits,
-            'haveTwo' => count($extraits1) > 0 && count($extraits2) > 0,
-            'active' => $active,
-            'sorter' => $sorter
         ]);
     }
-
-    #[Route('/profil', name: 'profil', options: ['expose' => true])]
-    public function profil(SerializerInterface $serializer): Response
-    {
-        /** @var User $user */
-        $user = $this->getUser();
-
-        $user = $serializer->serialize($user, 'json', ['groups' => User::FORM]);
-
-        return $this->render('user/pages/profil/index.html.twig', [
-            'obj' => $user
-        ]);
-    }
-
 
     #[Route('/factures', name: 'invoices')]
-    public function invoices(Request $request, DoExtraitRepository $extraitRepository): Response
+    public function invoices(DoInvoiceRepository $repository, SerializerInterface $serializer): Response
     {
         /** @var User $user */
         $user = $this->getUser();
-
-        $sorter = $request->query->get('sort') == "DESC" ? "DESC" : "ASC";
-
         $client = $user->getClient();
-        $extraits1 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '001'], ['writeAt' => $sorter]);
-        $extraits2 = $extraitRepository->findBy(['client' => $client, 'codeSociety' => '002'], ['writeAt' => $sorter]);
 
-        $whichExtrait = $request->query->get('extrait');
-
-        $active = "logilink";
-        if($whichExtrait == null){
-            $extraits = count($extraits1) > 0 ? $extraits1 : $extraits2;
-        }else{
-            if($whichExtrait == "2ilink"){
-                $extraits = $extraits2;
-                $active = "2ilink";
-            }else{
-                $extraits = $extraits1;
-            }
-        }
+        $extraits = $repository->findBy(['client' => $client]);
+        $extraits = $serializer->serialize($extraits, 'json', ['groups' => DoInvoice::LIST]);
 
         return $this->render('user/pages/invoices/index.html.twig', [
             'extraits' => $extraits,
-            'haveTwo' => count($extraits1) > 0 && count($extraits2) > 0,
-            'active' => $active,
-            'sorter' => $sorter,
         ]);
     }
 

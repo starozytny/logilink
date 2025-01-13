@@ -1,66 +1,27 @@
-@import "../vars/vars";
-
-.card{
-  @include flex(column, flex-start, flex-start, 8px);
-  background-color: var(--alpha);
-  padding: 1.2rem;
-  width: 100%;
-
-  .card-header{
-    @include flex(row, flex-start, flex-start, 8px);
-    font-size: 18px;
-  }
-
-  .card-body{
-    width: 100%;
-  }
-
-  .card-extrait-actions{
-    @include flex(row, flex-start, flex-start, 8px);
-    margin-bottom: 24px;
-  }
-}
-
 .items-invoices{
-
-  .item-infos{
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    & > .col-1{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2px;
-      color: #101010;
-
-      .col-sort{
-        cursor: pointer;
-      }
-    }
-
-    & > .col-1, & > .col-2, & > .col-3{
-      width: 100%;
-    }
-  }
-
-  $col1: 100px; $col3: 260px; $colGap: 48px;
-  //                      __   _____ __    ___    __
-  //                     | _| |___  / /_  ( _ )  |_ |
-  //    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
-  //   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
-  //                     | |   /_/  \___/ \___/   | |
-  //                     |__|                    |__|
+  $col1: 74px; $col2: 100px; $col4: 85px; $col5: 260px; $colGap: 32px;
   @media (min-width:768px) {
     .item-infos{
-      flex-wrap: initial;
-
       & > .col-1{ width: $col1; }
-      & > .col-2{
-        width: calc(100% - $col1 - $col3 - $colGap);
-        max-width: 320px;
+      & > .col-2{ width: $col2; }
+      & > .col-3{
+        width: calc(100% - $col1 - $col2 - $col4 - $col5 - $colGap);
       }
-      & > .col-3.actions{ width: $col3; }
+      & > .col-4{ width: $col4; }
+      & > .col-5.actions{ width: $col5; }
+    }
+  }
+
+  $col1: 100px; $col2: 130px; $col4: 120px;
+  @media (min-width:768px) {
+    .item-infos{
+      & > .col-1{ width: $col1; }
+      & > .col-2{ width: $col2; }
+      & > .col-3{
+        width: calc(100% - $col1 - $col2 - $col4 - $col5 - $colGap);
+        max-width: 420px;
+      }
+      & > .col-4{ width: $col4; }
     }
   }
 }

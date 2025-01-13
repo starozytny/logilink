@@ -1,4 +1,4 @@
-@import "../vars/vars";
+@use "../vars/vars";
 
 .blocked{
   color: var(--danger);
@@ -15,8 +15,6 @@
 }
 
 #clients_list{
-  @import "components/components";
-
   .items-clients{
     $col2: 180px; $col3: 120px; $col4: 100px; $colGap: 24px;
     //                      __   _____ __    ___    __
@@ -55,16 +53,16 @@
 }
 
 .page-extrait{
-  @include flex(column, flex-start, flex-start, var(--espaceLayout));
+  @include vars.flex(column, flex-start, flex-start, var(--espaceLayout));
   padding: 0 1.2rem;
 
   .card-extrait-actions{
-    @include flex(row, flex-start, flex-start, 8px);
+    @include vars.flex(row, flex-start, flex-start, 8px);
     margin-bottom: 24px;
   }
 
   & > .col-1{
-    @include flex(column, flex-start, flex-start, 8px);
+    @include vars.flex(column, flex-start, flex-start, 8px);
   }
 
   & > .col-1, & > .col-2{
@@ -89,8 +87,6 @@
 }
 
 #clients_extraits{
-  @import "../../../common/css/pages/extraits";
-
   .items-extrait {
     .item-infos {
       & > .col-1 {
@@ -102,11 +98,11 @@
 
 .clients-choices{
   .choices{
-    @include flex(column, flex-start, flex-start, var(--espaceEls));
+    @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
     margin-top: var(--espaceDiv);
     max-height: 60vh;
     overflow: auto;
-    @include scrollbar();
+    @include vars.scrollbar();
 
     .item{
       width: 100%;
@@ -116,7 +112,7 @@
       padding: var(--espaceEls);
 
       .name{
-        @include overflowText();
+        @include vars.overflowText();
       }
 
       .code{

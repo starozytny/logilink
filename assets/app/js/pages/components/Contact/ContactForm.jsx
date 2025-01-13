@@ -1,111 +1,120 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
 
-import axios from 'axios';
-import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import axios from "axios";
+import Routing from "@publicFolder/bundles/fosjsrouting/js/router.min";
 
-import { Alert } from "@commonComponents/Elements/Alert";
-import { Button } from "@commonComponents/Elements/Button";
-import { Input, TextArea } from "@commonComponents/Elements/Fields";
-
-import Formulaire from "@commonFunctions/formulaire";
+import Toastr from "@tailwindFunctions/toastr";
 import Validateur from "@commonFunctions/validateur";
+import Formulaire from "@commonFunctions/formulaire";
+
+import { Button } from "@commonComponents/Elements/Button";
+import { Alert } from "@commonComponents/Elements/Alert";
+import { Input, TextArea } from "@commonComponents/Elements/Fields";
 
 const URL_CREATE_ELEMENT = "intern_api_contacts_create";
 
-export function ContactFormulaire ()
-{
-    let form = <Form
-        url={Routing.generate(URL_CREATE_ELEMENT)}
-    />
+export class ContactFormulaire extends Component {
+	constructor (props) {
+		super(props);
 
-    return <div className="formulaire">{form}</div>;
-}
+		this.state = {
+			errors: [],
+			success: null,
+			critere: "",
+			name: "",
+			email: "",
+			message: ""
+		}
+	}
 
-class Form extends Component {
-    constructor(props) {
-        super(props);
+	handleChange = (e) => {
+		this.setState({ [e.currentTarget.name]: e.currentTarget.value })
+	}
 
-        this.state = {
-            name: "",
-            email: "",
-            message: "",
-            critere: "",
-            errors: [],
-            messageAxios: null,
-        }
-    }
+	handleSubmit = (e) => {
+		e.preventDefault();
 
-    handleChange = (e) => { this.setState({[e.currentTarget.name]: e.currentTarget.value}) }
+		const { critere, name, email, message } = this.state;
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+		this.setState({ errors: [], success: false })
 
-        const { url } = this.props;
-        const { name, email, message, critere } = this.state;
+		if (critere !== "") {
+			Toastr.toast('error', "Veuillez rafraichir la page.");
+		} else {
 
-        if(critere !== ""){
-            toastr.error("Veuillez rafraichir la page.")
-        }else{
-            this.setState({ errors: [], messageAxios: null });
+			let validate = Validateur.validateur([
+				{ type: "text", id: 'name', value: name },
+				{ type: "text", id: 'email', value: email },
+				{ type: "text", id: 'message', value: message },
+			])
 
-            let paramsToValidate = [
-                {type: "text",   id: 'name',    value: name},
-                {type: "email",  id: 'email',   value: email},
-                {type: "text",   id: 'message', value: message},
-            ];
+			if (!validate.code) {
+				this.setState({ errors: validate.errors });
+				Toastr.toast('warning', "Veuillez vérifier que tous les champs obligatoires soient renseignés.");
+			} else {
+				Formulaire.loader(true);
+				let self = this;
+				axios.post(Routing.generate(URL_CREATE_ELEMENT), self.state)
+					.then(function (response) {
+						let data = response.data;
+						self.setState({
+							name: "",
+							email: "",
+							message: "",
+							errors: [],
+							success: data.message
+						})
+					})
+					.catch(function (error) {
+						Formulaire.displayErrors(self, error);
+					})
+					.then(() => {
+						Formulaire.loader(false);
+					})
+				;
+			}
+		}
+	}
 
-            let validate = Validateur.validateur(paramsToValidate)
-            if(!validate.code){
-                Formulaire.showErrors(this, validate);
-            }else {
-                Formulaire.loader(true);
-                let self = this;
+	render () {
+		const { errors, success, critere, name, email, message } = this.state;
 
-                axios({ method: "POST", url: url, data: this.state })
-                    .then(function (response) {
-                        self.setState({ name: "", email: "", message: "", messageAxios: {status: "info", msg: "Message envoyé."} })
-                    })
-                    .catch(function (error) { Formulaire.displayErrors(self, error); })
-                    .then(function () { Formulaire.loader(false); })
-                ;
-            }
-        }
-    }
-
-    render () {
-        const { errors, messageAxios, name, email, message, critere } = this.state;
-
-        let params = { errors: errors, onChange: this.handleChange }
+		let params0 = { errors: errors, onChange: this.handleChange };
 
         return <>
-            <form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleSubmit}>
 
-                {messageAxios && <div className="line">
-                    <div className="form-group">
-                        <Alert type={messageAxios.status}>{messageAxios.msg}</Alert>
-                    </div>
-                </div>}
+				{success && <div><Alert type="blue" icon="check1">{success}</Alert></div>}
 
-                <div className="line line-2">
-                    <Input identifiant="name" valeur={name} {...params}>Nom/Prénom</Input>
-                    <Input identifiant="email" valeur={email} type="email" {...params}>Adresse e-mail</Input>
-                </div>
-                <div className="line-critere">
-                    <Input type="hidden" identifiant="critere" valeur={critere} {...params}>Critère</Input>
-                </div>
-                <div className="line line-fat-box">
-                    <TextArea identifiant="message" valeur={message} {...params}>Message</TextArea>
-                </div>
+				<div className="line line-2">
+					<Input identifiant="name" valeur={name} {...params0}>Nom/Prénom</Input>
+					<Input identifiant="email" valeur={email} type="email" {...params0}>Adresse e-mail</Input>
+				</div>
+				<div className="line-critere">
+					<Input type="hidden" identifiant="critere" valeur={critere} {...params0}>Critère</Input>
+				</div>
+				<div className="line line-fat-box">
+					<TextArea identifiant="message" valeur={message} {...params0}>Message</TextArea>
+				</div>
 
-                <div className="line-buttons">
-                    <Button isSubmit={true} type="primary">Envoyer le message</Button>
-                </div>
-            </form>
-        </>
-    }
-}
+				<div className="mt-4">
+					<Alert type="info">
+						<div>
+							Les données à caractère personnel collectées dans ce formulaire sont enregistrées dans un fichier
+							informatisé permettant la gestion des demandes de contacts. <br />
+							En validant ce formulaire, vous consentez à nous transmettre vos données pour traiter votre demande
+							et vous recontacter si besoin.
+							<br />
+							Plus d'informations sur le traitement de vos données dans
+							notre <a target="_blank" href={Routing.generate('app_politique')}>politique de confidentialité</a>.
+						</div>
+					</Alert>
+				</div>
 
-Form.propTypes = {
-    url: PropTypes.node.isRequired,
+				<div className="line-buttons">
+					<Button type="primary" isSubmit={true}>Envoyer le message</Button>
+				</div>
+			</form>
+		</>
+	}
 }

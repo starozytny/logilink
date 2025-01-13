@@ -1,6 +1,4 @@
-@import "../vars/vars";
-
-@import "../components/password";
+@use "../vars/vars";
 
 .password-rules{
   margin-bottom: 12px;
@@ -15,9 +13,11 @@
 
   h1{
     font-size: 36px;
+    @include vars.fontRegular();
+    font-weight: bold;
 
     em{
-      @include fontLibreItalic();
+      @include vars.fontLibreItalic();
     }
 
     & + p{
@@ -33,7 +33,7 @@
   }
 
   & > .col-1{
-    @include flex(column, center, center);
+    @include vars.flex(column, center, center);
 
     .title-page{
       margin-bottom: 24px;
@@ -58,7 +58,7 @@
 .form-login{
   max-width: 414px;
   margin: 0 auto;
-  @include flex(column, center, center);
+  @include vars.flex(column, center, center);
   padding: 12px;
 
   .btn-forget{
@@ -116,7 +116,7 @@
 
 @media (min-width:768px) {
   .page-default{
-    @include flex(column, center, center);
+    @include vars.flex(column, center, center);
   }
 
   .login-page{
@@ -136,7 +136,7 @@
   }
 
   .login-page{
-    @include flex(row-reverse, stretch, flex-start, calc(var(--espaceLayout) * 2));
+    @include vars.flex(row-reverse, stretch, flex-start, calc(var(--espaceLayout) * 2));
     padding: var(--espaceLayout);
 
     .col-1{

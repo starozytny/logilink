@@ -1,10 +1,8 @@
-@import "../../../common/css/vars/vars";
+@forward "../../../common/css/vars/vars";
 
 @mixin fontRegular() { font-family: 'barlowregular', sans-serif; }
-@mixin fontSemibold() { font-family: 'barlowsemibold', sans-serif; }
-@mixin fontBold() { font-family: 'barlowbold', sans-serif; }
 
-@mixin fontPoppinsBold() { font-family: 'Poppins', sans-serif; }
+@mixin fontPoppinsBold() { font-family: 'Poppins', sans-serif; font-weight: bold }
 @mixin fontPoppinsRegular() { font-family: 'Poppins', sans-serif; }
 @mixin fontLibreItalic() { font-family: 'libre_baskervilleitalic', sans-serif; }
 

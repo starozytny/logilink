@@ -1,4 +1,6 @@
-@import "../vars/vars";
+@use "../vars/vars";
+
+@use "../components/section";
 
 .col-deco{
   display: none;
@@ -15,8 +17,6 @@
     left: 15%;
   }
 }
-
-@import "../components/section";
 
 //----------------------------------------------------------------------------------------------------------------------
 

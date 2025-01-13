@@ -1,5 +1,7 @@
+@use "../vars/vars";
+
 .footer-container{
-  @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+  @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
   padding: calc(var(--espaceLayout) * 2) var(--espaceLayout) var(--espaceLayout) var(--espaceLayout);
   border-top: 1px solid var(--grey1);
 
@@ -15,14 +17,14 @@
 
 .footer-title{
   text-transform: uppercase;
-  @include fontPoppinsRegular();
+  @include vars.fontPoppinsRegular();
   font-weight: 600;
   color: var(--grey3);
   width: 100%;
 }
 
 .footer-menu{
-  @include flex(column, center, space-between, calc(var(--espaceLayout) * 2));
+  @include vars.flex(column, center, space-between, calc(var(--espaceLayout) * 2));
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -34,7 +36,7 @@
 
   & > .col-2,
   & > .col-3{
-    @include flex(column, center, center, 4px);
+    @include vars.flex(column, center, center, 4px);
   }
 
   .cta{
@@ -46,7 +48,7 @@
   margin-top: 12px;
 
   a{
-    @include fontSemibold();
+    font-weight: 600;
     color: var(--primary);
   }
 
@@ -56,7 +58,7 @@
 }
 
 .footer-copyright{
-  @include flex(row, flex-start, center, var(--espaceEls));
+  @include vars.flex(row, flex-start, center, var(--espaceEls));
   flex-wrap: wrap;
   font-size: 14px;
   width: 100%;

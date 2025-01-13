@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { createPortal } from "react-dom";
 
-import { Modal } from "@commonComponents/Elements/Modal";
+import { Modal } from "@tailwindComponents/Elements/Modal";
 
 export function Recrutement () {
 	const refModal = useRef(null);

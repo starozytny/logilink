@@ -1,0 +1,77 @@
+@use "../vars/vars";
+
+.items-extrait{
+
+  .item-infos{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    & > .col-1{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2px;
+      color: #101010;
+
+      .col-sort{
+        cursor: pointer;
+      }
+    }
+
+    & > .col-1, & > .col-2{
+      width: 100%;
+    }
+
+    & > .col-3{
+      width: calc(100% - 30px - 4px);
+    }
+    & > .col-4{
+      width: 30px;
+    }
+
+    & > .col-5, & > .col-6, & > .col-7{
+      @include vars.flex(column, flex-end, flex-end);
+      width: calc(33% - 5px);
+      text-align: right;
+    }
+  }
+
+  $col1: 74px; $col2: 100px; $col4: 30px; $col5: 85px; $col6: 85px; $col7: 85px; $colGap: 124px;
+  @media (min-width:768px) {
+    .item-infos{
+      flex-wrap: initial;
+
+      & > .col-1{ width: $col1; }
+      & > .col-2{ width: $col2; }
+      & > .col-3{
+        width: calc(100% - $col1 - $col2 - $col4 - $col5 - $col6 - $colGap);
+      }
+      & > .col-4{ width: $col4; }
+      & > .col-5{ width: $col5; }
+      & > .col-6{ width: $col6; }
+      & > .col-7{ width: $col7; }
+      & > .col-5, & > .col-6, & > .col-7{
+        & > span:first-child{
+          display: none;
+        }
+      }
+    }
+  }
+
+  $col1: 100px; $col2: 130px; $col4: 40px; $col5: 120px; $col6: 120px; $col7: 120px;
+  @media (min-width:1280px) {
+    .item-infos{
+      & > .col-1{ width: $col1; }
+      & > .col-2{ width: $col2; }
+      & > .col-3{
+        width: calc(100% - $col1 - $col2 - $col4 - $col5 - $col6 - $colGap);
+        max-width: 420px;
+      }
+      & > .col-4{ width: $col4; }
+      & > .col-5{ width: $col5; }
+      & > .col-6{ width: $col6; }
+      & > .col-7{ width: $col7; }
+    }
+  }
+}

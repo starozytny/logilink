@@ -1,4 +1,6 @@
-@import "../vars/vars";
+@use "../vars/vars";
+
+@use "../components/section";
 
 .col-deco{
   display: none;
@@ -15,8 +17,6 @@
     left: 15%;
   }
 }
-
-@import "../components/section";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -99,7 +99,7 @@
 
 .development{
   .development-content{
-    @include flex(column, flex-start, flex-start);
+    @include vars.flex(column, flex-start, flex-start);
 
     p + p{
       margin-top: var(--espaceLayout);
@@ -107,7 +107,7 @@
   }
 
   .development-image{
-    @include flex(row, flex-start, flex-start, var(--espaceDiv));
+    @include vars.flex(row, flex-start, flex-start, var(--espaceDiv));
     overflow: auto;
 
     img{
@@ -204,13 +204,13 @@
 .realisation{
 
   .section-examples{
-    @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 1.5));
+    @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 1.5));
 
     .item{
       position: relative;
       background-color: var(--alpha);
       border-radius: var(--radius2);
-      @include shadowCommon();
+      @include vars.shadowCommon();
       overflow: hidden;
 
       &:hover{
@@ -227,7 +227,7 @@
       width: 100%; height: 100%;
       background-color: var(--overlay);
       color: var(--alpha);
-      @include flex(row);
+      @include vars.flex(row);
       border-radius: var(--radius2);
       text-decoration: underline;
       transition: opacity 0.2s ease;

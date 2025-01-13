@@ -1,102 +1,24 @@
 {% extends 'user/layout/layout.html.twig' %}
 
-{% block title %}Dashboard espace utilisateur{% endblock %}
-{% set page_title %}Bienvenue sur votre espace{% endset %}
-{% set page_subtitle %}Retrouvez ci-dessous votre extrait de compte et les factures associées.{% endset %}
+{% set page_title %}Extrait de compte{% endset %}
+{% set page_subtitle %}Retrouvez ci-dessous votre extrait de compte.{% endset %}
 
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('user_homepage') }}
+    {{ encore_entry_link_tags('user_extraits') }}
 {% endblock %}
 
 {% block main_content %}
-<div class="main-content">
-    <div class="dashboard-line-0">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-name">
-                    <h2>Extrait de compte</h2>
-                </div>
-            </div>
-            <div class="card-body">
-                {% if haveTwo %}
-                    <div class="card-extrait-actions">
-                        <a href="{{ path('user_homepage') }}"
-                           class="btn {{ active == "logilink" ? "btn-primary" : "btn-outline-primary" }}">
-                            Extrait LOGILINK
-                        </a>
-                        <a href="{{ path('user_homepage', {extrait: '2ilink'}) }}"
-                           class="btn {{ active == "2ilink" ? "btn-primary" : "btn-outline-primary" }}">
-                            Extrait 2ILINK
-                        </a>
-                    </div>
-                {% endif %}
-                {% if extraits is empty %}
-                    <div>Aucun enregistrement pour le moment.</div>
-                {% else %}
-                    <div class="list">
-                        <div class="list-table">
-                            <div class="items items-extrait">
-                                <div class="item item-header">
-                                    <div class="item-content">
-                                        <div class="item-infos">
-                                            <a class="col-1" href="{{ path('user_homepage', {sort: sorter == "ASC" ? "DESC" : "ASC"}) }}">
-                                                <div>Date</div>
-                                                <div class="col-sort">
-                                                    <span class="icon-up-arrow"></span>
-                                                    <span class="icon-down-arrow"></span>
-                                                </div>
-                                            </a>
-                                            <div class="col-2">Libellé</div>
-                                            <div class="col-3">Lettre</div>
-                                            <div class="col-4">Débit (€)</div>
-                                            <div class="col-5">Crédit (€)</div>
-                                            <div class="col-6">Solde (€)</div>
-                                            <div class="col-7 actions"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% set solde = 0 %}
-                                {% for elem in extraits %}
-                                    <div class="item">
-                                        <div class="item-content">
-                                            <div class="item-infos">
-                                                <div class="col-1">{{ elem.writeAt | date('d/m/Y') }}</div>
-                                                <div class="col-2">{{ elem.name }}</div>
-                                                <div class="col-3">{{ elem.letter }}</div>
-                                                <div class="col-4">
-                                                    <span class="sub">Débit</span>
-                                                    <span>{{ elem.debit | price }}</span>
-                                                </div>
-                                                <div class="col-5">
-                                                    <span class="sub">Crédit</span>
-                                                    <span>{{ elem.credit | price }}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    {% set solde = solde - (elem.debit) + (elem.credit) %}
-
-                                                    <span class="sub">Solde</span>
-                                                    <span>{{ (sorter == "DESC" ? solde * (-1) : solde) | price }}</span>
-                                                </div>
-                                                <div class="col-7 actions">
-                                                    {% if elem.file %}
-                                                        <a href="{{ path('user_download_invoice', {'id': elem.id}) }}"
-                                                           class="btn-icon btn-icon-outline-primary" target="_blank">
-                                                            <span class="icon-receipt"></span>
-                                                            <span class="tooltip">Facture</span>
-                                                        </a>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+    <div id="extrait_compte_list"
+         data-donnees="{{ extraits }}"
+    >
+        {% include "layout/components/tailwind/loaders/loader.html.twig" %}
     </div>
-</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('user_homepage') }}
+    {{ encore_entry_script_tags('user_extraits') }}
 {% endblock %}

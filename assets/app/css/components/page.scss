@@ -1,4 +1,4 @@
-//@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Poppins:wght@400;600;800&display=swap');
+@use "../vars/vars";
 
 .cta{
   .btn{
@@ -28,7 +28,7 @@
     margin-bottom: var(--espaceDiv);
     font-size: 2em;
     text-transform: uppercase;
-    @include fontPoppinsBold();
+    @include vars.fontPoppinsBold();
   }
 
   @media (min-width: 768px) {
@@ -49,7 +49,7 @@
     color: var(--color0);
     text-transform: uppercase;
     text-align: center;
-    @include fontPoppinsBold();
+    @include vars.fontPoppinsBold();
     font-size: 2.3em;
   }
 
@@ -118,7 +118,7 @@
 }
 
 .page-product-explain{
-  @include flex(column, flex-start, flex-start, var(--espaceLayout));
+  @include vars.flex(column, flex-start, flex-start, var(--espaceLayout));
   background-color: var(--alpha);
   color: var(--txt);
 
@@ -129,7 +129,7 @@
 
   h3{
     text-transform: uppercase;
-    @include fontPoppinsBold();
+    @include vars.fontPoppinsBold();
   }
 
   ul{
@@ -157,14 +157,14 @@
   }
 
   & > .col-2{
-    @include flex(column, flex-start, flex-start, var(--espaceLayout));
+    @include vars.flex(column, flex-start, flex-start, var(--espaceLayout));
 
     & > *{
       width: 100%;
     }
 
     & > div:last-child{
-      @include flex(column, flex-start, flex-start, var(--espaceLayout));
+      @include vars.flex(column, flex-start, flex-start, var(--espaceLayout));
 
       & > *{
         width: 100%;
@@ -225,7 +225,7 @@
 
 .contact{
   position: relative;
-  @include flex(column, center, center, var(--espaceLayout));
+  @include vars.flex(column, center, center, var(--espaceLayout));
   padding: calc(var(--espaceLayout) * 2) calc(var(--espaceLayout) * 4);
   background: linear-gradient(0.45turn, var(--color1), var(--color1), var(--color0));
   text-align: center;

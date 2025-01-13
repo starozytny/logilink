@@ -28,8 +28,8 @@ class ContactController extends AbstractController
 
     #[Route('/create', name: 'create', options: ['expose' => true], methods: 'POST')]
     public function create(Request $request, ApiResponse $apiResponse, ValidatorService $validator,
-                           DataMain $dataEntity, ContactRepository $repository, MailerService $mailerService,
-                           SettingsService $settingsService): Response
+                           DataMain $dataEntity, ContactRepository $repository,
+                           MailerService $mailerService, SettingsService $settingsService): Response
     {
         $data = json_decode($request->getContent());
         if ($data === null) {
@@ -60,7 +60,7 @@ class ContactController extends AbstractController
         }
 
         $dataEntity->createDataNotification("Demande de contact", "chat", null);
-        return $apiResponse->apiJsonResponseSuccessful("ok");
+        return $apiResponse->apiJsonResponseSuccessful("Demande envoyée.");
     }
 
     #[Route('/delete/{id}', name: 'delete', options: ['expose' => true], methods: 'DELETE')]

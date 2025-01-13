@@ -1,70 +1,132 @@
-@import "../vars/vars";
+@use "../vars/vars";
 
-@import "../components/changelog";
-@import "components/homepage/storage";
+.directories{
 
-.dashboard{
-  .card{
-    a{
-      color: var(--primary);
+  --espaceLayout: 1.2rem;
+  --espaceDiv: 1.2rem;
+  --espaceEls: 8px;
 
-      &:hover{
-        text-decoration: underline;
+  --grey1: #e8e8e8;
+  --grey4: #838383;
+
+  @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
+
+  .directory{
+    width: 100%;
+
+    &.active{
+      & > .directory-header{
+        font-weight: 600;
       }
     }
   }
 
-  .card + #storage_list{
-    margin-top: var(--espaceLayout);
+  .directory-header{
+    @include vars.flex(row, center, flex-start, var(--espaceEls));
+    padding: 4px 0;
+    cursor: pointer;
+
+    &:hover{
+      font-weight: 600;
+    }
+
+    .sub{
+      color: var(--grey4);
+      font-size: 14px;
+    }
+  }
+
+  .directory-body{
+    @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
+    overflow: auto;
+    display: none;
+
+    &.active{
+      display: flex;
+    }
+
+    & > .directory{
+      margin-left: var(--espaceDiv);
+      width: calc(100% - var(--espaceDiv));
+    }
   }
 }
 
-.dashboard-line-0{
-  margin-bottom: 12px;
-}
+.files{
+  position: relative;
+  @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
+  width: 100%;
 
-.dashboard-line-1{
-  @include flex(column, stretch, flex-start, 12px);
-  margin-bottom: 12px;
-}
+  &:before{
+    content: "";
+    background-color: var(--grey1);
+    width: 2px;
+    height: calc(100% - 8px);
+    position: absolute;
+    top: 0; left: 6px;
+  }
 
-.dashboard-line-2{
-  #storage_list{
-    .loader-content{
-      margin: 0;
+  .file{
+    position: relative;
+    @include vars.flex(column, flex-start, space-between, var(--espaceEls));
+    margin-left: calc(var(--espaceDiv) + var(--espaceDiv));
+    width: calc(100% - var(--espaceDiv) - var(--espaceDiv));
+
+    &:before{
+      content: "";
+      background-color: var(--grey1);
+      width: var(--espaceDiv);
+      height: 2px;
+      position: absolute;
+      top: 8px;
+      left: calc(-1 * var(--espaceDiv) - 4px);
+
+      @media (min-width: 1280px) {
+        left: calc(-1 * var(--espaceDiv) - 7px);
+      }
+      @media (min-width: 1600px) {
+        left: calc(-1 * var(--espaceDiv) - 12px);
+      }
+    }
+
+    &:hover{
+      .name{
+        span:last-child{
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .name{
+      @include vars.flex(row, center, flex-start, var(--espaceEls));
+      cursor: pointer;
+      @include vars.overflowText();
+    }
+
+    .sub{
+      color: var(--grey4);
+      font-size: 14px;
+    }
+
+    & > .col-2, & > .col-3{
       width: 100%;
     }
   }
-}
 
-//                      __   _____ __    ___    __
-//                     | _| |___  / /_  ( _ )  |_ |
-//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
-//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
-//                     | |   /_/  \___/ \___/   | |
-//                     |__|                    |__|
-@media (min-width:768px) {
-  .dashboard-line-1{
-    flex-direction: row;
-    flex-wrap: wrap;
+  @media (min-width: 768px) {
+    .file{
+      flex-direction: row;
 
-    .card{
-      width: calc(50% - 6px);
-    }
-  }
-}
-
-
-//                      __   _ ____  ___   ___    __
-//                     | _| / |___ \( _ ) / _ \  |_ |
-//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
-//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
-//                     | |  |_|_____\___/ \___/   | |
-//                     |__|                      |__|
-@media (min-width:1280px) {
-  .dashboard-line-1{
-    .card{
-      width: calc(25% - 9px);
+      & > .col-1{
+        width: calc(100% - 220px);
+      }
+      & > .col-2{
+        width: 120px;
+      }
+      & > .col-3{
+        width: 100px;
+        text-align: right;
+      }
     }
   }
 }

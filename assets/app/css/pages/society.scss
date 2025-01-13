@@ -1,7 +1,7 @@
-@import "../vars/vars.scss";
+@use "../vars/vars.scss";
 
-@import "./split/societe/chronology.scss";
-@import "./split/societe/history.scss";
+@use "./split/societe/chronology.scss";
+@use "./split/societe/history.scss";
 
 .page-category-explain{
   background-color: var(--alpha);
@@ -33,7 +33,7 @@
 }
 
 .society-contact{
-  @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 4));
+  @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 4));
 
   h2, h3{
     font-size: 1.3em;
@@ -41,7 +41,7 @@
 
   h3{
     text-transform: uppercase;
-    @include fontPoppinsBold();
+    @include vars.fontPoppinsBold();
     margin-bottom: var(--espaceDiv);
   }
 
@@ -58,7 +58,7 @@
   }
 
   & > .col-2{
-    @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 4));
+    @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 4));
 
     & > *{
       width: 100%;
@@ -177,6 +177,6 @@
 //                     |__|                       |__|
 @media (min-width: 1366px){
   .history{
-    @include maxscreen();
+    @include vars.maxscreen();
   }
 }

@@ -1,4 +1,4 @@
-@import "../vars/vars";
+@use "../vars/vars";
 
 .section-title{
   text-align: center;
@@ -6,7 +6,7 @@
 
   h2{
     font-size: 2em;
-    @include fontPoppinsBold();
+    @include vars.fontPoppinsBold();
     margin-bottom: var(--espaceDiv);
   }
 
@@ -34,7 +34,7 @@
 
 .homepage-guard{
   position: relative;
-  @include flex(column, stretch, flex-start);
+  @include vars.flex(column, stretch, flex-start);
   background: linear-gradient(0.45turn, var(--color1), var(--color1Opacity6), var(--color2));
   min-height: 86vh;
   color: var(--alpha);
@@ -58,7 +58,7 @@
         color: var(--color0);
         text-transform: uppercase;
         margin-bottom: var(--espaceDiv);
-        @include fontPoppinsBold();
+        @include vars.fontPoppinsBold();
         font-size: 2.3em;
       }
 
@@ -68,7 +68,7 @@
     }
 
     .cta{
-      @include flex(row);
+      @include vars.flex(row);
       margin-bottom: 100px;
 
       a.txt-button{
@@ -100,10 +100,10 @@
       border-radius: 200px;
       background-color: var(--color2);
       color: var(--txt);
-      @include flex(row);
+      @include vars.flex(row);
       cursor: pointer;
       overflow: hidden;
-      @include shadowCommon();
+      @include vars.shadowCommon();
 
       &:hover{
         [class^="icon-"]{
@@ -243,26 +243,26 @@
     display: block;
 
     .items{
-      @include flex(row, stretch, center, var(--espaceDiv));
+      @include vars.flex(row, stretch, center, var(--espaceDiv));
       flex-wrap: wrap;
       padding: 0 var(--espaceLayout);
       margin-top: -10%;
     }
 
     .item{
-      @include flex(column, flex-start, space-between, var(--espaceDiv));
+      @include vars.flex(column, flex-start, space-between, var(--espaceDiv));
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
       background-color: rgba(255, 255, 255, 0.85);
       position: relative;
       border-radius: var(--radius2);
       padding: var(--espaceLayout);
-      @include shadowCommon();
+      @include vars.shadowCommon();
       width: 48%;
     }
 
     .item-body{
-      @include flex(column, flex-start, flex-start, var(--espaceDiv));
+      @include vars.flex(column, flex-start, flex-start, var(--espaceDiv));
     }
 
     .item-cta{
@@ -293,17 +293,17 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 .lastwork{
-  @include flex(column);
+  @include vars.flex(column);
   padding: calc(var(--espaceLayout) * 4) var(--espaceLayout);
 
   .lastwork-content{
-    @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+    @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
     margin-top: calc(var(--espaceLayout) * 2);
 
 
     .item {
       background-color: var(--alpha);
-      @include shadowCommon();
+      @include vars.shadowCommon();
       border-radius: var(--radius2);
 
       .item-content{
@@ -312,7 +312,7 @@
     }
 
     .items{
-      @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+      @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
 
       .item{
         width: 100%;
@@ -320,7 +320,7 @@
         .item-image{
           height: 180px;
           overflow: hidden;
-          @include shadowCommon();
+          @include vars.shadowCommon();
         }
       }
     }
@@ -331,7 +331,7 @@
 
       img{
         border-radius: var(--radius2);
-        @include shadowCommon();
+        @include vars.shadowCommon();
       }
     }
 
@@ -415,20 +415,20 @@
 
 // ---------------------------------------------------------------------------------------------------------------------
 .suite {
-  @include flex(column);
+  @include vars.flex(column);
   padding: calc(var(--espaceLayout) * 4) var(--espaceLayout);
 
   .suite-content{
     margin: calc(var(--espaceLayout) * 2) 0;
 
     .items{
-      @include flex(column, flex-start, space-between, var(--espaceLayout));
+      @include vars.flex(column, flex-start, space-between, var(--espaceLayout));
       width: 100%;
     }
 
     .item{
       background-color: var(--alpha);
-      @include shadowCommon();
+      @include vars.shadowCommon();
       border-radius: var(--radius2);
       padding: var(--espaceLayout);
       width: 100%;

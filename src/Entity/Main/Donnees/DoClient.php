@@ -58,10 +58,17 @@ class DoClient
     #[Groups(['client_list'])]
     private ?bool $blocked = null;
 
+    /**
+     * @var Collection<int, DoInvoice>
+     */
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: DoInvoice::class)]
+    private Collection $invoices;
+
     public function __construct()
     {
         $this->extraits = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -233,6 +240,36 @@ class DoClient
     public function setBlocked(bool $blocked): static
     {
         $this->blocked = $blocked;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DoInvoice>
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(DoInvoice $invoice): static
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices->add($invoice);
+            $invoice->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(DoInvoice $invoice): static
+    {
+        if ($this->invoices->removeElement($invoice)) {
+            // set the owning side to null (unless already changed)
+            if ($invoice->getClient() === $this) {
+                $invoice->setClient(null);
+            }
+        }
 
         return $this;
     }

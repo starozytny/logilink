@@ -1,9 +1,161 @@
-@import "../../../common/css/components/form";
+@use "../vars/vars";
+
+.line-critere{
+  position: absolute;
+  width: 0;
+  top: 0; left: 0;
+  opacity: 0;
+  z-index: -100;
+}
+
+.input-show{
+  position: absolute;
+  top: 31px; right: 6px;
+  cursor: pointer;
+  color: var(--txt);
+}
+
+.line,
+.line-buttons{
+  @include vars.flex(column, stretch, flex-start, 8px);
+  width: 100%;
+}
+
+.line-buttons{
+  margin-top: 12px;
+}
 
 .line{
+  &.line-2{
+    flex-direction: row;
+
+    & > .form-group{
+      width: 50%;
+    }
+  }
+
   label{
+    margin-bottom: 2px;
     text-transform: uppercase;
-    @include fontSemibold();
+    @include vars.fontRegular();
+    font-weight: 600;
     font-size: 13px;
+  }
+
+  .form-group {
+    position: relative;
+    @include vars.flex(column, flex-start, flex-start);
+    margin-bottom: 8px;
+    width: 100%;
+
+    .tox-tinymce{
+      border-width: 1px;
+    }
+  }
+}
+
+.form-group-error {
+  label {
+    color: var(--error) !important;
+  }
+
+  input, textarea, select, .input-view,
+  .trumbowyg-box, .trumbowyg-editor,
+  .select-multiple-custom > .select-input,
+  .tox-tinymce{
+    border-color: var(--error);
+    color: var(--error);
+    background-color: var(--errorBackground);
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: var(--error);
+      opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder,   /* Internet Explorer 10-11 */
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: var(--error);
+    }
+  }
+
+  .error{
+    @include vars.flex(row, center, flex-start);
+    color: var(--error);
+    padding-top: 4px;
+    font-size: 14px;
+
+    [class^="icon-"]{
+      margin-right: 4px;
+    }
+  }
+}
+
+
+input, textarea, select, .input-view, .select-multiple-custom > .select-input{
+  border: 1px solid var(--grey3);
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  background-color: var(--alpha);
+  color: var(--txt);
+
+  &:focus{
+    border: 1px solid var(--txt);
+  }
+}
+
+textarea{
+  resize: vertical;
+
+  & + .tox-tinymce{
+    width: 100%;
+  }
+}
+
+//                      __   _____ __    ___    __
+//                     | _| |___  / /_  ( _ )  |_ |
+//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+//                     | |   /_/  \___/ \___/   | |
+//                     |__|                    |__|
+@media (min-width:768px) {
+  .line{
+    flex-direction: row;
+
+    $data:
+            "3" 33%,
+            "4" 25%,
+            "5" 20%
+  ;
+
+    @each $name, $dimension in $data {
+      &.line-#{$name}{
+        & > .form-group{
+          width: $dimension;
+        }
+      }
+    }
+  }
+}
+
+//                      __   _  ___ ____  _  _     __
+//                     | _| / |/ _ \___ \| || |   |_ |
+//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
+//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
+//                     | |  |_|\___/_____|  |_|    | |
+//                     |__|                       |__|
+@media (min-width: 1024px) {
+  .line {
+    gap: 12px;
+
+    &.line-2 {
+      gap: 12px;
+    }
+
+    .form-group{
+      margin-bottom: 12px;
+    }
   }
 }

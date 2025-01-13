@@ -1,4 +1,6 @@
-@import "../vars/vars";
+@use "../vars/vars";
+
+@use "../components/section";
 
 .col-deco{
   display: none;
@@ -15,8 +17,6 @@
     left: 15%;
   }
 }
-
-@import "../components/section";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -96,10 +96,10 @@
   color: var(--alpha);
 
   .part-title{
-    @include flex(column, center, center);
+    @include vars.flex(column, center, center);
 
     h2{
-      @include flex(column, center, center);
+      @include vars.flex(column, center, center);
       margin-bottom: 26px;
 
       &:after{
@@ -122,7 +122,7 @@
   padding: calc(var(--espaceLayout) * 2) 10px;
 
   .garantie-content{
-    @include flex(column, center, center);
+    @include vars.flex(column, center, center);
 
     & > div{
       margin-bottom: 24px;
@@ -145,7 +145,7 @@
     padding: 64px 18px;
 
     .garantie-content{
-      @include flex(row, flex-start, space-between, var(--espaceLayout));
+      @include vars.flex(row, flex-start, space-between, var(--espaceLayout));
       padding-left: 12%;
 
       & > div{

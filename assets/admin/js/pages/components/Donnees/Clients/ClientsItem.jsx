@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import { ButtonIcon } from "@commonComponents/Elements/Button";
+import { ButtonIcon } from "@tailwindComponents/Elements/Button";
 
 export function ClientsItem ({ elem, onTakeAccount }) {
     return <div className="item">
@@ -22,7 +22,7 @@ export function ClientsItem ({ elem, onTakeAccount }) {
                     <div>{elem.numero}</div>
                 </div>
                 <div className="col-4 actions">
-                    <ButtonIcon outline={true} icon="arrow-swap-horizontal" tooltipWidth={130}
+                    <ButtonIcon type="default" icon="arrow-swap-horizontal" tooltipWidth={130}
                                 onClick={() => onTakeAccount(elem)}>
                         Prendre son espace
                     </ButtonIcon>

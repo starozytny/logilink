@@ -1,10 +1,12 @@
+@use "../vars/vars";
+
 section{
   position: relative;
 }
 
 .section{
   position: relative;
-  @include flex(column, center, flex-start, var(--espaceLayout));
+  @include vars.flex(column, center, flex-start, var(--espaceLayout));
   padding: calc(var(--espaceLayout) * 2) 0;
 
   .section-content{

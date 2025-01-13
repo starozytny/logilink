@@ -1,4 +1,6 @@
-@import "../vars/vars.scss";
+@use "../vars/vars.scss";
+
+@use "../components/section";
 
 .page-category-explain{
   background-color: var(--alpha);
@@ -9,10 +11,8 @@
   }
 }
 
-@import "../components/section";
-
 .support-container{
-  @include flex(column, center, center);
+  @include vars.flex(column, center, center);
 
   h2{
     font-size: 1.3em;
@@ -23,7 +23,7 @@
   }
 
   .support-storage{
-    @include flex(column, center, center);
+    @include vars.flex(column, center, center);
 
     .support-storage-directory{
       cursor: pointer;
@@ -64,7 +64,7 @@
 
 .section.product{
   .contact-content{
-    @include flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+    @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
     max-width: 1024px;
     padding-right: 0;
     padding-left: 0;
@@ -73,7 +73,7 @@
       font-size: 1.3em;
       margin-bottom: var(--espaceDiv);
       text-transform: uppercase;
-      @include fontPoppinsBold();
+      @include vars.fontPoppinsBold();
     }
 
     .cta{
