@@ -69,6 +69,13 @@ class DoExtrait
     #[ORM\Column(length: 255)]
     private ?string $archive = null;
 
+    #[ORM\Column]
+    #[Groups(['extraits_list'])]
+    private ?int $rang = null;
+
+    #[ORM\Column]
+    private ?int $logicielId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -233,5 +240,29 @@ class DoExtrait
     public function getFolder(): string
     {
         return $this->getCodeSociety() == "001" ? self::FOLDER_INVOICE_001 : self::FOLDER_INVOICE_002;
+    }
+
+    public function getRang(): ?int
+    {
+        return $this->rang;
+    }
+
+    public function setRang(int $rang): static
+    {
+        $this->rang = $rang;
+
+        return $this;
+    }
+
+    public function getLogicielId(): ?int
+    {
+        return $this->logicielId;
+    }
+
+    public function setLogicielId(int $logicielId): static
+    {
+        $this->logicielId = $logicielId;
+
+        return $this;
     }
 }

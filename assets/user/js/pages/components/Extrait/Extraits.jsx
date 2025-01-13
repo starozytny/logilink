@@ -12,7 +12,7 @@ export class Extraits extends Component {
 
 		this.state = {
 			currentPage: 0,
-			sorter: Sort.compareName,
+			sorter: Sort.compareRang,
 			loadingData: true,
 		}
 	}

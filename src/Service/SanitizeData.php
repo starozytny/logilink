@@ -64,10 +64,10 @@ class SanitizeData
         return $return;
     }
 
-    public function createDate($value, $return = null): ?DateTime
+    public function createDate($value, $format = "Y-m-d", $return = null): ?DateTime
     {
         if($value != "" && $value != null){
-            return DateTime::createFromFormat('Y-m-d', $value);
+            return DateTime::createFromFormat($format, $value);
         }
 
         return $return;
@@ -79,5 +79,13 @@ class SanitizeData
             return ($value == null) ? $return : (float) $value;
         }
         return ($value == "" || $value == null) ? $return : (float) $value;
+    }
+
+    public function setToInt($value, $return = null): ?int
+    {
+        if($value == 0 || $value == "0"){
+            return ($value == null) ? $return : (int) $value;
+        }
+        return ($value == "" || $value == null) ? $return : (int) $value;
     }
 }

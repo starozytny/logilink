@@ -12,6 +12,7 @@ export function ExtraitsItem ({ elem }) {
 		<div className="item-content">
 			<div className="item-infos">
 				<div className="col-1">
+					<div>{elem.rang}</div>
 					{Sanitaze.toDateFormat(elem.writeAt, 'L')}
 				</div>
 				<div className="col-2">

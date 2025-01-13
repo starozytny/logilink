@@ -72,6 +72,10 @@ function compareLabel(a, b){
     return comparison(a.label, b.label);
 }
 
+function compareRang(a, b){
+    return comparison(a.rang, b.rang);
+}
+
 function comparison (objA, objB){
     if(objA === objB){
         return 0;
@@ -101,4 +105,5 @@ module.exports = {
     compareCode,
     compareRankThenLabel,
     compareLabel,
+    compareRang,
 }

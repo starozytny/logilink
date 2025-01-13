@@ -8,7 +8,7 @@ use App\Entity\Main\Society;
 use App\Entity\Main\User;
 use App\Service\Data\DataMain;
 use App\Service\SanitizeData;
-use League\Csv\ByteSequence;
+use League\Csv\Bom;
 use League\Csv\Exception;
 use League\Csv\InvalidArgument;
 use League\Csv\Reader;
@@ -98,8 +98,8 @@ class DonneesClientsSyncCommand extends Command
                         $io->title("Synchronisation des clients");
 
                         $csv = Reader::createFromPath($directoryExtract . "clients.csv", 'r');
-                        $csv->setOutputBOM(ByteSequence::BOM_UTF8);
-                        $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
+                        $csv->setOutputBOM(Bom::Utf8);
+                        $csv->appendStreamFilterOnRead('convert.iconv.ISO-8859-1/UTF-8');
                         $csv->setDelimiter(';');
                         $records = $csv->getRecords();
 
@@ -172,15 +172,22 @@ class DonneesClientsSyncCommand extends Command
 
                         $clients = $this->registry->getRepository(DoClient::class)->findAll();
 
+                        $extraits = $this->registry->getRepository(DoExtrait::class)->findBy(['codeSociety' => $codeSoc]);
+                        foreach($extraits as $extraitTmp){
+                            $this->registry->getManager()->remove($extraitTmp);
+                        }
+                        $this->registry->getManager()->flush();
+
                         $csv = Reader::createFromPath($directoryExtract . "extraitcompte.csv", 'r');
-                        $csv->setOutputBOM(ByteSequence::BOM_UTF8);
-                        $csv->addStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
+                        $csv->setOutputBOM(Bom::Utf8);
+                        $csv->appendStreamFilterOnRead('convert.iconv.ISO-8859-1/UTF-8');
                         $csv->setDelimiter(';');
                         $records = $csv->getRecords();
 
                         $progressBar = new ProgressBar($output, iterator_count($records));
                         $progressBar->start();
 
+                        $i = 1;
                         foreach($records as $item){
                             $numero = $this->sanitizeData->trimData($item[0]);
 
@@ -192,13 +199,13 @@ class DonneesClientsSyncCommand extends Command
                             }
 
                             if(!$client){
-                                $io->error('Client introuvable : ' . $item[0] . ' - ' . $item[1]);
+                                $io->text('Client introuvable : ' . $item[0] . ' - ' . $item[1]);
                             }else{
                                 $extrait = (new DoExtrait())
                                     ->setNumero($numero)
                                     ->setCodeSociety($codeSoc)
                                     ->setAccount($this->sanitizeData->trimData($item[1]))
-                                    ->setWriteAt($this->sanitizeData->createDatePicker($item[2]))
+                                    ->setWriteAt($this->sanitizeData->createDate($item[2], 'd/m/Y'))
                                     ->setCode($this->sanitizeData->trimData($item[3]))
                                     ->setPiece($this->sanitizeData->trimData($item[4]))
                                     ->setName($this->sanitizeData->trimData($item[5]))
@@ -207,6 +214,8 @@ class DonneesClientsSyncCommand extends Command
                                     ->setCredit($this->sanitizeData->setToFloat($item[8], 0))
                                     ->setClient($client)
                                     ->setArchive($dir)
+                                    ->setRang($i)
+                                    ->setLogicielId($this->sanitizeData->setToInt($item[9], 0))
                                 ;
 
                                 $attachName = $client->getCode() . "_" . $extrait->getPiece() . ".pdf";
@@ -223,15 +232,17 @@ class DonneesClientsSyncCommand extends Command
                                 $this->registry->getManager()->persist($extrait);
                                 $progressBar->advance();
                             }
-                        }
 
-                        $progressBar->finish();
-                        $this->registry->getManager()->flush();
+                            $i++;
+                        }
 
                         $csv = null;
                         unset($csv);
                         $records = null;
                         unset($records);
+
+                        $progressBar->finish();
+                        $this->registry->getManager()->flush();
 
                         rename($file, $directoryArchive . $dir);
 
