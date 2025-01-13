@@ -15,7 +15,7 @@ import { Button, ButtonIcon } from "@tailwindComponents/Elements/Button";
 
 const URL_GET_CLIENTS = "intern_api_data_clients_clients_extraits";
 const URL_CALL_FTP = "intern_api_data_clients_ftp";
-const URL_DOWNLOAD_INVOICE = "user_download_invoice";
+const URL_DOWNLOAD_INVOICE = "user_download_invoice_by_extrait";
 
 export class Extraits extends Component {
     constructor (props) {

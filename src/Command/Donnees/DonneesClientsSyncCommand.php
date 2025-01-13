@@ -66,8 +66,8 @@ class DonneesClientsSyncCommand extends Command
         $directory = $this->privateDirectory . self::FOLDER;
         $directoryClose = $this->privateDirectory . self::FOLDER_CLOSE;
         $directoryArchive = $this->privateDirectory . self::FOLDER_ARCHIVE;
-        $directoryInvoice001 = $this->privateDirectory . DoExtrait::FOLDER_INVOICE_001;
-        $directoryInvoice002 = $this->privateDirectory . DoExtrait::FOLDER_INVOICE_002;
+        $directoryInvoice001 = $this->privateDirectory . DoInvoice::FOLDER_INVOICE_001;
+        $directoryInvoice002 = $this->privateDirectory . DoInvoice::FOLDER_INVOICE_002;
 
         if(!is_dir($directoryClose)) mkdir($directoryClose);
         if(!is_dir($directoryArchive)) mkdir($directoryArchive);

@@ -3,7 +3,7 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Sanitaze from "@commonFunctions/sanitaze";
 
-const URL_DOWNLOAD_ELEMENT = "user_download_invoice";
+const URL_DOWNLOAD_ELEMENT = "user_download_invoice_by_extrait";
 
 export function ExtraitsItem ({ elem }) {
 	return <div className='item border-t hover:bg-slate-50'>
