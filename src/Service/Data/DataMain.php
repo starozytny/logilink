@@ -34,7 +34,7 @@ class DataMain
 
     public function getPasswordGeneric($username): string
     {
-        return (substr(md5("reg$username"), 0, 8));
+        return (substr(md5("reg001$username"), 0, 8));
     }
 
     public function setDataSociety(Society $obj, $data, Settings $settings): Society
