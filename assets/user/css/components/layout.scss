@@ -1,3 +1,5 @@
+@use "../vars/vars";
+
 nav{
   background-color: var(--color0);
 }
@@ -24,7 +26,7 @@ main{
 //                     |__|                       |__|
 @media (min-width:1024px) {
   .body{
-    @include flex(row, stretch, flex-start);
+    @include vars.flex(row, stretch, flex-start);
   }
 
   nav{

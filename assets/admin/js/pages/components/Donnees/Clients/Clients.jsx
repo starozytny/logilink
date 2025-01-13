@@ -7,9 +7,9 @@ import Formulaire from "@commonFunctions/formulaire";
 import Sort from "@commonFunctions/sort";
 import List from "@commonFunctions/list";
 
-import { Pagination, TopSorterPagination } from "@commonComponents/Elements/Pagination";
-import { LoaderElements } from "@commonComponents/Elements/Loader";
-import { Search } from "@commonComponents/Elements/Search";
+import { Pagination, TopSorterPagination } from "@tailwindComponents/Elements/Pagination";
+import { LoaderElements } from "@tailwindComponents/Elements/Loader";
+import { Search } from "@tailwindComponents/Elements/Search";
 
 import { ClientsList } from "@adminPages/Donnees/Clients/ClientsList";
 

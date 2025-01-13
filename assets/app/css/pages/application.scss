@@ -1,4 +1,6 @@
-@import "../vars/vars";
+@use "../vars/vars";
+
+@use "../components/section";
 
 .col-deco{
   display: none;
@@ -22,7 +24,7 @@ section{
 
 .section{
   position: relative;
-  @include flex(column, center, flex-start, var(--espaceLayout));
+  @include vars.flex(column, center, flex-start, var(--espaceLayout));
   padding: calc(var(--espaceLayout) * 2) 0;
 
   .section-content{
@@ -53,20 +55,16 @@ section{
   }
 }
 
-.page-product{
-  @import "../components/section";
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
 .realisation{
   .section-examples{
-    @include flex(column, stretch, space-between, var(--espaceLayout));
+    @include vars.flex(column, stretch, space-between, var(--espaceLayout));
     margin: 0 var(--espaceDiv);
 
     .item{
       background-color: var(--alpha);
-      @include shadowCommon();
+      @include vars.shadowCommon();
       border-radius: var(--radius2);
       padding: var(--espaceLayout);
     }
@@ -202,7 +200,7 @@ section{
 
 .development{
   .development-content{
-    @include flex(column, flex-start, flex-start);
+    @include vars.flex(column, flex-start, flex-start);
 
     p + p{
       margin-top: var(--espaceLayout);
@@ -210,7 +208,7 @@ section{
   }
 
   .development-image{
-    @include flex(row, flex-start, flex-start, var(--espaceDiv));
+    @include vars.flex(row, flex-start, flex-start, var(--espaceDiv));
     overflow: auto;
 
     img{

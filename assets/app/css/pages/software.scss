@@ -1,4 +1,6 @@
-@import "../vars/vars";
+@use "../vars/vars";
+
+@use "../components/section";
 
 .col-deco{
   display: none;
@@ -15,8 +17,6 @@
     left: 15%;
   }
 }
-
-@import "../components/section";
 
 .page-category-explain{
   h2{
@@ -103,7 +103,7 @@
 
 .development{
   .development-content{
-    @include flex(column, flex-start, flex-start);
+    @include vars.flex(column, flex-start, flex-start);
 
     p + p{
       margin-top: var(--espaceLayout);
@@ -111,7 +111,7 @@
   }
 
   .development-image{
-    @include flex(row, flex-start, flex-start, var(--espaceDiv));
+    @include vars.flex(row, flex-start, flex-start, var(--espaceDiv));
     overflow: auto;
 
     img{

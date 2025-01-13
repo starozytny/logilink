@@ -1,16 +1,22 @@
 import '../css/app.scss';
+import "aos/dist/aos.css";
 
 const routes = require('@publicFolder/js/fos_js_routes.json');
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min';
 
 import React from "react";
-import toastr from "toastr";
 import AOS from "aos/dist/aos";
 import { createRoot } from "react-dom/client";
+
+import Toastr from "@tailwindFunctions/toastr";
+
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
-import { Cookies } from "@commonComponents/Modules/Cookies/Cookies";
+import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
 
 Routing.setRoutingData(routes);
+
+menu();
+inputPassword();
 
 AOS.init({
     startEvent: 'load'
@@ -30,7 +36,10 @@ if(ck){
     createRoot(ck).render(<Cookies {...ck.dataset} />)
 }
 
-menu();
+let cookiesGlobalResponse = document.getElementById("cookies-global-response");
+if (cookiesGlobalResponse) {
+    createRoot(cookiesGlobalResponse).render(<CookiesGlobalResponse {...cookiesGlobalResponse.dataset} />)
+}
 
 function menu() {
     let body = document.querySelector("body");
@@ -87,16 +96,37 @@ function menu() {
     })
 }
 
+function inputPassword () {
+    let inputShow = document.querySelector('.input-show');
+    if(inputShow){
+        let see = false;
+        let input = document.querySelector('#password');
+        let icon = document.querySelector('.input-show > span');
+        inputShow.addEventListener('click', function (e){
+            if(see){
+                see = false;
+                input.type = "password";
+                icon.classList.remove("icon-vision-not");
+                icon.classList.add("icon-vision");
+            }else{
+                see = true;
+                input.type = "text";
+                icon.classList.add("icon-vision-not");
+                icon.classList.remove("icon-vision");
+            }
+        })
+    }
+}
 
 let flashes = document.getElementById("flashes");
-if(flashes){
+if(flashes) {
     let data = JSON.parse(flashes.dataset.flashes);
     Object.entries(data).forEach(([key, value]) => {
-        switch (key){
+        switch (key) {
             case 'error':
-                toastr.error(value, 'Erreur'); break;
+                Toastr.toast('error', value); break;
             default:
-                toastr.info(value); break;
+                Toastr.toast('info', value); break;
         }
     })
 }

@@ -8,10 +8,10 @@ import Search from "@commonFunctions/search";
 import Sanitaze from "@commonFunctions/sanitaze";
 import Formulaire from "@commonFunctions/formulaire";
 
-import { LoaderTxt } from "@commonComponents/Elements/Loader";
-import { Input } from "@commonComponents/Elements/Fields";
-import { Alert } from "@commonComponents/Elements/Alert";
-import { Button, ButtonIcon } from "@commonComponents/Elements/Button";
+import { LoaderElements } from "@tailwindComponents/Elements/Loader";
+import { Input } from "@tailwindComponents/Elements/Fields";
+import { Alert } from "@tailwindComponents/Elements/Alert";
+import { Button, ButtonIcon } from "@tailwindComponents/Elements/Button";
 
 const URL_GET_CLIENTS = "intern_api_data_clients_clients_extraits";
 const URL_CALL_FTP = "intern_api_data_clients_ftp";
@@ -109,7 +109,7 @@ export class Extraits extends Component {
                     </div>
                     <div className="card-body">
                         {loadingData
-                            ? <LoaderTxt />
+                            ? <LoaderElements />
                             : <div className="clients-choices">
                                 <Input identifiant="clientSearch" valeur={clientSearch} errors={errors} onChange={this.handleChange}
                                        placeholder="Rechercher par nom ou code.." />
@@ -142,7 +142,7 @@ export class Extraits extends Component {
 
                     <div className="card-body">
                         {loadingData
-                            ? <LoaderTxt />
+                            ? <LoaderElements />
                             : (clientId
                                 ? <>
                                     <div className="card-extrait-actions">

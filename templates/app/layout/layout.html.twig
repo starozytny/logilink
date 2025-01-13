@@ -6,56 +6,56 @@
         id: 2, name: "Logiciels", path: path('app_softwares'),
         matchRoute: ['app_softwares', 'app_softwares_lotys', 'app_softwares_syndic', 'app_softwares_gerance', 'app_softwares_magesto'],
         expanded: {
-            txtCta: 'Nos logiciels métiers',
-            text: 'Des logiciels puissanntes et adpatés à votre activité.',
-            products: [
-                {
-                    name: "Syndic", logo: 'syndic.svg', path: path('app_softwares_syndic'),
-                    alt: 'Logo logiciel Ultimmo Syndic',
-                    matchRoute: ['app_softwares_syndic']
-                },
-                {
-                    name: "Gérance", logo: 'gerance.svg', path: path('app_softwares_gerance'),
-                    alt: 'Logo logiciel Utilimmo Gérance',
-                    matchRoute: ['app_softwares_gerance']
-                },
-                {
-                    name: "Lotys", logo: 'lotys.svg', path: path('app_softwares_lotys'),
-                    alt: 'Logo Lotys logiciel transaction en ligne',
-                    matchRoute: ['app_softwares_lotys']
-                },
-                {
-                    name: "Magesto", logo: 'magesto.svg', path: path('app_softwares_magesto'),
-                    alt: 'Logo Magesto logiciel de facturation en ligne',
-                    matchRoute: ['app_softwares_magesto']
-                },
-            ]
-        }
+        txtCta: 'Nos logiciels métiers',
+        text: 'Des logiciels puissanntes et adpatés à votre activité.',
+        products: [
+            {
+                name: "Syndic", logo: 'syndic.svg', path: path('app_softwares_syndic'),
+                alt: 'Logo logiciel Ultimmo Syndic',
+                matchRoute: ['app_softwares_syndic']
+            },
+            {
+                name: "Gérance", logo: 'gerance.svg', path: path('app_softwares_gerance'),
+                alt: 'Logo logiciel Utilimmo Gérance',
+                matchRoute: ['app_softwares_gerance']
+            },
+            {
+                name: "Lotys", logo: 'lotys.svg', path: path('app_softwares_lotys'),
+                alt: 'Logo Lotys logiciel transaction en ligne', subname: 'Transaction',
+                matchRoute: ['app_softwares_lotys']
+            },
+            {
+                name: "Magesto", logo: 'magesto.svg', path: path('app_softwares_magesto'),
+                alt: 'Logo Magesto logiciel de facturation en ligne', subname: 'Facturation en ligne',
+                matchRoute: ['app_softwares_magesto']
+            },
+        ]
+    }
     },
     {
         id: 3, name: "Applications", path: path('app_applications'),
         matchRoute: ['app_applications', 'app_applications_fokus', 'app_applications_opendoc', 'app_applications_memento'],
         expanded: {
-            txtCta: 'Créer mon application',
-            text: 'Des applications innovantes faites sur-mesure.',
-            products: [
-                {
-                    name: "Fokus", logo: 'fokus.png', path: path('app_applications_fokus'),
-                    alt: 'Logo application fokus état des lieux',
-                    matchRoute: ['app_applications_fokus']
-                },
-                {
-                    name: "SudCopro", logo: 'memento.png', path: path('app_applications_memento'),
-                    alt: 'Logo application gestionnaires de copropriété',
-                    matchRoute: ['app_applications_memento']
-                },
-                {
-                    name: "Opendoc", logo: 'opendoc.svg', path: path('app_applications_opendoc'),
-                    alt: 'Logo application signature pdf',
-                    matchRoute: ['app_applications_opendoc']
-                },
-            ]
-        }
+        txtCta: 'Créer mon application',
+        text: 'Des applications innovantes faites sur-mesure.',
+        products: [
+            {
+                name: "Fokus", logo: 'fokus.png', path: path('app_applications_fokus'),
+                alt: 'Logo application fokus état des lieux', subname: 'Etat des lieux',
+                matchRoute: ['app_applications_fokus']
+            },
+            {
+                name: "SudCopro", logo: 'memento.png', path: path('app_applications_memento'),
+                alt: 'Logo application gestionnaires de copropriété', subname: 'Visite de copro',
+                matchRoute: ['app_applications_memento']
+            },
+            {
+                name: "Opendoc", logo: 'opendoc.svg', path: path('app_applications_opendoc'),
+                alt: 'Logo application signature pdf', subname: 'Signature',
+                matchRoute: ['app_applications_opendoc']
+            },
+        ]
+    }
     },
     { id: 4, name: "Sites internet", path: path('app_websites'), matchRoute: ['app_websites', 'app_websites_references'], expanded: false },
     { id: 5, name: "Services en ligne", path: path('app_webservices'), matchRoute: ['app_webservices'], expanded: false },

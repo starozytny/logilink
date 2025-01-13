@@ -26,15 +26,33 @@
                     </div>
                 </div>
             {% else %}
-                <div id="reinit" data-token={{ token }}>
-                    {% include "layout/components/loader.html.twig" %}
+                <div class="sm:mx-auto sm:w-full sm:max-w-screen-sm">
+                    <h1 class="text-center text-3xl sm:text-4xl font-bold leading-9 tracking-tight text-gray-900">Réinitialiser son mot de passe 🔒</h1>
+                    <p class="text-gray-600 text-center text-sm mt-1">Assurez-vous de respecter les règles de création de mot de passe pour rendre votre espace sécurisé.</p>
                 </div>
             {% endif %}
-        </div>
 
-        <div class="col-2">
-            <div class="image">
-                <img src="{{ asset('build/app/images/reinit-page.jpg') }}" alt="formulaire connexion">
+            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-screen-sm">
+                <div class="space-y-6">
+                    {% if error is defined %}
+                        <div class="flex items-center justify-center gap-2">
+                            {% include 'layout/components/tailwind/buttons/button.html.twig' with {
+                                btn_link: path('app_login'),
+                                btn_type: 'blue',
+                                btn_text: 'Recommencer'
+                            } %}
+                            {% include 'layout/components/tailwind/buttons/button.html.twig' with {
+                                btn_link: path('app_homepage'),
+                                btn_type: 'default',
+                                btn_text: 'Revenir à la page d\'accueil'
+                            } %}
+                        </div>
+                    {% else %}
+                        <div id="reinit" data-token={{ token }}>
+                            {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

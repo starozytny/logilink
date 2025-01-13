@@ -1,29 +1,31 @@
+@use "../vars/vars";
+
 nav{
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   z-index: 10;
-  @include shadowCommon();
+  @include vars.shadowCommon();
 }
 
 .nav-container{
   position: relative;
-  @include flex(row, stretch, space-between);
+  @include vars.flex(row, stretch, space-between);
   background-color: var(--alpha);
 }
 
 .nav-logo{
-  @include flex(row, center, center);
+  @include vars.flex(row, center, center);
   width: 168px;
   padding: 1.2rem;
 
   a {
-    @include flex(row, center, center);
+    @include vars.flex(row, center, center);
   }
 }
 
 .nav-mobile{
-  @include flex(row, center, center);
+  @include vars.flex(row, center, center);
   padding: 1.2rem;
   font-size: 2.6rem;
 }
@@ -34,7 +36,7 @@ nav{
   padding: 2.4rem 0;
   background-color: var(--alpha);
   border-top: 1px solid var(--grey1);
-  @include shadowCommon();
+  @include vars.shadowCommon();
   opacity: 0;
   z-index: -1;
 
@@ -48,11 +50,11 @@ nav{
 
 .nav-menu{
   overflow: auto;
-  @include scrollbar();
+  @include vars.scrollbar();
   max-height: 64vh;
 
   .nav-item{
-    @include flex(row, center, flex-start, 8px);
+    @include vars.flex(row, center, flex-start, 8px);
     padding: 12px;
     transition: all 0.2s ease-in-out;
     color: var(--txt);
@@ -95,7 +97,7 @@ nav{
 }
 
 .nav-sub-item{
-  @include flex(row, center, flex-start, var(--espaceEls));
+  @include vars.flex(row, center, flex-start, var(--espaceEls));
   color: var(--txt);
   width: 50%;
   padding: 8px;
@@ -103,7 +105,7 @@ nav{
   transition: background-color 0.2s ease-in-out;
 
   .logo{
-    @include flex(row);
+    @include vars.flex(row);
     background-color: var(--grey1Opacity4);
     border-radius: var(--radius);
     overflow: hidden;
@@ -177,7 +179,7 @@ nav{
   }
 
   .nav-content {
-    @include flex(row-reverse, center, space-between, 0.8rem);
+    @include vars.flex(row-reverse, center, space-between, 0.8rem);
     padding-right: 1.2rem;
   }
 
@@ -207,7 +209,7 @@ nav{
   }
 
   .nav-menu{
-    @include flex(row, flex-start, flex-start, var(--espaceEls));
+    @include vars.flex(row, flex-start, flex-start, var(--espaceEls));
     max-height: initial;
 
     .nav-item{
@@ -236,7 +238,7 @@ nav{
 
   .nav-expanded{
     display: block;
-    @include shadowCommon();
+    @include vars.shadowCommon();
     background-color: var(--alpha);
   }
   .nav-expanded-body{
@@ -253,7 +255,7 @@ nav{
     padding: var(--espaceLayout);
 
     &.active{
-      @include flex(row, flex-start, space-between, var(--espaceLayout));
+      @include vars.flex(row, flex-start, space-between, var(--espaceLayout));
     }
 
     & > .col-1{
@@ -273,7 +275,7 @@ nav{
     }
 
     .items{
-      @include flex(row, flex-start, flex-start);
+      @include vars.flex(row, flex-start, flex-start);
       flex-wrap: wrap;
     }
 
@@ -284,7 +286,8 @@ nav{
 
   .nav-expanded-title{
     text-transform: uppercase;
-    @include fontSemibold();
+    @include vars.fontRegular();
+    font-weight: 600;
     margin-bottom: 8px;
     color: var(--grey4);
   }

@@ -1,3 +1,5 @@
+@use "../vars/vars";
+
 .cta{
   .btn{
     padding: 16px 36px;
@@ -24,13 +26,13 @@
 }
 
 .page-actions{
-  @include flex(row, center, space-between, 8px);
+  @include vars.flex(row, center, space-between, 8px);
 
   & > .col-1{
-    @include flex(row, center, flex-start);
+    @include vars.flex(row, center, flex-start);
   }
   & > .col-2{
-    @include flex(row, center, flex-end);
+    @include vars.flex(row, center, flex-end);
   }
 
   & > .col-1,
@@ -56,7 +58,7 @@
 //                     |__|                    |__|
 @media (min-width:768px) {
   .page-toolbar{
-    @include flex(row, flex-start, space-between, 8px);
+    @include vars.flex(row, flex-start, space-between, 8px);
   }
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import { Alert } from "@commonComponents/Elements/Alert";
+import { Alert } from "@tailwindComponents/Elements/Alert";
 
 import { ClientsItem } from "@adminPages/Donnees/Clients/ClientsItem";
 
@@ -25,7 +25,7 @@ export function ClientsList ({ data, onTakeAccount }) {
                         return <ClientsItem key={elem.id} elem={elem}
                                             onTakeAccount={onTakeAccount} />;
                     })
-                    : <Alert>Aucune donnée enregistrée.</Alert>
+                    : <Alert type="gray">Aucune donnée enregistrée.</Alert>
                 }
             </div>
         </div>

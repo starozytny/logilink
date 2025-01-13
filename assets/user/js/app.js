@@ -5,7 +5,8 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min';
 
 // import React from "react";
 // import { createRoot } from "react-dom/client";
-import toastr from "toastr";
+
+import Toastr from "@tailwindFunctions/toastr";
 
 Routing.setRoutingData(routes);
 
@@ -39,9 +40,9 @@ if(flashes){
     Object.entries(data).forEach(([key, value]) => {
         switch (key){
             case 'error':
-                toastr.error(value, 'Erreur'); break;
+                Toastr.toast('error', value); break;
             default:
-                toastr.info(value); break;
+                Toastr.toast('info', value); break;
         }
     })
 }

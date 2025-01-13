@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Main\User;
 use App\Repository\Main\UserRepository;
+use App\Service\Data\DataMain;
 use App\Service\Expiration;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
@@ -17,8 +18,9 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     #[Route('/connexion', name: 'app_login', options: ['expose' => true])]
-    public function index(AuthenticationUtils $authenticationUtils): Response
+    public function index(AuthenticationUtils $authenticationUtils, DataMain $dataMain): Response
     {
+        dump($dataMain->getPasswordGeneric('000121'));
         if ($this->getUser()) {
             if($this->isGranted('ROLE_ADMIN')) return $this->redirectToRoute('admin_homepage');
             if($this->isGranted('ROLE_USER')) return $this->redirectToRoute('user_homepage');

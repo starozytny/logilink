@@ -3,11 +3,6 @@
 {% set page_title %}Dashboard{% endset %}
 {% set page_subtitle %}Raccourcis{% endset %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('admin_homepage') }}
-{% endblock %}
-
 {% block main_content %}
 <div class="main-content">
     <div class="dashboard">
@@ -100,17 +95,10 @@
 
                 <div class="card-body">
                     <div id="storage_list">
-                        {% include "layout/components/loader.html.twig" %}
+                        {% include "layout/components/tailwind/loaders/loader.html.twig" %}
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('admin_homepage') }}
 {% endblock %}

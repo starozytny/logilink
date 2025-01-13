@@ -1,23 +1,25 @@
+@use "../../../vars/vars";
+
 .directories{
-  @include flex(column, flex-start, flex-start, var(--espaceEls));
+  @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
 
   .directory{
     width: 100%;
 
     &.active{
       & > .directory-header{
-        @include fontSemibold();
+        font-weight: 600;
       }
     }
   }
 
   .directory-header{
-    @include flex(row, center, flex-start, var(--espaceEls));
+    @include vars.flex(row, center, flex-start, var(--espaceEls));
     padding: 4px 0;
     cursor: pointer;
 
     &:hover{
-      @include fontSemibold();
+      font-weight: 600;
     }
 
     .sub{
@@ -27,7 +29,7 @@
   }
 
   .directory-body{
-    @include flex(column, flex-start, flex-start, var(--espaceEls));
+    @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
     overflow: auto;
     display: none;
 
@@ -44,7 +46,7 @@
 
 .files{
   position: relative;
-  @include flex(column, flex-start, flex-start, var(--espaceEls));
+  @include vars.flex(column, flex-start, flex-start, var(--espaceEls));
   width: 100%;
 
   &:before{
@@ -58,7 +60,7 @@
 
   .file{
     position: relative;
-    @include flex(column, flex-start, space-between, var(--espaceEls));
+    @include vars.flex(column, flex-start, space-between, var(--espaceEls));
     margin-left: calc(var(--espaceDiv) + var(--espaceDiv));
     width: calc(100% - var(--espaceDiv) - var(--espaceDiv));
 
@@ -88,9 +90,9 @@
     }
 
     .name{
-      @include flex(row, center, flex-start, var(--espaceEls));
+      @include vars.flex(row, center, flex-start, var(--espaceEls));
       cursor: pointer;
-      @include overflowText();
+      @include vars.overflowText();
     }
 
     .sub{

@@ -1,50 +1,50 @@
-@import "vars/fonts";
-@import "vars/vars";
-@import "vars/variables";
+@use "vars/fonts";
+@use "vars/vars";
+@use "vars/variables";
 
-@import "components/layout";
-@import "components/menu";
-@import "components/footer";
-@import "components/page";
+@use "components/layout";
+@use "components/menu";
+@use "components/footer";
+@use "components/page";
 
-@import "components/avatar";
+@use "components/avatar";
 
-@import "components/elements/alert";
-@import "components/elements/card";
-@import "components/elements/breadcrumb";
-@import "components/elements/button";
-@import "components/elements/dropdown";
-@import "components/elements/tooltip";
-@import "components/loader";
-@import "components/badge";
-@import "components/list";
-@import "components/pagination";
-@import "components/toolbar";
-@import "components/form";
-@import "components/modal";
+@use "components/elements/alert";
+@use "components/elements/card";
+@use "components/elements/breadcrumb";
+@use "components/elements/button";
+@use "components/elements/dropdown";
+@use "components/elements/tooltip";
+@use "components/loader";
+@use "components/badge";
+@use "components/list";
+@use "components/pagination";
+@use "components/toolbar";
+@use "components/form";
+@use "components/modal";
 
 body {
   color: var(--txt);
   background: linear-gradient(190deg, var(--color1), #8b8c93);
-  @include fontRegular();
+  @include vars.fontRegular();
 }
 
 h1{
-  @include fontBold();
+  font-weight: bold;
 }
 
 h2{
-  @include fontSemibold();
+  font-weight: 600;
 }
 
 b, strong{
-  @include fontBold();
+  font-weight: bold;
 }
 
 #toast-container{
   .toast{
     .toast-title{
-      @include fontSemibold();
+      font-weight: 600;
     }
   }
 }

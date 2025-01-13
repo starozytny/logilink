@@ -1,15 +1,9 @@
-@import "../../../../common/css/components/elements/alert";
-
 .alert{
   border-radius: var(--radius);
 
   .alert-container{
     &:before{
       border-radius: var(--radius) 0 0 var(--radius);
-    }
-
-    .title{
-      @include fontSemibold();
     }
   }
 }

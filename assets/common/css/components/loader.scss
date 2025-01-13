@@ -1,3 +1,5 @@
+@use "../vars/vars";
+
 $c-01: #5389a6;
 $c-02: #a6dcee;
 
@@ -18,7 +20,7 @@ $c-02: #a6dcee;
 .loader-content{
   width: 100%;
   background-color: var(--color0);
-  @include flex(row, flex-start, flex-start);
+  @include vars.flex(row, flex-start, flex-start);
   border-radius: var(--radius2);
 }
 
@@ -29,7 +31,6 @@ $c-02: #a6dcee;
 }
 .loader-simple {
   padding: 1.2rem;
-  @include fontSemibold();
 
   div, p{
     span{
@@ -56,14 +57,15 @@ $c-02: #a6dcee;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: var(--overlay);
+  background-color: rgba(14, 14, 14, 0.5);
   z-index: 100000;
-  @include flex(column, center, center);
+  align-items: center;
+  justify-content: center;
   display: none;
 
   div{
     margin-top: 15px;
-    color: var(--fond);
+    color: #e8e8e8;
   }
 
   &.active{
@@ -203,17 +205,5 @@ svg.tea #steamR {
   100% {
     stroke-dashoffset: 27;
     opacity: 0;
-  }
-}
-
-//                      __   _ ____  ___   ___    __
-//                     | _| / |___ \( _ ) / _ \  |_ |
-//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
-//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
-//                     | |  |_|_____\___/ \___/   | |
-//                     |__|                      |__|
-@media (min-width:1280px) {
-  .loader-simple, .loader-icon {
-    padding: 1.8rem;
   }
 }

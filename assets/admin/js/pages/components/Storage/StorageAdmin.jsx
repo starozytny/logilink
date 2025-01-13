@@ -7,7 +7,7 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 import Formulaire from "@commonFunctions/formulaire";
 import Sanitaze from "@commonFunctions/sanitaze";
 
-import { LoaderTxt } from "@commonComponents/Elements/Loader";
+import { LoaderElements } from "@tailwindComponents/Elements/Loader";
 
 const URL_DIRECTORIES = "intern_api_storage_directories";
 const URL_DOWNLOAD_FILE = "intern_api_storage_download";
@@ -50,13 +50,13 @@ export class StorageAdmin extends Component {
         return <div className="storage">
             <div className="directories">
                 {loadData
-                    ? <LoaderTxt />
+                    ? <LoaderElements />
                     : (directories.map((dir, index) => {
                         return <Directory elem={dir} key={index} />
                     }))
                 }
                 {loadData
-                    ? <LoaderTxt />
+                    ? <LoaderElements />
                     : rootFiles && rootFiles.length > 0
                         ? <div className="directory">
                             <div className="directory-header">

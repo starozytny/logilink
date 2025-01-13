@@ -1,4 +1,4 @@
-@import "../../../vars/vars.scss";
+@use "../../../vars/vars.scss";
 
 .history-section{
     background-color: var(--color3);
@@ -6,10 +6,10 @@
     text-align: center;
 
     .part-title{
-        @include flex(column, center, center);
+        @include vars.flex(column, center, center);
 
         h2{
-            @include flex(column, center, center);
+            @include vars.flex(column, center, center);
 
             &:after{
                 content: '';

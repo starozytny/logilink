@@ -5,8 +5,6 @@ namespace App\Service\Data;
 use App\Entity\Main\Agenda\AgEvent;
 use App\Entity\Main\Changelog;
 use App\Entity\Main\Contact;
-use App\Entity\Main\Help\HeCategory;
-use App\Entity\Main\Help\HeQuestion;
 use App\Entity\Main\Mail;
 use App\Entity\Main\Notification;
 use App\Entity\Main\Settings;
@@ -14,7 +12,6 @@ use App\Entity\Main\Society;
 use App\Entity\Main\User;
 use App\Service\SanitizeData;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class DataMain
 {
@@ -87,12 +84,10 @@ class DataMain
     public function setDataAgEvent(AgEvent $obj, $data): AgEvent
     {
         if($data->allDay[0] === 1){
-            $obj->setStartAt($this->sanitizeData->createDatePicker($data->startAt));
+            $obj->setStartAt($this->sanitizeData->createDate($data->startAt));
         }else{
-            $startTime = str_replace('h', ':', $data->startTime);
-            $endTime   = str_replace('h', ':', $data->endTime);
-            $obj->setStartAt($this->sanitizeData->createDateTimePicker($data->startAt . " " . $startTime));
-            $obj->setEndAt($data->endAt ? $this->sanitizeData->createDateTimePicker($data->endAt . " " . $endTime) : null);
+            $obj->setStartAt($this->sanitizeData->createDateTime($data->startAt . " " . $data->startTime));
+            $obj->setEndAt($data->endAt ? $this->sanitizeData->createDateTime($data->endAt . " " . $data->endTime) : null);
         }
 
         return ($obj)
@@ -101,25 +96,6 @@ class DataMain
             ->setContent($this->sanitizeData->trimData($data->content->html))
             ->setLocalisation($this->sanitizeData->trimData($data->localisation))
             ->setAllDay($data->allDay[0])
-        ;
-    }
-
-    public function setDataHeCategory(HeCategory $obj, $data): HeCategory
-    {
-        return ($obj)
-            ->setRank((int) $data->rank)
-            ->setName($this->sanitizeData->trimData($data->name))
-            ->setIcon($this->sanitizeData->trimData($data->icon))
-            ->setSubtitle($this->sanitizeData->trimData($data->subtitle))
-            ->setVisibility((int) $data->visibility)
-        ;
-    }
-
-    public function setDataHeQuestion(HeQuestion $obj, $data): HeQuestion
-    {
-        return ($obj)
-            ->setName($this->sanitizeData->trimData($data->name))
-            ->setContent($this->sanitizeData->trimData($data->content->html))
         ;
     }
 

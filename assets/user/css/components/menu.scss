@@ -1,26 +1,28 @@
+@use "../vars/vars";
+
 .nav-container{
   position: relative;
-  @include flex(row, stretch, space-between);
+  @include vars.flex(row, stretch, space-between);
 }
 
 .nav-logo{
-  @include flex(row, center, center);
+  @include vars.flex(row, center, center);
   width: 148px;
   padding: 1.2rem;
 
   a {
-    @include flex(row, center, center);
+    @include vars.flex(row, center, center);
   }
 }
 
 .nav-mobile{
-  @include flex(row, center, center);
+  @include vars.flex(row, center, center);
   padding: 1.2rem;
   font-size: 2.6rem;
 }
 
 .nav-header{
-  @include flex(column, center, center, 0.8rem);
+  @include vars.flex(column, center, center, 0.8rem);
   text-align: center;
   margin-bottom: 2.4rem;
 }
@@ -30,7 +32,7 @@
 }
 
 .nav-header-actions{
-  @include flex(row, center, flex-start);
+  @include vars.flex(row, center, flex-start);
   gap: 0.8rem;
 }
 
@@ -52,11 +54,11 @@
 
 .nav-menu{
   .nav-item{
-    @include flex(row, center, flex-start, 8px);
+    @include vars.flex(row, center, flex-start, 8px);
     color: var(--alpha);
     padding: 14px 16px;
     transition: all 0.2s ease-in-out;
-    @include fontSemibold();
+    font-weight: 600;
 
     [class^="icon-"]{
       display: inline-block;
@@ -89,7 +91,7 @@
   }
 
   .nav-content{
-    @include flex(row-reverse, center, space-between, 0.8rem);
+    @include vars.flex(row-reverse, center, space-between, 0.8rem);
     padding-right: 1.2rem;
   }
 }
@@ -158,13 +160,13 @@
   }
 
   .nav-menu{
-    @include flex(column, flex-start, space-between);
+    @include vars.flex(column, flex-start, space-between);
 
     width: 100%;
     height: 100%;
 
     .nav-items{
-      @include flex(column, flex-start, flex-start, 0.8px);
+      @include vars.flex(column, flex-start, flex-start, 0.8px);
       width: 100%;
     }
 

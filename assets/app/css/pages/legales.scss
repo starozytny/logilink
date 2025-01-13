@@ -1,6 +1,4 @@
-@import "../vars/vars";
-
-@import "../components/section";
+@use "../components/section";
 
 .section{
   align-items: flex-start;
