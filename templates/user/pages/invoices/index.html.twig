@@ -4,82 +4,75 @@
 {% set page_subtitle %}Accès direct à vos documents.{% endset %}
 
 {% block main_content %}
-<div class="main-content">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-header-name">
-                <h2>Vos factures</h2>
-            </div>
-        </div>
-        <div class="card-body">
-            {% if haveTwo %}
-                <div class="card-extrait-actions">
-                    <a href="{{ path('user_invoices') }}"
-                       class="btn {{ active == "logilink" ? "btn-primary" : "btn-outline-primary" }}">
-                        LOGILINK
-                    </a>
-                    <a href="{{ path('user_invoices', {extrait: '2ilink'}) }}"
-                       class="btn {{ active == "2ilink" ? "btn-primary" : "btn-outline-primary" }}">
-                        2ILINK
-                    </a>
-                </div>
-            {% endif %}
-            {% if extraits is empty %}
-                <div>Aucun document pour le moment.</div>
-            {% else %}
-                <div class="list">
-                    <div class="list-table">
-                        <div class="items items-invoices">
-                            <div class="item item-header">
-                                <div class="item-content">
-                                    <div class="item-infos">
-                                        <a class="col-1" href="{{ path('user_invoices', {sort: sorter == "ASC" ? "DESC" : "ASC"}) }}">
-                                            <div>Date</div>
-                                            <div class="col-sort">
-                                                <span class="icon-up-arrow"></span>
-                                                <span class="icon-down-arrow"></span>
-                                            </div>
-                                        </a>
-                                        <div class="col-2">Libellé</div>
-                                        <div class="col-3 actions"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% set nbFiles = 0 %}
-                            {% for elem in extraits %}
-                                {% if elem.file %}
-                                    {% set nbFiles = nbFiles + 1 %}
-                                    <div class="item">
-                                        <div class="item-content">
-                                            <div class="item-infos">
-                                                <div class="col-1">{{ elem.writeAt | date('d/m/Y') }}</div>
-                                                <div class="col-2">{{ elem.name }}</div>
-                                                <div class="col-3 actions">
-                                                    <a href="{{ path('user_download_invoice', {'id': elem.id}) }}"
-                                                       class="btn-icon btn-icon-outline-default" target="_blank" download>
-                                                        <span class="icon-download"></span>
-                                                        <span>Télécharger</span>
-                                                    </a>
-                                                    <a href="{{ path('user_download_invoice', {'id': elem.id}) }}"
-                                                       class="btn-icon btn-icon-outline-primary" target="_blank">
-                                                        <span class="icon-receipt"></span>
-                                                        <span>Voir la facture</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-
-                            {% if nbFiles == 0 %}
-                                <div class="item">Aucun document pour le moment.</div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
+    <div id="invoices_list"
+         data-donnees="{{ extraits }}"
+    >
+        {% include "layout/components/tailwind/loaders/loader.html.twig" %}
     </div>
-</div>
+{#<div class="main-content">#}
+{#    <div class="card">#}
+{#        <div class="card-header">#}
+{#            <div class="card-header-name">#}
+{#                <h2>Vos factures</h2>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="card-body">#}
+{#            {% if extraits is empty %}#}
+{#                <div>Aucun document pour le moment.</div>#}
+{#            {% else %}#}
+{#                <div class="list">#}
+{#                    <div class="list-table">#}
+{#                        <div class="items items-invoices">#}
+{#                            <div class="item item-header">#}
+{#                                <div class="item-content">#}
+{#                                    <div class="item-infos">#}
+{#                                        <a class="col-1" href="{{ path('user_invoices', {sort: sorter == "ASC" ? "DESC" : "ASC"}) }}">#}
+{#                                            <div>Date</div>#}
+{#                                            <div class="col-sort">#}
+{#                                                <span class="icon-up-arrow"></span>#}
+{#                                                <span class="icon-down-arrow"></span>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                        <div class="col-2">Libellé</div>#}
+{#                                        <div class="col-3 actions"></div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            {% set nbFiles = 0 %}#}
+{#                            {% for elem in extraits %}#}
+{#                                {% if elem.file %}#}
+{#                                    {% set nbFiles = nbFiles + 1 %}#}
+{#                                    <div class="item">#}
+{#                                        <div class="item-content">#}
+{#                                            <div class="item-infos">#}
+{#                                                <div class="col-1">{{ elem.writeAt | date('d/m/Y') }}</div>#}
+{#                                                <div class="col-2">{{ elem.name }}</div>#}
+{#                                                <div class="col-3 actions">#}
+{#                                                    <a href="{{ path('user_download_invoice', {'id': elem.id}) }}"#}
+{#                                                       class="btn-icon btn-icon-outline-default" target="_blank" download>#}
+{#                                                        <span class="icon-download"></span>#}
+{#                                                        <span>Télécharger</span>#}
+{#                                                    </a>#}
+{#                                                    <a href="{{ path('user_download_invoice', {'id': elem.id}) }}"#}
+{#                                                       class="btn-icon btn-icon-outline-primary" target="_blank">#}
+{#                                                        <span class="icon-receipt"></span>#}
+{#                                                        <span>Voir la facture</span>#}
+{#                                                    </a>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                {% endif %}#}
+{#                            {% endfor %}#}
+
+{#                            {% if nbFiles == 0 %}#}
+{#                                <div class="item">Aucun document pour le moment.</div>#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 {% endblock %}

@@ -14,34 +14,6 @@
     >
         {% include "layout/components/tailwind/loaders/loader.html.twig" %}
     </div>
-
-    <div>
-        <div class="list">
-            <div class="list-table bg-white rounded-md shadow">
-                <div class="items items-extrait">
-                    {% if extraits is empty %}
-                        <div class="item border-t">Aucun enregistrement pour le moment.</div>
-                    {% else %}
-                        {% set solde = 0 %}
-                        {% for elem in extraits %}
-                            <div class="item border-t hover:bg-slate-50">
-                                <div class="item-content">
-                                    <div class="item-infos">
-                                        <div class="col-6">
-                                            {% set solde = solde - (elem.debit) + (elem.credit) %}
-
-                                            <span class="sub">Solde</span>
-                                            <span>{{ (sorter == "DESC" ? solde * (-1) : solde) | price }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block javascripts %}

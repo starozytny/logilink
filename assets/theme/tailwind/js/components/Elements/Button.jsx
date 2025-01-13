@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-export function ButtonA ({ type, width, iconLeft, iconRight, onClick, children, target = "" }) {
+export function ButtonA ({ type, width, iconLeft, iconRight, onClick, children, target = "", download = false }) {
 	const colorVariants = {
 		red: 'bg-red-600 text-slate-50 hover:bg-red-500',
 		blue: 'bg-blue-600 text-slate-50 hover:bg-blue-500 ring-1 ring-inset ring-blue-600',
 		default: 'bg-white text-gray-900 hover:bg-gray-50 ring-1 ring-inset ring-gray-300',
 	}
 
-	return <a href={onClick} target={target}
+	return <a href={onClick} target={target} download={download}
 			  className={`inline-flex justify-center ${width} rounded-md py-2 px-4 text-sm font-semibold shadow-sm ${colorVariants[type]}`}>
 		{iconLeft === "google"
 			? <span className="icon-google inline-block translate-y-0.5">
