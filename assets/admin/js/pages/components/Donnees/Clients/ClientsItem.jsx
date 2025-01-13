@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { ButtonIcon } from "@tailwindComponents/Elements/Button";
 
 export function ClientsItem ({ elem, onTakeAccount }) {
-    return <div className="item">
+    return <div className="item border-t hover:bg-slate-50">
         <div className="item-content">
             <div className="item-infos">
                 <div className="col-1">
                     <div className="infos">
-                        <div className={"name" + (elem.blocked ? " blocked" : "")}>
-                            <span>{elem.name}</span>
+                        <div className={elem.blocked ? " blocked" : ""}>
+                            <span className="font-medium">{elem.name}</span>
                             {elem.blocked ? <span className="icon-disabled" title="Bloqué" /> : null}
                         </div>
                     </div>

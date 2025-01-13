@@ -6,10 +6,10 @@ import { Alert } from "@tailwindComponents/Elements/Alert";
 import { ClientsItem } from "@adminPages/Donnees/Clients/ClientsItem";
 
 export function ClientsList ({ data, onTakeAccount }) {
-    return <div className="list">
-        <div className="list-table">
+    return <div className="list my-4">
+        <div className="list-table bg-white rounded-md shadow">
             <div className="items items-clients">
-                <div className="item item-header">
+                <div className="item item-header uppercase text-sm text-gray-600">
                     <div className="item-content">
                         <div className="item-infos">
                             <div className="col-1">Client</div>
@@ -25,7 +25,9 @@ export function ClientsList ({ data, onTakeAccount }) {
                         return <ClientsItem key={elem.id} elem={elem}
                                             onTakeAccount={onTakeAccount} />;
                     })
-                    : <Alert type="gray">Aucune donnée enregistrée.</Alert>
+                    : <div className="item border-t">
+                        <Alert type="gray">Aucun résultat.</Alert>
+                    </div>
                 }
             </div>
         </div>

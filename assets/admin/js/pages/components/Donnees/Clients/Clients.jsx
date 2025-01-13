@@ -13,7 +13,7 @@ import { Search } from "@tailwindComponents/Elements/Search";
 
 import { ClientsList } from "@adminPages/Donnees/Clients/ClientsList";
 
-const URL_GET_DATA     = "intern_api_data_clients_list";
+const URL_GET_DATA = "intern_api_data_clients_list";
 const URL_TAKE_ACCOUNT = "intern_api_data_clients_take_account";
 
 const SESSION_PERPAGE = "project.perpage.users";
@@ -22,11 +22,8 @@ export class Clients extends Component {
     constructor(props) {
         super(props);
 
-        let saveNbPerPage = sessionStorage.getItem(SESSION_PERPAGE);
-        let perPage = saveNbPerPage !== null ? parseInt(saveNbPerPage) : 20;
-
         this.state = {
-            perPage: perPage,
+            perPage: List.getSessionPerpage(SESSION_PERPAGE, 20),
             currentPage: 0,
             sorter: Sort.compareName,
             loadingData: true,
@@ -40,8 +37,7 @@ export class Clients extends Component {
     handleGetData = () => {
         const { perPage, sorter } = this.state;
 
-        let url = this.props.urlGetData ? this.props.urlGetData : Routing.generate(URL_GET_DATA);
-        List.getData(this, url, perPage, sorter);
+        List.getData(this, Routing.generate(URL_GET_DATA), perPage, sorter);
     }
 
     handleUpdateData = (currentData) => { this.setState({ currentData }) }
@@ -59,7 +55,7 @@ export class Clients extends Component {
 
     handleTakeAccount = (element) => {
         let self = this;
-        axios({ method: "PUT", url: Routing.generate(URL_TAKE_ACCOUNT, {'id': element.id}), data: {} })
+        axios({ method: "PUT", url: Routing.generate(URL_TAKE_ACCOUNT, {id: element.id}), data: {} })
             .then(function (response) {
                 location.href = response.data.url;
             })
@@ -74,10 +70,8 @@ export class Clients extends Component {
             {loadingData
                 ? <LoaderElements />
                 : <>
-                    <div className="toolbar">
-                        <div className="col-1">
-                            <Search onSearch={this.handleSearch} placeholder="Rechercher pas nom ou code.."/>
-                        </div>
+                    <div className="mb-2 flex flex-row">
+                        <Search onSearch={this.handleSearch} placeholder="Rechercher pas nom ou code.." />
                     </div>
 
                     <TopSorterPagination taille={data.length} currentPage={currentPage} perPage={perPage}
@@ -88,7 +82,7 @@ export class Clients extends Component {
                                  onTakeAccount={this.handleTakeAccount} />
 
                     <Pagination ref={this.pagination} items={data} taille={data.length} currentPage={currentPage}
-                                perPage={perPage} onUpdate={this.handleUpdateData} onChangeCurrentPage={this.handleChangeCurrentPage}/>
+                                perPage={perPage} onUpdate={this.handleUpdateData} onChangeCurrentPage={this.handleChangeCurrentPage} />
                 </>
             }
         </>

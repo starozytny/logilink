@@ -1,15 +1,12 @@
 import React, { useRef } from "react";
 import { createPortal } from "react-dom";
 
-import { Modal } from "@tailwindComponents/Elements/Modal";
+import { Modal } from "@commonComponents/Elements/Modal";
 
 export function Recrutement () {
 	const refModal = useRef(null);
 
 	return <div>
-		<div className="address">
-
-		</div>
 		<div className="cta">
 			<div className="btn btn-color2" onClick={() => { refModal.current.handleClick(); }}>Postes disponibles</div>
 		</div>
