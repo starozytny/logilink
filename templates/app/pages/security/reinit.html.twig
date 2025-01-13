@@ -8,53 +8,33 @@
 {% block title %}Réinitialisation de mot de passe pour l'espace client Logilink{% endblock %}
 
 {% block main_content %}
-<div class="page-default">
-    <div class="login-page">
-        <div class="col-1">
+    <div class="page-default">
+        <div class="login-page">
+            <div class="col-1">
 
-            {% if error is defined %}
-                <div class="title-page">
-                    <h1><em>Lien</em> expiré</h1>
-                    <p>
-                        Ce lien de réinitialisation de mot de passe a expiré, veuillez recommencer la procédure. <br><br>
-                    </p>
-                </div>
-                <div class="content">
-                    <div class="exceptions-actions">
-                        <a href="{{ path('app_login') }}" class="btn btn-primary">Recommencer</a>
-                        <a href="{{ path('app_homepage') }}" class="btn btn-default">Revenir à la page d'accueil</a>
+                {% if error is defined %}
+                    <div class="title-page">
+                        <h1><em>Lien</em> expiré</h1>
+                        <p>
+                            Ce lien de réinitialisation de mot de passe a expiré, veuillez recommencer la procédure. <br><br>
+                        </p>
                     </div>
-                </div>
-            {% else %}
-                <div class="sm:mx-auto sm:w-full sm:max-w-screen-sm">
-                    <h1 class="text-center text-3xl sm:text-4xl font-bold leading-9 tracking-tight text-gray-900">Réinitialiser son mot de passe 🔒</h1>
-                    <p class="text-gray-600 text-center text-sm mt-1">Assurez-vous de respecter les règles de création de mot de passe pour rendre votre espace sécurisé.</p>
-                </div>
-            {% endif %}
+                    <div class="content">
+                        <div class="exceptions-actions">
+                            <a href="{{ path('app_login') }}" class="btn btn-primary">Recommencer</a>
+                            <a href="{{ path('app_homepage') }}" class="btn btn-default">Revenir à la page d'accueil</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div id="reinit" data-token={{ token }}></div>
+                {% endif %}
+            </div>
 
-            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-screen-sm">
-                <div class="space-y-6">
-                    {% if error is defined %}
-                        <div class="flex items-center justify-center gap-2">
-                            {% include 'layout/components/tailwind/buttons/button.html.twig' with {
-                                btn_link: path('app_login'),
-                                btn_type: 'blue',
-                                btn_text: 'Recommencer'
-                            } %}
-                            {% include 'layout/components/tailwind/buttons/button.html.twig' with {
-                                btn_link: path('app_homepage'),
-                                btn_type: 'default',
-                                btn_text: 'Revenir à la page d\'accueil'
-                            } %}
-                        </div>
-                    {% else %}
-                        <div id="reinit" data-token={{ token }}>
-                            {% include "layout/components/tailwind/loaders/loader.html.twig" %}
-                        </div>
-                    {% endif %}
+            <div class="col-2">
+                <div class="image">
+                    <img src="{{ asset('build/app/images/reinit-page.jpg') }}" alt="formulaire connexion">
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
