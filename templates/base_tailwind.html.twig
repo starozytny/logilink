@@ -44,7 +44,7 @@
             {% block body %}{% endblock %}
         </div>
 
-        <div id="flashes" data-flashes="{{ app.flashes | json_encode }}"></div>
+        <div id="flashes" data-flashes="{{ app.flashes | json_encode }}" class="fixed z-50 top-4 right-4 flex flex-col gap-4"></div>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('tailwind_app') }}

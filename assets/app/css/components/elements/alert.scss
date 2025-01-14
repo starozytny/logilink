@@ -5,6 +5,7 @@
   width: 100%;
   transition: opacity 0.1s linear, margin-top 0.2s linear;
   border-radius: var(--radius);
+  padding: var(--espaceDiv);
 
   &:before{
     border-radius: var(--radius) 0 0 var(--radius);
