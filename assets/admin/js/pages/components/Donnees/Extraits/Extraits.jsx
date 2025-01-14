@@ -3,15 +3,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
-import Sort from "@commonFunctions/sort";
 import Search from "@commonFunctions/search";
 import Sanitaze from "@commonFunctions/sanitaze";
 import Formulaire from "@commonFunctions/formulaire";
 
 import { Alert } from "@tailwindComponents/Elements/Alert";
-import { Input } from "@tailwindComponents/Elements/Fields";
+import { SelectCombobox } from "@tailwindComponents/Elements/Fields";
 import { LoaderElements } from "@tailwindComponents/Elements/Loader";
-import { Button, ButtonA, ButtonIcon, ButtonIconA } from "@tailwindComponents/Elements/Button";
+import { Button, ButtonA } from "@tailwindComponents/Elements/Button";
 
 const URL_GET_CLIENTS = "intern_api_data_clients_clients_extraits";
 const URL_CALL_FTP = "intern_api_data_clients_ftp";
@@ -46,8 +45,6 @@ export class Extraits extends Component {
                 let extraits1 = JSON.parse(response.data.extraits1);
                 let extraits2 = JSON.parse(response.data.extraits2);
 
-                clients.sort(Sort.compareName);
-
                 self.setState({ clients: clients, clientsSearch: clients, extraits1: extraits1, extraits2: extraits2, loadingData: false })
             })
             .catch(function (error) { Formulaire.displayErrors(self, error); })
@@ -69,10 +66,12 @@ export class Extraits extends Component {
         this.setState({ [name]: value })
     }
 
-    handleClickClient = (clientId) => {
+    handleClickExtrait = (extraitActive) => { this.setState({ extraitActive }) }
+
+    handleSelect = (name, value) => {
         const { extraits1, extraits2 } = this.state;
 
-        let id = this.state.clientId !== clientId ? clientId : null;
+        let id = this.state.clientId !== value ? value : null;
 
         let nExtraits1 = [], nExtraits2 = [];
         extraits1.forEach(ex => {
@@ -88,10 +87,14 @@ export class Extraits extends Component {
 
         let extraitActive = nExtraits1.length > 0 ? "001" : "002";
 
-        this.setState({ clientId: id, extraits1Client: nExtraits1, extraits2Client: nExtraits2, extraitActive })
+        this.setState({
+            [name]: value,
+            clientId: id,
+            extraits1Client: nExtraits1,
+            extraits2Client: nExtraits2,
+            extraitActive: extraitActive
+        })
     }
-
-    handleClickExtrait = (extraitActive) => { this.setState({ extraitActive }) }
 
     render () {
         const { loadingData, clientsSearch, extraits1Client, extraits2Client, clientId, clientSearch, errors, extraitActive } = this.state;
@@ -110,14 +113,14 @@ export class Extraits extends Component {
                         {loadingData
                             ? <LoaderElements />
                             : <div>
-                                <Input identifiant="clientSearch" valeur={clientSearch} errors={errors} onChange={this.handleChange}
-                                       placeholder="Rechercher par nom ou code.." />
-                                <div className="overflow-y-auto max-h-96 border rounded-md border-t-none mt-1">
+                                <SelectCombobox identifiant="clientSearch" valeur={clientSearch} items={clientsSearch}
+                                                errors={errors} onSelect={this.handleSelect} toSort={true} placeholder="Sélectionner un client.." />
+
+                                <div className="hidden xl:block overflow-y-auto max-h-96 border rounded-md border-t-none mt-1">
                                     {clientsSearch.map(cl => {
-                                        return <div className={`p-2 cursor-pointer ${clientId === cl.id ? "bg-blue-700 text-slate-50" : "hover:bg-gray-50"}`} key={cl.id}
-                                                    onClick={() => this.handleClickClient(cl.id)}>
-                                            <div className="font-medium">{cl.name}</div>
-                                            <div className="text-sm">{cl.code}</div>
+                                        return <div className={`p-2 cursor-pointer ${clientId === cl.value ? "bg-blue-700 text-slate-50" : "hover:bg-gray-50"}`} key={cl.id}
+                                                    onClick={() => this.handleSelect('clientSearch', cl.value)}>
+                                            <div className="text-sm">{cl.label}</div>
                                         </div>
                                     })}
                                 </div>

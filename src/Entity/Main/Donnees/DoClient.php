@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class DoClient
 {
     const LIST = ['client_list'];
+    const SELECT = ['client_select'];
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -272,5 +273,17 @@ class DoClient
         }
 
         return $this;
+    }
+
+    #[Groups(['client_select'])]
+    public function getValue(): ?int
+    {
+        return $this->id;
+    }
+
+    #[Groups(['client_select'])]
+    public function getLabel(): ?string
+    {
+        return $this->code . ' - ' . $this->name;
     }
 }
