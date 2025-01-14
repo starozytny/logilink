@@ -76,13 +76,13 @@ function compareRang(a, b){
     return comparison(a.rang, b.rang);
 }
 
-function compareWriteAtThenRang(a, b){
-    if (a.writeAt > b.writeAt) {
+function compareWriteAtInverseThenRangInverse(a, b){
+    if (b.writeAt > a.writeAt) {
         return 1;
-    } else if (a.writeAt < b.writeAt) {
+    } else if (b.writeAt < a.writeAt) {
         return -1;
     }
-    return comparison(a.rang, b.rang);
+    return comparison(b.rang, a.rang);
 }
 
 function comparison (objA, objB){
@@ -115,5 +115,5 @@ module.exports = {
     compareRankThenLabel,
     compareLabel,
     compareRang,
-    compareWriteAtThenRang,
+    compareWriteAtInverseThenRangInverse,
 }

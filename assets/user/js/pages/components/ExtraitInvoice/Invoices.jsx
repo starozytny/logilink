@@ -13,7 +13,7 @@ export class Invoices extends Component {
 
 		this.state = {
 			currentPage: 0,
-			sorter: Sort.compareWriteAtThenRang,
+			sorter: Sort.compareWriteAtInverseThenRangInverse,
 			loadingData: true,
 			societyActive: '001',
 			haveSecondSociety: false
