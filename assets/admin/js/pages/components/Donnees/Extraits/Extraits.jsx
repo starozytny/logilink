@@ -7,6 +7,7 @@ import Search from "@commonFunctions/search";
 import Sanitaze from "@commonFunctions/sanitaze";
 import Formulaire from "@commonFunctions/formulaire";
 
+import { Badge } from "@tailwindComponents/Elements/Badge";
 import { Alert } from "@tailwindComponents/Elements/Alert";
 import { SelectCombobox } from "@tailwindComponents/Elements/Fields";
 import { LoaderElements } from "@tailwindComponents/Elements/Loader";
@@ -204,8 +205,8 @@ function ExtraitItem ({ elem, solde }) {
                         ? <a className="cursor-pointer group" target="_blank"
                              href={Routing.generate(URL_DOWNLOAD_INVOICE, { id: elem.id })}
                         >
-                            <span className="pr-1 group-hover:underline">{elem.piece}</span>
-                            <span className="icon-link-2 text-blue-500 group-hover:text-blue-700"></span>
+                            <span className="pr-1 2xl:pr-2 group-hover:underline">{elem.piece}</span>
+                            <span className="icon-link-2 text-blue-500 group-hover:text-blue-700 !text-sm"></span>
                         </a>
                         : null
                     }
@@ -214,7 +215,7 @@ function ExtraitItem ({ elem, solde }) {
                     {elem.name}
                 </div>
                 <div className="col-4 text-sm 2xl:text-base">
-                    {elem.letter}
+                    <Badge type="gray">{elem.letter}</Badge>
                 </div>
                 <div className="col-5 flex flex-col">
                     <span className="text-xs text-gray-500">Débit</span>
