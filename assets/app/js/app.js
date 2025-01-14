@@ -11,7 +11,7 @@ import { createRoot } from "react-dom/client";
 import Toastr from "@tailwindFunctions/toastr";
 
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
-import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
+import { Cookies, CookiesGlobalResponse } from "@commonComponents/Modules/Cookies/Cookies";
 
 Routing.setRoutingData(routes);
 
