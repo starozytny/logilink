@@ -33,7 +33,7 @@ nav{
 .nav-content{
   position: absolute;
   top: -200.0rem; left: 0;
-  padding: 2.4rem 0;
+  padding: 0;
   background-color: var(--alpha);
   border-top: 1px solid var(--grey1);
   @include vars.shadowCommon();
