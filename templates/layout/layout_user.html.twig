@@ -41,7 +41,7 @@
                                     <div class="text-yellow-400">({{ app.user.client.user.userIdentifier }})</div>
                                 {% endif %}
                                 <div>{{ app.user.userIdentifier }}</div>
-                                <div>{{ app.user.email }}</div>
+                                <div>{{ app.user.lastname }}</div>
                             </div>
                         </div>
                         <button type="button" class="nav-mobile relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 lg:hidden hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -68,17 +68,19 @@
                         </a>
                     {% endfor %}
                 </div>
-                <div class="bg-gray-800 flex flex-col gap-1 w-full px-4 pt-4">
-                    {% for item in menu_bottom %}
-                        <a href="{{ item.path }}"
-                           class="{{- app.request.get('_route') in item.matchRoute ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white" }} rounded-md px-3 py-2 font-medium"
-                           aria-current="page"
-                        >
-                            <span class="icon-{{ item.icon }} inline-block translate-y-0.5"></span>
-                            <span class="ml-1">{{ item.name }}</span>
-                        </a>
-                    {% endfor %}
-                </div>
+                {% if menu_bottom is defined %}
+                    <div class="bg-gray-800 flex flex-col gap-1 w-full px-4 pt-4">
+                        {% for item in menu_bottom %}
+                            <a href="{{ item.path }}"
+                               class="{{- app.request.get('_route') in item.matchRoute ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white" }} rounded-md px-3 py-2 font-medium"
+                               aria-current="page"
+                            >
+                                <span class="icon-{{ item.icon }} inline-block translate-y-0.5"></span>
+                                <span class="ml-1">{{ item.name }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </nav>
 
