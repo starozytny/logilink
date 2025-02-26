@@ -116,7 +116,7 @@ class AppController extends AbstractController
     #[Route('/support-technique/telecharger/{path}', name: 'app_support_download', requirements: ['path' => '.+'], defaults: ['path' => null])]
     public function supportDownload($path): BinaryFileResponse
     {
-        $file = $this->getParameter('support_directory') . $path;
+        $file = $this->getParameter('support_directory') . htmlspecialchars($path);
 
         $info = new \SplFileInfo($file);
         return $this->file($file, $info->getFilename());
