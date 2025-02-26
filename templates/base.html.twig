@@ -20,6 +20,7 @@
         <title>{% block title %}Logilink{% endblock %}</title>
 
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
         <link href="https://unpkg.com/pattern.css" rel="stylesheet">
         {% set consent = "logilinkLocalCookie" %} <!-- CONSENT Value -->
@@ -46,6 +47,7 @@
         <div id="flashes" data-flashes="{{ app.flashes | json_encode }}"></div>
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
 </html>
