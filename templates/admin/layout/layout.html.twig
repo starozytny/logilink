@@ -12,21 +12,29 @@
 
 {% if is_granted('ROLE_DEVELOPER') %}
     {% set menu = menu | merge([
-        { name: "Sociétés", icon: "bank",
-            path: path('admin_societies_index'), matchRoute: ['admin_societies_index', 'admin_societies_create', 'admin_societies_update', 'admin_societies_read']
+        {
+            name: "Sociétés", icon: "bank",
+            path: path('admin_societies_index'),
+            matchRoute: ['admin_societies_index', 'admin_societies_create', 'admin_societies_update', 'admin_societies_read']
         },
     ]) %}
 {% endif %}
 
 {% set menu = menu | merge([
-    { name: "Utilisateurs", icon: "group",
-        path: path('admin_users_index'), matchRoute: ['admin_users_index', 'admin_users_create', 'admin_users_update', 'admin_users_read', 'admin_users_password']
+    {
+        name: "Utilisateurs", icon: "group",
+        path: path('admin_users_index'),
+        matchRoute: ['admin_users_index', 'admin_users_create', 'admin_users_update', 'admin_users_read', 'admin_users_password']
     },
-    { name: "Clients", icon: "user-octagon",
-        path: path('admin_data_clients_index'), matchRoute: ['admin_data_clients_index']
+    {
+        name: "Clients", icon: "user-octagon",
+        path: path('admin_data_clients_index'),
+        matchRoute: ['admin_data_clients_index']
     },
-    { name: "Extraits de compte", icon: "book-1",
-        path: path('admin_data_clients_extraits'), matchRoute: ['admin_data_clients_extraits']
+    {
+        name: "Extraits de compte", icon: "book-1",
+        path: path('admin_data_clients_extraits'),
+        matchRoute: ['admin_data_clients_extraits']
     },
 ]) %}
 
@@ -39,29 +47,34 @@
 {% endif %}
 
 {% set menu = menu | merge([
-    { name: "Contacts", icon: "chat",
-        path: path('admin_contacts_index'), matchRoute: ['admin_contacts_index']
+    {
+        name: "Contacts", icon: "chat",
+        path: path('admin_contacts_index'),
+        matchRoute: ['admin_contacts_index']
     },
 ]) %}
 
 {% if is_granted('ROLE_DEVELOPER') %}
     {% set menu = menu | merge([
-        { name: "Agenda", icon: "calendar",
-            path: path('admin_agenda_index'), matchRoute: ['admin_agenda_index', 'admin_agenda_create', 'admin_agenda_update']
+        {
+            name: "Agenda", icon: "calendar",
+            path: path('admin_agenda_index'),
+            matchRoute: ['admin_agenda_index', 'admin_agenda_create', 'admin_agenda_update']
         },
     ]) %}
 {% endif %}
 
-{% set menu = menu | merge([
-    { name: "Stockage", icon: "box",
-        path: path('admin_storage_index'), matchRoute: ['admin_storage_index',]
-    },
-]) %}
-
 {% if is_granted('ROLE_DEVELOPER') %}
     {% set menu = menu | merge([
-        { name: "Boite d'envois", icon: "email",
-            path: path('admin_mails_index', {'type': 'envoyes'}), matchRoute: ['admin_mails_index',]
+        {
+            name: "Stockage", icon: "box",
+            path: path('admin_storage_index'),
+            matchRoute: ['admin_storage_index',]
+        },
+        {
+            name: "Boite d'envois", icon: "email",
+            path: path('admin_mails_index', {'type': 'envoyes'}),
+            matchRoute: ['admin_mails_index',]
         },
     ]) %}
 {% endif %}
