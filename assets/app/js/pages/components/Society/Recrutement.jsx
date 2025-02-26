@@ -12,23 +12,25 @@ export function Recrutement () {
 		</div>
 		{createPortal(<Modal ref={refModal} identifiant='recrutement-modal' maxWidth={1024} margin={5} title="Postes disponibles"
 							 content={<div>
-								 LOGILINK est à la recherche d’un(e) développeur WinDev H/F à temps plein pour étoffer
-								 son équipe de développement logiciel.
+								 Nous recherchons un(e) développeur(se) WinDev H/F à temps plein pour poursuivre le
+								 développement de notre département IA.
 								 <br/><br/>
 
 								 <span className="semibold">Vos missions :</span>
 								 <ul>
-									 <li>Développer de nouvelles fonctionnalités sur les logiciels métiers existants.</li>
-									 <li>En assurer la maintenance, le suivi.</li>
-									 <li>Proposer des solutions techniques anticipant ou répondant aux attentes de la clientèle.</li>
+									 <li>Concevoir et développer de nouvelles fonctionnalités pour nos logiciels métiers.</li>
+									 <li>Assurer la maintenance et le suivi des logiciels existants.</li>
+									 <li>Proposer des solutions techniques innovantes pour répondre aux besoins de nos clients.</li>
 								 </ul>
-
 
 								 <span className="semibold">Votre proﬁl :</span>
 								 <ul>
-									 <li>Formé au langage WinDev, vous avez une première expérience dans le développement de logiciel métier</li>
-									 <li>Vous faîtes preuve d’ouverture pour travailler en équipe, et d’autonomie pour remplir vos objectifs de travail.</li>
-									 <li>Vous êtes attaché à la notion de service, et attentif aux retours des clients.</li>
+									 <li>Vous maîtrisez le langage WinDev et avez une première expérience en développement
+										 de logiciels métiers. Une expérience dans le domaine de l’IA est souhaitée
+										 ainsi que des connaissances en Python.</li>
+									 <li>Vous êtes ouvert(e) au travail en équipe et capable de travailler de manière
+										 autonome pour atteindre vos objectifs.</li>
+									 <li>Vous êtes orienté(e) service client et attentif(ve) aux retours des utilisateurs.</li>
 								 </ul>
 
 								 <span className="semibold">Modalités :</span>
@@ -36,6 +38,9 @@ export function Recrutement () {
 									 <li>CDI à temps plein</li>
 									 <li>Poste à pourvoir dès que possible</li>
 								 </ul>
+								 <br/><br/>
+								 Rejoignez une entreprise dynamique et innovante où votre expertise en WinDev sera valorisée.
+								 Envoyez-nous votre candidature dès aujourd'hui !
 							 </div>}
 							 footer={null}
 		/>, document.body)}
