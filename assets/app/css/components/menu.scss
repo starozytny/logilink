@@ -242,10 +242,8 @@ nav{
     background-color: var(--alpha);
   }
   .nav-expanded-body{
-    border-top: 1px solid transparent;
-
     &.active{
-      border-color: var(--grey1);
+      border-top: 1px solid var(--grey1);
     }
   }
   .nav-expanded-container{

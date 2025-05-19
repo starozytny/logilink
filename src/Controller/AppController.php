@@ -107,6 +107,10 @@ class AppController extends AbstractController
             $files = array_merge($files, $tmpFiles);
         }
 
+        usort($files, function ($item1, $item2) {
+            return $item1['name'] <=> $item2['name'];
+        });
+
         return $this->render('app/pages/support/index.html.twig', [
             'directories' => $directories,
             'files' => $files
