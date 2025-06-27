@@ -68,6 +68,23 @@ TextArea.propTypes = {
 }
 
 /***************************************
+ * SELECT Classique
+ ***************************************/
+export function Select(props) {
+    const { items, identifiant, valeur, onChange, children, noEmpty } = props;
+
+    let choices = items.map((item, index) =>
+        <option key={index} value={item.value}>{item.label}</option>
+    )
+
+    let content = <select value={valeur} id={identifiant} name={identifiant} onChange={onChange}>
+        {noEmpty ? null : <option value="" />}
+        {choices}
+    </select>
+    return (<Structure {...props} content={content} label={children} />)
+}
+
+/***************************************
  * STRUCTURE
  ***************************************/
 export function Structure({ identifiant, content, errors, label, classForm="", noErrors=false }){

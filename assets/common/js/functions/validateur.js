@@ -127,11 +127,11 @@ function validateArray($value){
     return {'code': true};
 }
 
-function validateAtLeastOne($value, $valueCheck) {
+function validateAtLeastOne($value, $valueCheck, $message) {
     if($value === "" && $valueCheck === ""){
         return {
             'code': false,
-            'message': 'Au moins un champ doit être renseigné.'
+            'message': $message ? $message : 'Au moins un champ doit être renseigné.'
         };
     }
     return {'code': true};
@@ -188,7 +188,7 @@ function switchCase(element){
             validate = validatePassword(element.value, element.valueCheck);
             break;
         case 'atLeastOne':
-            validate = validateAtLeastOne(element.value, element.valueCheck);
+            validate = validateAtLeastOne(element.value, element.valueCheck, element.message);
             break;
         case 'minMax':
             validate = validateMinMax(element.value, element.valueCheck);

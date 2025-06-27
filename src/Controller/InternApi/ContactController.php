@@ -47,8 +47,8 @@ class ContactController extends AbstractController
 
         if(!$mailerService->sendMail(
             [$settingsService->getEmailContact()],
-            "Logilink - Demande de contact",
-            "Logilink - Demande de contact",
+            "Logilink - Demande de contact : " . $obj->getSubject(),
+            "Logilink - Demande de contact: " . $obj->getSubject(),
             'app/email/contact/contact.html.twig',
             ['contact' => $obj, 'settings' => $settingsService->getSettings()],
             [], [], $obj->getEmail()
