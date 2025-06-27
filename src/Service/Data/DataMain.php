@@ -62,6 +62,8 @@ class DataMain
         return ($obj)
             ->setName($this->sanitizeData->trimData($data->name))
             ->setEmail($this->sanitizeData->trimData($data->email))
+            ->setPhone($this->sanitizeData->trimData($data->phone))
+            ->setSubject($this->sanitizeData->trimData($data->subject))
             ->setMessage($this->sanitizeData->trimData($data->message))
         ;
     }
