@@ -396,6 +396,48 @@
   }
 }
 
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+.partenaires{
+  @include vars.flex(column);
+  padding: calc(var(--espaceLayout) * 4) var(--espaceLayout);
+
+  .partenaires-content{
+    @include vars.flex(column, flex-start, flex-start, calc(var(--espaceLayout) * 2));
+    margin-top: calc(var(--espaceLayout) * 2);
+
+
+    .item {
+      img{
+        width: 210px;
+        height: 100%;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  .partenaires {
+    .partenaires-content {
+      flex-direction: row;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .partenaires {
+    padding: calc(var(--espaceLayout) * 4);
+  }
+}
+
+@media (min-width: 1600px) {
+  .partenaires {
+    padding: calc(var(--espaceLayout) * 4) calc(var(--espaceLayout) * 8);
+  }
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 
 .contact{

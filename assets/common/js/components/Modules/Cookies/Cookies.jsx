@@ -29,7 +29,7 @@ function setCookie(cname, cvalue, exdays, cdomain="") {
 
 export class CookiesGlobalResponse extends Component {
     constructor(props) {
-        super();
+        super(props);
 
         this.state = {
             response: null
@@ -155,7 +155,7 @@ export class Cookies extends Component {
         </div>
 
         return <>
-            {showCookie &&<>
+            {showCookie && <>
                 <div className="cookies">
                     <div className="cookies-title">
                         <div className="biscuit">
