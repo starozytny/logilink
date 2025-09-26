@@ -166,7 +166,7 @@ export class Cookies extends Component {
                         ? null
                         : <div className="new-partenaire" onClick={this.handleHide}>
                             <img src={'/build/app/images/partenaires/logo-genius.png'} alt="Nouveau partenaire"/>
-                            <div className="title">Notre nouveau partenaire !</div>
+                            <div className="title">Notre nouveau partenaire Genius.immo !</div>
                         </div>
                     }
                     <div className="cookies-content">
