@@ -84,6 +84,7 @@ export class Cookies extends Component {
 
         this.state = {
             showCookie: true,
+            hidePartenaire: false,
         }
 
         this.modal = React.createRef();
@@ -109,9 +110,13 @@ export class Cookies extends Component {
         this.setState({ showCookie: false })
     }
 
+    handleHide = () => {
+        this.setState({ hidePartenaire: true })
+    }
+
     render () {
         const { consent } = this.props;
-        const { showCookie } = this.state;
+        const { showCookie, hidePartenaire } = this.state;
 
         let settings = <div className="aside-cookies-choices">
             <div className="item">
@@ -157,17 +162,26 @@ export class Cookies extends Component {
         return <>
             {showCookie && <>
                 <div className="cookies">
-                    <div className="cookies-title">
-                        <div className="biscuit">
-                            <img src={'/build/app/images/biscuit.svg'} alt="Cookie illustration"/>
+                    {hidePartenaire
+                        ? null
+                        : <div className="new-partenaire" onClick={this.handleHide}>
+                            <img src={'/build/app/images/partenaires/logo-genius.png'} alt="Nouveau partenaire"/>
+                            <div className="title">Notre nouveau partenaire !</div>
                         </div>
-                        <div className="title">Nos cookies</div>
-                        <div className="content">
-                            Notre site internet utilise des cookies pour vous offrir la meilleure expérience utilisateur.
-                            Plus d'informations dans notre <a href={Routing.generate("app_politique")}>politique de confidentialité</a>
+                    }
+                    <div className="cookies-content">
+                        <div className="cookies-title">
+                            <div className="biscuit">
+                                <img src={'/build/app/images/biscuit.svg'} alt="Cookie illustration"/>
+                            </div>
+                            <div className="title">Nos cookies</div>
+                            <div className="content">
+                                Notre site internet utilise des cookies pour vous offrir la meilleure expérience utilisateur.
+                                Plus d'informations dans notre <a href={Routing.generate("app_politique")}>politique de confidentialité</a>
+                            </div>
                         </div>
+                        <CookiesGlobalResponse fixed={true} consent={consent} onOpen={this.handleOpen} onDisplay={this.handleDisplay}/>
                     </div>
-                    <CookiesGlobalResponse fixed={true} consent={consent} onOpen={this.handleOpen} onDisplay={this.handleDisplay}/>
                 </div>
             </>}
             <Modal ref={this.modal} identifiant="cookies-modal" maxWidth={768} margin={2} title="Paramétrer nos cookies"
